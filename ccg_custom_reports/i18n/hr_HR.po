@@ -112,7 +112,7 @@ msgstr "Ukupno"
 
 #. module: ccg_custom_reports
 #: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
-msgid "Type"
+msgid "UoM"
 msgstr "JM"
 
 #. module: ccg_custom_reports

@@ -1,0 +1,156 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ccg_custom_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-24 15:33+0000\n"
+"PO-Revision-Date: 2016-05-24 15:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Base amount"
+msgstr "Osnovica"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Delivery date"
+msgstr "Datum isporuke"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Director"
+msgstr "Direktor"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Due date"
+msgstr "Datum dospijeća"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Fiscal account number"
+msgstr "Fiskalni br. računa"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "IBAN:"
+msgstr "IBAN:"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Invoice created"
+msgstr "Račun kreirala"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Invoice date"
+msgstr "Datum računa"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Invoice number"
+msgstr "Račun"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Item"
+msgstr "R.br."
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Payment on bank account"
+msgstr "Plačanje na tr. račun"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Product"
+msgstr "Naziv proizvoda/usluge"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Qty"
+msgstr "Kol."
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Responsible person"
+msgstr "Odgovorna osoba"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "SWIFT:"
+msgstr "SWIFT:"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "TOTAL"
+msgstr "SVEUKUPNO"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Tax Amount"
+msgstr "Porez"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Taxes"
+msgstr "Porezi"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Total"
+msgstr "Ukupno"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Type"
+msgstr "JM"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "Unit price"
+msgstr "Jed. cijena"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "VAR Ref.:"
+msgstr "VAR Ref.:"
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "VAT no."
+msgstr "Por. br."
+
+#. module: ccg_custom_reports
+#: report:ir.actions.report.xml:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "VAT no.:"
+msgstr "OIB:"
+
+#. module: ccg_custom_reports
+#: model:ir.actions.report.xml,name:ccg_custom_reports.cadcam_document_currency_invoice_report
+msgid "cadcam document currency invoice report"
+msgstr "Kunski račun"
+
+#. module: ccg_custom_reports
+#: model:ir.actions.report.xml,name:ccg_custom_reports.cadcam_document_currency_invoice_report_no_disc
+msgid "cadcam document currency invoice report without discount"
+msgstr "Kunski račun bez popusta"
+
+#. module: ccg_custom_reports
+#: model:ir.actions.report.xml,name:ccg_custom_reports.cadcam_dual_currency_invoice_report
+msgid "cadcam dual currency invoice"
+msgstr "Dvovalutni račun"
+
+#. module: ccg_custom_reports
+#: model:ir.actions.report.xml,name:ccg_custom_reports.cadcam_dual_currency_invoice_report_no_disc
+msgid "cadcam dual currency invoice report without discount"
+msgstr "Dvovalutni račun bez popusta"

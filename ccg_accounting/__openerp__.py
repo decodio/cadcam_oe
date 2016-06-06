@@ -29,6 +29,7 @@
     "depends" : [
                  "base",
                  "sp_cadcam",
+                 'account',
                 ],
     'data' : [
                 "views/account_invoice_view_ccg.xml",

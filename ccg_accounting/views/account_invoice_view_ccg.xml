@@ -22,7 +22,9 @@
 			<field name="priority" eval="20" />
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='date_invoice']" position="attributes">
-					<attribute name="on_change">on_change_date_invoice(date_invoice, invoicing_datetime, date_delivery)</attribute>
+					<attribute name="on_change">on_change_date_invoice(date_invoice,
+						invoicing_datetime, date_delivery)
+					</attribute>
 				</xpath>
 			</field>
 		</record>
@@ -33,11 +35,24 @@
 			<field name="name">account.invoice.supplier.form.ccg</field>
 			<field name="model">account.invoice</field>
 			<field name="inherit_id" ref="account.invoice_supplier_form" />
-			<field name="priority" eval="20" />
+			<field name="priority" eval="25" />
 			<field name="arch" type="xml">
+
 				<xpath expr="//field[@name='document_date']" position="attributes">
-					<attribute name="on_change">on_change_document_date(document_date, date_invoice, date_delivery)</attribute>
+					<attribute name="on_change">on_change_document_date(document_date,
+						date_invoice, date_delivery)
+					</attribute>
 				</xpath>
+
+				<xpath expr="/form/sheet/notebook" position="inside">
+					<page string="Other Data">
+						<group>
+ 							<field name="start_date" /> -->
+ 							<field name="end_date" /> -->
+						</group>
+					</page>
+				</xpath>
+
 			</field>
 		</record>
 

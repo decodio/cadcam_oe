@@ -28,7 +28,8 @@
                  "sp_cadcam"
                  ],
     'data' : [
-                "reports/report_data.xml",
+                "reports/invoices_report_data.xml",
+                "reports/sales_orders_report_data.xml",
                 ],
     'demo' : [],
     'installable': True,

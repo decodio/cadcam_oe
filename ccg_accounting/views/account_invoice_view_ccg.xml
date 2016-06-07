@@ -22,7 +22,7 @@
 			<field name="priority" eval="20" />
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='date_invoice']" position="attributes">
-					<attribute name="on_change">on_change_date_invoice(date_invoice)</attribute>
+					<attribute name="on_change">on_change_date_invoice(date_invoice, invoicing_datetime, date_delivery)</attribute>
 				</xpath>
 			</field>
 		</record>
@@ -36,7 +36,7 @@
 			<field name="priority" eval="20" />
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='document_date']" position="attributes">
-					<attribute name="on_change">on_change_document_date(document_date)</attribute>
+					<attribute name="on_change">on_change_document_date(document_date, date_invoice, date_delivery)</attribute>
 				</xpath>
 			</field>
 		</record>

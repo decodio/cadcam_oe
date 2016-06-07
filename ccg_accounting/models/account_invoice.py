@@ -36,12 +36,32 @@ class account_invoice(models.Model):
 #     
 
 
-    def on_change_date_invoice(self,cr,user,ids, date_invoice, context=None ):
-        
-        return {'value':{'invoicing_datetime':date_invoice, 'date_delivery':date_invoice}}
+    def on_change_date_invoice(self,cr,user,ids, date_invoice, invoicing_datetime, date_delivery,context=None ):
+        """
+            when changed, write date_invoice into 
+            date_delivery field and invoicing_datetime 
+            only if those fields are empty
+        """
+        ret = {}
+        if not date_delivery:
+            ret.update({'date_delivery':date_invoice})
+        if not invoicing_datetime:
+            ret.update({'invoicing_datetime':date_invoice})
+            
+        return {'value':ret}
         
 
-    def on_change_document_date(self,cr,user,ids, document_date, context=None ):
-        
-        return {'value':{'date_invoice':document_date, 'date_delivery':document_date}}
-        
+    def on_change_document_date(self,cr,user,ids, document_date, date_invoice, date_delivery, context=None ):
+        """
+            when changed, write document_date into 
+            date_delivery field and date_invoice 
+            only if those fields are empty
+        """
+        ret = {}
+        if not date_delivery:
+            ret.update({'date_delivery':document_date})
+        if not date_invoice:
+            ret.update({'date_invoice':document_date})
+            
+        return {'value':ret}
+                

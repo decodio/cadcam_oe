@@ -45,18 +45,19 @@ class account_invoice(models.Model):
             invoicing_datetime got the currrent time!
         """
         ret = {}
-        if not date_delivery:
-            ret.update({'date_delivery':date_invoice})
-        if not invoicing_datetime:
-            now = datetime.now()
-            date = datetime.strptime(date_invoice, '%Y-%m-%d')
-            invoicing_timestamp = datetime(date.year, 
-                                           date.month, 
-                                           date.day, 
-                                           now.hour, 
-                                           now.minute, 
-                                           now.second )
-            ret.update({'invoicing_datetime':invoicing_timestamp})
+        if date_invoice:
+            if not date_delivery:
+                ret.update({'date_delivery':date_invoice})
+            if not invoicing_datetime:
+                now = datetime.now()
+                date = datetime.strptime(date_invoice, '%Y-%m-%d')
+                invoicing_timestamp = datetime(date.year, 
+                                               date.month, 
+                                               date.day, 
+                                               now.hour, 
+                                               now.minute, 
+                                               now.second )
+                ret.update({'invoicing_datetime':invoicing_timestamp})
             
         return {'value':ret}
         
@@ -68,10 +69,11 @@ class account_invoice(models.Model):
             only if those fields are empty
         """
         ret = {}
-        if not date_delivery:
-            ret.update({'date_delivery':document_date})
-        if not date_invoice:
-            ret.update({'date_invoice':document_date})
+        if document_date:
+            if not date_delivery:
+                ret.update({'date_delivery':document_date})
+            if not date_invoice:
+                ret.update({'date_invoice':document_date})
             
         return {'value':ret}
                 

@@ -20,6 +20,7 @@
 ##############################################################################
 
 from openerp import models, fields, api, _
+from datetime import datetime
 
 class account_invoice(models.Model):
     _inherit = 'account.invoice'
@@ -41,12 +42,21 @@ class account_invoice(models.Model):
             when changed, write date_invoice into 
             date_delivery field and invoicing_datetime 
             only if those fields are empty
+            invoicing_datetime got the currrent time!
         """
         ret = {}
         if not date_delivery:
             ret.update({'date_delivery':date_invoice})
         if not invoicing_datetime:
-            ret.update({'invoicing_datetime':date_invoice})
+            now = datetime.now()
+            date = datetime.strptime(date_invoice, '%Y-%m-%d')
+            invoicing_timestamp = datetime(date.year, 
+                                           date.month, 
+                                           date.day, 
+                                           now.hour, 
+                                           now.minute, 
+                                           now.second )
+            ret.update({'invoicing_datetime':invoicing_timestamp})
             
         return {'value':ret}
         

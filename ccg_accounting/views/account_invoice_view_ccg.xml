@@ -8,7 +8,7 @@
 			<field name="priority" eval="20" />
 			<field name="arch" type="xml">
 				<xpath expr="/tree//field[@name='number']" position="replace">
-					<field name="internal_invoice_number" string="Internal number" />
+					<field name="internal_invoice_number" string="Invoice number" />
 				</xpath>
 			</field>
 		</record>

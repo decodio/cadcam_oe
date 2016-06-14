@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+	<data>
+		<!-- Cron job check for licence expiration -->
+		<record id="ir_cron_check_licence_expiration" model="ir.cron">
+			<field name="name">Check license expiration in next 7, 15, 30 days
+			</field>
+			<field name="active" eval="True" />
+			<field name="interval_number">1</field>
+			<field name="interval_type">minutes</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model">ccg.licence</field>
+			<field name="function">check_licenses</field>
+			<field name="args">()</field>
+		</record>
+	</data>
+</openerp>

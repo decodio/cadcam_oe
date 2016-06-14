@@ -27,9 +27,11 @@
     "category" : "CCG internals",
     "depends" : ["base"],
     'data' : [
-                "ds_license.xml",
-                "ds_license_cron_job.xml",
+                "views/licence.xml",
+                "cron/cron_job.xml",
     ],
     'demo' : [],
     'installable': True,
+    'active': False,
+
 }

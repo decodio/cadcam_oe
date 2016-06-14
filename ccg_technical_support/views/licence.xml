@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="ccg_licence_form" model="ir.ui.view" >
+			<field name="name">ccg.licence.form</field>
+			<field name="model">ccg.licence</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Licence Data">
+					<group name="Customer" col="4" colspan="2">
+						<field name="client_id" />
+						<field name="company_id" />
+						<field name="user_id" />
+					</group>
+					<group name="Licence" col="2" colspan="4">
+						<field name="ib_number" select="1" />
+						<field name="portfolio" />
+						<field name="trigram" />
+						<field name="quantity" />
+						<separator string="Dates" col="1" colspan="4"/>
+						<field name="start_date" />
+						<field name="end_date" />
+						<separator string="Notifications" col="1" colspan="4"/>
+						<field name="notify" />
+						<separator string="Note" col="1" colspan="4"/>
+						<field name="note" />
+						</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ccg_licence_tree" model="ir.ui.view" >
+			<field name="name">ccg.licence.tree</field>
+			<field name="model">ccg.licence</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Licence Data">
+					<field name="client_id" />
+					<field name="user_id" />
+					<field name="ib_number" />
+					<field name="portfolio" />
+					<field name="trigram" />
+					<field name="start_date" />
+					<field name="end_date" />
+					<field name="quantity" />
+				</tree>
+			</field>
+		</record>
+
+       <record id="view_ccg_licence_filter" model="ir.ui.view">
+            <field name="name">view.ccg.licence.filter</field>
+            <field name="model">ccg.licence</field>
+            <field name="arch" type="xml">
+                <search string="Search Licences">
+                    <field name="client_id" string="Client"/>
+                    <separator/>
+                    <filter string="My" domain="[('user_id','=',uid)]"/>
+                    <field name="client_id"/>
+                    <field name="end_date"/>
+                    <group string="Group By" expand="0">
+                        <filter string="Client" context="{'group_by':'client_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+				
+		<record id="action_ccg_licence" model="ir.actions.act_window">
+			<field name="name">action.ccg.licence</field>
+			<field name="res_model">ccg.licence</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,gantt</field>
+			<field name="search_view_id" ref="view_ccg_licence_filter" />
+		</record>
+
+	   <record id="view_ccg_licence_gantt" model="ir.ui.view">
+	        <field name="name">view.calendar.event.gantt</field>
+	        <field name="model">ccg.licence</field>
+	        <field name="arch" type="xml">
+	            <gantt date_stop="end_date" date_start="start_date" string="licences" mode="year">
+    			</gantt>
+	        </field>
+	    </record>
+
+        <menuitem id="menu_ccg_main" name="CADCAM"/>
+
+		<menuitem id="menu_ccg_tehnical_support" name="Technical support" 
+				parent="menu_ccg_main" />
+ 		
+ 		<menuitem id="menu_ccg_licence" parent="menu_ccg_tehnical_support"
+			name="Licences" action="action_ccg_licence" />
+	</data>
+
+</openerp>

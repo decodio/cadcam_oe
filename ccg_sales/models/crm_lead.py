@@ -21,4 +21,10 @@
 
 from openerp import models, fields, api, _, SUPERUSER_ID
 
- 
+ # TO DO:
+ # inherit crm_lead
+ # override create method
+ # task_ids.company_id = company_is
+ # ....
+ # overwrite write method
+ # task_ids.company_id = company_is

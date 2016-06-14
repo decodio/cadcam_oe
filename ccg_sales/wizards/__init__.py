@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (<http://www.cadcam-group.eu/>).
+#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (http://www.cadcam-group.eu/).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,23 +19,4 @@
 #
 ##############################################################################
 
-
-{
-    "name" : "CCG sales module",
-    "version" : "1.0",
-    "author" : "CADCAM Design Centar d.o.o.",
-    "category" : "CCG internals",
-    'description' : "Customization of sales module, specific to CADCAM group",
-     "depends" : [
-                 "base",
-                 "sp_cadcam",
-                ],
-    'data' : [
-                "wizards/other_document_data_wizard_sale.xml",
-                "views/crm_lead_form_view_oppor_ccg.xml",
-                "views/sale_view_ccg.xml",
-                "reports/sales_orders_report_data.xml",
-              ],
-    'demo' : [],
-    'installable': True,
-}
+import other_document_data_wizard_sale

@@ -1,0 +1,229 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ccg_sales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-16 13:26+0000\n"
+"PO-Revision-Date: 2016-06-16 13:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ccg_sales
+#: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
+msgid "Add Licence Description"
+msgstr "Dodaj opis licence"
+
+#. module: ccg_sales
+#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
+#: model:ir.actions.act_window,name:ccg_sales.action_certificate_data_wizard
+#: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
+msgid "Add Sale Price Data"
+msgstr "Dodaj podatak o cijeni"
+
+#. module: ccg_sales
+#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
+msgid "Cancel"
+msgstr "Odustani"
+
+#. module: ccg_sales
+#: view:crm.lead:ccg_sales.crm_case_form_view_oppor_profit_ccg
+msgid "Company"
+msgstr "Tvrtka"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Date offer"
+msgstr "Datum ponude"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Delivery location"
+msgstr "Mjesto isporuke"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Delivery period"
+msgstr "Vrijeme isporuke"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Disc."
+msgstr "Popust"
+
+#. module: ccg_sales
+#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Document currency sale order"
+msgstr "Ponuda u valuti dokumenta"
+
+#. module: ccg_sales
+#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report
+msgid "Dual currency sale order"
+msgstr "Dvovalutna ponuda"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Exchange rate"
+msgstr "Tečaj"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "IBAN"
+msgstr "IBAN"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Item"
+msgstr "R.b."
+
+#. module: ccg_sales
+#: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
+msgid "Licence Descriptions"
+msgstr "Napomene o licencama"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Licence description"
+msgstr "Napomena o licencama"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "VAT no."
+msgstr "OIB"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Offer validity"
+msgstr "Valjanost ponude"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Other information"
+msgstr "Ostale informacije"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Parity"
+msgstr "Paritet"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Payment on bank account"
+msgstr "Plačanje na transakcijski rn."
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Payment"
+msgstr "Plačanje"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Price description"
+msgstr "Opis cijene"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Product"
+msgstr "Naziv proizvoda/usluge"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Qty."
+msgstr "Kol."
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Quotation"
+msgstr "Ponuda"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Responsible person"
+msgstr "Odgovorna osoba"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "SUBTOTAL"
+msgstr "UKUPNO"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "SWIFT"
+msgstr "SWIFT"
+
+#. module: ccg_sales
+#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_company_currency_report
+msgid "Sale order in company currency"
+msgstr "Ponuda u valuti kompanije"
+
+#. module: ccg_sales
+#: model:ir.model,name:ccg_sales.model_sale_order
+msgid "Sales Order"
+msgstr "Prodajni nalog"
+
+#. module: ccg_sales
+#: model:ir.model,name:ccg_sales.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Stavka prodajnog naloga"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "TOTAL"
+msgstr "SVEUKUPNO"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "TOTAL DISCOUNT"
+msgstr "UKUPNI POPUST"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Total"
+msgstr "Ukupno"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Total w disc."
+msgstr "Uk. sa popustom"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Type"
+msgstr "JM"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "Unit price"
+msgstr "Jed. cijena"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "UoM"
+msgstr "JM"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "VAT"
+msgstr "PDV"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "o/h"
+msgstr "n/r"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+msgid "on date "
+msgstr "na datum "
+
+#. module: ccg_sales
+#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
+msgid "or"
+msgstr "ili"
+

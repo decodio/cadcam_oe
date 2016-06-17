@@ -13,13 +13,26 @@
 					<attribute name="domain">
 						[ ('partner_id.ref_companies', 'in',
 						[company_id]),
-						('partner_id.ref_companies.bank_ids.footer', '=',
-						True)]
+						('footer', '=', True)]
 					</attribute>
+					<attribute name="required">True</attribute>
 				</xpath>
 			</field>
 		</record>
 
+		<record id="cadcam_view_quotation_tree_ccg" model="ir.ui.view">
+			<field name="name">cadcam.view.quotation.tree.ccg</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sp_cadcam.cadcam_view_quotation_tree" />
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='user_id']"
+					position="attributes">
+					<attribute name="string">Salesman</attribute>
+				</xpath>
+
+			</field>
+		</record>
 
 		<record id="sale_order_inherit_other_data_cadcam_ccg" model="ir.ui.view">
 			<field name="name">sale.order.form.inherit.other.data.ccg</field>
@@ -31,8 +44,7 @@
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
-				<xpath
-					expr="//page[@string='Other Data']/group/field[@name='price_ids']"
+				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
 					position="replace">
 				</xpath>
 				<xpath
@@ -55,7 +67,7 @@
 					<attribute name="string">Licence Descriptions
 					</attribute>
 				</xpath>
-				
+
 				<xpath expr="//page[@string='Other Data']/group" position="inside">
 					<button name="%(action_certificate_data_wizard)d" type="action"
 						string="Add Sale Price Data" />
@@ -65,6 +77,58 @@
 						</form>
 					</field>
 				</xpath>
+				<xpath
+					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
+					position="attributes">
+					<attribute name="string">Salesman</attribute>
+				</xpath>
+
+				<!-- change behavior of line discount fields -->
+				<xpath
+					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount_total' and @groups='sale.group_discount_per_so_line']"
+					position="attributes">
+					<attribute name="readonly">0</attribute>
+					<attribute name="on_change">on_change_line_discount_total(discount_total,
+						price_unit, global_discount_percent)
+					</attribute>
+				</xpath>
+
+				<!-- change behavior of global discount fields -->
+				<xpath
+					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
+					position="before">
+					<field name="discount_total" readonly="True" widget="monetary"
+						options="{'currency_field': 'currency_id'}" />
+				</xpath>
+				<xpath
+					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
+					position="attributes">
+					<attribute name="string">Global discount (%): </attribute>
+					<attribute name="digits">(14, 3)</attribute>
+				</xpath>
+				<xpath expr="//field[@name='additional_discount_amount']"
+					position="attributes">
+					<attribute name="readonly"> False</attribute>
+					<attribute name="on_change">on_change_additional_discount_amount(additional_discount_amount,
+						list_amount,discount_total, global_discount_percent)
+					</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="view_sales_order_filter_ccg" model="ir.ui.view">
+			<field name="name">view.sales.order.filter.ccg</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_sales_order_filter" />
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<xpath expr="//search/filter[@name='sales']" position="attributes">
+					<attribute name="string">Sales Orders</attribute>
+				</xpath>
+				<xpath expr="//search/filter[@string='Salesperson']" position="attributes">
+					<attribute name="string">Salesman</attribute>
+				</xpath>
+				
 			</field>
 		</record>
 

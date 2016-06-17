@@ -25,18 +25,6 @@ from datetime import datetime
 class account_invoice(models.Model):
     _inherit = 'account.invoice'
    
-#     @api.model
-#     def create(self, values):
-# 
-#         document_date = values.get('document_date', False)
-#         if document_date:
-#             values.update({'date_invoice':document_date, 'date_delivery':document_date})
-#         
-#         new_id = super(account_invoice, self).create(vals)
-#         return new_id
-#     
-
-
     def on_change_date_invoice(self,cr,user,ids, date_invoice, invoicing_datetime, date_delivery,context=None ):
         """
             when changed, write date_invoice into 

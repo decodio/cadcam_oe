@@ -104,7 +104,7 @@
 					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
 					position="attributes">
 					<attribute name="string">Global discount (%): </attribute>
-					<attribute name="digits">(14, 3)</attribute>
+					<!--  <attribute name="digits">(14, 3)</attribute>  -->
 				</xpath>
 				<xpath expr="//field[@name='additional_discount_amount']"
 					position="attributes">

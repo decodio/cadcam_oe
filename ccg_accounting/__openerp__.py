@@ -33,6 +33,7 @@
                 ],
     'data' : [
                 "views/account_invoice_view_ccg.xml",
+                "reports/account_invoice_reports.xml",
             ],
     'demo' : [],
     'installable': True,

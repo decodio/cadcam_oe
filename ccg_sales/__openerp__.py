@@ -34,7 +34,7 @@
                 "wizards/other_document_data_wizard_sale.xml",
                 "views/crm_lead_form_view_oppor_ccg.xml",
                 "views/sale_view_ccg.xml",
-                "reports/sales_orders_report_data.xml",
+                "reports/sale_order_reports.xml",
               ],
     'demo' : [],
     'installable': True,

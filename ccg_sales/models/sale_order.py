@@ -31,7 +31,10 @@ class SaleOrderLine(models.Model):
     discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
        
     def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, context=None ):
-        discount1_percent=100.00*discount_total/(price_unit*(100.00-global_discount_percent)/100.00)
+        if price_unit:
+            discount1_percent = 100.00*discount_total/(price_unit*(100.00-global_discount_percent)/100.00)
+        else:
+            discount1_percent = 0.00
         return {'value':{'discount1_percent':discount1_percent}}
 
 class SaleOrder(models.Model):
@@ -40,9 +43,14 @@ class SaleOrder(models.Model):
     global_discount_percent = fields.Float('Global discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'), readonly=False)
     
     def on_change_additional_discount_amount(self,cr,user,ids, additional_discount_amount, list_amount,discount_total, global_discount_percent,  context=None  ):
-        if global_discount_percent:
+        if (list_amount-discount_total):
+            if global_discount_percent:
                 raise Warning(_('To add global discount amount, first set global discount percent to 0.00%')) 
-        global_discount_percent = 100.00*additional_discount_amount/(list_amount-discount_total)
+        
+            global_discount_percent = 100.00*additional_discount_amount/(list_amount-discount_total)
+        else:
+            global_discount_percent = 0.00
+        
         return {'value':{'global_discount_percent':global_discount_percent}
 }
 

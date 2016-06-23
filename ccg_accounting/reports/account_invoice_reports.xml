@@ -3,8 +3,7 @@
 	<data noupdate="1">
 	
 		<!--document currency invoice report  -->
-		<record id="cadcam_document_currency_invoice_report"
-			model="ir.actions.report.xml">
+		<record id="cadcam_document_currency_invoice_report" 			model="ir.actions.report.xml">
 			<field name="name">cadcam document currency invoice report</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>

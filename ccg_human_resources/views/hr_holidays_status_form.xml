@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+	<data>
+		<record id="hr_holidays_status_form_ccg" model="ir.ui.view">
+			<field name="name">hr.holidays.status.form.ccg</field>
+			<field name="model">hr.holidays.status</field>
+			<field name="inherit_id" ref="hr_holidays.edit_holiday_status_form" />
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<xpath
+					expr="//field[@name='categ_id']"
+					position="replace">
+					<field name="year" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
+	

@@ -122,10 +122,12 @@
 			<field name="inherit_id" ref="sale.view_sales_order_filter" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
+			
+			<!-- English 2 English translation will be better...  -->
 				<xpath expr="//search/filter[@name='sales']" position="attributes">
 					<attribute name="string">Sales Orders</attribute>
 				</xpath>
-				<xpath expr="//search/filter[@string='Salesperson']" position="attributes">
+				<xpath expr="//search/filter[1]" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
 				

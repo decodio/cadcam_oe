@@ -92,6 +92,14 @@ msgstr "Račun kreirala"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
+msgid "Proforma invoice created"
+msgstr "Predračun kreirala"
+
+#. module: ccg_accounting
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 msgid "Invoice date"
 msgstr "Datum računa"
 
@@ -100,8 +108,24 @@ msgstr "Datum računa"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
+msgid "Proforma invoice date"
+msgstr "Datum predračuna"
+
+#. module: ccg_accounting
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 msgid "Invoice number"
 msgstr "Račun"
+
+#. module: ccg_accounting
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
+#: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
+msgid "Proforma invoice"
+msgstr "Predračun"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc

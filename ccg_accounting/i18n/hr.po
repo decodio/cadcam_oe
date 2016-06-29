@@ -124,7 +124,7 @@ msgstr "Račun"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
-msgid "Proforma invoice"
+msgid "Proforma invoice number"
 msgstr "Predračun"
 
 #. module: ccg_accounting

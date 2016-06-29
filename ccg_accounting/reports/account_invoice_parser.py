@@ -21,12 +21,24 @@
 
 from datetime import date, timedelta, datetime
 from openerp.report import report_sxw
+from openerp.exceptions import Warning, ValidationError
+from openerp import _
 
 class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
         super(Parser, self).__init__(cr, uid, name, context)
+        active_model = context.get('active_model', False)
+        active_id = context.get('active_id', False)
+        if active_model and active_id:
+            invoice_model = self.pool.get(active_model).browse(cr, uid, active_id, context=context)
+            if not invoice_model.partner_id.vat:
+                raise Warning(_("Cannot print invoice without VAT number"))
+            
         self.context = context
         self.localcontext.update({ 'add_date' :  self._add_date,  })
 
     def _add_date(self, base_date, days):
         return datetime.strptime(base_date, '%Y-%m-%d').date() + timedelta(days)
+    
+    
+    

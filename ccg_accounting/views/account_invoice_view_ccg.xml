@@ -47,8 +47,8 @@
 				<xpath expr="/form/sheet/notebook" position="inside">
 					<page string="Other Data">
 						<group>
- 							<field name="start_date" /> -->
- 							<field name="end_date" /> -->
+ 							<field name="start_date" /> 
+ 							<field name="end_date" /> 
 						</group>
 					</page>
 				</xpath>

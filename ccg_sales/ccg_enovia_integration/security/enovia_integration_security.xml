@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<openerp>
+
+    <data noupdate="1">
+        <record model="ir.module.category" id="module_enovia_integration_category">
+            <field name="name">ENOVIA</field>
+            <field name="description">Helps you to exchange data between ENOVIA and odoo</field>
+            <field name="sequence">16</field>
+        </record>
+        <record id="group_enovia_client" model="res.groups">
+            <field name="name">Client</field>
+            <field name="description">Allows read and write data using rpc protocol</field>
+            <field name="category_id" ref="module_enovia_integration_category"/>
+            <field name="sequence">1</field>
+        </record>
+        <record id="group_enovia_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="description">User can manage data from ENOVIA</field>
+            <field name="category_id" ref="module_enovia_integration_category"/>
+            <field name="sequence">2</field>
+        </record>
+        <record id="group_enovia_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="description">Administrator has all access rights in enovia integration module</field>
+            <field name="category_id" ref="module_enovia_integration_category"/>
+            <field name="sequence">3</field>
+        </record>
+        
+        <record id="group_enovia_client" model="ir.model.access">
+            <field name="name">enovia_client</field>
+            <field name="model_id" eval="[(4, ref('enovia.test'))]"/>
+             <field name="name">enovia_client</field>
+              <field name="name">enovia_client</field>
+               <field name="name">enovia_client</field>
+                <field name="name">enovia_client</field>
+                
+        </record>
+        
+	</data>
+</openerp>

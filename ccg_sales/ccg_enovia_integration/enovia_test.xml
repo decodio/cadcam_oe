@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="enovia_test_form" model="ir.ui.view">
+			<field name="name">enovia.test.form</field>
+			<field name="model">enovia.test</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="ENOVIA Data">
+				<group span="4" cols="2">
+					<field name="level" />
+					<field name="name" />
+					<field name="parent" />
+					<field name="data" />
+					<field name="value" />
+				</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="enovia_test_tree" model="ir.ui.view">
+			<field name="name">enovia.test.tree</field>
+			<field name="model">enovia.test</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="ENOVIA  Data">
+					<field name="level" />
+					<field name="name" />
+					<field name="parent" />
+					<field name="data" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_enovia_test_filter" model="ir.ui.view">
+			<field name="name">view.enovia.test.filter</field>
+			<field name="model">enovia.test</field>
+			<field name="arch" type="xml">
+				<search string="Search ENOVIA items">
+					<field name="level" string="Level" />
+					<field name="name" string="Name" />
+					<field name="parent" string="Parent" />
+					<separator />
+					<filter string="My" domain="[('user_id','=',uid)]" />
+					<group string="Group By" expand="0">
+						<filter string="Level" context="{'group_by':'level'}" />
+						<filter string="Parent" context="{'group_by':'parent'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="action_enovia_test" model="ir.actions.act_window">
+			<field name="name">action.enovia.test</field>
+			<field name="res_model">enovia.test</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_enovia_test_filter" />
+		</record>
+
+		<menuitem id="menu_ccg_enovia_main" name="ENOVIA" />
+
+		<menuitem id="menu_ccg_enovia_integration" parent="menu_ccg_enovia_main"
+			name="ENOVIA integration"  />
+			
+		<menuitem id="menu_ccg_enovia_test" parent="menu_ccg_enovia_integration"
+			name="Test data" action="action_enovia_test" />
+	</data>
+
+</openerp>

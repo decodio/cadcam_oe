@@ -31,8 +31,8 @@ class Parser(report_sxw.rml_parse):
         active_id = context.get('active_id', False)
         if active_model and active_id:
             invoice_model = self.pool.get(active_model).browse(cr, uid, active_id, context=context)
-            if not invoice_model.partner_id.vat:
-                raise Warning(_("Cannot print invoice without VAT number"))
+            if not invoice_model.partner_id.vat and invoice_model.partner_id.vat_subjected:
+                raise Warning(_("Cannot print invoice without VAT number. Customer is VAT-subjected!"))
             
         self.context = context
         self.localcontext.update({ 'add_date' :  self._add_date,  })

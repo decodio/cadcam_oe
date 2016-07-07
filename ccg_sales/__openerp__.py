@@ -34,6 +34,7 @@
                 "wizards/other_document_data_wizard_sale.xml",
                 "views/crm_lead_form_view_oppor_ccg.xml",
                 "views/sale_view_ccg.xml",
+                "views/view_partner_form_ccg.xml",
                 "reports/sale_order_reports.xml",
               ],
     'demo' : [],

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_partner_form_ccg" model="ir.ui.view">
+			<field name="name">view.partner.form.ccg</field>
+			<field name="model">res.partner</field>
+			<field name="type">form</field>
+			<field name="priority">30</field>
+			<field name="inherit_id" ref="sp_cadcam.view_partner_cadcam" />
+			<field name="arch" type="xml">
+				<xpath
+					expr="//form[@string='Contact']/sheet/group[1]"
+					position="after">
+					<group>
+					<field name="active" />
+					</group>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

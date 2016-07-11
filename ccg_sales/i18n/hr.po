@@ -368,3 +368,18 @@ msgstr "on_change_line_discount_total(discount_total,\n"
 msgid "or"
 msgstr "ili"
 
+#. module: mail
+#: field:res.partner,notify_email:0
+msgid "Receive Inbox Notifications by Email"
+msgstr "Prima obavijesti putem e-pošte"
+
+#. module: mail
+#: help:res.partner,notify_email:0
+msgid ""
+"Policy to receive emails for new messages pushed to your personal Inbox:\n"
+"- Never: no emails are sent\n"
+"- All Messages: for every notification you receive in your Inbox"
+msgstr  ""
+"Način primanja obavjesti iz poštanskog pretinca na e-mail račun:\n"
+"- Nikada: ne šalje se e-pošta\n"
+"- Sve poruke: svaka obavjest se šalje e-poštom"

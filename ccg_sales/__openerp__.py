@@ -27,7 +27,8 @@
     "category" : "CCG internals",
     'description' : "Customization of sales module, specific to CADCAM group",
      "depends" : [
-                 "base",
+                 "base_vat",
+                 "base_base",
                  "sp_cadcam",
                 ],
     'data' : [

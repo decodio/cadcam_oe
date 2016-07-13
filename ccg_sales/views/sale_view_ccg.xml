@@ -40,7 +40,7 @@
 			<field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-				<xpath
+<!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
@@ -77,7 +77,7 @@
 						</form>
 					</field>
 				</xpath>
-				<xpath
+ -->				<xpath
 					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
 					position="attributes">
 					<attribute name="string">Salesman</attribute>

@@ -30,11 +30,12 @@ class SaleOrderLine(models.Model):
     discount1_percent = fields.Float('Discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent'))
     discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
        
-    def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, context=None ):
+    def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, quantity,context=None ):
         if price_unit:
-            discount1_percent = 100.00*discount_total/(price_unit*(100.00-global_discount_percent)/100.00)
+            discount1_percent = 100.00*discount_total/(quantity*price_unit*(100.00-global_discount_percent)/100.00)
         else:
             discount1_percent = 0.00
+        print "discount1_percent={}; discount_total={}; price_unit={}; global_discount_percent={}".format(discount1_percent,discount_total,price_unit,global_discount_percent)        
         return {'value':{'discount1_percent':discount1_percent}}
 
 class SaleOrder(models.Model):

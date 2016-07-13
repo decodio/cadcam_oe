@@ -89,7 +89,7 @@
 					position="attributes">
 					<attribute name="readonly">0</attribute>
 					<attribute name="on_change">on_change_line_discount_total(discount_total,
-						price_unit, global_discount_percent)
+						price_unit, global_discount_percent, quantity)
 					</attribute>
 				</xpath>
 

@@ -24,6 +24,7 @@ from openerp.osv import fields, osv
 
 class res_partner(models.Model):
     _inherit = 'res.partner'
+    print 'my_res_partner'
     # remove check vat for SLO and BIH
     def check_vat(self, cr, uid, ids, context=None):
         for id in ids:

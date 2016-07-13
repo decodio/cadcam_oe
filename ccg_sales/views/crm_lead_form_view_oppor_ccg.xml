@@ -24,6 +24,22 @@
 					<attribute name="colors">gray:(probability == 100) or not probability ;red:probability and (probability &lt; 100) and date_deadline and (date_deadline &lt; current_date)
 					</attribute>
 				</xpath>
+<!-- 				<xpath expr="/tree/field[@name='stage_id']" position="after">
+					<field name="priority" widget="priority"/>
+				</xpath>
+ -->				
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="crm_case_tree_view_leads_ccg">
+			<field name="name">crm.case.tree.view.leads.ccg</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
+			<field name="priority" eval="30" />
+			<field name="arch" type="xml">
+				<xpath expr="/tree/field[@name='stage_id']" position="after">
+					<field name="priority" widget="priority"/>
+				</xpath>
 			</field>
 		</record>
 

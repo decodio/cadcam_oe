@@ -5,16 +5,20 @@
 			<field name="name">view.partner.form.ccg</field>
 			<field name="model">res.partner</field>
 			<field name="type">form</field>
-			<field name="priority">30</field>
+			<field name="priority">1</field>
 			<field name="inherit_id" ref="sp_cadcam.view_partner_cadcam" />
 			<field name="arch" type="xml">
-				<xpath
-					expr="//form[@string='Contact']/sheet/group[1]"
+				<xpath expr="//form[@string='Contact']/sheet/group[1]"
 					position="after">
 					<group>
-					<field name="active" />
+<!--					<separator string="TEST" />  -->
+						<field name="active" /> 
 					</group>
 				</xpath>
+<!-- 			<xpath expr="//field[@name='opt_out']" position="replace" />
+				<xpath expr="//field[@name='notify_email']" position="replace" />
+ -->				
+
 			</field>
 		</record>
 	</data>

@@ -30,7 +30,6 @@
 					position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
-
 			</field>
 		</record>
 
@@ -40,7 +39,7 @@
 			<field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-<!-- 				<xpath
+ 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
@@ -67,17 +66,25 @@
 					<attribute name="string">Licence Descriptions
 					</attribute>
 				</xpath>
-
-				<xpath expr="//page[@string='Other Data']/group" position="inside">
+				
+<!-- 				<xpath expr="//page[@string='Other Data']/group" position="inside">
 					<button name="%(action_certificate_data_wizard)d" type="action"
 						string="Add Sale Price Data" />
-					<field colspan="4" name="price_ids" nolabel="1">
+					<field colspan="4" name="certificate_ids" nolabel="0">
 						<form>
 							<field name="description" />
 						</form>
 					</field>
 				</xpath>
- -->				<xpath
+ -->				
+				
+				<xpath expr="//page[@string='Other Data']/group/button[@string='Add Sale Price Data']" position="replace" >
+				</xpath>
+
+				<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
+				</xpath>
+				
+				<xpath
 					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
 					position="attributes">
 					<attribute name="string">Salesman</attribute>

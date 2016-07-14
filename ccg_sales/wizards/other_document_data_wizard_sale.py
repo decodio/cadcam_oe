@@ -43,4 +43,4 @@ class CertificateDataWizard(models.TransientModel):
                 if active_model == 'sale.order':
                     vals.update({'sale_id': active_ids[0]})
                 vals.update({'description': line.description})
-                document.price_ids.create(vals)
+                document.certificate_ids.create(vals)

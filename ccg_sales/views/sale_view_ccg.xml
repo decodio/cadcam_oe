@@ -82,9 +82,9 @@
 				<xpath expr="//page[@string='Other Data']/group/button[@string='Add Sale Price Data']" position="replace" >
 				</xpath>
 
-				<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
+<!-- 				<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
 				</xpath>
-				
+ -->				
 				<xpath
 					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
 					position="attributes">

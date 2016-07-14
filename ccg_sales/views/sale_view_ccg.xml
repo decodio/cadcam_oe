@@ -46,7 +46,7 @@
 				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
 					position="replace">
 				</xpath>
-				<xpath
+<!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Warranty Period Data']"
 					position="replace">
 				</xpath>
@@ -54,7 +54,7 @@
 					expr="//page[@string='Other Data']/group/field[@name='warranty_period_ids']"
 					position="replace">
 				</xpath>
-
+ -->
 <!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Certificate Data']"
 					position="attributes">

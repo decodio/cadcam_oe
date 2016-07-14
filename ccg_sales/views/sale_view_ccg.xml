@@ -54,7 +54,8 @@
 					expr="//page[@string='Other Data']/group/field[@name='warranty_period_ids']"
 					position="replace">
 				</xpath>
-				<xpath
+
+<!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Certificate Data']"
 					position="attributes">
 					<attribute name="string">Add Licence Description
@@ -66,7 +67,7 @@
 					<attribute name="string">Licence Descriptions
 					</attribute>
 				</xpath>
-				
+ -->				
 <!-- 				<xpath expr="//page[@string='Other Data']/group" position="inside">
 					<button name="%(action_certificate_data_wizard)d" type="action"
 						string="Add Sale Price Data" />

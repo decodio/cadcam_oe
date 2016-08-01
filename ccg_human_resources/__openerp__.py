@@ -29,7 +29,7 @@
      "depends" : [
                  "base",
                  "sp_cadcam",
-                 "hr_holidays",
+                 "sp_hr_holidays",
                 ],
     'data' : [
                 "reports/human_resources_reports.xml",

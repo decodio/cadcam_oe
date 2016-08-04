@@ -35,12 +35,24 @@ class SaleOrderLine(models.Model):
             discount1_percent = 100.00*discount_total/(quantity*price_unit*(100.00-global_discount_percent)/100.00)
         else:
             discount1_percent = 0.00
-        print "discount1_percent={}; discount_total={}; price_unit={}; global_discount_percent={}".format(discount1_percent,discount_total,price_unit,global_discount_percent)        
         return {'value':{'discount1_percent':discount1_percent}}
 
 class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
+    
+    def _delivery_time_default(self):
+        return '1-2 weeks of signing the contract or order'
+
+    def _place_of_delivery_default(self):
+        return "At the user's address"
+
+    def _payment_data_default(self):
+        return "PLC - 15 days from the date of invoice, ALC - quarterly, 15 days from the date of invoice"
+
+    payment_data = fields.Char('Payment', help='Payment',translate=True, default=_payment_data_default)
+    delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=True, default=_delivery_time_default)
+    place_of_delivery_data = fields.Char('Place of delivery', help='Place of delivery',translate=True, default=_place_of_delivery_default)
     global_discount_percent = fields.Float('Global discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'), readonly=False)
     
     def on_change_additional_discount_amount(self,cr,user,ids, additional_discount_amount, list_amount,discount_total, global_discount_percent,  context=None  ):
@@ -52,7 +64,7 @@ class SaleOrder(models.Model):
         else:
             global_discount_percent = 0.00
         
-        return {'value':{'global_discount_percent':global_discount_percent}
-}
-
+        return {'value':{'global_discount_percent':global_discount_percent}}
+                
+                
 

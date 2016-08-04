@@ -77,14 +77,44 @@
 						</form>
 					</field>
 				</xpath>
- -->				
+ -->
+<!-- Hide original payment term field from document -->				
+				<xpath expr="//group/field[@name='payment_term']"
+					position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+				
+<!-- Hide original payment mode field from document -->				
+				<xpath expr="//group/field[@name='payment_mode_id']"
+					position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+<!-- Hide original Contract analytic field from document -->				
+				<xpath expr="//group/field[@name='project_id']"
+					position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+			
+<!-- Hide Export data group -->				
+				<xpath expr="//page[@string='Other Data']/group/group[@string='Export data']"
+					position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+				
+<!-- Add payment data field -->
+				<xpath expr="//page[@string='Other Data']/group/group[@string='Sales data']"
+					position="inside">
+					<field name="payment_data" />
+				</xpath>
 				
 		<xpath expr="//page[@string='Other Data']/group/button[@string='Add licence period']" position="replace" >
 				</xpath>
 			
 
-<!-- 				<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
-				</xpath>
+<!-- 			
+		<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
+		</xpath>
  -->				
 				<xpath
 					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"

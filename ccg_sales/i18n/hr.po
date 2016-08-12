@@ -206,7 +206,7 @@ msgstr "Kol."
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 msgid "Quotation"
-msgstr "Ponuda"
+msgstr "Ponudba"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report

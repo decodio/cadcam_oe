@@ -3,6 +3,7 @@
 	<data noupdate="1">
 
 		<!--dual currency sale order -->
+<!-- 		
 		<record id="cadcam_sale_order_dual_currency_report_no_disc" model="ir.actions.report.xml">
 			<field name="name">Dual currency sale order without discount</field>
 			<field name="type">ir.actions.report.xml</field>
@@ -16,8 +17,9 @@
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
 		</record>
-
+ -->
 		<!--add button sale_order_dualy_currency_report -->
+<!-- 
 		<record model="ir.values" id="btn_print_sale_order_dual_currency_report_no_disc">
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
@@ -28,7 +30,7 @@
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
-
+ -->
 		<!--dual currency sale order without vat-->
 		<record id="cadcam_sale_order_dual_currency_report_no_vat_no_disc" model="ir.actions.report.xml">
 			<field name="name">Dual currency sale order without VAT and discount</field>

@@ -206,7 +206,7 @@ msgstr "Kol."
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 msgid "Quotation"
-msgstr "Ponudba"
+msgstr "Ponuda"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
@@ -265,6 +265,14 @@ msgstr "UKUPNI POPUST"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 msgid "TOTAL WITH DISCOUNT"
 msgstr "UKUPNO SA POPUSTOM"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+msgid "TOTAL W/O VAT"
+msgstr "UKUPNO BEZ PDV"
 
 #. module: ccg_sales
 #: code:addons/ccg_sales/models/sale_order.py:48

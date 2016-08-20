@@ -44,13 +44,13 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     
     def _delivery_time_default(self):
-        return '1-2 weeks of signing the contract or order'
+        return _('1-2 weeks of signing the contract or order')
 
     def _place_of_delivery_default(self):
-        return "At the user's address"
+        return _("At the user's address")
 
     def _payment_data_default(self):
-        return "PLC - 15 days from the date of invoice, ALC - quarterly, 15 days from the date of invoice"
+        return _("PLC - 15 days from the date of invoice, ALC - quarterly, 15 days from the date of invoice")
     
     def _end_of_next_month(self):
         today = datetime.now()
@@ -63,7 +63,7 @@ class SaleOrder(models.Model):
     
     def _validity_of_offer_default(self):
         (y,m,d) = self._end_of_next_month()
-        return 'End of next month ({}.{}.{})'.format( d, m, y)
+        return _('End of next month ({}.{}.{})').format( d, m, y)
 
     payment_data = fields.Char('Payment', help='Payment',translate=True, default=_payment_data_default)
     delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=True, default=_delivery_time_default)

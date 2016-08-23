@@ -30,7 +30,7 @@
 "init_xml" : [],
 "demo_xml" : [],
 "update_xml" : [
-                "enovia_test.xml",
+                "views/enovia_test.xml",
                 "security/enovia_integration_security.xml"
                ],
 "installable": True,

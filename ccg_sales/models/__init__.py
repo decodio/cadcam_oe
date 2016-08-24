@@ -20,4 +20,4 @@
 ##############################################################################
 import crm_lead
 import sale_order
-import res_partner
+#import res_partner

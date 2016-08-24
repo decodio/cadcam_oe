@@ -11,14 +11,12 @@
 				<xpath expr="//form[@string='Contact']/sheet/group[1]"
 					position="after">
 					<group>
-<!--					<separator string="TEST" />  -->
-						<field name="active" /> 
+						<field name="active" />
 					</group>
 				</xpath>
-<!-- 			<xpath expr="//field[@name='opt_out']" position="replace" />
-				<xpath expr="//field[@name='notify_email']" position="replace" />
- -->				
-
+<!--
+				<xpath expr="//div[@name='buttons']" position="replace" />
+-->
 			</field>
 		</record>
 	</data>

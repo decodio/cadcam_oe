@@ -37,7 +37,6 @@
                 "views/sale_view_ccg.xml",
                 "views/view_partner_form_ccg.xml",
                 "reports/sale_order_reports.xml",
-                "reports/sale_order_reports_no_disc.xml",
               ],
     'demo' : [],
     'installable': True,

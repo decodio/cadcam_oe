@@ -9,6 +9,8 @@
 			<field name="report_name">sale_order_document_currency_report_no_vat_no_disc</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_document_currency_report_no_vat_no_disc.odt</field>
 			<field name="parser_state">default</field>
@@ -34,6 +36,8 @@
 			<field name="report_name">sale_order_document_currency_report_no_vat</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_document_currency_report_no_vat.odt</field>
 			<field name="parser_state">default</field>
@@ -59,6 +63,8 @@
 			<field name="report_name">sale_order_document_currency_report_no_disc</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_document_currency_report_no_disc.odt</field>
 			<field name="parser_state">default</field>
@@ -77,27 +83,29 @@
 			<field name="replace" eval="False" />
 		</record>
 
-		<record id="cadcam_sale_order_document_currency_report" model="ir.actions.report.xml">
+		<record id="cadcam_sale_order_document_currency_report_all" model="ir.actions.report.xml">
 			<field name="name">Document currency sale order</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">sale.order</field>
-			<field name="report_name">sale_order_document_currency_report</field>
+			<field name="report_name">sale_order_document_currency_report_all</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
-			<field name="report_rml">ccg_sales/reports/sale_order_document_currency_report.odt</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_document_currency_report_all.odt</field>
 			<field name="parser_state">default</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
 		</record>
 
-		<record model="ir.values" id="btn_print_sale_order_document_currency_report">
+		<record model="ir.values" id="btn_print_sale_order_document_currency_report_all">
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">sale.order</field>
 			<field name="name">Document currency sale order</field>
 			<field name="value"
-				eval="'ir.actions.report.xml,'+str(cadcam_sale_order_document_currency_report)" />
+				eval="'ir.actions.report.xml,'+str(cadcam_sale_order_document_currency_report_all)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
@@ -108,7 +116,9 @@
 			<field name="model">sale.order</field>
 			<field name="report_name">sale_order_dual_currency_report_no_vat_no_disc</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name="in_format">oo-odt</field> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report_no_vat_no_disc.odt</field>
 			<field name="parser_state">default</field>
@@ -135,6 +145,8 @@
 			<field name="report_name">sale_order_dual_currency_report_no_vat</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report_no_vat.odt</field>
 			<field name="parser_state">default</field>
@@ -160,6 +172,8 @@
 			<field name="report_name">sale_order_dual_currency_report_no_disc</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report_no_disc.odt</field>
 			<field name="parser_state">default</field>
@@ -178,27 +192,29 @@
 			<field name="replace" eval="False" />
 		</record>
 
-		<record id="cadcam_sale_order_dual_currency_report" model="ir.actions.report.xml">
+		<record id="cadcam_sale_order_dual_currency_report_all" model="ir.actions.report.xml">
 			<field name="name">Dual currency sale order</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">sale.order</field>
-			<field name="report_name">sale_order_dual_currency_report</field>
+			<field name="report_name">sale_order_dual_currency_report_all</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc"></field>
-			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report.odt</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report_all.odt</field>
 			<field name="parser_state">default</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
 		</record>
 
-		<record model="ir.values" id="btn_print_sale_order_dual_currency_report">
+		<record model="ir.values" id="btn_print_sale_order_dual_currency_report_all">
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">sale.order</field>
 			<field name="name">Dual currency sale order</field>
 			<field name="value"
-				eval="'ir.actions.report.xml,'+str(cadcam_sale_order_dual_currency_report)" />
+				eval="'ir.actions.report.xml,'+str(cadcam_sale_order_dual_currency_report_all)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>

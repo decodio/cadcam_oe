@@ -19,4 +19,4 @@
 #
 ##############################################################################
 
-import other_document_data_wizard_sale
+import print_sale_order_wizard

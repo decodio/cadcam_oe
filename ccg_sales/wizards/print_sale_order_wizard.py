@@ -22,25 +22,25 @@
 from openerp import models, fields, api, _, SUPERUSER_ID
 from openerp.exceptions import except_orm, ValidationError, Warning, RedirectWarning
 
-class CertificateDataWizard(models.TransientModel):
-    _name = 'certificate.data.wizard'
+class PrintSaleOrderWizard(models.TransientModel):
+    _name = 'print.sale.order.wizard'
 
-    certificate_data_sale_ids = fields.Many2many('other.sale.data.certificates','wizard_certificate_data_sale_rel','wizard_id','certificate_data_sale_id', 'Certificates')
+    show_line_discount = fields.Boolean('Show line discount', default = False, help='Diplays discont on salae order lines')
+    show_total_discount = fields.Boolean('Show total discount', default = False, help='Diplays total discont sale order')
+    show_vat = fields.Boolean('Show VAT', default = False, help='Diplays total VAT on sale order')
+    currency_type = fields.Selection([('document','Document currency'),('dual','Dual currency')], 'Currency', default = 'document')
+    
+    def print_report(self, cr, uid, ids, context=None):
+        data = {
+                 'ids': ids,
+                 'model': 'sale.order',
+                 'form': self.read(cr, uid, ids)[0]
+                 }
+        if data['form']['currency_type'] == 'dual':
+            report_name = 'sale_order_dual_currency_report'
+        else:
+            report_name = 'sale_order_document_currency_report'
 
-    @api.multi
-    def populate_data(self):
-        if self._context.get('active_ids') and self._context.get('active_model'):
-            active_ids = self._context['active_ids']
-            active_model = self._context['active_model']
-            print active_model
-            model = self.env[active_model]
-        if self.certificate_data_sale_ids and active_ids:
-            document = model.browse(active_ids)
-            vals = {}
-            for line in self.certificate_data_sale_ids:
-                if active_model == 'account.invoice':
-                    vals.update({'invoice_id': active_ids[0]})
-                if active_model == 'sale.order':
-                    vals.update({'sale_id': active_ids[0]})
-                vals.update({'description': line.description})
-                document.certificate_ids.create(vals)
+#        logging.warning('%s' %(x))
+        return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
+

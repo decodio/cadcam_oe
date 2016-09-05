@@ -14,9 +14,14 @@
 						<field name="active" />
 					</group>
 				</xpath>
-<!--
-				<xpath expr="//div[@name='buttons']" position="replace" />
--->
+
+				<xpath
+					expr="//page[@name='sales_purchases']/group/group/field[@name='active']"
+					position="after">
+					<field name="opt_out" />
+					<field name="notify_email" widget="radio" />
+				</xpath>
+				
 			</field>
 		</record>
 	</data>

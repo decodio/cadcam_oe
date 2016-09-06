@@ -26,8 +26,7 @@
 			<field name="inherit_id" ref="sp_cadcam.cadcam_view_quotation_tree" />
 			<field name="type">tree</field>
 			<field name="arch" type="xml">
-				<xpath expr="//tree/field[@name='user_id']"
-					position="attributes">
+				<xpath expr="//tree/field[@name='user_id']" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
 			</field>
@@ -39,83 +38,48 @@
 			<field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
- 				<xpath
+				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
 				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
 					position="replace">
 				</xpath>
-<!-- 				<xpath
-					expr="//page[@string='Other Data']/group/button[@string='Add Warranty Period Data']"
-					position="replace">
-				</xpath>
-				<xpath
-					expr="//page[@string='Other Data']/group/field[@name='warranty_period_ids']"
-					position="replace">
-				</xpath>
- -->
-<!-- 				<xpath
-					expr="//page[@string='Other Data']/group/button[@string='Add Certificate Data']"
-					position="attributes">
-					<attribute name="string">Add Licence Description
-					</attribute>
-				</xpath>
-				<xpath
-					expr="//page[@string='Other Data']/group/field[@name='certificate_ids']"
-					position="attributes">
-					<attribute name="string">Licence Descriptions
-					</attribute>
-				</xpath>
- -->				
-<!-- 				<xpath expr="//page[@string='Other Data']/group" position="inside">
-					<button name="%(action_certificate_data_wizard)d" type="action"
-						string="Add Sale Price Data" />
-					<field colspan="4" name="certificate_ids" nolabel="0">
-						<form>
-							<field name="description" />
-						</form>
-					</field>
-				</xpath>
- -->
-<!-- Hide original payment term field from document -->				
-				<xpath expr="//group/field[@name='payment_term']"
-					position="attributes">
+				<!-- Hide original payment term field from document -->
+				<xpath expr="//group/field[@name='payment_term']" position="attributes">
 					<attribute name="invisible">True</attribute>
 				</xpath>
-				
-<!-- Hide original payment mode field from document -->				
-				<xpath expr="//group/field[@name='payment_mode_id']"
+
+				<!-- Hide original payment mode field from document -->
+				<xpath expr="//group/field[@name='payment_mode_id']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+				<!-- Hide original Contract analytic field from document -->
+				<xpath expr="//group/field[@name='project_id']" position="attributes">
+					<attribute name="invisible">True</attribute>
+				</xpath>
+
+				<!-- Hide Export data group -->
+				<xpath
+					expr="//page[@string='Other Data']/group/group[@string='Export data']"
 					position="attributes">
 					<attribute name="invisible">True</attribute>
 				</xpath>
 
-<!-- Hide original Contract analytic field from document -->				
-				<xpath expr="//group/field[@name='project_id']"
-					position="attributes">
-					<attribute name="invisible">True</attribute>
-				</xpath>
-			
-<!-- Hide Export data group -->				
-				<xpath expr="//page[@string='Other Data']/group/group[@string='Export data']"
-					position="attributes">
-					<attribute name="invisible">True</attribute>
-				</xpath>
-				
-<!-- Add payment data field -->
-				<xpath expr="//page[@string='Other Data']/group/group[@string='Sales data']"
+				<!-- Add payment data field -->
+				<xpath
+					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
 					position="inside">
 					<field name="payment_data" />
 				</xpath>
-				
-		<xpath expr="//page[@string='Other Data']/group/button[@string='Add licence period']" position="replace" >
-				</xpath>
-			
 
-<!-- 			
-		<xpath expr="//page[@string='Other Data']/group/field[@name='certificate_ids']" position="replace" >
-		</xpath>
- -->				
+				<xpath
+					expr="//page[@string='Other Data']/group/button[@string='Add licence period']"
+					position="replace">
+				</xpath>
+
+
 				<xpath
 					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
 					position="attributes">
@@ -143,7 +107,6 @@
 					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
 					position="attributes">
 					<attribute name="string">Global discount (%): </attribute>
-					<!--  <attribute name="digits">(14, 3)</attribute>  -->
 				</xpath>
 				<xpath expr="//field[@name='additional_discount_amount']"
 					position="attributes">
@@ -161,15 +124,13 @@
 			<field name="inherit_id" ref="sale.view_sales_order_filter" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-			
-			<!-- English 2 English translation will be better...  -->
+				<!-- English 2 English translation will be better... -->
 				<xpath expr="//search/filter[@name='sales']" position="attributes">
 					<attribute name="string">Sales Orders</attribute>
 				</xpath>
 				<xpath expr="//search/filter[1]" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
-				
 			</field>
 		</record>
 

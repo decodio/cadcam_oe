@@ -20,6 +20,7 @@
 					position="after">
 					<field name="opt_out" />
 					<field name="notify_email" widget="radio" />
+<!-- 					<field name="priority" widget="priority" /> -->
 				</xpath>
 				
 			</field>

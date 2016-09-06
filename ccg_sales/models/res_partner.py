@@ -19,8 +19,10 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api, _, SUPERUSER_ID
-from openerp.osv import fields, osv
+from openerp import models, fields, api, tools, _
 
-# class res_partner(models.Model):
-#     _inherit = 'res.partner'
+
+class ResPartnerCCG(models.Model):
+    _inherit = 'res.partner'
+    
+    priority = fields.selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority')

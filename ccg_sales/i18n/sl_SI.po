@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-04 07:46+0000\n"
-"PO-Revision-Date: 2016-08-04 07:46+0000\n"
+"POT-Creation-Date: 2016-09-07 09:35+0000\n"
+"PO-Revision-Date: 2016-09-07 09:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,21 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ccg_sales
-#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
-#: model:ir.actions.act_window,name:ccg_sales.action_certificate_data_wizard
-msgid "Add Sale Price Data"
-msgstr "Add Sale Price Data"
-
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 msgid "Att"
 msgstr "To"
 
 #. module: ccg_sales
-#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -40,11 +32,27 @@ msgid "Company"
 msgstr "Company"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: field:print.sale.order.wizard,currency_type:0
+msgid "Currency"
+msgstr "Currency"
+
+#. module: ccg_sales
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
+msgid "Currency options"
+msgstr "Currency options"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+msgid "DISCOUNT"
+msgstr "POPUST"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
@@ -52,35 +60,66 @@ msgid "Date offer"
 msgstr "Datum ponudbe"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Delivery location"
 msgstr "Dobava"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Delivery period"
 msgstr "Rok dobave"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: help:print.sale.order.wizard,show_line_discount:0
+msgid "Diplays discont on salae order lines"
+msgstr "Diplays discont on salae order lines"
+
+#. module: ccg_sales
+#: help:print.sale.order.wizard,show_vat:0
+msgid "Diplays total VAT on sale order"
+msgstr "Diplays total VAT on sale order"
+
+#. module: ccg_sales
+#: help:print.sale.order.wizard,show_total_discount:0
+msgid "Diplays total discont sale order"
+msgstr "Diplays total discont sale order"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Disc."
 msgstr "Popust"
 
 #. module: ccg_sales
-#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_document_currency_report
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
+msgid "Display options"
+msgstr "Display options"
+
+#. module: ccg_sales
+#: selection:print.sale.order.wizard,currency_type:0
+msgid "Document currency"
+msgstr "Document currency"
+
+#. module: ccg_sales
+#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_document_currency_report_all
 msgid "Document currency sale order"
 msgstr "Document currency sale order"
 
@@ -100,7 +139,12 @@ msgid "Document currency sale order without discount"
 msgstr "Document currency sale order without discount"
 
 #. module: ccg_sales
-#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report
+#: selection:print.sale.order.wizard,currency_type:0
+msgid "Dual currency"
+msgstr "Dual currency"
+
+#. module: ccg_sales
+#: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report_all
 msgid "Dual currency sale order"
 msgstr "Dual currency sale order"
 
@@ -120,13 +164,12 @@ msgid "Dual currency sale order without discount"
 msgstr "Dual currency sale order without discount"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Exchange rate"
 msgstr "Exchange rate"
 
@@ -138,63 +181,56 @@ msgstr "False"
 #. module: ccg_sales
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 msgid "Global discount (%):"
-msgstr "Global discount (%):"
+msgstr "Globalni popust (%):"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "IBAN"
 msgstr "IBAN"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: field:print.sale.order.wizard,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Item"
 msgstr "Poz."
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-msgid "Lead time"
-msgstr "Lead time"
-
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Licence description"
 msgstr "Opis licence"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Other information"
 msgstr "Dodatna informacija"
-
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-msgid "Parity"
-msgstr "Parity"
 
 #. module: ccg_sales
 #: model:ir.model,name:ccg_sales.model_res_partner
@@ -202,76 +238,109 @@ msgid "Partner"
 msgstr "Partner"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Payment"
 msgstr "Način plačila"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Payment on bank account"
 msgstr "Plačilo"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-msgid "Price description:"
-msgstr "Price description:"
-
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
+msgid "Price description"
+msgstr "Opis cene"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
+msgid "Price description:"
+msgstr "Opis cene"
+
+#. module: ccg_sales
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
+msgid "Print"
+msgstr "Print"
+
+#. module: ccg_sales
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
+msgid "Print options"
+msgstr "Print options"
+
+#. module: ccg_sales
+#: model:ir.actions.act_window,name:ccg_sales.action_print_sale_order_wizard
+msgid "Print sale order"
+msgstr "Print sale order"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Product"
 msgstr "Naziv"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Qty"
 msgstr "Kol."
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Quotation"
-msgstr "Ponudba"
+msgstr "Ponudba št."
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "SWIFT"
 msgstr "SWIFT"
 
@@ -291,38 +360,56 @@ msgid "Sales Orders"
 msgstr "Sales Orders"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 #: view:sale.order:ccg_sales.cadcam_view_quotation_tree_ccg
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 #: view:sale.order:ccg_sales.view_sales_order_filter_ccg
 msgid "Salesman"
-msgstr "Salesman"
+msgstr "Ponudbo pripravil"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: field:print.sale.order.wizard,show_vat:0
+msgid "Show VAT"
+msgstr "Show VAT"
+
+#. module: ccg_sales
+#: field:print.sale.order.wizard,show_line_discount:0
+msgid "Show line discount"
+msgstr "Show line discount"
+
+#. module: ccg_sales
+#: field:print.sale.order.wizard,show_total_discount:0
+msgid "Show total discount"
+msgstr "Show total discount"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "TOTAL"
-msgstr "TOTAL"
+msgstr "CENA"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "TOTAL DISCOUNT"
-msgstr "TOTAL DISCOUNT"
+msgstr "POPUST"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
@@ -330,97 +417,137 @@ msgid "TOTAL UNTAXED"
 msgstr "TOTAL UNTAXED"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
+msgid "TOTAL W/O VAT"
+msgstr "CENA BREZ DDV"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "TOTAL WITH DISCOUNT"
 msgstr "TOTAL WITH DISCOUNT"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
+msgid "TOTAL WITH VAT"
+msgstr "CENA Z DDV"
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "To"
 msgstr "Za"
 
 #. module: ccg_sales
-#: code:addons/ccg_sales/models/sale_order.py:49
+#: code:addons/ccg_sales/models/sale_order.py:77
 #, python-format
 msgid "To add global discount amount, first set global discount percent to 0.00%"
 msgstr "To add global discount amount, first set global discount percent to 0.00%"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Total"
-msgstr "Total"
+msgstr "Cena"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Total with discount"
-msgstr "Total with discount"
+msgstr "Cena s popustom"
 
 #. module: ccg_sales
+#: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 #: view:sale.order:ccg_sales.view_order_form_lines_on_line_ccg
 msgid "True"
 msgstr "True"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Unit price"
 msgstr "Cena/EM"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "UoM"
 msgstr "EM"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "VAT"
 msgstr "DDV"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "VAT no."
 msgstr "DDV št."
+
+#. module: ccg_sales
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_all
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
+msgid "Validity of offer"
+msgstr "Veljavnost ponudbe"
 
 #. module: ccg_sales
 #: view:sale.order:ccg_sales.view_order_form_lines_on_line_ccg
@@ -437,13 +564,12 @@ msgid "gray:(probability == 100) or not probability ;red:probability and (probab
 msgstr "gray:(probability == 100) or not probability ;red:probability and (probability < 100) and date_deadline and (date_deadline < current_date)"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
+#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "on date "
 msgstr "on date "
 
@@ -462,7 +588,7 @@ msgstr "on_change_line_discount_total(discount_total,\n"
 "						price_unit, global_discount_percent, quantity)"
 
 #. module: ccg_sales
-#: view:certificate.data.wizard:ccg_sales.view_certificate_data_wizard
+#: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
 msgid "or"
 msgstr "or"
 

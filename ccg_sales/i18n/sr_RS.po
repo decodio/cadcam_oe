@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 09:34+0000\n"
-"PO-Revision-Date: 2016-09-07 09:34+0000\n"
+"POT-Creation-Date: 2016-09-07 09:36+0000\n"
+"PO-Revision-Date: 2016-09-07 09:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,15 +16,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-msgid "Att"
-msgstr "Att"
-
-#. module: ccg_sales
 #: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
 msgid "Cancel"
-msgstr "Odustani"
+msgstr "Cancel"
 
 #. module: ccg_sales
 #: view:crm.lead:ccg_sales.crm_case_form_view_oppor_profit_ccg
@@ -39,7 +33,7 @@ msgstr "Valuta"
 #. module: ccg_sales
 #: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
 msgid "Currency options"
-msgstr "Ispis u valuti"
+msgstr "Currency options"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -69,7 +63,7 @@ msgstr "Datum ponude"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Delivery location"
-msgstr "Mjesto isporuke"
+msgstr "Lokacija isporuke"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -81,22 +75,22 @@ msgstr "Mjesto isporuke"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Delivery period"
-msgstr "Vrijeme isporuke"
+msgstr "Rok isporuke"
 
 #. module: ccg_sales
 #: help:print.sale.order.wizard,show_line_discount:0
 msgid "Diplays discont on salae order lines"
-msgstr "Prikaz popusta na stavkama ponude"
+msgstr "Prikazuje popust na svakom artiklu"
 
 #. module: ccg_sales
 #: help:print.sale.order.wizard,show_vat:0
 msgid "Diplays total VAT on sale order"
-msgstr "Prikaz ukupnog PDV-a"
+msgstr "Prikazuje ukupni PDV na ponudi"
 
 #. module: ccg_sales
 #: help:print.sale.order.wizard,show_total_discount:0
 msgid "Diplays total discont sale order"
-msgstr "Prikaz ukupnog popusta"
+msgstr "Prikazuje ukupni popust na ponudi"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -106,7 +100,7 @@ msgstr "Prikaz ukupnog popusta"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Disc."
-msgstr "Pop."
+msgstr "Popust"
 
 #. module: ccg_sales
 #: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
@@ -136,7 +130,7 @@ msgstr "Ponuda u valuti dokumenta, bez PDV-a i popusta"
 #. module: ccg_sales
 #: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
 msgid "Document currency sale order without discount"
-msgstr "Ponuda u valuti dokumenta, bez popusta"
+msgstr "Ponuda u valuti dokumenta, bez PDV-a i popusta"
 
 #. module: ccg_sales
 #: selection:print.sale.order.wizard,currency_type:0
@@ -146,7 +140,7 @@ msgstr "Dvovalutno"
 #. module: ccg_sales
 #: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report_all
 msgid "Dual currency sale order"
-msgstr "Dvovalutna ponuda"
+msgstr "Dual currency sale order"
 
 #. module: ccg_sales
 #: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
@@ -161,7 +155,7 @@ msgstr "Dvovalutna ponuda bez PDV-a i popusta"
 #. module: ccg_sales
 #: model:ir.actions.report.xml,name:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
 msgid "Dual currency sale order without discount"
-msgstr "Dvovalutna ponuda bez popusta"
+msgstr "Dual currency sale order without discount"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
@@ -171,7 +165,7 @@ msgstr "Dvovalutna ponuda bez popusta"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Exchange rate"
-msgstr "Tečaj"
+msgstr "Devizni kurs"
 
 #. module: ccg_sales
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
@@ -210,17 +204,8 @@ msgstr "ID"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Item"
-msgstr "R. br."
+msgstr "Red. br."
 
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
-msgid "Lead time"
-msgstr "Vrijeme isporuke"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -232,7 +217,7 @@ msgstr "Vrijeme isporuke"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Licence description"
-msgstr "Napomene o licencama"
+msgstr "Opis licence"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
@@ -241,14 +226,6 @@ msgstr "Napomene o licencama"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Other information"
 msgstr "Ostale informacije"
-
-#. module: ccg_sales
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_vat_no_disc
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
-#: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
-msgid "Parity"
-msgstr "Paritet"
 
 #. module: ccg_sales
 #: model:ir.model,name:ccg_sales.model_res_partner
@@ -265,7 +242,7 @@ msgstr "Partner"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Payment"
-msgstr "Plačanje"
+msgstr "Payment"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -277,7 +254,7 @@ msgstr "Plačanje"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Payment on bank account"
-msgstr "Plaćanje na transakcijski račun"
+msgstr "Podaci za plaćanje"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
@@ -288,7 +265,8 @@ msgstr "Plaćanje na transakcijski račun"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Price description"
-msgstr "Opis cijene"
+msgstr "Opis cene"
+
 
 #. module: ccg_sales
 #: view:print.sale.order.wizard:ccg_sales.print_sale_order_wizard
@@ -315,7 +293,7 @@ msgstr "Ispis ponude"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Product"
-msgstr "Naziv proizvoda/usluge"
+msgstr "Proizvod"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -327,7 +305,7 @@ msgstr "Naziv proizvoda/usluge"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Qty"
-msgstr "Kol."
+msgstr "Količina"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -339,7 +317,7 @@ msgstr "Kol."
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Quotation"
-msgstr "Ponuda"
+msgstr "Broj ponude"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -381,17 +359,17 @@ msgstr "Prodajni nalozi"
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 #: view:sale.order:ccg_sales.view_sales_order_filter_ccg
 msgid "Salesman"
-msgstr "Salesman"
+msgstr "Predstavnik prodaje"
 
 #. module: ccg_sales
 #: field:print.sale.order.wizard,show_vat:0
 msgid "Show VAT"
-msgstr "Prikaz PDV-a"
+msgstr "Prikaz PDV"
 
 #. module: ccg_sales
 #: field:print.sale.order.wizard,show_line_discount:0
 msgid "Show line discount"
-msgstr "Priakz popusta na stavci ponude"
+msgstr "Prikaz popusta na artiklima"
 
 #. module: ccg_sales
 #: field:print.sale.order.wizard,show_total_discount:0
@@ -408,7 +386,7 @@ msgstr "Prikaz ukupnog popusta"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "TOTAL"
-msgstr "SVEUKUPNO"
+msgstr "UKUPNO"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_no_disc
@@ -439,7 +417,7 @@ msgstr "UKUPNO BEZ PDV"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "TOTAL WITH DISCOUNT"
-msgstr "UKUPNO SA POPUSTOM"
+msgstr "TUKUPNO SA POPUSTOM"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -503,7 +481,7 @@ msgstr "True"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Unit price"
-msgstr "Jed. cijena"
+msgstr "Jedinična cena"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -515,7 +493,7 @@ msgstr "Jed. cijena"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "UoM"
-msgstr "JM"
+msgstr "Jedinica mere"
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -539,7 +517,7 @@ msgstr "PDV"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "VAT no."
-msgstr "Por. br."
+msgstr "PIB no."
 
 #. module: ccg_sales
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_document_currency_report_all
@@ -551,7 +529,7 @@ msgstr "Por. br."
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "Validity of offer"
-msgstr "Valjanost ponude"
+msgstr "Važenje ponude"
 
 #. module: ccg_sales
 #: view:sale.order:ccg_sales.view_order_form_lines_on_line_ccg
@@ -575,7 +553,7 @@ msgstr "gray:(probability == 100) or not probability ;red:probability and (proba
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_dual_currency_report_no_vat_no_disc
 msgid "on date "
-msgstr "na dan"
+msgstr "na dan "
 
 #. module: ccg_sales
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg

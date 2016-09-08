@@ -18,6 +18,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import models
-import reports
-import wizards
+
+import print_invoice_wizard

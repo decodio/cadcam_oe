@@ -3,13 +3,13 @@
 	<data>
 		<!-- wizard form -->
 		<record id="print_sale_order_wizard" model="ir.ui.view">
-			<field name="name">Print sale order</field>
+			<field name="name">Print quotation</field>
 			<field name="model">print.sale.order.wizard</field>
 			<field name="arch" type="xml">
 				<form string="Print options" version="7.0">
 				<group colspan="4" col="2">
 					<group string="Display options" >
-						<field name="show_line_discount" />
+						<field name="show_line_discount" on_change="on_change_line_discount(show_line_discount)"/>
 						<field name="show_total_discount" />
 						<field name="show_vat" />
 					</group>
@@ -30,7 +30,7 @@
 
 		<!-- action to swhow wizard -->
 		<record id="action_print_sale_order_wizard" model="ir.actions.act_window">
-			<field name="name">Print sale order</field>
+			<field name="name">Print quotation</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">print.sale.order.wizard</field>
 			<field name="view_type">form</field>
@@ -39,16 +39,28 @@
 			<field name="target">new</field>
 		</record>
 
-		<!-- add action to button 'More' -->
+<!-- add action to button 'More'
 		<record id="btn_sale_order_print_advanced" model="ir.values" >
-			<field eval="'action'" name="key" />
-			<field eval="'client_action_multi'" name="key2" />
+			<field name="key" eval="'action'" />
+			<field name="key2" eval="'client_action_multi'"/>
 			<field name="model">sale.order</field>
 			<field name="name">Advanced print sale order</field>
 			<field name="value" eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
+-->
+		<!-- add action to button 'Print' -->
+		<record id="btn_sale_order_print_advanced2" model="ir.values" >
+			<field name="key" eval="'action'" />
+			<field name="key2" eval="'client_print_multi'" />
+			<field name="model">sale.order</field>
+			<field name="name">Print quotation button</field>
+			<field name="value" eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+		</record>
+		
 	</data>
 </openerp>
         

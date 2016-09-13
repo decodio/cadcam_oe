@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (http://www.cadcam-group.eu/).
+#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (<http://www.cadcam-group.eu/>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,6 +19,21 @@
 #
 ##############################################################################
 
-import models 
-import wizards
-import reports
+from datetime import date, timedelta, datetime
+from openerp.report import report_sxw
+from openerp.exceptions import Warning, ValidationError
+from openerp import _
+
+class Parser(report_sxw.rml_parse):
+    def __init__(self, cr, uid, name, context):
+        super(Parser, self).__init__(cr, uid, name, context)
+        active_model = context.get('active_model', False)
+        active_id = context.get('active_id', False)
+        self.context = context
+        self.localcontext.update({ 'get_data' :  self._get_data,  })
+
+    def _get_data(self, param_name, default_value=None):
+        data = self.context.get(param_name, False)
+        return data
+    
+    

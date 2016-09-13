@@ -116,8 +116,8 @@
 			<field name="model">sale.order</field>
 			<field name="report_name">sale_order_dual_currency_report_no_vat_no_disc</field>
 			<field name="report_type">aeroo</field>
-<!-- 			<field name="in_format">oo-odt</field> -->
-			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="in_format">oo-odt</field> 
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/>
 			<field name="parser_loc"></field>
 			<field name="report_rml">ccg_sales/reports/sale_order_dual_currency_report_no_vat_no_disc.odt</field>
@@ -218,7 +218,6 @@
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
-
 
 	</data>
 </openerp>

@@ -19,6 +19,5 @@
 #
 ##############################################################################
 
-import models 
-import wizards
-import reports
+import sale_order_wizard_parser
+

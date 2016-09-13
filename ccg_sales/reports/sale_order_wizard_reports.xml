@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+		<record id="cadcam_sale_order_wizard_document_currency_report_no_disc" model="ir.actions.report.xml">
+			<field name="name">Document currency sale order without discount</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">sale.order</field>
+			<field name="report_name">sale_order_wizard_document_currency_report_no_disc</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_sales/reports/sale_order_wizard_parser.py</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_wizard_document_currency_report_no_disc.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+		
+
+		<record id="cadcam_sale_order_wizard_document_currency_report" model="ir.actions.report.xml">
+			<field name="name">Document currency sale order</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">sale.order</field>
+			<field name="report_name">sale_order_wizard_document_currency_report</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_sales/reports/sale_order_wizard_parser.py</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_wizard_document_currency_report.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+		
+
+
+		<record id="cadcam_sale_order_wizard_dual_currency_report_no_disc" model="ir.actions.report.xml">
+			<field name="name">Dual currency sale order without discount</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">sale.order</field>
+			<field name="report_name">sale_order_wizard_dual_currency_report_no_disc</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_sales/reports/sale_order_wizard_parser.py</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_wizard_dual_currency_report_no_disc.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+
+		<record id="cadcam_sale_order_wizard_dual_currency_report" model="ir.actions.report.xml">
+			<field name="name">Dual currency sale order</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">sale.order</field>
+			<field name="report_name">sale_order_wizard_dual_currency_report</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_sales/reports/sale_order_wizard_parser.py</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_wizard_dual_currency_report.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+
+	</data>
+</openerp>

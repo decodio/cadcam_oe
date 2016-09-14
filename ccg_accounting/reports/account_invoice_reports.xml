@@ -9,7 +9,8 @@
 			<field name="model">account.invoice</field>
 			<field name="report_name">document_currency_invoice_report</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
 			<field name="report_rml">ccg_accounting/reports/document_currency_invoice_report.odt</field>
 			<field name="parser_state">loc</field>
@@ -37,7 +38,8 @@
 			<field name="model">account.invoice</field>
 			<field name="report_name">document_currency_invoice_report_no_disc</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
 			<field name="report_rml">ccg_accounting/reports/document_currency_invoice_report_no_disc.odt</field>
 			<field name="parser_state">loc</field>
@@ -66,7 +68,8 @@
 			<field name="model">account.invoice</field>
 			<field name="report_name">dual_currency_invoice_report</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
 			<field name="report_rml">ccg_accounting/reports/dual_currency_invoice_report.odt</field>
 			<field name="parser_state">loc</field>
@@ -94,7 +97,8 @@
 			<field name="model">account.invoice</field>
 			<field name="report_name">dual_currency_invoice_report_no_disc</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
 			<field name="report_rml">ccg_accounting/reports/dual_currency_invoice_report_no_disc.odt</field>
 			<field name="parser_state">loc</field>
@@ -121,7 +125,8 @@
 			<field name="model">account.invoice</field>
 			<field name="report_name">document_currency_advance_invoice_report</field>
 			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
 			<field name="report_rml">ccg_accounting/reports/document_currency_advance_invoice_report.odt</field>
 			<field name="parser_state">loc</field>

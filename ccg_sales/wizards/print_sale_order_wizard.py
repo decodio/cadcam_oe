@@ -28,34 +28,48 @@ class PrintSaleOrderWizard(models.TransientModel):
     show_line_discount = fields.Boolean('Show line discount', default = False, help='Diplay discount for each product in quotation')
     show_total_discount = fields.Boolean('Show total discount', default = False, help='Diplay total discont on quotation')
     show_vat = fields.Boolean('Show VAT', default = False, help='Diplay total VAT on quotation')
-    currency_type = fields.Selection([('document','Document currency'),('dual','Dual currency')], 'Currency', default = 'document',
-                                     help='Display all prices in currency as specified on quotation \n or displays products price in document currency but totals in document currency and customer currency')
+    currency_type = fields.Selection([('document','Document currency'),('company','Company currency'),('dual','Dual currency')], 'Currency', default = 'document',
+                                     help='Display all prices in currency as specified on quotation \ in company currency \n or displays totals in document currency and company currency')
     
     def print_report(self, cr, uid, ids, context=None):
         data = {
                  'ids': ids,
                  'model': 'sale.order',
-                 'form': self.read(cr, uid, ids)[0]
+                 
                  }
-
-        dual_currency = data['form']['currency_type'] == 'dual'
-        show_line_discount = data['form']['show_line_discount']
-        show_total_discount = data['form']['show_total_discount']
-        show_vat = data['form']['show_vat']
+        form = self.read(cr, uid, ids)[0]
+        dual_currency = form['currency_type'] == 'dual'
+        company_currency = form['currency_type'] == 'company'
+        document_currency = form['currency_type'] == 'document'
+        show_line_discount = form['show_line_discount']
+        show_total_discount = form['show_total_discount']
+        show_vat = form['show_vat']
         
         
-        if dual_currency and show_line_discount:
-            report_name = 'sale_order_wizard_dual_currency_report'
-        elif dual_currency and not show_line_discount:
-            report_name = 'sale_order_wizard_dual_currency_report_no_disc'
-        elif not dual_currency and show_line_discount:
-            report_name = 'sale_order_wizard_document_currency_report'
-        elif not dual_currency and not show_line_discount:
-            report_name = 'sale_order_wizard_document_currency_report_no_disc'
+        if dual_currency: 
+            if show_line_discount:
+                report_name = 'sale_order_wizard_dual_currency_report'
+            else:
+                report_name = 'sale_order_wizard_dual_currency_report_no_disc'
+        elif company_currency:
+            if show_line_discount:
+                report_name = 'sale_order_wizard_company_currency_report'
+            else:
+                report_name = 'sale_order_wizard_company_currency_report_no_disc'
+        elif document_currency:
+            if show_line_discount:
+                report_name = 'sale_order_wizard_document_currency_report'
+            else:
+                report_name = 'sale_order_wizard_document_currency_report_no_disc'
         else:
             raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
 
-        context.update({'show_vat':show_vat, 'show_total_discount':show_total_discount})
+        context.update({'show_vat':show_vat, 
+                        'show_total_discount':show_total_discount,
+                        'company_currency' : company_currency,
+                        'document_currency':document_currency,
+                        
+                        })
         return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
 
     def on_change_line_discount(self, cr, user, ids, show_line_discount, context=None ):

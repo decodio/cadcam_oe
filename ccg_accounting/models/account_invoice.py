@@ -29,23 +29,19 @@ class account_invoice(models.Model):
         """
             when changed, write date_invoice into 
             date_delivery field and invoicing_datetime 
-            only if those fields are empty
-            invoicing_datetime got the currrent time!
         """
         ret = {}
         if date_invoice:
-            if not date_delivery:
-                ret.update({'date_delivery':date_invoice})
-            if not invoicing_datetime:
-                now = datetime.now()
-                date = datetime.strptime(date_invoice, '%Y-%m-%d')
-                invoicing_timestamp = datetime(date.year, 
-                                               date.month, 
-                                               date.day, 
-                                               now.hour, 
-                                               now.minute, 
-                                               now.second )
-                ret.update({'invoicing_datetime':invoicing_timestamp})
+            ret.update({'date_delivery':date_invoice})
+            now = datetime.now()
+            date = datetime.strptime(date_invoice, '%Y-%m-%d')
+            invoicing_timestamp = datetime(date.year, 
+                                           date.month, 
+                                           date.day, 
+                                           now.hour, 
+                                           now.minute, 
+                                           now.second )
+            ret.update({'invoicing_datetime':invoicing_timestamp})
             
         return {'value':ret}
         
@@ -54,14 +50,11 @@ class account_invoice(models.Model):
         """
             when changed, write document_date into 
             date_delivery field and date_invoice 
-            only if those fields are empty
         """
         ret = {}
         if document_date:
-            if not date_delivery:
-                ret.update({'date_delivery':document_date})
-            if not date_invoice:
-                ret.update({'date_invoice':document_date})
+            ret.update({'date_delivery':document_date})
+            ret.update({'date_invoice':document_date})
             
         return {'value':ret}
                 

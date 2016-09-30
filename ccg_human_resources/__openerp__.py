@@ -34,7 +34,9 @@
     'data' : [
                 "reports/human_resources_reports.xml",
                 "views/hr_holidays_status_form.xml",
-              ],
+                "views/hr_employee_form.xml",
+                "cron/cron_job.xml",
+             ],
     'demo' : [],
     'installable': True,
 }

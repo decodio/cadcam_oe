@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+	<data>
+		<!-- Cron job check for employee contract expiration -->
+		<record id="ir_cron_employee_contract_expiration" model="ir.cron">
+			<field name="name">Check employee contract expiration 30 days
+			</field>
+			<field name="active" eval="True" />
+			<field name="interval_number">1</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model">hr.employee</field>
+			<field name="function">check_contract_expiration</field>
+			<field name="args">()</field>
+		</record>
+	</data>
+</openerp>

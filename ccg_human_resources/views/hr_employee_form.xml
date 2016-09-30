@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_employee_form" model="ir.ui.view">
+			<field name="name">hr.view.employee.form.ccg</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />
+			<field name="arch" type="xml">
+			<!--  add employment contract to employee form -->
+				<xpath expr="//page[@string='HR Settings']/group" position="inside">
+					<group string="Employment Contract" name="contract">
+						<field name="contract_duration" />
+						<field name="start_date" />
+						<field name="end_date"
+							attrs="{'invisible': [('contract_duration', '=', 'unlimited')]}" />
+					</group>
+				</xpath>
+				
+			<!--  hide some fields on employee form -->
+			
+			<xpath expr="//notebook/page[@string='Personal Information']//field[@name='country_id']" position="attributes">
+			<attribute name="invisible">True
+			</attribute>
+			</xpath>
+			
+			<xpath expr="//notebook/page[@string='Personal Information']//field[@name='bank_account_id']" position="attributes">
+			<attribute name="invisible">True
+			</attribute>
+			</xpath>
+
+			<xpath expr="//notebook/page[@string='Personal Information']//field[@name='marital']" position="attributes">
+			<attribute name="invisible">True
+			</attribute>
+			</xpath>
+			
+			</field>
+		</record>
+	</data>
+</openerp>

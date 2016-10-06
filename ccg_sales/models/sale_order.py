@@ -24,47 +24,10 @@ from openerp.exceptions import Warning
 import calendar
 from datetime import datetime
 
-
-class SaleOrderLine(models.Model):
-    _name = 'sale.order.line'
-    _inherit = ['sale.order.line'] 
- 
-    discount1_percent = fields.Float('Discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent'))
-    discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
-       
-    def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, quantity,context=None ):
-        if price_unit:
-            discount1_percent = 100.00*discount_total/(quantity*price_unit*(100.00-global_discount_percent)/100.00)
-        else:
-            discount1_percent = 0.00
-        return {'value':{'discount1_percent':discount1_percent}}
-
 class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
     
-#     def _delivery_time_default(self):
-#         return _('1-2 weeks of signing the contract or order')
-# 
-#     def _place_of_delivery_default(self):
-#         return _("At the user's address")
-# 
-#     def _payment_data_default(self):
-#         return _("PLC - 15 days from the date of invoice, ALC - quarterly, 15 days from the date of invoice")
-#     
-    def _end_of_next_month(self):
-        today = datetime.now()
-        year = today.year
-        month = today.month
-        next_month = (month+1)%12
-        year_of_next_month = year + 1 if month==12 else year
-        (dow, last_date) = calendar.monthrange(year_of_next_month, next_month)
-        return (year_of_next_month,next_month,last_date)
-    
-#     def _validity_of_offer_default(self):
-#         (y,m,d) = self._end_of_next_month()
-#         return _('End of next month ({}.{}.{})').format( d, m, y)
-
     payment_data = fields.Char('Payment', help='Payment',translate=True)
     delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=True)
     place_of_delivery_data = fields.Char('Place of delivery', help='Place of delivery',translate=True)

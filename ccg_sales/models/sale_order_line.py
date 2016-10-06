@@ -18,7 +18,24 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import crm_lead
-import sale_order
-import sale_order_line
-#import res_partner
+import openerp.addons.decimal_precision as dp
+from openerp import models, fields, api, _
+from openerp.exceptions import Warning 
+import calendar
+from datetime import datetime
+
+
+class SaleOrderLine(models.Model):
+    _name = 'sale.order.line'
+    _inherit = ['sale.order.line'] 
+ 
+    discount1_percent = fields.Float('Discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent'))
+    discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
+       
+    def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, quantity,context=None ):
+        if price_unit:
+            discount1_percent = 100.00*discount_total/(quantity*price_unit*(100.00-global_discount_percent)/100.00)
+        else:
+            discount1_percent = 0.00
+        return {'value':{'discount1_percent':discount1_percent}}
+

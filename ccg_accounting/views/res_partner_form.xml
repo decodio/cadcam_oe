@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="res_partner_tile_ccg">
+			<field name="name">res.partner.tile.ccg</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="sp_cadcam.view_partner_cadcam" />
+			<field name="priority" eval="20" />
+			<field name="arch" type="xml">
+				<xpath expr="//group/field[@name='title']" position="after">
+					<field name="title_after" options="{&quot;no_open&quot;: True}" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -21,10 +21,13 @@
 
 from openerp import models, fields, api, _
 from datetime import datetime
+import openerp.addons.decimal_precision as dp
+
 
 class account_invoice(models.Model):
+    _name = 'account.invoice'
     _inherit = 'account.invoice'
-   
+    
     def on_change_date_invoice(self,cr,user,ids, date_invoice, invoicing_datetime, date_delivery,context=None ):
         """
             when changed, write date_invoice into 

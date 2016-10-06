@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (http://www.cadcam-group.eu/).
+#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (<http://www.cadcam-group.eu/>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,6 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import account_invoice
-import account_invoice_line
-import res_partner
+
+from openerp import models, fields, api, _
+from datetime import datetime
+import openerp.addons.decimal_precision as dp
+
+
+class account_invoice_line(models.Model):
+    _name = 'account.invoice.line'
+    _inherit = 'account.invoice.line'
+    
+    discount = fields.Float(string='Discount (%)', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'), default=0.0)
+    discount1_percent = fields.Float('Discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'))
+    discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'))
+    

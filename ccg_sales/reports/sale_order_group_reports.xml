@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="cadcam_sale_order_group_document_currency_report" model="ir.actions.report.xml">
+			<field name="name">Test Document currency group sale order</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">sale.order</field>
+			<field name="report_name">sale_order_group_document_currency_report</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_sales/reports/group_by_licence_parser.py</field>
+			<field name="report_rml">ccg_sales/reports/sale_order_group_document_currency_report.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+		
+<!-- 		<record model="ir.values" id="btn_print_sale_order_group_document_currency_report_no_vat">
+			<field eval="'action'" name="key" />
+			<field eval="'client_print_multi'" name="key2" />
+			<field name="model">sale.order</field>
+			<field name="name">Test</field>
+			<field name="value"
+				eval="'ir.actions.report.xml,'+str(cadcam_sale_order_group_document_currency_report)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+		</record>
+ -->		
+	</data>
+</openerp>

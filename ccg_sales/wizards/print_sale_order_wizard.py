@@ -30,12 +30,12 @@ class PrintSaleOrderWizard(models.TransientModel):
     show_vat = fields.Boolean('Show VAT', default = False, help='Diplay total VAT on quotation')
     currency_type = fields.Selection([('document','Document currency'),('company','Company currency'),('dual','Dual currency')], 'Currency', default = 'document',
                                      help='Display all prices in currency as specified on quotation \ in company currency \n or displays totals in document currency and company currency')
+    group_by_licence = fields.Boolean('Group products', default = False, help='Group products by categories')
     
     def print_report(self, cr, uid, ids, context=None):
         data = {
                  'ids': ids,
                  'model': 'sale.order',
-                 
                  }
         form = self.read(cr, uid, ids)[0]
         dual_currency = form['currency_type'] == 'dual'
@@ -44,34 +44,43 @@ class PrintSaleOrderWizard(models.TransientModel):
         show_line_discount = form['show_line_discount']
         show_total_discount = form['show_total_discount']
         show_vat = form['show_vat']
+        group_by_licence  = form['group_by_licence']
         
-        
-        if dual_currency: 
-            if show_line_discount:
-                report_name = 'sale_order_wizard_dual_currency_report'
-            else:
-                report_name = 'sale_order_wizard_dual_currency_report_no_disc'
-        elif company_currency:
-            if show_line_discount:
-                report_name = 'sale_order_wizard_company_currency_report'
-            else:
-                report_name = 'sale_order_wizard_company_currency_report_no_disc'
-        elif document_currency:
-            if show_line_discount:
-                report_name = 'sale_order_wizard_document_currency_report'
-            else:
-                report_name = 'sale_order_wizard_document_currency_report_no_disc'
+        if group_by_licence:
+            report_name = 'sale_order_group_document_currency_report'
         else:
-            raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
+            if dual_currency: 
+                if show_line_discount:
+                    report_name = 'sale_order_wizard_dual_currency_report'
+                else:
+                    report_name = 'sale_order_wizard_dual_currency_report_no_disc'
+            elif company_currency:
+                if show_line_discount:
+                    report_name = 'sale_order_wizard_company_currency_report'
+                else:
+                    report_name = 'sale_order_wizard_company_currency_report_no_disc'
+            elif document_currency:
+                if show_line_discount:
+                    report_name = 'sale_order_wizard_document_currency_report'
+                else:
+                    report_name = 'sale_order_wizard_document_currency_report_no_disc'
+            else:
+                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
 
         context.update({'show_vat':show_vat, 
                         'show_total_discount':show_total_discount,
                         'company_currency' : company_currency,
                         'document_currency':document_currency,
-                        
                         })
         return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
 
     def on_change_line_discount(self, cr, user, ids, show_line_discount, context=None ):
         return {'value':{'show_total_discount':show_line_discount}}
+    
+    def on_change_group_by_licence(self, cr, user, ids, group_by_licence, context=None ):
+        if group_by_licence:
+            ret ={'value':{'show_total_discount':True, 'show_line_discount':True, 'show_vat':False, 'currency_type' : 'company'}}
+        else:
+            ret = {} 
+        return ret
 

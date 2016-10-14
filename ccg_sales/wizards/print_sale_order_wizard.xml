@@ -9,12 +9,14 @@
 				<form string="Print options" version="7.0">
 				<group colspan="4" col="2">
 					<group string="Display options" >
-						<field name="show_line_discount" on_change="on_change_line_discount(show_line_discount)"/>
-						<field name="show_total_discount" />
-						<field name="show_vat" />
+						<field name="show_line_discount" on_change="on_change_line_discount(show_line_discount)" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+						<field name="show_total_discount" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+						<field name="show_vat" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+						<separator colspan="2"/>
+						<field name="group_by_licence" on_change="on_change_group_by_licence(group_by_licence)"/>
 					</group>
 					<group string="Currency options">
-						<field name="currency_type"  widget="radio"/>
+						<field name="currency_type"  widget="radio" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
 					</group>
 					</group>
 					<footer>

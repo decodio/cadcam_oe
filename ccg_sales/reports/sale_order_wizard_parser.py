@@ -34,7 +34,6 @@ class Parser(report_sxw.rml_parse):
             if not model.partner_id.vat :
                 raise Warning(_("Cannot print quotation without customer's VAT number!"))
             
-
         self.context = context
         self.localcontext.update({ 'get_data' :  self._get_data,  })
 

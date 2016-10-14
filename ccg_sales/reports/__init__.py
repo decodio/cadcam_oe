@@ -20,4 +20,5 @@
 ##############################################################################
 
 import sale_order_wizard_parser
+import group_by_licence_parser
 

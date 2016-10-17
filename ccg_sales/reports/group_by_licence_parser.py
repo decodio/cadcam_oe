@@ -81,29 +81,28 @@ class Parser(report_sxw.rml_parse):
         for order_line in document_obj.order_line:
             for g in groups:
                 group_name = g[0]
-                empty_group = {'LINES':[],'TOTAL':0.0,'DISCOUNT':0.0, 'UNTAXED':0.0}
-                if group_name in order_line.name:
+                empty_group = {'LINES':[], 'TOTAL':0.0, 'DISCOUNT':0.0, 'UNTAXED':0.0}
+                if group_name in order_line.product_id.categ_id.name: #licence_category_name:
                     group = document_obj.group.get(group_name, empty_group)
-                    new_group = self.group_lines(order_line,group)
+                    new_group = self._update_group_totals(order_line, group)
                     document_obj.group.update({group_name:new_group}) 
                     break
             else:
-                empty_group = {'LINES':[],'TOTAL':0.0,'DISCOUNT':0.0, 'UNTAXED':0.0}
+                empty_group = {'LINES':[], 'TOTAL':0.0, 'DISCOUNT':0.0, 'UNTAXED':0.0}
                 group = document_obj.group.get('OTHER', empty_group)
-                new_group = self.group_lines(order_line,group)
+                new_group = self._update_group_totals(order_line,group)
                 document_obj.group.update({'OTHER':new_group})
-
         return document_obj
     
-    def group_lines(self, line, group):
+    def _update_group_totals(self, line, group):
         lines = group['LINES'] + [line]
         total = group['TOTAL'] + (line.price_unit * line.quantity)
         untaxed = group['UNTAXED'] + line.amount
-        discount = group['DISCOUNT'] + (total - untaxed)
+        discount = (total - untaxed)
         group.update({'LINES':lines,'TOTAL':total,'UNTAXED':untaxed,'DISCOUNT':discount})
         return group
 
-    
     def _get_data(self, param_name, default_value=None):
         data = self.context.get(param_name, False)
         return data
+    

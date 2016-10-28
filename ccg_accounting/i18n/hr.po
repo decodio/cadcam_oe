@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 14:00+0000\n"
-"PO-Revision-Date: 2016-09-20 14:00+0000\n"
+"POT-Creation-Date: 2016-10-27 08:16+0000\n"
+"PO-Revision-Date: 2016-10-27 08:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Cancel"
 #: code:addons/ccg_accounting/reports/account_invoice_parser.py:35
 #, python-format
 msgid "Cannot print invoice without VAT number. Customer is VAT-subjected!"
-msgstr "Ne može se ispisati račun bez OIB-a!"
+msgstr "Cannot print invoice without VAT number. Customer is VAT-subjected!"
 
 #. module: ccg_accounting
 #: field:print.invoice.wizard,create_uid:0
@@ -71,12 +71,12 @@ msgstr "Datum isporuke"
 #. module: ccg_accounting
 #: help:print.invoice.wizard,show_line_discount:0
 msgid "Diplays discont on invoice lines"
-msgstr "Prikaz popusta na stavkama računa"
+msgstr "Diplays discont on invoice lines"
 
 #. module: ccg_accounting
 #: help:print.invoice.wizard,show_total_discount:0
 msgid "Diplays total discont "
-msgstr "Prikaz ukupnog popusta "
+msgstr "Diplays total discont "
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -96,17 +96,17 @@ msgstr "Popust"
 #. module: ccg_accounting
 #: view:print.invoice.wizard:ccg_accounting.print_invoice_wizard
 msgid "Display options"
-msgstr "Opcije prikaza"
+msgstr "Display options"
 
 #. module: ccg_accounting
 #: selection:print.invoice.wizard,currency_type:0
 msgid "Document currency"
-msgstr "Valuta dokumenta"
+msgstr "Document currency"
 
 #. module: ccg_accounting
 #: selection:print.invoice.wizard,currency_type:0
 msgid "Dual currency"
-msgstr "Dvovalutno"
+msgstr "Dual currency"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
@@ -152,6 +152,11 @@ msgid "Invoice"
 msgstr "Račun"
 
 #. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Stavka računa"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
@@ -185,7 +190,7 @@ msgstr "Broj računa"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Item"
-msgstr "R. br."
+msgstr "Red. br."
 
 #. module: ccg_accounting
 #: field:print.invoice.wizard,write_uid:0
@@ -203,6 +208,11 @@ msgid "Other Data"
 msgstr "Ostali podaci"
 
 #. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 msgid "Payment"
 msgstr "Uvjeti plaćanja"
@@ -218,23 +228,23 @@ msgstr "Plaćanje na transakcijski račun"
 #. module: ccg_accounting
 #: view:print.invoice.wizard:ccg_accounting.print_invoice_wizard
 msgid "Print"
-msgstr "Ispis"
+msgstr "Print"
 
 #. module: ccg_accounting
 #: code:addons/ccg_accounting/wizards/print_invoice_wizard.py:50
 #, python-format
 msgid "Print Error!"
-msgstr "Greška pri ispisu!"
+msgstr "Print Error!"
 
 #. module: ccg_accounting
 #: model:ir.actions.act_window,name:ccg_accounting.action_print_invoice_wizard
 msgid "Print Invoice"
-msgstr "Ispis računa"
+msgstr "Print Invoice"
 
 #. module: ccg_accounting
 #: view:print.invoice.wizard:ccg_accounting.print_invoice_wizard
 msgid "Print options"
-msgstr "Opcije ispisa"
+msgstr "Print options"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -341,6 +351,11 @@ msgid "Taxes"
 msgstr "Porezi"
 
 #. module: ccg_accounting
+#: field:res.partner,title_after:0
+msgid "Title After Name"
+msgstr "Title After Name"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
@@ -420,12 +435,12 @@ msgstr "advance invoice report"
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.cadcam_document_currency_invoice_report
 msgid "cadcam document currency invoice report"
-msgstr "Račun u valuti dokumenta"
+msgstr "Kunski račun"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 msgid "cadcam document currency invoice report without discount"
-msgstr "Račun u valuti dokumenta (bez popusta)"
+msgstr "Kunski račun bez popusta"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.cadcam_dual_currency_invoice_report
@@ -435,7 +450,7 @@ msgstr "Dvovalutni račun"
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "cadcam dual currency invoice report without discount"
-msgstr "Dvovalutni račun (bez popusta)"
+msgstr "Dvovalutni račun bez popusta"
 
 #. module: ccg_accounting
 #: view:account.invoice:ccg_accounting.account_invoice_form_ccg

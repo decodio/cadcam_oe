@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 14:02+0000\n"
-"PO-Revision-Date: 2016-09-20 14:02+0000\n"
+"POT-Creation-Date: 2016-10-27 08:19+0000\n"
+"PO-Revision-Date: 2016-10-27 08:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Advance invoice"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Base amount"
-msgstr "Base amount"
+msgstr "Poreska osnovica"
 
 #. module: ccg_accounting
 #: view:print.invoice.wizard:ccg_accounting.print_invoice_wizard
@@ -66,7 +66,7 @@ msgstr "Currency options"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Delivery date"
-msgstr "Delivery date"
+msgstr "Datum prometa usluga"
 
 #. module: ccg_accounting
 #: help:print.invoice.wizard,show_line_discount:0
@@ -114,7 +114,7 @@ msgstr "Dual currency"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Due date"
-msgstr "Due date"
+msgstr "Rok za plaćanje"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
@@ -152,13 +152,18 @@ msgid "Invoice"
 msgstr "Invoice"
 
 #. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Invoice Line"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Invoice created"
-msgstr "Invoice created"
+msgstr "Fakturisao"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -176,7 +181,7 @@ msgstr "Invoice date"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Invoice number"
-msgstr "Invoice number"
+msgstr "Račun br."
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -185,7 +190,7 @@ msgstr "Invoice number"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Item"
-msgstr "Item"
+msgstr "Red. br."
 
 #. module: ccg_accounting
 #: field:print.invoice.wizard,write_uid:0
@@ -203,9 +208,14 @@ msgid "Other Data"
 msgstr "Other Data"
 
 #. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 msgid "Payment"
-msgstr "Payment"
+msgstr "Uslovi plaćanja"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
@@ -213,7 +223,7 @@ msgstr "Payment"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Payment on bank account"
-msgstr "Payment on bank account"
+msgstr "Podaci za plaćanje"
 
 #. module: ccg_accounting
 #: view:print.invoice.wizard:ccg_accounting.print_invoice_wizard
@@ -243,7 +253,7 @@ msgstr "Print options"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Product"
-msgstr "Product"
+msgstr "Opis"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
@@ -276,7 +286,7 @@ msgstr "Proforma invoice number"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Qty"
-msgstr "Qty"
+msgstr "Količina"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -285,7 +295,7 @@ msgstr "Qty"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Responsible person"
-msgstr "Responsible person"
+msgstr "Odgovorna osoba"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -293,7 +303,7 @@ msgstr "Responsible person"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 msgid "SUBTOTAL"
-msgstr "SUBTOTAL"
+msgstr "Osnovica"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
@@ -320,7 +330,7 @@ msgstr "Show total discount"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "TOTAL"
-msgstr "TOTAL"
+msgstr "Ukupno sa PDV-om"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -329,7 +339,7 @@ msgstr "TOTAL"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Tax Amount"
-msgstr "Tax Amount"
+msgstr "Iznos PDV-a"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -338,7 +348,12 @@ msgstr "Tax Amount"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Taxes"
-msgstr "Taxes"
+msgstr "Stopa PDV-a"
+
+#. module: ccg_accounting
+#: field:res.partner,title_after:0
+msgid "Title After Name"
+msgstr "Title After Name"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -353,7 +368,7 @@ msgstr "Total"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 msgid "Total w disc."
-msgstr "Total w disc."
+msgstr "Ukupno sa popustom"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -362,7 +377,7 @@ msgstr "Total w disc."
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Unit price"
-msgstr "Unit price"
+msgstr "Jedinična cena"
 
 #. module: ccg_accounting
 #: code:addons/ccg_accounting/wizards/print_invoice_wizard.py:50
@@ -377,7 +392,7 @@ msgstr "Unsupported report option(s)"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "UoM"
-msgstr "UoM"
+msgstr "Jedinica mere"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -401,7 +416,7 @@ msgstr "VAT"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "VAT no."
-msgstr "VAT no."
+msgstr "PIB:"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -410,7 +425,7 @@ msgstr "VAT no."
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "VAT no.:"
-msgstr "VAT no.:"
+msgstr "PIB:"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.cadcam_document_currency_advance_invoice_report

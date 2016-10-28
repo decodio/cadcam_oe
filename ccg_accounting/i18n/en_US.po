@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 13:58+0000\n"
-"PO-Revision-Date: 2016-09-20 13:58+0000\n"
+"POT-Creation-Date: 2016-10-27 08:07+0000\n"
+"PO-Revision-Date: 2016-10-27 08:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -152,6 +152,11 @@ msgid "Invoice"
 msgstr "Invoice"
 
 #. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Invoice Line"
+
+#. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_invoice_report_no_disc
@@ -201,6 +206,11 @@ msgstr "Last Updated on"
 #: view:account.invoice:ccg_accounting.account_invoice_supplier_form_ccg
 msgid "Other Data"
 msgstr "Other Data"
+
+#. module: ccg_accounting
+#: model:ir.model,name:ccg_accounting.model_res_partner
+msgid "Partner"
+msgstr "Partner"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report
@@ -339,6 +349,11 @@ msgstr "Tax Amount"
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_dual_currency_invoice_report_no_disc
 msgid "Taxes"
 msgstr "Taxes"
+
+#. module: ccg_accounting
+#: field:res.partner,title_after:0
+msgid "Title After Name"
+msgstr "Title After Name"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report

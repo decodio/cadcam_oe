@@ -79,24 +79,44 @@
 					position="replace">
 				</xpath>
 
-
-				<xpath
-					expr="//page[@string='Other Information']/group/group[@name='sales_person']/field[@name='user_id']"
-					position="attributes">
-					<attribute name="string">Salesman</attribute>
-				</xpath>
-
 				<!-- change behavior of line discount fields -->
 				<xpath
-					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount_total' and @groups='sale.group_discount_per_so_line']"
+					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount1_percent' and @groups='sale.group_discount_per_so_line']"
 					position="attributes">
 					<attribute name="readonly">0</attribute>
-					<attribute name="on_change">on_change_line_discount_total(discount_total,
-						price_unit, global_discount_percent, quantity)
+					<attribute name="on_change">on_change_discount1_percent(discount1_percent,price_unit,quantity)
 					</attribute>
 				</xpath>
 
-				<!-- change behavior of global discount fields -->
+				<xpath expr="//field[@name='price_unit']" position="after">
+					, total=
+					<field name="list_amount" readonly="True" class="oe_inline" />
+				</xpath>
+
+				<xpath expr="//div[@groups='sale.group_discount_per_so_line']"
+					position="replace">
+					<div groups="sale.group_discount_per_so_line">
+						<div>
+							- <field name="discount1_percent" readonly="False" widget="monetary"
+								class="oe_inline"
+								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
+							% = 
+							<field name="amount1" readonly="False" class="oe_inline"
+								widget="monetary" options="{'currency_field': 'currency_id'}"
+								on_change="on_change_amount(amount1, amount2, discount2_percent, price_unit, quantity)" />
+						</div>
+						<separator />
+						<div>
+							- <field name="discount2_percent" readonly="False" widget="monetary"
+								class="oe_inline" 
+								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
+							% = 
+							<field name="amount2" readonly="True" class="oe_inline"
+								widget="monetary" options="{'currency_field': 'currency_id'}" />
+						</div>
+					</div>
+					
+				</xpath>
 				<xpath
 					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
 					position="before">
@@ -107,13 +127,6 @@
 					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
 					position="attributes">
 					<attribute name="string">Global discount (%): </attribute>
-				</xpath>
-				<xpath expr="//field[@name='additional_discount_amount']"
-					position="attributes">
-					<attribute name="readonly"> False</attribute>
-					<attribute name="on_change">on_change_additional_discount_amount(additional_discount_amount,
-						list_amount,discount_total, global_discount_percent)
-					</attribute>
 				</xpath>
 			</field>
 		</record>

@@ -48,10 +48,16 @@ class Parser(report_sxw.rml_parse):
             'get_data'      : self._get_data,
             'get_groups'    : self._get_groups,
             'get_total'     : self._get_total,
-            'get_discount'  : self._get_discount,
-            'get_untaxed'   : self._get_untaxed,
+            'get_discount1'  : self._get_discount1,
+            'get_discount2'  : self._get_discount2,
+            'get_untaxed1'   : self._get_untaxed1,
+            'get_untaxed2'   : self._get_untaxed2,
             'get_item_no'   : self._get_item_no,
-                    })
+            'get_line_total1': self._get_line_total1,
+            'get_line_total2': self._get_line_total2,
+            'get_all_discounts_percent' : self._get_all_discounts_percent,
+            'get_discount2_percent' : self._get_discount2_percent,
+        })
 
     def _get_groups(self):
         groups2 = []
@@ -60,49 +66,108 @@ class Parser(report_sxw.rml_parse):
                 groups2.append(g) 
         return groups2
 
+    def _get_discount2_percent(self, group):
+        return self.document.group[group[0]]['DISCOUNT2PERCENT']
+
     def _get_lines(self, group):
-        self.item_no = 0
+        self.item_no = 0 # new item numbers for each group
         return self.document.group[group[0]]['LINES']
 
     def _get_total(self, group):
-        return self.document.group[group[0]]['TOTAL']
+        return self.document.group[group[0]]['TOTAL'] # sum of price_unit * quantity
 
-    def _get_discount(self, group):
-        return self.document.group[group[0]]['DISCOUNT']
+    def _get_discount1(self, group):
+        return self.document.group[group[0]]['DISCOUNT1'] # total discount based on discount1_percent which is visible on document
 
-    def _get_untaxed(self, group):
-        return self.document.group[group[0]]['UNTAXED']
+    def _get_discount2(self, group):
+        return self.document.group[group[0]]['DISCOUNT2'] # total discount based on discount1_percent1 and discount1_percen2 (additional discount on group) 
+
+    def _get_untaxed1(self, group):
+        return self.document.group[group[0]]['UNTAXED1'] # total price discount1
+
+    def _get_untaxed2(self, group):
+        return self.document.group[group[0]]['UNTAXED2'] # total price with both discounts
 
     def _get_item_no(self):
-        self.item_no = self.item_no + 1
+        self.item_no = self.item_no + 1 # increase item number for each line IN GROUP!
         return self.item_no
 
+    def _empty_group(self):
+        return {'LINES':[],
+                'TOTAL':0.0, 
+                'DISCOUNT1':0.0, 
+                'DISCOUNT2':0.0, 
+                'UNTAXED1':0.0, 
+                'UNTAXED2':0.0, 
+                'DISCOUNT2PERCENT':0.0}
+    
     def _group_lines(self, document_obj, groups):
         for order_line in document_obj.order_line:
             for g in groups:
                 group_name = g[0]
-                empty_group = {'LINES':[], 'TOTAL':0.0, 'DISCOUNT':0.0, 'UNTAXED':0.0}
                 if group_name in order_line.product_id.categ_id.name: #licence_category_name:
-                    group = document_obj.group.get(group_name, empty_group)
+                    group = document_obj.group.get(group_name, self._empty_group())
                     new_group = self._update_group_totals(order_line, group)
                     document_obj.group.update({group_name:new_group}) 
                     break
             else:
-                empty_group = {'LINES':[], 'TOTAL':0.0, 'DISCOUNT':0.0, 'UNTAXED':0.0}
-                group = document_obj.group.get('OTHER', empty_group)
+                group = document_obj.group.get('OTHER', self._empty_group())
                 new_group = self._update_group_totals(order_line,group)
                 document_obj.group.update({'OTHER':new_group})
         return document_obj
     
     def _update_group_totals(self, line, group):
         lines = group['LINES'] + [line]
-        total = group['TOTAL'] + (line.price_unit * line.quantity)
-        untaxed = group['UNTAXED'] + line.amount
-        discount = (total - untaxed)
-        group.update({'LINES':lines,'TOTAL':total,'UNTAXED':untaxed,'DISCOUNT':discount})
+        total = group['TOTAL'] + (line.price_unit * line.quantity)    # without any discount
+        untaxed1 = group['UNTAXED1'] + self._get_line_total1(line)    # with discount1
+        untaxed2 = group['UNTAXED2'] + self._get_line_total2(line)    # with discount2
+        discount1 = (total - untaxed1)
+        discount2 = (total - discount1 - untaxed2)
+        disc2percent = group['DISCOUNT2PERCENT']
+        if disc2percent<>0 and disc2percent<>line.discount2_percent:
+            raise Warning(_("Inconsistent group discount!\nDiscount must be same over whole group!"))
+        else:
+            disc2percent = line.discount2_percent
+        group.update({'LINES':lines,
+                      'TOTAL':total,
+                      'UNTAXED1':untaxed1,
+                      'UNTAXED2':untaxed2,
+                      'DISCOUNT1':discount1,
+                      'DISCOUNT2':discount2,
+                      'DISCOUNT2PERCENT':disc2percent,
+                      })
         return group
 
     def _get_data(self, param_name, default_value=None):
         data = self.context.get(param_name, False)
         return data
     
+    def _get_all_discounts_percent(self, discount1, discount2 = 0.0, discount3 = 0.0):
+        """
+            calculate total discount percent for several discounts available in quotation lines
+        """
+        disc=100.00-(100.00-discount1)*(100.00-discount2)*(100.00-discount3)/1000000*100
+        return disc
+
+    def _get_additional_discount(self):
+        pass
+    
+    def _get_total_total(self):
+        pass
+    
+    def _get_line_total(self, line):
+        line_total = line.price_unit * line.quantity 
+        return line_total
+
+    def _get_line_total1(self, line):
+        disc_percent = self._get_all_discounts_percent(line.discount1_percent)
+        disc_factor = (100.0 - disc_percent) / 100
+        line_total = line.price_unit * line.quantity * disc_factor
+        return line_total
+    
+    def _get_line_total2(self, line):
+        disc_percent = self._get_all_discounts_percent(line.discount1_percent, line.discount2_percent)
+        disc_factor = (100.0 - disc_percent) / 100
+        line_total = line.price_unit * line.quantity * disc_factor
+        return line_total
+        

@@ -28,14 +28,21 @@ from datetime import datetime
 class SaleOrderLine(models.Model):
     _name = 'sale.order.line'
     _inherit = ['sale.order.line'] 
- 
-    discount1_percent = fields.Float('Discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent'))
-    discount2_percent = fields.Float('Second discount', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
-       
-    def on_change_line_discount_total(self, cr, user, ids, discount_total, price_unit, global_discount_percent, quantity,context=None ):
-        if price_unit:
-            discount1_percent = 100.00*discount_total/(quantity*price_unit*(100.00-global_discount_percent)/100.00)
-        else:
-            discount1_percent = 0.00
-        return {'value':{'discount1_percent':discount1_percent}}
 
+    discount1_percent = fields.Float('Discount_percent', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent'))
+    discount2_percent = fields.Float('Second discount_percent', digits=dp.get_precision('Discount Percent'),digits_compute=dp.get_precision('Discount Percent') )
+    amount1 = fields.Float('Amount1', digits=dp.get_precision('Account'),digits_compute=dp.get_precision('Discount Percent'))
+    amount2 = fields.Float('Amount2', digits=dp.get_precision('Account'),digits_compute=dp.get_precision('Discount Percent'))
+
+    def on_change_amount(self,cr,user,ids, amount1, amount2, discount2_percent, price_unit, quantity, context=None ):
+        if not (price_unit and quantity):
+            return {}
+        disc1 = 100 - (100 * amount1)/price_unit/quantity
+        amount2 = price_unit * quantity*(100 - disc1) / 100 *(100 - discount2_percent) / 100
+        return { 'value': {'discount1_percent':disc1,'amount2':amount2, 'quantity':quantity}}
+
+    def on_change_discount_percent(self,cr,user, ids, discount1_percent, discount2_percent, price_unit, quantity, context=None ):
+        amount1 = price_unit * quantity*(100 - discount1_percent) / 100
+        amount2 = price_unit * quantity*(100 - discount1_percent) / 100 *(100 - discount2_percent) / 100
+        return { 'value':{'amount1':amount1,'amount2':amount2, 'quantity':quantity}}
+    

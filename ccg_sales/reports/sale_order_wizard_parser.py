@@ -31,7 +31,7 @@ class Parser(report_sxw.rml_parse):
         active_id = context.get('active_id', False)
         if active_model and active_id:
             model = self.pool.get(active_model).browse(cr, uid, active_id, context=context)
-            if not model.partner_id.vat :
+            if model.partner_id.is_company and not model.partner_id.vat :
                 raise Warning(_("Cannot print quotation without customer's VAT number!"))
             
         self.context = context

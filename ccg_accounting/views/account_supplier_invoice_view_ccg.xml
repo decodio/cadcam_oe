@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="account_supplier_invoice_tree_ccg">
+			<field name="name">account.supplier.invoice.tree.ccg</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_supplier_form" />
+			<field name="priority" eval="20" />
+			<field name="arch" type="xml">
+				<xpath expr="/tree//field[@name='number']" position="replace">
+					<field name="internal_invoice_number" string="Invoice number" />
+				</xpath>
+				
+				<xpath expr="/tree//field[@name='lcy_amount_untaxed']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='lcy_amount_total']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='amount_untaxed']" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='amount_total']" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='currency_id]" position="attributes">
+					<attribute name="groups"></attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<!-- on_change event on customer invoice rewrite invoicing_date and date_delivery 
+			with date_invoice -->
+<!-- 		<record model="ir.ui.view" id="account_invoice_form_ccg">
+			<field name="name">account.invoice.form.ccg</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_form" />
+			<field name="priority" eval="20" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='date_invoice']" position="attributes">
+					<attribute name="on_change">on_change_date_invoice(date_invoice,
+						invoicing_datetime, date_delivery)
+					</attribute>
+				</xpath>
+			</field>
+		</record>
+ -->
+		<!-- on_change event on supplier invoice rewrite date_invoice and date_delivery 
+			with document_date -->
+		<record model="ir.ui.view" id="account_invoice_supplier_form_ccg">
+			<field name="name">account.invoice.supplier.form.ccg</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_supplier_form" />
+			<field name="priority" eval="25" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='document_date']" position="attributes">
+					<attribute name="on_change">on_change_document_date(document_date,
+						date_invoice, date_delivery)
+					</attribute>
+				</xpath>
+
+				<xpath expr="/form/sheet/notebook" position="inside">
+					<page string="Other Data">
+						<group>
+ 							<field name="start_date" /> 
+ 							<field name="end_date" /> 
+						</group>
+					</page>
+				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</openerp>

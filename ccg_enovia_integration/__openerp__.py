@@ -31,7 +31,8 @@
 "demo_xml" : [],
 "update_xml" : [
                 "views/enovia_test.xml",
-                "security/enovia_integration_security.xml"
+                "security/enovia_integration_security.xml",
+#                "reports/enovia_reports.xml",
                ],
 "installable": True,
 "active": True

@@ -19,28 +19,23 @@
 #
 ##############################################################################
 
+from openerp import models, fields, api, _, SUPERUSER_ID
+from openerp.exceptions import except_orm, ValidationError, Warning, RedirectWarning
 
-{
-    "name" : "CCG sales module",
-    "version" : "1.0",
-    "author" : "CADCAM Design Centar d.o.o.",
-    "category" : "CCG internals",
-    'description' : "Customization of sales module, specific to CADCAM group",
-     "depends" : [
-                 "base_vat",
-                 "base_base",
-                 "sp_cadcam",
-                ],
-    'data' : [
-              "wizards/print_sale_order_wizard.xml",
-              "wizards/predefined_text_wizard.xml",
-              "views/crm_lead_form_view_oppor_ccg.xml",
-              "views/sale_view_ccg.xml",
-              "views/view_partner_form_ccg.xml",
-              "views/predefined_test_view.xml",
-              "reports/sale_order_wizard_reports.xml",
-              "reports/sale_order_group_reports.xml",
-              ],
-    'demo' : [],
-    'installable': True,
-}
+class PredefinedTextWizard(models.TransientModel):
+    _name = 'predefined.text.wizard'
+    
+    text_id = fields.Many2one(string='Text', comodel_name='sale.order.predefined.text')
+     
+    def choose_text(self, cr, uid, ids, context=None):
+        form = self.read(cr, uid, ids)[0]
+        text = form['text_id']
+        active_model = context.get('active_model', False)
+        active_id = context.get('active_id', False)
+        field_name = context.get('field', False)
+        partner_id =  context.get('partner_id', False)
+        partner_obj=self.pool.get('res.partner').browse(cr, uid, partner_id, context=context)
+        obj = self.pool.get(active_model).browse(cr, uid, active_id, context=context)
+        obj.write({field_name:text[1]})
+
+

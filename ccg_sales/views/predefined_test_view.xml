@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="ccg_predefined_text_form" model="ir.ui.view" >
+			<field name="name">ccg.predefined.text.form</field>
+			<field name="model">sale.order.predefined.text</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Predefined text">
+					<group name="Text" colspan="4" col="2">
+						<field name="name" />
+					</group>
+					<group name="Other properties" colspan="4" col="6">
+						<field name="dest_model" />
+						<field name="dest_field" />
+						<field name="lang" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ccg_predefined_text_tree" model="ir.ui.view" >
+			<field name="name">ccg.predefined.text.tree</field>
+			<field name="model">sale.order.predefined.text</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Texts">
+					<field name="name" />
+					<field name="dest_field" />
+					<field name="lang" />
+				</tree>
+			</field>
+		</record>
+
+       <record id="ccg_predefined_text_filter" model="ir.ui.view">
+            <field name="name">view.ccg.licence.filter</field>
+            <field name="model">ccg.licence</field>
+            <field name="arch" type="xml">
+                <search string="Search Text">
+                    <filter string="Payment" domain="[('dest_field','=','payment_data')]"/>
+                    <filter string="Place of delivery " domain="[('dest_field','=','place_of_delivery_data')]"/>
+                    <filter string="Validity of offer" domain="[('dest_field','=','offer_validity_data')]"/>
+                    <filter string="Technical Conditions" domain="[('dest_field','=','technical_conditions_data')]"/>
+                    <group string="Group By" expand="1">
+                        <filter string="Language" context="{'group_by':'lang'}"/>
+                        <filter string="Field" context="{'group_by':'dest_field'}"/>
+                        <filter string="Model" context="{'group_by':'dest_model'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+				
+		<record id="action_ccg_predefined_text" model="ir.actions.act_window">
+			<field name="name">action_ccg_predefined_text</field>
+			<field name="res_model">sale.order.predefined.text</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="ccg_predefined_text_filter" />
+		</record>
+
+		<menuitem id="menu_ccg_licence" parent="other_document_data.menu_other_sale_data"
+			name="Sales Data" action="action_ccg_predefined_text" />
+	</data>
+
+</openerp>

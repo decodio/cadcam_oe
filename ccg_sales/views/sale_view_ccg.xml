@@ -74,6 +74,27 @@
 					<field name="payment_data" />
 				</xpath>
 
+				<!-- Add 'choose' button for delivery time field -->
+				<xpath
+					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
+					position="replace">
+					<group string="Sales data" colspan="4" col="6">
+						<field name="payment_data" colspan="5" />
+						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'payment_data', 'dest_model':'sale.order'}" />
+						<field name="place_of_delivery_data" modifiers="{}" colspan="5" />
+						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+							type="action" colspan="1" class="oe_inline oe_link oe_edit_only" context="{'field':'place_of_delivery_data', 'dest_model':'sale.order'}"/>
+						<field name="offer_validity_data" modifiers="{}" colspan="5" />
+						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'offer_validity_data', 'dest_model':'sale.order'}" />
+						<field name="technical_conditions_data" modifiers="{}"
+							colspan="5" />
+						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'technical_conditions_data', 'dest_model':'sale.order'}"/>
+					</group>
+				</xpath>
+
 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add licence period']"
 					position="replace">
@@ -97,25 +118,27 @@
 					position="replace">
 					<div groups="sale.group_discount_per_so_line">
 						<div>
-							- <field name="discount1_percent" readonly="False" widget="monetary"
+							-
+							<field name="discount1_percent" readonly="False" widget="monetary"
 								class="oe_inline"
 								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
-							% = 
+							% =
 							<field name="amount1" readonly="False" class="oe_inline"
 								widget="monetary" options="{'currency_field': 'currency_id'}"
 								on_change="on_change_amount(amount1, amount2, discount2_percent, price_unit, quantity)" />
 						</div>
 						<separator />
 						<div>
-							- <field name="discount2_percent" readonly="False" widget="monetary"
-								class="oe_inline" 
+							-
+							<field name="discount2_percent" readonly="False" widget="monetary"
+								class="oe_inline"
 								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
-							% = 
+							% =
 							<field name="amount2" readonly="True" class="oe_inline"
 								widget="monetary" options="{'currency_field': 'currency_id'}" />
 						</div>
 					</div>
-					
+
 				</xpath>
 				<xpath
 					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"

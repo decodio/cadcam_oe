@@ -20,3 +20,4 @@
 ##############################################################################
 
 import print_sale_order_wizard
+import predefined_text_wizard

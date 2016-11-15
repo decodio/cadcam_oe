@@ -10,6 +10,34 @@
 				<xpath expr="/tree//field[@name='number']" position="replace">
 					<field name="internal_invoice_number" string="Invoice number" />
 				</xpath>
+
+				<xpath expr="/tree//field[@name='lcy_amount_untaxed']"
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='lcy_amount_total']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='amount_untaxed']" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='amount_total']" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</xpath>
+				<xpath expr="/tree//field[@name='currency_id']" position="attributes">
+					<attribute name="groups"></attribute>
+				</xpath>
+
+			</field>
+		</record>
+		<record id="account_invoice_filter_ccg" model="ir.ui.view">
+			<field name="name">account.invoice.filter.ccg</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.view_account_invoice_filter" />
+			<field name="arch" type="xml">
+			<xpath expr="//group[@string='Group By']" position="inside">
+					<filter string="Currency" context="{'group_by':'currency_id'}" />
+			</xpath>
 			</field>
 		</record>
 
@@ -31,7 +59,7 @@
 
 		<!-- on_change event on supplier invoice rewrite date_invoice and date_delivery 
 			with document_date -->
-		<record model="ir.ui.view" id="account_invoice_supplier_form_ccg">
+<!-- 		<record model="ir.ui.view" id="account_invoice_supplier_form_ccg">
 			<field name="name">account.invoice.supplier.form.ccg</field>
 			<field name="model">account.invoice</field>
 			<field name="inherit_id" ref="account.invoice_supplier_form" />
@@ -47,14 +75,14 @@
 				<xpath expr="/form/sheet/notebook" position="inside">
 					<page string="Other Data">
 						<group>
- 							<field name="start_date" /> 
- 							<field name="end_date" /> 
+							<field name="start_date" />
+							<field name="end_date" />
 						</group>
 					</page>
 				</xpath>
 
 			</field>
 		</record>
-
+ -->
 	</data>
 </openerp>

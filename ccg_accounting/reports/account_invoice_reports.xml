@@ -28,6 +28,7 @@
 				eval="'ir.actions.report.xml,'+str(cadcam_document_currency_invoice_report)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
+			<field name="sequence" eval="1"/>
 		</record>
 	
 		<!--document currency invoice report without discount -->
@@ -57,6 +58,7 @@
 				eval="'ir.actions.report.xml,'+str(cadcam_document_currency_invoice_report_no_disc)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
+			<field name="sequence" eval="2"/>
 		</record>
 
 
@@ -87,6 +89,7 @@
 				eval="'ir.actions.report.xml,'+str(cadcam_dual_currency_invoice_report)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
+			<field name="sequence" eval="3"/>
 		</record>
 
 		<!--dual currency invoice report without discount -->
@@ -116,6 +119,7 @@
 				eval="'ir.actions.report.xml,'+str(cadcam_dual_currency_invoice_report_no_disc)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
+			<field name="sequence" eval="4"/>
 		</record>
 		
 		<!--advance invoice report  -->
@@ -139,11 +143,12 @@
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">account.invoice</field>
-			<field name="name">Document currency invoice</field>
+			<field name="name">Document currency advance invoice</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(cadcam_document_currency_advance_invoice_report)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
+			<field name="sequence" eval="5"/>
 		</record>
 
 	</data>

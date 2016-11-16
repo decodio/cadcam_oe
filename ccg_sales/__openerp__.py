@@ -40,7 +40,7 @@
               "views/predefined_text_view.xml",
               "reports/sale_order_wizard_reports.xml",
               "reports/sale_order_group_reports.xml",
-              "data/sale.order.predefined.text.csv",
+#              "data/sale.order.predefined.text.csv",
               ],
     'demo' : [],
     'installable': True,

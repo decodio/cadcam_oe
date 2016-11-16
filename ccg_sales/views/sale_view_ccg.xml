@@ -38,11 +38,11 @@
 			<field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-				<xpath
+<!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
-				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
+ -->				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
 					position="replace">
 				</xpath>
 				<!-- Hide original payment term field from document -->
@@ -71,6 +71,7 @@
 				<xpath
 					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
 					position="inside">
+					<field name="delivery_time_data" />
 					<field name="payment_data" />
 				</xpath>
 
@@ -79,6 +80,9 @@
 					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
 					position="replace">
 					<group string="Sales data" colspan="4" col="6">
+						<field name="delivery_time_data" colspan="5" />
+						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'delivery_time_data', 'dest_model':'sale.order'}" />
 						<field name="payment_data" colspan="5" />
 						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
 							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'payment_data', 'dest_model':'sale.order'}" />
@@ -95,12 +99,12 @@
 					</group>
 				</xpath>
 
-				<xpath
+<!-- 				<xpath
 					expr="//page[@string='Other Data']/group/button[@string='Add licence period']"
 					position="replace">
 				</xpath>
 
-				<!-- change behavior of line discount fields -->
+ -->				<!-- change behavior of line discount fields -->
 				<xpath
 					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount1_percent' and @groups='sale.group_discount_per_so_line']"
 					position="attributes">

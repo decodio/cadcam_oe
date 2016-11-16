@@ -1,0 +1,28 @@
+id,dest_field,lang/id,dest_model,name
+sale_order_predefined_text_001,payment_data,__export__.res_lang_176118,sale.order,"PLC - 15 dana od dana izdavanja računa, ALC - kvartalno, 15 dana od dana izdavanja računa"
+sale_order_predefined_text_002,payment_data,__export__.res_lang_934353,sale.order,"PLC - 15 dni po izstavitvi računa, ALC - kvartalno, 15 dni po izstavitvi računa"
+sale_order_predefined_text_003,payment_data,__export__.res_lang_176118,sale.order,"50% iznosa ponude kod narudžbe, 50% iznosa ponude 30 dana od narudžbe"
+sale_order_predefined_text_004,payment_data,__export__.res_lang_176118,sale.order,"PLC - 15 dana od datuma računa, ALC - kvartalno, 15 dana od datuma računa"
+sale_order_predefined_text_005,payment_data,base.lang_en,sale.order,"PLC - 15 days from the date of invoice, ALC - quarterly, 15 days from date of invoice"
+sale_order_predefined_text_006,payment_data,base.lang_en,sale.order,"50% of the offer amount when ordering, 50% of the offer amount  30 days of the order"
+sale_order_predefined_text_007,offer_validity_data,__export__.res_lang_176118,sale.order,Kraj tekućeg mjeseca
+sale_order_predefined_text_008,offer_validity_data,__export__.res_lang_934353,sale.order,Konec tega meseca
+sale_order_predefined_text_009,offer_validity_data,__export__.res_lang_176118,sale.order,Kraj sljedećeg mjeseca
+sale_order_predefined_text_010,offer_validity_data,__export__.res_lang_934353,sale.order,Konec naslednjega meseca
+sale_order_predefined_text_011,offer_validity_data,__export__.res_lang_934354,sale.order,Kraj tekućeg meseca
+sale_order_predefined_text_012,offer_validity_data,__export__.res_lang_934354,sale.order,Kraj sledećeg meseca
+sale_order_predefined_text_013,offer_validity_data,__export__.res_lang_934353,sale.order,30 dni oziroma konec naslednjega meseca
+sale_order_predefined_text_014,offer_validity_data,__export__.res_lang_934354,sale.order,30 dana ili kraj sledećeg meseca
+sale_order_predefined_text_015,offer_validity_data,base.lang_en,sale.order,End of of the current month
+sale_order_predefined_text_016,offer_validity_data,base.lang_en,sale.order,30 days or the end of next month
+sale_order_predefined_text_017,place_of_delivery_data,base.lang_en,sale.order,End of the next month
+sale_order_predefined_text_018,place_of_delivery_data,__export__.res_lang_176118,sale.order,Na adresu kupca
+sale_order_predefined_text_019,place_of_delivery_data,__export__.res_lang_934353,sale.order,Na naslov naročnika
+sale_order_predefined_text_020,place_of_delivery_data,__export__.res_lang_934354,sale.order,Na adresu kupca
+sale_order_predefined_text_021,place_of_delivery_data,base.lang_en,sale.order,At the customer's address
+sale_order_predefined_text_022,delivery_time_data,__export__.res_lang_176118,sale.order,1-2 tjedna od potpisa ugovora ili narudžbe
+sale_order_predefined_text_023,delivery_time_data,__export__.res_lang_176118,sale.order,5-7 radnih dana od datuma narudžbe
+sale_order_predefined_text_024,delivery_time_data,__export__.res_lang_934354,sale.order,1-2 nedelje od potpisa ugovora ili porudžbenice
+sale_order_predefined_text_025,delivery_time_data,__export__.res_lang_934353,sale.order,1-2 tedna po podpisu naročila ali pogodbe
+sale_order_predefined_text_026,delivery_time_data,base.lang_en,sale.order,1-2 weeks of signing the contract or order
+sale_order_predefined_text_027,delivery_time_data,base.lang_en,sale.order,5-7 working days from date of order

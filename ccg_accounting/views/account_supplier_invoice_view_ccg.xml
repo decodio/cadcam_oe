@@ -23,8 +23,8 @@
 				<xpath expr="/tree//field[@name='amount_total']" position="attributes">
 					<attribute name="invisible">0</attribute>
 				</xpath>
-				<xpath expr="/tree//field[@name='currency_id]" position="attributes">
-					<attribute name="groups"></attribute>
+				<xpath expr="/tree//field[@name='currency_id']" position="replace">
+					<field name="currency_id"/>
 				</xpath>
 			</field>
 		</record>

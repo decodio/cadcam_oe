@@ -5,7 +5,7 @@
 			<field name="name">account.invoice.tree.ccg</field>
 			<field name="model">account.invoice</field>
 			<field name="inherit_id" ref="sp_cadcam.account_invoice_tree_cadcam_inherit" />
-			<field name="priority" eval="20" />
+			<field name="priority" eval="12" />
 			<field name="arch" type="xml">
 				<xpath expr="/tree//field[@name='number']" position="replace">
 					<field name="internal_invoice_number" string="Invoice number" />
@@ -24,12 +24,13 @@
 				<xpath expr="/tree//field[@name='amount_total']" position="attributes">
 					<attribute name="invisible">0</attribute>
 				</xpath>
-				<xpath expr="/tree//field[@name='currency_id']" position="attributes">
-					<attribute name="groups"></attribute>
+				<xpath expr="/tree//field[@name='currency_id']" position="replace">
+					<field name="currency_id"/>
 				</xpath>
 
 			</field>
 		</record>
+		
 		<record id="account_invoice_filter_ccg" model="ir.ui.view">
 			<field name="name">account.invoice.filter.ccg</field>
 			<field name="model">account.invoice</field>

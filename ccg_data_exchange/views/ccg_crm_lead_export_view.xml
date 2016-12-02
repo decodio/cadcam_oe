@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="ccg_crm_lead_export_view">
+			<field name="name">ccg_crm_lead_export_view</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="ccg_sales.crm_case_form_view_oppor_profit_ccg" />
+			<field name="priority" eval="30" />
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page string="DS pipeline data">
+						<group string="Additional export data">
+							<group>
+								<field name="offer_name_id" string="Offer name"
+									options="{'no_create': True}" />
+							</group>
+							<group>
+								<field name="revenue_type" />
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

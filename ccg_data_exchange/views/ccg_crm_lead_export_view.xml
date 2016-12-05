@@ -11,8 +11,8 @@
 					<page string="DS pipeline data">
 						<group string="Additional export data">
 							<group>
-								<field name="offer_name_id" string="Offer name"
-									options="{'no_create': True}" />
+								<field name="offer_name_id" string="Offer name" />
+<!--									options="{'no_create': True}"  -->
 							</group>
 							<group>
 								<field name="revenue_type" />

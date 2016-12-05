@@ -35,6 +35,7 @@
               'wizards/ccg_crm_lead_export_wizard.xml',
               'views/ccg_crm_lead_export_view.xml',
               'data/ccg.offer.name.csv',
+              'data/ir.model.access.csv',
               ],
     'demo' : [],
     'installable': True,

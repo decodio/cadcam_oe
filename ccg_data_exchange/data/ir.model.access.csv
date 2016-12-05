@@ -1,0 +1,2 @@
+id,name,model_id/id,perm_read,perm_write,perm_create,perm_unlink,group_id/id
+ccg_offer_security_001,ccg_offer_name,ccg_data_exchange.model_ccg_offer_name,True,False,False,False,

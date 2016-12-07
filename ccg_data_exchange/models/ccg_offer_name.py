@@ -25,4 +25,6 @@ class ccg_offer_name(models.Model):
     _name = 'ccg.offer.name'
 
     name = fields.Char('Offer name', size=64)
+    priority = fields.Selection([('0', 'Normal'),('1', 'Favorite')],'Priority', default = '0')
+    
     

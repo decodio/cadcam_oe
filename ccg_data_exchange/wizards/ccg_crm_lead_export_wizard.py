@@ -22,8 +22,9 @@
 from openerp import models, fields, api, _
 from openerp.exceptions import Warning 
 from openerp.osv import orm, osv, fields
-from datetime import datetime
+from datetime import datetime, date
 import base64
+from mercurial.bundlerepo import instance
 
 class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     _name = 'crm.lead.export.for.ds'
@@ -34,6 +35,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'state': fields.selection((('choose', 'choose'), ('get', 'get'),)),
         'delimiter': fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default=','),
         'quotation': fields.selection((('"', '"'), ("'", "'"), ('', '(none)'),), default='"'),
+        'encoding':fields.selection((('utf-8', 'utf-8'), ("windows-1250", "windows-1250")), default='utf-8'),
     }
     
     _field_mappings = { 
@@ -74,10 +76,13 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         return row
 
     def _quotation(self):
-         return self.form['quotation']
+        return self.form['quotation']
  
     def _delimiter(self):
-         return self.form['delimiter']
+        return self.form['delimiter']
+     
+    def _encoding(self):
+        return self.form['encoding']
 
     def _get_opportunity_fields(self, cr, uid, context=None):
         ids = context.get('active_ids', [])
@@ -115,8 +120,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                 crm_field_name = value[2] or value[1]
                 field_value = row[crm_field_name]
                 if not field_value:
-                   raise osv.except_osv(_('Export Error!'), _('Missing field {} in opportunity {}!'.format(crm_field_name, opportunity_id)))
-
+                   raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(crm_field_name, opportunity_id)))
+                if crm_field_name == 'close_date':
+                    field_value = '{}/{}/{}'.format(field_value[0:4],field_value[5:7],field_value[8:10])
                 field_value_strnig = '{1}{0}{1}'.format(field_value, self._quotation())
                 line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   
@@ -135,7 +141,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         lines, filename = self._csv_lines(cr, uid, context)
         if header and lines:
             data = header + '\n' + lines
-        self.write(cr, uid, ids, {'data': base64.encodestring(data.encode('utf-8')), 
+        self.write(cr, uid, ids, {'data': base64.encodestring(data.encode(self._encoding())), 
                                   'name':filename, 
                                   'state':'get'}, context=context)
         # ovaj dictionary sadrži podatke kao i record 'action_export_opportunity_for_ds_wizard' u xml-u 

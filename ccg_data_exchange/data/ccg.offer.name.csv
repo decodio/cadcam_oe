@@ -1,170 +1,170 @@
-id,name
-offer_name_001,3DEXCITE_3DEXCITE DELTAGEN_On_Premise
-offer_name_002,3DEXPERIENCE_Design/Engineering_On_Premise
-offer_name_003,3DEXPERIENCE_Manufacturing/Production_On_Premise
-offer_name_004,3DEXPERIENCE_Private Cloud Design/Engineering_Public_Cloud
-offer_name_005,3DEXPERIENCE_Private Cloud Governance/Lifecycle_Public_Cloud
-offer_name_006,3DEXPERIENCE_Private Cloud Manufacturing/Production_Public_Cloud
-offer_name_007,3DEXPERIENCE_Private Cloud Simulation_Public_Cloud
-offer_name_008,3DEXPERIENCE_Public Cloud Design/Engineering_Public_Cloud
-offer_name_009,3DEXPERIENCE_Public Cloud for Academia_Public_Cloud
-offer_name_010,3DEXPERIENCE_Public Cloud Governance/Lifecycle_Public_Cloud
-offer_name_011,3DEXPERIENCE_Public Cloud Manufacturing/Production_Public_Cloud
-offer_name_012,3DEXPERIENCE_Public Cloud Simulation_Public_Cloud
-offer_name_013,3DEXPERIENCE_Simulation_On_Premise
-offer_name_014,3DVIA_3DVIA Studio Pro_On_Premise
-offer_name_015,3DVIA_3DVIA Virtools_On_Premise
-offer_name_016,ACADEMIA_Academia CATIA EDU V5_On_Premise
-offer_name_017,ACADEMIA_Academia DELMIA EDU V5_On_Premise
-offer_name_018,ACADEMIA_Academia ENOVIA SMARTEAM EDU V5_On_Premise
-offer_name_019,ACADEMIA_Dymola Academic Learn/Innovate_On_Premise
-offer_name_020,ACADEMIA_ICEM Surf for Academia _On_Premise
-offer_name_021,ACADEMIA_Public Cloud for Academia_Public_Cloud
-offer_name_022,ACADEMIA_V6 for Academia_On_Premise
-offer_name_023,AD_Co-design to target_On_Premise
-offer_name_024,AD_Engineered to Fly for Mid-Market_On_Premise
-offer_name_025,AD_Engineered to Fly for Mid-Market_Public_Cloud
-offer_name_026,AD_Engineered to Fly_On_Premise
-offer_name_027,AD_Test To perform_On_Premise
-offer_name_028,AD_Winning Program_On_Premise
-offer_name_029,AEC_Civil Design for Fabrication_On_Premise
-offer_name_030,AEC_Civil Design for Fabrication_Public_Cloud
-offer_name_031,AEC_Facade Design for Fabrication_On_Premise
-offer_name_032,AEC_Facade Design for Fabrication_Public_Cloud
-offer_name_033,AEC_Optimized Construction_On_Premise
-offer_name_034,BIOVIA_Biodesign_On_Premise
-offer_name_035,CATIA_CATIA Composer_On_Premise
-offer_name_036,CATIA_CATIA V4_On_Premise
-offer_name_037,CATIA_CATIA V5 PLM Express Edition 3 _On_Premise
-offer_name_038,CATIA_CATIA V5_On_Premise
-offer_name_039,CATIA_CATIA V6_On_Premise
-offer_name_040,CATIA_Design/Engineering_On_Premise
-offer_name_041,CATIA_Dymola_On_Premise
-offer_name_042,CATIA_ICEM Surf_On_Premise
-offer_name_043,CATIA_Private Cloud Design/Engineering_Public_Cloud
-offer_name_044,CATIA_Public Cloud Design/Engineering_Public_Cloud
-offer_name_045,CATIA_Reqtify - ControlBuild - AUTOSAR Builder_On_Premise
-offer_name_046,CG_My Collection (Fashion)_On_Premise
-offer_name_047,CG_My Product Portfolio (On Cloud)_Public_Cloud
-offer_name_048,CG_My Product Portfolio_On_Premise
-offer_name_049,CG_My Store_On_Premise
-offer_name_050,CPG_perfect Package (on Cloud)_Public_Cloud
-offer_name_051,CPG_Perfect Package_On_Premise
-offer_name_052,CPG_Perfect Product_On_Premise
-offer_name_053,CPG_Perfect Shelf_On_Premise
-offer_name_054,CPG_Perfect Shelf_Public_Cloud
-offer_name_055,DELMIA_DELMIA D5_On_Premise
-offer_name_056,DELMIA_DELMIA PLM Express V6_On_Premise
-offer_name_057,DELMIA_DELMIA Process Engineer_On_Premise
-offer_name_058,DELMIA_DELMIA V5 PLM Express products_On_Premise
-offer_name_059,DELMIA_DELMIA V5_On_Premise
-offer_name_060,DELMIA_DELMIA V6_On_Premise
-offer_name_061,DELMIA_DELMIA_APRISO_On_Premise
-offer_name_062,DELMIA_Manufacturing/Production_On_Premise
-offer_name_063,DELMIA_Private Cloud Manufacturing/Production_Public_Cloud
-offer_name_064,DELMIA_Public Cloud Manufacturing/Production_Public_Cloud
-offer_name_065,EDUCATION_Public Cloud Companion for 3DEXPERIENCE_Public_Cloud
-offer_name_066,EDUCATION_Public Cloud Companion for SIMULIA Abaqus_Public_Cloud
-offer_name_067,EDUCATION_V5 On Premise Companion _On_Premise
-offer_name_068,EDUCATION_V5 Online Companion_Public_Cloud
-offer_name_069,EDUCATION_V6 On Premise Companion_On_Premise
-offer_name_070,EDUCATION_V6 Online Companion_Public_Cloud
-offer_name_071,ENOVIA_3DEXPERIENCE Platform_On_Premise
-offer_name_072,ENOVIA_ENOVIA MatrixOne_On_Premise
-offer_name_073,ENOVIA_ENOVIA Product Manager_On_Premise
-offer_name_074,ENOVIA_ENOVIA SmarTeam V5_On_Premise
-offer_name_075,ENOVIA_ENOVIA Synchronicity V6_On_Premise
-offer_name_076,ENOVIA_ENOVIA Synchronicity_On_Premise
-offer_name_077,ENOVIA_ENOVIA V6_On_Premise
-offer_name_078,ENOVIA_ENOVIA VPLM V5_On_Premise
-offer_name_079,ENOVIA_ENOVIAvpm_On_Premise
-offer_name_080,ENOVIA_Governance/Lifecycle_On_Premise
-offer_name_081,ENOVIA_Private Cloud Governance/Lifecycle_Public_Cloud
-offer_name_082,ENOVIA_Public Cloud Governance/Lifecycle_Public_Cloud
-offer_name_083,EPU_Efficient Plant Operation_On_Premise
-offer_name_084,EPU_Integrated Plant Engineering_On_Premise
-offer_name_085,EPU_Intelligent Subsurface_On_Premise
-offer_name_086,EPU_Optimized Plant Construction_On_Premise
-offer_name_087,EPU_Single Source for Speed for Mid-Market_On_Premise
-offer_name_088,EPU_Single Source for Speed for Mid-Market_Public_Cloud
-offer_name_089,EPU_Single Source for Speed_On_Premise
-offer_name_090,EPU_Sustainable Wind Turbines (On Cloud)_Public_Cloud
-offer_name_091,EPU_Sustainable Wind Turbines_On_Premise
-offer_name_092,EXALEAD_Business Analytics_On_Premise
-offer_name_093,EXALEAD_EXALEAD ONE Legacy_On_Premise
-offer_name_094,EXALEAD_EXALEAD V6_On_Premise
-offer_name_095,EXALEAD_EXALEAD_On_Premise
-offer_name_096,FBS_Bid to Win_On_Premise
-offer_name_097,FBS_Engineered to Fly for Mid-Market_On_Premise
-offer_name_098,FBS_Engineered to Fly for Mid-Market_Public_Cloud
-offer_name_099,FBS_Engineered to Fly_On_Premise
-offer_name_100,FBS_Innovation Factory_On_Premise
-offer_name_101,FBS_Single Source for Speed for Mid-Market_On_Premise
-offer_name_102,FBS_Single Source for Speed for Mid-Market_Public_Cloud
-offer_name_103,FBS_Single Source for Speed_On_Premise
-offer_name_104,FBS_Smart and Synchronized_On_Premise
-offer_name_105,GEOVIA_GEOVIA GEMS_On_Premise
-offer_name_106,GEOVIA_GEOVIA Hub_On_Premise
-offer_name_107,GEOVIA_GEOVIA InSite_On_Premise
-offer_name_108,GEOVIA_GEOVIA MineSched_On_Premise
-offer_name_109,GEOVIA_GEOVIA Minex_On_Premise
-offer_name_110,GEOVIA_GEOVIA Surpac_On_Premise
-offer_name_111,GEOVIA_GEOVIA Whittle_On_Premise
-offer_name_112,GEOVIA_GEOVIA_On_Premise
-offer_name_113,HT_Business Operation Excellence_On_Premise
-offer_name_114,HT_HT body (On Cloud)_Public_Cloud
-offer_name_115,HT_HT body_On_Premise
-offer_name_116,HT_Imagination Wave_On_Premise
-offer_name_117,HT_Silicon Thinking_On_Premise
-offer_name_118,HT_Smarter Faster Lighter_On_Premise
-offer_name_119,HT_Social Ideation_On_Premise
-offer_name_120,HT_Social Ideation_Public_Cloud
-offer_name_121,IE_Simple Solution Selection_On_Premise
-offer_name_122,IE_Single Source for Speed for Mid-Market_On_Premise
-offer_name_123,IE_Single Source for Speed for Mid-Market_Public_Cloud
-offer_name_124,IE_Single Source for Speed_On_Premise
-offer_name_125,IE_Smart and Synchronized_On_Premise
-offer_name_126,LS_License to Cure for Medical Device_On_Premise
-offer_name_127,LS_Single Source for Speed for Mid-Market_On_Premise
-offer_name_128,LS_Single Source for Speed for Mid-Market_Public_Cloud
-offer_name_129,LS_Single Source for Speed_On_Premise
-offer_name_130,LS_Smarter Faster Lighter_On_Premise
-offer_name_131,LS_Social Ideation_On_Premise
-offer_name_132,LS_Social Ideation_Public_Cloud
-offer_name_133,MO_Designed For Sea_On_Premise
-offer_name_134,MO_Express For Sea_Public_Cloud
-offer_name_135,MO_On Time To Sea_On_Premise
-offer_name_136,MO_Optimized Production For Sea_On_Premise
-offer_name_137,MO_Single Source for Speed for Mid-Market_On_Premise
-offer_name_138,MO_Single Source for Speed for Mid-Market_Public_Cloud
-offer_name_139,MO_Single Source for Speed_On_Premise
-offer_name_140,NETVIBES_NETVIBES NV1 Online_Public_Cloud
-offer_name_141,NETVIBES_NETVIBES NV1_On_Premise
-offer_name_142,NETVIBES_NETVIBES NV1_Public_Cloud
-offer_name_143,NR_Efficient Plant Operation_On_Premise
-offer_name_144,NR_Integrated Plant Engineering_On_Premise
-offer_name_145,NR_Lean Mine Construction_On_Premise
-offer_name_146,NR_Perfect Mine and Plant_On_Premise
-offer_name_147,PLM Express_CATIA V5 PLM Express Edition 3 _On_Premise
-offer_name_148,PLM Express_DELMIA V5 PLM Express products_On_Premise
-offer_name_149,PLM Express_V6 PLM Express Products_On_Premise
-offer_name_150,QUINTIQ_Quintiq_On_Premise
-offer_name_151,SIMULIA_Private Cloud Simulation_Public_Cloud
-offer_name_152,SIMULIA_Public Cloud Simulation_Public_Cloud
-offer_name_153,SIMULIA_Simulation_On_Premise
-offer_name_154,SIMULIA_SIMULIA Abaqus Unified FEA_On_Premise
-offer_name_155,SIMULIA_SIMULIA Isight_On_Premise
-offer_name_156,SIMULIA_SIMULIA Simpack_On_Premise
-offer_name_157,SIMULIA_SIMULIA Simpoe_On_Premise
-offer_name_158,SIMULIA_SIMULIA Tosca_On_Premise
-offer_name_159,SIMULIA_SIMULIA V5_On_Premise
-offer_name_160,SIMULIA_SIMULIA V6_On_Premise
-offer_name_161,SOLIDWORKS_DraftSight Services_On_Premise
-offer_name_162,TM_Bid to Win for Mid-Market_On_Premise
-offer_name_163,TM_Bid to Win for Mid-Market_Public_Cloud
-offer_name_164,TM_Bid to Win_On_Premise
-offer_name_165,TM_Global Validation Proven Performance_On_Premise
-offer_name_166,TM_Innovation on Track_On_Premise
-offer_name_167,"TM_Modular, Glocal & Secure_On_Premise"
-offer_name_168,"TM_Smart, Safe & Connected_On_Premise"
-offer_name_169,TM_Target Zero Defect_On_Premise
+id,name,priority
+offer_name_001,3DEXCITE_3DEXCITE DELTAGEN_On_Premise,0
+offer_name_002,3DEXPERIENCE_Design/Engineering_On_Premise,1
+offer_name_003,3DEXPERIENCE_Manufacturing/Production_On_Premise,0
+offer_name_004,3DEXPERIENCE_Private Cloud Design/Engineering_Public_Cloud,0
+offer_name_005,3DEXPERIENCE_Private Cloud Governance/Lifecycle_Public_Cloud,0
+offer_name_006,3DEXPERIENCE_Private Cloud Manufacturing/Production_Public_Cloud,0
+offer_name_007,3DEXPERIENCE_Private Cloud Simulation_Public_Cloud,0
+offer_name_008,3DEXPERIENCE_Public Cloud Design/Engineering_Public_Cloud,0
+offer_name_009,3DEXPERIENCE_Public Cloud for Academia_Public_Cloud,0
+offer_name_010,3DEXPERIENCE_Public Cloud Governance/Lifecycle_Public_Cloud,0
+offer_name_011,3DEXPERIENCE_Public Cloud Manufacturing/Production_Public_Cloud,0
+offer_name_012,3DEXPERIENCE_Public Cloud Simulation_Public_Cloud,0
+offer_name_013,3DEXPERIENCE_Simulation_On_Premise,0
+offer_name_014,3DVIA_3DVIA Studio Pro_On_Premise,0
+offer_name_015,3DVIA_3DVIA Virtools_On_Premise,0
+offer_name_016,ACADEMIA_Academia CATIA EDU V5_On_Premise,1
+offer_name_017,ACADEMIA_Academia DELMIA EDU V5_On_Premise,1
+offer_name_018,ACADEMIA_Academia ENOVIA SMARTEAM EDU V5_On_Premise,1
+offer_name_019,ACADEMIA_Dymola Academic Learn/Innovate_On_Premise,0
+offer_name_020,ACADEMIA_ICEM Surf for Academia _On_Premise,0
+offer_name_021,ACADEMIA_Public Cloud for Academia_Public_Cloud,0
+offer_name_022,ACADEMIA_V6 for Academia_On_Premise,0
+offer_name_023,AD_Co-design to target_On_Premise,0
+offer_name_024,AD_Engineered to Fly for Mid-Market_On_Premise,1
+offer_name_025,AD_Engineered to Fly for Mid-Market_Public_Cloud,1
+offer_name_026,AD_Engineered to Fly_On_Premise,0
+offer_name_027,AD_Test To perform_On_Premise,0
+offer_name_028,AD_Winning Program_On_Premise,0
+offer_name_029,AEC_Civil Design for Fabrication_On_Premise,0
+offer_name_030,AEC_Civil Design for Fabrication_Public_Cloud,0
+offer_name_031,AEC_Facade Design for Fabrication_On_Premise,0
+offer_name_032,AEC_Facade Design for Fabrication_Public_Cloud,0
+offer_name_033,AEC_Optimized Construction_On_Premise,0
+offer_name_034,BIOVIA_Biodesign_On_Premise,1
+offer_name_035,CATIA_CATIA Composer_On_Premise,0
+offer_name_036,CATIA_CATIA V4_On_Premise,1
+offer_name_037,CATIA_CATIA V5 PLM Express Edition 3 _On_Premise,1
+offer_name_038,CATIA_CATIA V5_On_Premise,1
+offer_name_039,CATIA_CATIA V6_On_Premise,1
+offer_name_040,CATIA_Design/Engineering_On_Premise,0
+offer_name_041,CATIA_Dymola_On_Premise,0
+offer_name_042,CATIA_ICEM Surf_On_Premise,0
+offer_name_043,CATIA_Private Cloud Design/Engineering_Public_Cloud,0
+offer_name_044,CATIA_Public Cloud Design/Engineering_Public_Cloud,0
+offer_name_045,CATIA_Reqtify - ControlBuild - AUTOSAR Builder_On_Premise,0
+offer_name_046,CG_My Collection (Fashion)_On_Premise,0
+offer_name_047,CG_My Product Portfolio (On Cloud)_Public_Cloud,0
+offer_name_048,CG_My Product Portfolio_On_Premise,0
+offer_name_049,CG_My Store_On_Premise,0
+offer_name_050,CPG_perfect Package (on Cloud)_Public_Cloud,0
+offer_name_051,CPG_Perfect Package_On_Premise,0
+offer_name_052,CPG_Perfect Product_On_Premise,0
+offer_name_053,CPG_Perfect Shelf_On_Premise,0
+offer_name_054,CPG_Perfect Shelf_Public_Cloud,0
+offer_name_055,DELMIA_DELMIA D5_On_Premise,0
+offer_name_056,DELMIA_DELMIA PLM Express V6_On_Premise,0
+offer_name_057,DELMIA_DELMIA Process Engineer_On_Premise,0
+offer_name_058,DELMIA_DELMIA V5 PLM Express products_On_Premise,1
+offer_name_059,DELMIA_DELMIA V5_On_Premise,1
+offer_name_060,DELMIA_DELMIA V6_On_Premise,1
+offer_name_061,DELMIA_DELMIA_APRISO_On_Premise,0
+offer_name_062,DELMIA_Manufacturing/Production_On_Premise,0
+offer_name_063,DELMIA_Private Cloud Manufacturing/Production_Public_Cloud,0
+offer_name_064,DELMIA_Public Cloud Manufacturing/Production_Public_Cloud,0
+offer_name_065,EDUCATION_Public Cloud Companion for 3DEXPERIENCE_Public_Cloud,0
+offer_name_066,EDUCATION_Public Cloud Companion for SIMULIA Abaqus_Public_Cloud,0
+offer_name_067,EDUCATION_V5 On Premise Companion _On_Premise,0
+offer_name_068,EDUCATION_V5 Online Companion_Public_Cloud,0
+offer_name_069,EDUCATION_V6 On Premise Companion_On_Premise,0
+offer_name_070,EDUCATION_V6 Online Companion_Public_Cloud,0
+offer_name_071,ENOVIA_3DEXPERIENCE Platform_On_Premise,1
+offer_name_072,ENOVIA_ENOVIA MatrixOne_On_Premise,0
+offer_name_073,ENOVIA_ENOVIA Product Manager_On_Premise,1
+offer_name_074,ENOVIA_ENOVIA SmarTeam V5_On_Premise,0
+offer_name_075,ENOVIA_ENOVIA Synchronicity V6_On_Premise,0
+offer_name_076,ENOVIA_ENOVIA Synchronicity_On_Premise,0
+offer_name_077,ENOVIA_ENOVIA V6_On_Premise,1
+offer_name_078,ENOVIA_ENOVIA VPLM V5_On_Premise,0
+offer_name_079,ENOVIA_ENOVIAvpm_On_Premise,0
+offer_name_080,ENOVIA_Governance/Lifecycle_On_Premise,0
+offer_name_081,ENOVIA_Private Cloud Governance/Lifecycle_Public_Cloud,0
+offer_name_082,ENOVIA_Public Cloud Governance/Lifecycle_Public_Cloud,0
+offer_name_083,EPU_Efficient Plant Operation_On_Premise,0
+offer_name_084,EPU_Integrated Plant Engineering_On_Premise,0
+offer_name_085,EPU_Intelligent Subsurface_On_Premise,0
+offer_name_086,EPU_Optimized Plant Construction_On_Premise,0
+offer_name_087,EPU_Single Source for Speed for Mid-Market_On_Premise,1
+offer_name_088,EPU_Single Source for Speed for Mid-Market_Public_Cloud,1
+offer_name_089,EPU_Single Source for Speed_On_Premise,0
+offer_name_090,EPU_Sustainable Wind Turbines (On Cloud)_Public_Cloud,0
+offer_name_091,EPU_Sustainable Wind Turbines_On_Premise,0
+offer_name_092,EXALEAD_Business Analytics_On_Premise,0
+offer_name_093,EXALEAD_EXALEAD ONE Legacy_On_Premise,0
+offer_name_094,EXALEAD_EXALEAD V6_On_Premise,0
+offer_name_095,EXALEAD_EXALEAD_On_Premise,0
+offer_name_096,FBS_Bid to Win_On_Premise,0
+offer_name_097,FBS_Engineered to Fly for Mid-Market_On_Premise,0
+offer_name_098,FBS_Engineered to Fly for Mid-Market_Public_Cloud,0
+offer_name_099,FBS_Engineered to Fly_On_Premise,0
+offer_name_100,FBS_Innovation Factory_On_Premise,0
+offer_name_101,FBS_Single Source for Speed for Mid-Market_On_Premise,0
+offer_name_102,FBS_Single Source for Speed for Mid-Market_Public_Cloud,0
+offer_name_103,FBS_Single Source for Speed_On_Premise,0
+offer_name_104,FBS_Smart and Synchronized_On_Premise,0
+offer_name_105,GEOVIA_GEOVIA GEMS_On_Premise,0
+offer_name_106,GEOVIA_GEOVIA Hub_On_Premise,0
+offer_name_107,GEOVIA_GEOVIA InSite_On_Premise,0
+offer_name_108,GEOVIA_GEOVIA MineSched_On_Premise,0
+offer_name_109,GEOVIA_GEOVIA Minex_On_Premise,0
+offer_name_110,GEOVIA_GEOVIA Surpac_On_Premise,0
+offer_name_111,GEOVIA_GEOVIA Whittle_On_Premise,0
+offer_name_112,GEOVIA_GEOVIA_On_Premise,0
+offer_name_113,HT_Business Operation Excellence_On_Premise,0
+offer_name_114,HT_HT body (On Cloud)_Public_Cloud,0
+offer_name_115,HT_HT body_On_Premise,0
+offer_name_116,HT_Imagination Wave_On_Premise,0
+offer_name_117,HT_Silicon Thinking_On_Premise,0
+offer_name_118,HT_Smarter Faster Lighter_On_Premise,0
+offer_name_119,HT_Social Ideation_On_Premise,0
+offer_name_120,HT_Social Ideation_Public_Cloud,0
+offer_name_121,IE_Simple Solution Selection_On_Premise,0
+offer_name_122,IE_Single Source for Speed for Mid-Market_On_Premise,0
+offer_name_123,IE_Single Source for Speed for Mid-Market_Public_Cloud,0
+offer_name_124,IE_Single Source for Speed_On_Premise,0
+offer_name_125,IE_Smart and Synchronized_On_Premise,0
+offer_name_126,LS_License to Cure for Medical Device_On_Premise,0
+offer_name_127,LS_Single Source for Speed for Mid-Market_On_Premise,0
+offer_name_128,LS_Single Source for Speed for Mid-Market_Public_Cloud,0
+offer_name_129,LS_Single Source for Speed_On_Premise,0
+offer_name_130,LS_Smarter Faster Lighter_On_Premise,0
+offer_name_131,LS_Social Ideation_On_Premise,0
+offer_name_132,LS_Social Ideation_Public_Cloud,0
+offer_name_133,MO_Designed For Sea_On_Premise,0
+offer_name_134,MO_Express For Sea_Public_Cloud,0
+offer_name_135,MO_On Time To Sea_On_Premise,0
+offer_name_136,MO_Optimized Production For Sea_On_Premise,0
+offer_name_137,MO_Single Source for Speed for Mid-Market_On_Premise,0
+offer_name_138,MO_Single Source for Speed for Mid-Market_Public_Cloud,0
+offer_name_139,MO_Single Source for Speed_On_Premise,0
+offer_name_140,NETVIBES_NETVIBES NV1 Online_Public_Cloud,0
+offer_name_141,NETVIBES_NETVIBES NV1_On_Premise,0
+offer_name_142,NETVIBES_NETVIBES NV1_Public_Cloud,0
+offer_name_143,NR_Efficient Plant Operation_On_Premise,0
+offer_name_144,NR_Integrated Plant Engineering_On_Premise,0
+offer_name_145,NR_Lean Mine Construction_On_Premise,0
+offer_name_146,NR_Perfect Mine and Plant_On_Premise,0
+offer_name_147,PLM Express_CATIA V5 PLM Express Edition 3 _On_Premise,1
+offer_name_148,PLM Express_DELMIA V5 PLM Express products_On_Premise,1
+offer_name_149,PLM Express_V6 PLM Express Products_On_Premise,0
+offer_name_150,QUINTIQ_Quintiq_On_Premise,0
+offer_name_151,SIMULIA_Private Cloud Simulation_Public_Cloud,0
+offer_name_152,SIMULIA_Public Cloud Simulation_Public_Cloud,0
+offer_name_153,SIMULIA_Simulation_On_Premise,1
+offer_name_154,SIMULIA_SIMULIA Abaqus Unified FEA_On_Premise,1
+offer_name_155,SIMULIA_SIMULIA Isight_On_Premise,1
+offer_name_156,SIMULIA_SIMULIA Simpack_On_Premise,1
+offer_name_157,SIMULIA_SIMULIA Simpoe_On_Premise,1
+offer_name_158,SIMULIA_SIMULIA Tosca_On_Premise,1
+offer_name_159,SIMULIA_SIMULIA V5_On_Premise,1
+offer_name_160,SIMULIA_SIMULIA V6_On_Premise,1
+offer_name_161,SOLIDWORKS_DraftSight Services_On_Premise,0
+offer_name_162,TM_Bid to Win for Mid-Market_On_Premise,1
+offer_name_163,TM_Bid to Win for Mid-Market_Public_Cloud,1
+offer_name_164,TM_Bid to Win_On_Premise,1
+offer_name_165,TM_Global Validation Proven Performance_On_Premise,0
+offer_name_166,TM_Innovation on Track_On_Premise,0
+offer_name_167,"TM_Modular, Glocal & Secure_On_Premise",0
+offer_name_168,"TM_Smart, Safe & Connected_On_Premise",0
+offer_name_169,TM_Target Zero Defect_On_Premise,0

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="ccg_offer_name_form" model="ir.ui.view" >
+			<field name="name">ccg.offer.name.form</field>
+			<field name="model">ccg.offer.name</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Offer Name">
+					<group name="Text" colspan="4" col="4">
+						<field name="name" />
+						<field name="priority" widget="priority"/>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ccg_offer_name_tree" model="ir.ui.view" >
+			<field name="name">ccg.offer.name.treee</field>
+			<field name="model">ccg.offer.name</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Offer Name">
+						<field name="name" />
+						<field name="priority" widget="priority"/>
+				</tree>
+			</field>
+		</record>
+
+       <record id="ccg_offer_name_filter" model="ir.ui.view">
+            <field name="name">ccg.offer.name.filter</field>
+            <field name="model">ccg.offer.name</field>
+            <field name="arch" type="xml">
+                <search string="Search Offer Name">
+                    <filter string="Favorites" name="favorite" domain="[('priority','=','1')]"/>
+                </search>
+            </field>
+        </record>
+				
+		<record id="ccg_offer_name_action" model="ir.actions.act_window">
+			<field name="name">ccg.offer.name.action</field>
+			<field name="res_model">ccg.offer.name</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="ccg_offer_name_filter" />
+			<field name="context">{'search_default_favorite':1}</field> <!-- po defaultu će biti uključen filter name="favorite" iz Search view-a-->
+		</record>
+
+		<menuitem id="ccg_offer_name_menu" parent="other_document_data.menu_other_sale_data"
+			name="Offer Name" action="ccg_offer_name_action" />
+	</data>
+
+</openerp>

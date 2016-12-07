@@ -16,6 +16,7 @@
 						</div>
 						<separator string="csv options" />
 						<group colspan="4" cols="4">
+							<field name="encoding" string="File encoding" />
 							<field name="delimiter" string='Field delimiter' />
 							<field name="quotation" string='Text quotation' />
 						</group>

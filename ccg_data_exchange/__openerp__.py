@@ -34,6 +34,7 @@
     'data' : [
               'wizards/ccg_crm_lead_export_wizard.xml',
               'views/ccg_crm_lead_export_view.xml',
+              'views/ccg_offer_name_view.xml',
               'data/ccg.offer.name.csv',
               'data/ir.model.access.csv',
               ],

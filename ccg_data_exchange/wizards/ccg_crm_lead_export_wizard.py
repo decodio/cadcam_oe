@@ -121,7 +121,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                 if not field_value:
                    raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(crm_field_name, opportunity_id)))
                 if crm_field_name == 'close_date':
-                    field_value = '{}/{}/{}'.format(field_value[0:4],field_value[5:7],field_value[8:10])
+                    field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
                 field_value_strnig = '{1}{0}{1}'.format(field_value, self._quotation())
                 line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   

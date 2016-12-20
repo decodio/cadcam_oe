@@ -24,6 +24,7 @@ from openerp.exceptions import Warning
 from openerp.osv import orm, osv, fields
 from datetime import datetime, date
 import base64
+from pyxb import namespace
 
 class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     _name = 'crm.lead.export.for.ds'
@@ -37,19 +38,23 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'encoding':fields.selection((('utf-8', 'utf-8'), ("windows-1250", "windows-1250")), default='utf-8'),
     }
     
-    _field_mappings = { 
-        'CustomerName':('res_partner', 'name', 'partner_name'),
-        'CustomerCity':('res_partner', 'city', 'city'),
-        'CustomerCountry':('res_country', 'name', 'country'),
-        'CustomerZipPostcode':('res_partner', 'zip', 'zip'),
-        'OfferName':('ccg_offer_name', 'name', 'offer_name'),
-        'RevenueAmount':('crm_lead', 'planned_revenue', 'planned_revenue'),
-        'RevenueCurrency':('', "'EUR'", 'currency'),
-        'PartnerOpportunityID':('crm_lead', 'lead_ref_no', 'opportunity_id'),
-        'SalesStage':('crm_case_stage', 'name', 'sales_stage'),
-        'ForecastCategory':('crm_case_stage', 'name', 'forecast_category'),
-        'CloseDate':('crm_lead', 'date_deadline', 'close_date'),
-        'RevenueType':('crm_lead', 'revenue_type', 'revenue_type'),
+    _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active
+        'CustomerName':('res_partner', 'name', 'partner_name', 'Customer', True ),
+        'CustomerCity':('res_partner', 'city', 'city', 'City', True),
+        'CustomerCountry':('res_country', 'name', 'country', 'Country', True),
+        'CustomerZipPostcode':('res_partner', 'zip', 'zip', 'ZIP', True),
+        'OfferName':('ccg_offer_name', 'name', 'offer_name', 'Offer name', True),
+        'RevenueAmount':('crm_lead', 'ds_expected_revenue', 'planned_revenue', 'Expected revenue for DS', True),
+        'RevenueCurrency':('', "'EUR'", 'currency', 'Currency', True),
+        'PartnerOpportunityID':('crm_lead', 'lead_ref_no', 'opportunity_id', 'Opportunity ID', True),
+        'SalesStage':('crm_case_stage', 'name', 'sales_stage', 'Sales stage', True),
+        'ForecastCategory':('crm_case_stage', 'name', 'forecast_category', 'Forecast category', True),
+        'CloseDate':('crm_lead', 'date_deadline', 'close_date', 'Expected closing', True),
+        'RevenueType':('crm_lead', 'revenue_type', 'revenue_type', 'Revenue type', True),
+        'CustomerContactName':('partner_contact', 'name', 'contact_name', 'Customer Contact Name', False),
+        'CustomerContactFirstName':('', "''", 'contact_first_name', 'Customer Contact First Name', True),
+        'CustomerContactLastName':('', "''", 'contact_last_name', 'Customer Contact LastName', True),
+        'CustomerContactEmail':('partner_contact', 'email', 'contact_email', 'Customer Contact Email', True),
         }
     
     _stage_mapping = {
@@ -73,7 +78,20 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         new_forecast_category = self._stage_mapping[forecast_category][1]
         row.update({'sales_stage':new_stage, 'forecast_category':new_forecast_category})
         return row
-
+    
+    def split_contact_name(self, cr, uid, row, context=None):
+        contact_name = row['contact_name']
+        if contact_name:
+            names = contact_name.split()
+            first_name = names[0]
+            last_name = " ".join([ln for ln in names[1:] if ln])
+        else:
+            opportunity_id = row['opportunity_id']
+            field_label = self._field_mappings['CustomerContactName'][3]
+            raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
+        row.update({'contact_first_name':first_name, 'contact_last_name':last_name})
+        return row
+    
     def _quotation(self):
         return self.form['quotation']
  
@@ -98,10 +116,12 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         
         sql = '''
         SELECT {}
-        FROM crm_lead LEFT JOIN res_partner ON (crm_lead.partner_id=res_partner.id)
+        FROM crm_lead 
+        LEFT JOIN res_partner ON (crm_lead.partner_id=res_partner.id)
         LEFT JOIN crm_case_stage ON (crm_lead.stage_id = crm_case_stage.id) 
         LEFT JOIN res_country ON (res_partner.country_id = res_country.id)
         LEFT JOIN ccg_offer_name ON (crm_lead.offer_name_id = ccg_offer_name.id)
+        LEFT JOIN res_partner partner_contact ON (crm_lead.contact_name_id=partner_contact.id)
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
         cr.execute(sql)
@@ -114,16 +134,19 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             line = []
             opportunity_id = row_original['opportunity_id']
             row = self.map_stage(cr, uid, row_original, context)
+            row = self.split_contact_name(cr, uid, row, context)
             for ds_field_name in self._field_mappings.keys():
                 value = self._field_mappings[ds_field_name]
-                crm_field_name = value[2] or value[1]
-                field_value = row[crm_field_name]
-                if not field_value:
-                   raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(crm_field_name, opportunity_id)))
-                if crm_field_name == 'close_date':
-                    field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
-                field_value_strnig = '{1}{0}{1}'.format(field_value, self._quotation())
-                line.append(field_value_strnig)
+                if value[4]: # is active
+                    crm_field_name = value[2] or value[1]
+                    field_value = row[crm_field_name]
+                    if not field_value:
+                       field_label = value[3]
+                       raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
+                    if crm_field_name == 'close_date':
+                        field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
+                    field_value_strnig = '{1}{0}{1}'.format(field_value, self._quotation())
+                    line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   
             lines.append(csv_line)
         if len(lines) > 1:
@@ -136,7 +159,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         if context is None:
             context = {}
         self.form = self.read(cr, uid, ids)[0]
-        header = self._delimiter().join(self._field_mappings.keys())
+        header = self._delimiter().join([k for k in self._field_mappings.keys() if self._field_mappings[k][4]])
         lines, filename = self._csv_lines(cr, uid, context)
         if header and lines:
             data = header + '\n' + lines

@@ -20,6 +20,7 @@
 ##############################################################################
 
 from openerp import models, fields, api, _
+import openerp.addons.decimal_precision as dp
 
 class crm_lead(models.Model):
     _name = 'crm.lead'
@@ -27,4 +28,7 @@ class crm_lead(models.Model):
  
     offer_name_id = fields.Many2one('ccg.offer.name')
     revenue_type = fields.Selection([('PLC', 'PLC'),('YLC', 'YLC')], default = 'PLC', required=True)
+    contact_name_id = fields.Many2one('res.partner')
+    ds_expected_revenue = fields.Float('DS Revenue', digits=dp.get_precision('Account'))
+    
     

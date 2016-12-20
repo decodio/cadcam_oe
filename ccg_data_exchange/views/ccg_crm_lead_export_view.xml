@@ -9,15 +9,15 @@
 			<field name="arch" type="xml">
 				<xpath expr="//notebook" position="inside">
 					<page string="DS pipeline data">
-						<group string="Additional export data">
-							<group>
-								<field name="offer_name_id" string="Offer name"
-									options="{'no_create': True, 'no_create_edit': True, 'limit':5}" 
+						<group string="Additional export data" colspan="4" col="6">
+								<field name="offer_name_id" string="Offer name" colspan="3"
+									options="{'no_create': True, 'no_create_edit': True, 'limit':10}" 
 									context="{'search_default_favorite':True}"/>
-							</group>
-							<group>
-								<field name="revenue_type" />
-							</group>
+								<field name="revenue_type" colspan="3" />
+								<field name="contact_name_id" string = "Customer contact" colspan="3"
+									options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
+									domain="[('parent_id','=', partner_id)]"  />
+								<field name="ds_expected_revenue"  string="DS Revenue (EUR)" colspan="3" />
 						</group>
 					</page>
 				</xpath>

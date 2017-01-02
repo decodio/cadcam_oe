@@ -37,6 +37,8 @@
               'views/ccg_offer_name_view.xml',
               'data/ccg.offer.name.csv',
               'data/ir.model.access.csv',
+              
+              'wizards/ccg_logika_export_wizard.xml'
               ],
     'demo' : [],
     'installable': True,

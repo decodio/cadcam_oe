@@ -20,3 +20,4 @@
 ##############################################################################
 
 import ccg_crm_lead_export_wizard
+import ccg_logika_export_wizard

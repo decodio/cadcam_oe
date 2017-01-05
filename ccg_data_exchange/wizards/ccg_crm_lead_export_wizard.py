@@ -36,6 +36,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default=','),
         'quotation' : fields.selection((('"', '"'), ("'", "'"), ('', '(none)'),), default='"'),
         'encoding'  : fields.selection((('utf-8', 'utf-8'), ("windows-1250", "windows-1250")), default='utf-8'),
+        'decimal'  :  fields.selection((('.', '(dot)'), (',', ', (comma)')), default='.'),
     }
     
     _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active, 5-required
@@ -101,6 +102,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
      
     def _encoding(self):
         return self.form['encoding']
+    
+    def _decimal(self):
+        return self.form['decimal']
 
     def _get_opportunity_fields(self, cr, uid, context=None):
         ids = context.get('active_ids', [])

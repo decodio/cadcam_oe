@@ -11,7 +11,7 @@
 						<field name="state" invisible="1" />
 						<div colspan="4" cols="1">
 							<b>This wizard helps you to prepare and export invoice(s) as
-								.csv file for imoort into TOTAL program
+								.csv file for import into TOTAL program
 							</b>
 						</div>
 						<separator string="csv options" />
@@ -19,6 +19,7 @@
 							<field name="encoding" string="File encoding" />
 							<field name="delimiter" string='Field delimiter' />
 							<field name="quotation" string='Text quotation' />
+							<field name="decimal" string='Decimal separator' />
 						</group>
 
 						<footer>

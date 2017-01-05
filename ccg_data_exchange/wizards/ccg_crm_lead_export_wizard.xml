@@ -19,6 +19,7 @@
 							<field name="encoding" string="File encoding" />
 							<field name="delimiter" string='Field delimiter' />
 							<field name="quotation" string='Text quotation' />
+							<field name="decimal" string='Decimal separator' />
 						</group>
 
 						<footer>

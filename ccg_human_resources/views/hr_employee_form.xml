@@ -14,8 +14,22 @@
 						<field name="end_date"
 							attrs="{'invisible': [('contract_duration', '=', 'unlimited')]}" />
 					</group>
+					<group string="HR manager" name="hr_manager"  widget="many2many">
+						<field name="hr_manager_ids" >
+							<tree>
+								<field name="name" />
+							</tree>
+						</field>
+						<field name='receivers_list'/> 
+					</group>
+					
 				</xpath>
 				
+				
+			<!--  add hr_manager_ids field -->
+				<xpath expr="//page[@string='HR Settings']/group" position="inside">
+				</xpath>
+			
 			<!--  hide some fields on employee form -->
 			
 			<xpath expr="//notebook/page[@string='Personal Information']//field[@name='country_id']" position="attributes">

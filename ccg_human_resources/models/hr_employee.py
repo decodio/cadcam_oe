@@ -27,33 +27,45 @@ from openerp.tools.translate import _
 class hr_employee_ccg(osv.Model):
     _name = "hr.employee"
     _inherit = "hr.employee"
+
+    def _get_receivers_list(self, cr, uid, ids, field_name, field_value, context=None):
+        
+        ret = {}
+        reclist = []
+        for employee in self.browse(cr, uid, ids):
+            for manager in employee.hr_manager_ids:
+                reclist.append(manager.partner_id.id)
+                print reclist
+                l= ','.join([ str(l) for l in reclist])
+            ret.update({employee.id:l})
+            
+        return ret
+    
     _columns = {
                 'contract_duration': fields.selection([('limited','Limited'),('unlimited','Unlimited')], 'Contract duration', default = 'unlimited'),
                 'start_date' : fields.date('Start date', required=True),
                 'end_date' : fields.date('End date'),
+                'hr_manager_ids' :fields.many2many('res.users', 'hr_employee_user_rel', 'employee_id', 'user_id', 'HR Managers',help='Users which receives HR notifications from employee'), 
+                'receivers_list' : fields.function(_get_receivers_list, type='char', string='Receivers', readonly=True, store=True)
                 }
 
     _offset = 30 #days
     
-    def get_contracts_to_expire(self, cr, uid, days, context={}):
+    
+    def _get_contracts_to_expire(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
         args = [('end_date','=', check_date)]
         ids=self.search(cr, uid, args, context=context)
         return ids
 
-    def mail_recipients(self, cr, uid, employee_ids, context={}):
+    def _get_mail_recipients(self, cr, uid, employee_ids, context={}):
         """
-            Mail recipients are users with HR manager role in company of employee
+            Mail recipients are specified in 'recievers_list' field
         """
         recipients = {}
-        # iterate over employee_ids and get employee company_id
-        # get HR manager(s) of company
-        # add employee_id with user_id list
-        #{ user_id: [employee_id, employee_id,...]}
-        # update recipients dictionary
         
         pass
     
-    def check_contract(self, cr, uid, context={}):
+    def _check_contract(self, cr, uid, context={}):
         pass
     

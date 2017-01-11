@@ -29,18 +29,16 @@ class hr_employee_ccg(osv.Model):
     _inherit = "hr.employee"
 
     def _get_receivers_list(self, cr, uid, ids, field_name, field_value, context=None):
-        
         ret = {}
-        reclist = []
         for employee in self.browse(cr, uid, ids):
+            l = ''
+            reclist = []
             for manager in employee.hr_manager_ids:
                 reclist.append(manager.partner_id.id)
-                print reclist
-                l= ','.join([ str(l) for l in reclist])
+                l = ','.join([ str(l) for l in reclist])
             ret.update({employee.id:l})
-            
         return ret
-    
+
     _columns = {
                 'contract_duration': fields.selection([('limited','Limited'),('unlimited','Unlimited')], 'Contract duration', default = 'unlimited'),
                 'start_date' : fields.date('Start date', required=True),
@@ -50,22 +48,20 @@ class hr_employee_ccg(osv.Model):
                 }
 
     _offset = 30 #days
-    
-    
-    def _get_contracts_to_expire(self, cr, uid, days, context={}):
+
+    def _get_contracts_soon_expire(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
         args = [('end_date','=', check_date)]
         ids=self.search(cr, uid, args, context=context)
         return ids
 
-    def _get_mail_recipients(self, cr, uid, employee_ids, context={}):
-        """
-            Mail recipients are specified in 'recievers_list' field
-        """
-        recipients = {}
+    def _get_recipients(self):
+        pass
+    
+    
+
+    def check_contract_expiration(self):
+        
+        
         
         pass
-    
-    def _check_contract(self, cr, uid, context={}):
-        pass
-    

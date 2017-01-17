@@ -34,8 +34,8 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'name'      : fields.char('Filename', size=32, readonly=True),
         'state'     : fields.selection((('choose', 'choose'), ('get', 'get'),)),
         'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default=','),
-        'quotation' : fields.selection((('"', '"'), ("'", "'"), ('', '(none)'),), default='"'),
-        'encoding'  : fields.selection((('utf-8', 'utf-8'), ("windows-1250", "windows-1250")), default='utf-8'),
+        'quotation' : fields.selection((('"', '"'), ("'", "'"), ('none', '(none)'),), default='"'),
+        'encoding'  : fields.selection((('utf-8', 'utf-8'), ('utf-8-sig', 'utf-8 with BOM'), ("windows-1250", "windows-1250")), default='utf-8'),
         'decimal'  :  fields.selection((('.', '(dot)'), (',', ', (comma)')), default='.'),
     }
     
@@ -106,6 +106,13 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     def _decimal(self):
         return self.form['decimal']
 
+    def _quoted(self, text):
+        q = self._quotation()
+        if q=='none':
+            return str(text)
+        else:
+            return '{1}{0}{1}'.format(text, q)
+
     def _get_opportunity_fields(self, cr, uid, context=None):
         ids = context.get('active_ids', [])
         fields = []
@@ -151,7 +158,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                        raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
                     if crm_field_name == 'close_date':
                         field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
-                    field_value_strnig = '{1}{0}{1}'.format(field_value, self._quotation())
+                    field_value_strnig = self._quoted(field_value)
                     line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   
             lines.append(csv_line)

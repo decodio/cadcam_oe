@@ -40,7 +40,7 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         'state'     : fields.selection((('create', 'create'), ('get', 'get'),), default = 'create'),
         'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default='\t'),
         'quotation' : fields.selection((('"', '"'), ("'", "'"), ('none', '(none)'),), default = 'none'),
-        'encoding'  : fields.selection((('utf-8', 'utf-8'), ("windows-1250", "windows-1250")), default='utf-8'),
+        'encoding'  : fields.selection((('utf-8', 'utf-8'), ('utf-8-sig', 'utf-8 with BOM'), ("windows-1250", "windows-1250")), default='utf-8'),
         'decimal'  :  fields.selection((('.', '. (dot)'), (',', ', (comma)')), default='.'),
     }
     
@@ -131,8 +131,8 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         for line in lines:
 # A: Header - Vrijednost 3 obavezna u svakom retku
             line_data = [self._quoted('3')]
-# B: Kataloški broj - Kataloški broj artikla
-            line_data.append(self._quoted(line.product_id.type))
+# B: Kataloški broj - Kataloški broj artikla - KONTO PRODUKTA će biti šifra!!!
+            line_data.append(self._quoted(line.account_id.code[4:]))
 # C: Količina - Prodana količina artikla
             line_data.append(self._quoted(line.quantity))
 # D: Oznaka stope PDV - 0 = 0%, 2 = 10%, 4 = 25%, 5 = 5%
@@ -145,8 +145,8 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
             line_data.append(self._quoted(line.price_unit))
 # G: Rabat - Odobreni rabat
             line_data.append(self._quoted(line.discount))
-# H: Opis artikla - Dodatni opis za ovu stavku ako postoji
-            line_data.append(self._quoted(line.product_id.name))
+# H: Opis artikla - Dodatni opis za ovu stavku ako postoji (ako je prefix # opis pregazi naziv iz baze artikala)
+            line_data.append(self._quoted('#' + line.product_id.name))
             line_csv = self._delimiter().join(line_data)
             data.append(line_csv)
             
@@ -176,7 +176,9 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         else:
             # ako ima više računa, ime datoteke ima ukupni broj računa
             filename = 'invoices_{}.csv'.format(len(active_ids) )
-            
+
+        print self._encoding()
+
         self.write(cr, uid, ids, {'data': base64.encodestring(data.encode(self._encoding())), 
                                   'name':filename, 
                                   'state':'get'}, context=context)

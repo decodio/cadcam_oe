@@ -19,10 +19,12 @@
 #
 ##############################################################################
 from openerp.osv import fields, osv
-import logging
 from openerp.tools.translate import _
+from datetime import date, timedelta
+#from samba.dcerpc.samr import Ids
 
-# _logger = logging.getLogger(__name__)
+#import logging
+#_logger = logging.getLogger(__name__)
 
 class hr_employee_ccg(osv.Model):
     _name = "hr.employee"
@@ -52,16 +54,22 @@ class hr_employee_ccg(osv.Model):
     def _get_contracts_soon_expire(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
         args = [('end_date','=', check_date)]
-        ids=self.search(cr, uid, args, context=context)
-        return ids
+        employee_ids=self.search(cr, uid, args, context=context)
+        return employee_ids 
 
-    def _get_recipients(self):
-        pass
-    
-    
+    def _send_email(self, cr, uid, ids, context=None):
+        email_template_obj = self.pool.get('email.template')
+        template_ids = email_template_obj.search(cr, uid, [('name', '=','email_template_contract_expiration')], context=context) 
+        if template_ids:
+            for sender_id in ids:
+                msg_id = email_template_obj.send_mail(cr, uid, template_ids[0], sender_id, force_send=True,context=context)
+            return True
+        return False
 
-    def check_contract_expiration(self):
-        
-        
-        
-        pass
+
+    def check_contract_expiration(self, cr, uid, context={}):
+        send_list = self._get_contracts_soon_expire(cr, uid, self._offset, context)
+        if send_list:
+            self._send_email(cr, uid, send_list, context=context)
+    
+     

@@ -20,7 +20,7 @@
 								<field name="name" />
 							</tree>
 						</field>
-						<field name='receivers_list'/> 
+						<field name='receivers_list' invisible = "not context.get('uid', False) in [1]"/> 
 					</group>
 					
 				</xpath>

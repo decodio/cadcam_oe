@@ -4,7 +4,7 @@
 	<data>
 		<!-- Cron job check for employee contract expiration -->
 		<record id="ir_cron_employee_contract_expiration" model="ir.cron">
-			<field name="name">Check employee contract expiration 30 days
+			<field name="name">Check employee contract expiration 30 days before
 			</field>
 			<field name="active" eval="True" />
 			<field name="interval_number">1</field>

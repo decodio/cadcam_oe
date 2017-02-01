@@ -26,14 +26,11 @@ from datetime import datetime, date
 from Crypto import SelfTest
 import base64
 import csv
-#from pyxb import namespace
+import locale 
 
 class crm_logika_export(osv.osv_memory): # orm.TransientModel
     _name = 'crm.logika.export'
 
-    def _quotation_default(self):
-        return ''
-     
     _columns = {
         'data'      : fields.binary('File', readonly=True),
         'name'      : fields.char('Filename', size=255, readonly=True),
@@ -41,7 +38,7 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default='\t'),
         'quotation' : fields.selection((('"', '"'), ("'", "'"), ('none', '(none)'),), default = 'none'),
         'encoding'  : fields.selection((('utf-8', 'utf-8'), ('utf-8-sig', 'utf-8 with BOM'), ("windows-1250", "windows-1250")), default='utf-8'),
-        'decimal'  :  fields.selection((('.', '. (dot)'), (',', ', (comma)')), default='.'),
+        'decimal'  :  fields.selection((('.', '. (dot)'), (',', ', (comma)')), default=','),
     }
     
     def _quotation(self):
@@ -90,12 +87,11 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
             for term in invoice.payment_term.line_ids:
                 total_days+=term.days
         invoice_data.append(self._quoted(total_days))
-        
  # F: Valuta - Šifra valute za račun (191 = HRK itd.)
         currency_code = {'EUR':'978','HRK':'191', 'USD':'840'}.get(invoice.currency_id.name)
         invoice_data.append( self._quoted(currency_code))
  # G: Tečaj - Tečaj računa (za HRK upisati iznos 1)
-        invoice_data.append(self._quoted(invoice.lcy_rate))
+        invoice_data.append(self._quoted(locale.str(invoice.lcy_rate)))
 # H: Uvodni tekst - Uvodni tekst računa (1000 znakova)
         invoice_data.append(self._quoted('Invoice description'))
         data = self._delimiter().join(invoice_data)
@@ -105,26 +101,24 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         return (data, invoice_number, invoice.partner_id, lines)
     
     def _partner(self, cr, uid, partner, context=None):
-        fields = [
-        ]
-        # A: Header - Vrijednost 2 obavezna u svakom retku
+        fields = [ ]
+# A: Header - Vrijednost 2 obavezna u svakom retku
         partner_data = [self._quoted('2')]
-        # B: OIB - OIB partnera prema koje će se pronaći šifra partnera
+# B: OIB - OIB partnera prema koje će se pronaći šifra partnera
         partner_data.append(self._quoted(partner.vat.replace('HR', '')))
-        # C: Naziv partnera - Naziv partnera (opcionalno)
-        partner_name = partner.name
-        partner_data.append(self._quoted(partner_name))
-        # D: Poštanski broj - Poštanski broj mjesta partnera (opcionalno)
+# C: Naziv partnera - Naziv partnera (opcionalno)
+        partner_data.append(self._quoted(partner.name))
+# D: Poštanski broj - Poštanski broj mjesta partnera (opcionalno)
         partner_data.append(self._quoted(partner.zip))
-        # E: Naziv mjesta - Naziv mjesta partnera (opcionalno)
+# E: Naziv mjesta - Naziv mjesta partnera (opcionalno)
         partner_data.append(self._quoted(partner.city))
-        # F: Šifra države - Šifra države partnera (opcionalno)
+# F: Šifra države - Šifra države partnera (opcionalno)
         partner_data.append(self._quoted(''))
-        # G: Adresa - Adresa i kućni broj partnera (opcionalno)
+# G: Adresa - Adresa i kućni broj partnera (opcionalno)
         partner_data.append(self._quoted(partner.street))
 
         data = self._delimiter().join(partner_data)
-        return (data, partner_name)
+        return (data, partner.name)
     
     def _items(self, cr, uid, lines, context=None):
         data = []
@@ -134,7 +128,7 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
 # B: Kataloški broj - Kataloški broj artikla - KONTO PRODUKTA će biti šifra!!!
             line_data.append(self._quoted(line.account_id.code[4:]))
 # C: Količina - Prodana količina artikla
-            line_data.append(self._quoted(line.quantity))
+            line_data.append(self._quoted(locale.str(line.quantity)))
 # D: Oznaka stope PDV - 0 = 0%, 2 = 10%, 4 = 25%, 5 = 5%
             tax_percent = line.invoice_line_tax_id[0].amount * 100
             tax_code = {0:'0', 10:'2', 25:'4', 5:'5'}.get(tax_percent, '-1')
@@ -142,9 +136,9 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
 # E: Oznaka oslobođ. PDV - Ako nema oslobođenja PDV ostaviti prazno
             line_data.append(self._quoted(''))
 # F: Cijena - Veleprodajna cijena prodanog artikla
-            line_data.append(self._quoted(line.price_unit))
+            line_data.append(self._quoted(locale.str(line.price_unit)))
 # G: Rabat - Odobreni rabat
-            line_data.append(self._quoted(line.discount))
+            line_data.append(self._quoted(locale.str(line.discount)))
 # H: Opis artikla - Dodatni opis za ovu stavku ako postoji (ako je prefix # opis pregazi naziv iz baze artikala)
             line_data.append(self._quoted('#' + line.product_id.name))
             line_csv = self._delimiter().join(line_data)
@@ -163,12 +157,27 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         
         return (csv, invoice_number, partner_name)
 
+    def _set_decimal_point(self, frm=''):
+        if frm=='.':
+            locale.setlocale(locale.LC_NUMERIC, 'en_US.utf8')
+        elif frm ==',':
+            locale.setlocale(locale.LC_NUMERIC, 'hr_HR.utf8')
+        else:
+            locale.setlocale(locale.LC_ALL, '') # reset to system default
+
+
     def generate_csv(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
+            
         self.form = self.read(cr, uid, ids)[0]
         active_ids = context.get('active_ids', [])
+        self._set_decimal_point(self._decimal())
+        print locale.str(1000.1234)
         (csv, invoice, partner) = self._csv_lines(cr, uid, active_ids, context)
+        self._set_decimal_point() # reset decimapoint to default
+        print locale.str(1000.1234)
+        
         data = '\n'.join(csv)
         if len(active_ids)==1 :
             # ima datoteke se sastoji od broja računa i prvih 10 slova partnera
@@ -176,8 +185,6 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         else:
             # ako ima više računa, ime datoteke ima ukupni broj računa
             filename = 'invoices_{}.csv'.format(len(active_ids) )
-
-        print self._encoding()
 
         self.write(cr, uid, ids, {'data': base64.encodestring(data.encode(self._encoding())), 
                                   'name':filename, 

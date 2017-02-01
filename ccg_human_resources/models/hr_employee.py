@@ -49,7 +49,7 @@ class hr_employee_ccg(osv.Model):
                 'receivers_list' : fields.function(_get_receivers_list, type='char', string='Receivers', readonly=True, store=True)
                 }
 
-    _offset = 30 #days
+    _offset = 35 #days before expiration send notification email to HR manager
 
     def _get_contracts_soon_expire(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)

@@ -9,7 +9,7 @@
 			<field name="model_id" ref="ccg_human_resources.model_hr_employee" />
 <!-- 			<field name="lang">${object.partner_id.lang}</field> -->
 			<field name="auto_delete" eval="False" />
-			<field name="mail_server_id" ref="__export__.ir_mail_server_34241" />
+<!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
 			<field name="body_html"><![CDATA[
 Job Contract will expire for employee:<br>
 Name:<b>${object.user_id.name}</b><br>

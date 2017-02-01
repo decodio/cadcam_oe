@@ -23,10 +23,12 @@ from openerp import models, fields, api, _
 from openerp.exceptions import Warning 
 from openerp.osv import orm, osv, fields
 from datetime import datetime, date
+from time import strptime
 from Crypto import SelfTest
 import base64
 import csv
 import locale 
+from samba.dcerpc.samr import Ids
 
 class crm_logika_export(osv.osv_memory): # orm.TransientModel
     _name = 'crm.logika.export'
@@ -35,7 +37,7 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         'data'      : fields.binary('File', readonly=True),
         'name'      : fields.char('Filename', size=255, readonly=True),
         'state'     : fields.selection((('create', 'create'), ('get', 'get'),), default = 'create'),
-        'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default='\t'),
+        'delimiter' : fields.selection(((',', ', (comma)'), (';', '; (semicolon)'), ('\t', '(tab)'),), default=';'),
         'quotation' : fields.selection((('"', '"'), ("'", "'"), ('none', '(none)'),), default = 'none'),
         'encoding'  : fields.selection((('utf-8', 'utf-8'), ('utf-8-sig', 'utf-8 with BOM'), ("windows-1250", "windows-1250")), default='utf-8'),
         'decimal'  :  fields.selection((('.', '. (dot)'), (',', ', (comma)')), default=','),
@@ -72,25 +74,25 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         invoice_obj  = self.pool.get(active_model).browse(cr, uid, id, context=context)
         invoice = invoice_obj.browse(active_id)
         
- # A: Header - Vrijednost 1 obavezna u svakom retku
+# A: Header - Vrijednost 1 obavezna u svakom retku
         invoice_data = [self._quoted('1')]
- # B: Alt. broj - Alternativni broj računa (broj za Total se generira automatski)
+# B: Alt. broj - Alternativni broj računa (broj za Total se generira automatski)
         invoice_number = invoice.internal_invoice_number
         invoice_data.append( self._quoted(invoice_number) )
- # C: Datum - Datum računa
+# C: Datum - Datum računa
         invoice_data.append(self._quoted(self._reformat_date(invoice.date_invoice)))
- # D: Datum isporuke - Datum isporuke tj- datum otpreme
+# D: Datum isporuke - Datum isporuke tj- datum otpreme
         invoice_data.append(self._quoted(self._reformat_date(invoice.date_delivery)))
- # E: Rok plaćanja - Rok plaćanja u danima
-        total_days = 0
-        if invoice.payment_term:
-            for term in invoice.payment_term.line_ids:
-                total_days+=term.days
-        invoice_data.append(self._quoted(total_days))
- # F: Valuta - Šifra valute za račun (191 = HRK itd.)
+# E: Rok plaćanja - Rok plaćanja u danima
+        date_format = '%Y-%m-%d'
+        dd = datetime.strptime(invoice.date_due, date_format)
+        di = datetime.strptime(invoice.date_invoice, date_format)
+        date_delta =  dd - di 
+        invoice_data.append(self._quoted(date_delta.days))
+# F: Valuta - Šifra valute za račun (191 = HRK itd.)
         currency_code = {'EUR':'978','HRK':'191', 'USD':'840'}.get(invoice.currency_id.name)
         invoice_data.append( self._quoted(currency_code))
- # G: Tečaj - Tečaj računa (za HRK upisati iznos 1)
+# G: Tečaj - Tečaj računa (za HRK upisati iznos 1)
         invoice_data.append(self._quoted(locale.str(invoice.lcy_rate)))
 # H: Uvodni tekst - Uvodni tekst računa (1000 znakova)
         invoice_data.append(self._quoted('Invoice description'))
@@ -165,6 +167,10 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         else:
             locale.setlocale(locale.LC_ALL, '') # reset to system default
 
+    def _sort_ids_by_invoice_number(self, cr, uid, ids, context= None):
+        active_model = context.get('active_model', None)
+        sorted_ids = self.pool.get(active_model).search(cr, uid, [('id', 'in', ids)], order='internal_invoice_number', context=context)
+        return sorted_ids
 
     def generate_csv(self, cr, uid, ids, context=None):
         if context is None:
@@ -172,11 +178,10 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
             
         self.form = self.read(cr, uid, ids)[0]
         active_ids = context.get('active_ids', [])
+        sorted_ids = self._sort_ids_by_invoice_number(cr, uid, active_ids, context=context)
         self._set_decimal_point(self._decimal())
-        print locale.str(1000.1234)
-        (csv, invoice, partner) = self._csv_lines(cr, uid, active_ids, context)
-        self._set_decimal_point() # reset decimapoint to default
-        print locale.str(1000.1234)
+        (csv, invoice, partner) = self._csv_lines(cr, uid, sorted_ids, context)
+        self._set_decimal_point() # reset decimal point to default
         
         data = '\n'.join(csv)
         if len(active_ids)==1 :

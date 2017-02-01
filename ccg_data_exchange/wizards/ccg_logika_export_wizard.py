@@ -28,7 +28,6 @@ from Crypto import SelfTest
 import base64
 import csv
 import locale 
-from samba.dcerpc.samr import Ids
 
 class crm_logika_export(osv.osv_memory): # orm.TransientModel
     _name = 'crm.logika.export'

@@ -81,7 +81,8 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
 # C: Datum - Datum računa
         invoice_data.append(self._quoted(self._reformat_date(invoice.date_invoice)))
 # D: Datum isporuke - Datum isporuke tj- datum otpreme
-        invoice_data.append(self._quoted(self._reformat_date(invoice.date_delivery)))
+#        invoice_data.append(self._quoted(self._reformat_date(invoice.date_delivery))) # neće se više koristiti
+        invoice_data.append(self._quoted('')) #šalje se prazno polje 
 # E: Rok plaćanja - Rok plaćanja u danima
         date_format = '%Y-%m-%d'
         dd = datetime.strptime(invoice.date_due, date_format)

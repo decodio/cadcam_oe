@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Opportunities Search View -->
+		<record id="view_crm_case_opportunities_filter_ccg" model="ir.ui.view">
+			<field name="name">CRM - Opportunities Search</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+			<field name="arch" type="xml">
+					<xpath expr="/search/field[@name='user_id']" position="before">
+						<field name="alt_user_id" string="Salesman" />
+					</xpath>
+					<xpath expr="/search/field[@name='user_id']" position="attributes">
+						<attribute name="string">Presales</attribute>
+					</xpath>
+					<xpath expr="/search/filter[@name='new']" position="attributes">
+						<attribute name="domain">['&amp;',
+							('stage_id.probability', '=', 20), ('stage_id.sequence', '&lt;=',
+							1)] </attribute>
+					</xpath>
+					<xpath expr="/search/group" position="replace">
+						<group expand="0" string="Group By" colspan="16">
+							<filter string="Salesperson" context="{'group_by':'alt_user_id'}" />
+							<filter string="Presales" context="{'group_by':'user_id'}" />
+							<filter string="Sales Team" context="{'group_by':'section_id'}"
+								groups="base.group_multi_salesteams" />
+							<filter string="Country" context="{'group_by':'country_id'}" />
+							<filter string="Company" context="{'group_by':'company_id'}"
+								groups="base.group_multi_company" />
+							<filter string="Stage" context="{'group_by':'stage_id'}" />
+							<!-- <filter string="Campaign" domain="[]" context="{'group_by':'campaign_id'}"/> 
+								<filter string="Channel" domain="[]" context="{'group_by':'medium_id'}"/> 
+								<filter string="Source" domain="[]" context="{'group_by':'source_id'}"/> -->
+							<separator orientation="vertical" />
+							<filter string="Creation Month" context="{'group_by':'create_date:month'}"
+								name="month" />
+							<filter string="Expected Closing" context="{'group_by':'date_deadline'}" />
+						</group>
+					</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
+

@@ -20,8 +20,11 @@
 					position="after">
 					<field name="opt_out" />
 					<field name="notify_email" widget="radio" />
-<!-- 					<field name="priority" widget="priority" /> -->
 				</xpath>
+
+<!-- 				<xpath expr="//field[@name='user_id']" position="after"> -->
+<!-- 					<field name="priority2" widget="priority" />  -->
+<!-- 				</xpath> -->
 				
 			</field>
 		</record>

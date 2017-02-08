@@ -37,12 +37,12 @@
 			<field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
 			<field name="priority" eval="30" />
 			<field name="arch" type="xml">
-				<xpath expr="/tree/field[@name='stage_id']" position="after">
-					<field name="priority" widget="priority"/>
+				<xpath expr="//field[@name='priority']" position="attributes">
+					<attribute name="invisible" >0</attribute>
+					<attribute name="modifiers" >{'tree_invisible': false}</attribute>
 				</xpath>
 			</field>
 		</record>
-
 <!-- 
 		<record id="view_ds_licenses_filter" model="ir.ui.view">
 			<field name="name">view.ds.licenses.filter</field>

@@ -41,6 +41,8 @@ class Parser(report_sxw.rml_parse):
               ('QLC', _('QLC software')), 
               ('YLC', _('YLC software')), 
               ('ALC', _('ALC software')), 
+              ('TBL2', _('TBL2 software')), 
+              ('TBL3', _('TBL3 software')), 
               ('OTHER', _('SERVICES')),
               ]
         self.document = self._group_lines(document_obj, self.groups)

@@ -40,6 +40,7 @@ Nezna ni sam što hoće!<br>
 % endif
 <br>Opis zahtjeva: ${object.name or ''}]]>
 			</field>
+			
 			<field name="report_template" ref="leave_request_ccg" />
 			<field name="report_name">${object.employee_id.name or '').replace(' ','_')}_${(object.holiday_status_id.name or '').replace(' ','_')}	
 			</field>

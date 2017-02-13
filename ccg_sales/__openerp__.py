@@ -39,7 +39,7 @@
               "views/sale_view_ccg.xml",
               "views/view_partner_form_ccg.xml",
               "views/predefined_text_view.xml",
-              "views/res_users_view_ccg.xml",
+              #"views/res_users_view_ccg.xml",
               "views/crm_lead_search_ccg.xml",
               "reports/sale_order_wizard_reports.xml",
               "reports/sale_order_group_reports.xml",

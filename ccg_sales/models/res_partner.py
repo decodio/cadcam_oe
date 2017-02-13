@@ -19,12 +19,14 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api, tools, _
+from openerp import models, fields, api, _
 
 
 class ResPartnerCCG(models.Model):
-    _name = 'res.partner.ccg'
+#    _name = 'res.partner.ccg'
     _inherit = 'res.partner'
     
-    priority = fields.Selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority', default = '0')
+#     priority2 = fields.Selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority', default = '0')
+    
+    
 

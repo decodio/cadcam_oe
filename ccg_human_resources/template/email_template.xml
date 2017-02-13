@@ -15,15 +15,16 @@ Job Contract will expire for employee:<br>
 Name:<b>${object.user_id.name}</b><br>
 Company:<b>${object.user_id.company_id.name}</b><br>
 Expiration Date:<b>${object.end_date}</b> <br>
-]]></field>
-</record>	
+]]>
+			</field>
+		</record>	
 
 		<record id="email_template_leave_request" model="email.template">
 			<field name="name">Leave request template</field>
 			<field name="email_from">${(object.user_id.email or '')|safe }</field>
-			<field name="subject">Leave request - ${object.employee_id.name}</field>
+			<field name="subject">${object.holiday_status_id.name} - ${object.employee_id.name}</field>
 			<field name="partner_to">${object.employee_id.receivers_list}</field>
-			<field name="model_id" ref="ccg_human_resources.model_hr_employee" />
+			<field name="model_id" ref="sp_hr_holidays.model_hr_holidays" />
 <!-- 			<field name="lang">${object.partner_id.lang}</field> -->
 			<field name="auto_delete" eval="False" />
 <!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
@@ -31,20 +32,46 @@ Expiration Date:<b>${object.end_date}</b> <br>
 Zaposlenik/ca: ${object.employee_id.name}<br>
 <br>
 % if 'Legal' in object.holiday_status_id.name :
-Traži <b>godišnji odmor</b> od ${object.date_from or '-'} do ${object.date_to or '-'}
+Traži <b>godišnji odmor</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
 % elif 'Sick' in object.holiday_status_id.name :
-Prijavljuje <b>privremenu nesposobnost za rad</b> od ${object.date_from or '-'} do ${object.date_to or '-'}
+Prijavljuje <b>privremenu nesposobnost za rad</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
 % else:
-Nezna ni sam što hoće!
+Nezna ni sam što hoće!<br>
 % endif
-<br>
-Opis zahtjeva: ${object.name or ''}]]></field>
-			<field name="report_template" ref="hr_all_leaves_request_ccg" />
+<br>Opis zahtjeva: ${object.name or ''}]]>
+			</field>
+			<field name="report_template" ref="leave_request_ccg" />
 			<field name="report_name">${object.employee_id.name or '').replace(' ','_')}_${(object.holiday_status_id.name or '').replace(' ','_')}	
+			</field>
+		</record>
+
+		<record id="email_template_response_leave_request" model="email.template">
+			<field name="name">Response To Leave Request</field>
+			<field name="email_from">${object.write_uid.partner_id.email}</field>
+			<field name="subject">${object.holiday_status_id.name} - ${object.employee_id.name}</field>
+			<field name="partner_to">${object.employee_id.receivers_list}</field>
+			<field name="model_id" ref="sp_hr_holidays.model_hr_holidays" />
+<!-- 			<field name="lang">${object.partner_id.lang}</field> -->
+			<field name="auto_delete" eval="False" />
+<!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
+			<field name="body_html"><![CDATA[
+Poštovani/a ${object.employee_id.name}<br>
+<br>
+% if 'Legal' in object.holiday_status_id.name :
+Zahtjev za godišnjim odmorom od ${object.date_from} do ${object.date_to}<br><br>je odobren.<br>
+% elif 'Sick' in object.holiday_status_id.name :
+Privrena nesposobnost za rad od ${object.date_from or '-'}, sa predviđenim trajanjem do ${object.date_to or '-'} je evidentirana<br>
+% else:
+Neznam što Vi želite!<br>
+% endif 
+<br>
+Opis: ${object.name or ''}<br>
+]]>
 			</field>
 		</record>
 	</data>
 </openerp>
+
 
 <!-- 
 		<record id="email_template_edi_invoice" model="mail.template">

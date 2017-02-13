@@ -3,57 +3,57 @@
 	<data noupdate="1">
 
 		<!-- leaves request report -->
-		<record id="hr_legal_leaves_request_ccg" model="ir.actions.report.xml">
-			<field name="name">Legal leaves request</field>
-			<field name="type">ir.actions.report.xml</field>
-			<field name="model">hr.holidays</field>
-			<field name="report_name">hr_legal_leaves_request</field>
-			<field name="report_type">aeroo</field>
-			<field name="in_format">oo-odt</field>
- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_pdf_odt')"/> 
-			<field name="parser_loc"></field>
-			<field name="report_rml">ccg_human_resources/reports/hr_legal_leaves_request.odt</field>
-			<field name="parser_state">default</field>
-			<field name="tml_source">file</field>
-			<field name="styles_mode">default</field>
-		</record>
+<!-- 		<record id="hr_legal_leaves_request_ccg" model="ir.actions.report.xml"> -->
+<!-- 			<field name="name">Legal leaves request</field> -->
+<!-- 			<field name="type">ir.actions.report.xml</field> -->
+<!-- 			<field name="model">hr.holidays</field> -->
+<!-- 			<field name="report_name">hr_legal_leaves_request</field> -->
+<!-- 			<field name="report_type">aeroo</field> -->
+<!-- 			<field name="in_format">oo-odt</field> -->
+<!--  			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_pdf_odt')"/>  -->
+<!-- 			<field name="parser_loc"></field> -->
+<!-- 			<field name="report_rml">ccg_human_resources/reports/hr_legal_leaves_request.odt</field> -->
+<!-- 			<field name="parser_state">default</field> -->
+<!-- 			<field name="tml_source">file</field> -->
+<!-- 			<field name="styles_mode">default</field> -->
+<!-- 		</record> -->
 
 		<!--add button leaves request report -->
-		<record id="btn_print_hr_legal_leaves_request_report" model="ir.values">
-			<field eval="'action'" name="key" />
-			<field eval="'client_print_multi'" name="key2" />
-			<field name="model">hr.holidays</field>
-			<field name="name">Legal leaves request</field>
-			<field name="value"
-				eval="'ir.actions.report.xml,'+str(hr_legal_leaves_request_ccg)" />
-			<field name="isobject" eval="True" />
-			<field name="replace" eval="False" />
-		</record>
+<!-- 		<record id="btn_print_hr_legal_leaves_request_report" model="ir.values"> -->
+<!-- 			<field eval="'action'" name="key" /> -->
+<!-- 			<field eval="'client_print_multi'" name="key2" /> -->
+<!-- 			<field name="model">hr.holidays</field> -->
+<!-- 			<field name="name">Legal leaves request</field> -->
+<!-- 			<field name="value" -->
+<!-- 				eval="'ir.actions.report.xml,'+str(hr_legal_leaves_request_ccg)" /> -->
+<!-- 			<field name="isobject" eval="True" /> -->
+<!-- 			<field name="replace" eval="False" /> -->
+<!-- 		</record> -->
 		
 			<!-- leaves request report -->
-		<record id="hr_all_leaves_request_ccg" model="ir.actions.report.xml">
-			<field name="name">All leaves request</field>
+		<record id="leave_request_ccg" model="ir.actions.report.xml">
+			<field name="name">Leave request</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">hr.holidays</field>
-			<field name="report_name">hr_all_leaves_request</field>
+			<field name="report_name">hr_leave_request</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
  			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_pdf_odt')"/> 
 			<field name="parser_loc"></field>
-			<field name="report_rml">ccg_human_resources/reports/hr_all_leaves_request.odt</field>
+			<field name="report_rml">ccg_human_resources/reports/hr_leave_request.odt</field>
 			<field name="parser_state">default</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">default</field>
 		</record>
 
 		<!--add button leaves request report -->
-		<record id="btn_print_hr_all_leaves_request_report"  model="ir.values">
+		<record id="btn_print_leave_request_report"  model="ir.values">
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">hr.holidays</field>
-			<field name="name">All leaves request</field>
+			<field name="name">Leave request</field>
 			<field name="value"
-				eval="'ir.actions.report.xml,'+str(hr_all_leaves_request_ccg)" />
+				eval="'ir.actions.report.xml,'+str(leave_request_ccg)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>

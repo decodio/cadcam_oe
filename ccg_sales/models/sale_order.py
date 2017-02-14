@@ -28,9 +28,9 @@ class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
     
-    payment_data = fields.Char('Payment', help='Payment',translate=True)
-    delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=True)
-    place_of_delivery_data = fields.Char('Place of delivery', help='Place of delivery',translate=True)
+    payment_data = fields.Char('Payment', help='Payment',translate=False)
+    delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=False)
+    place_of_delivery_data = fields.Char('Place of delivery', help='Place of delivery',translate=False)
     global_discount_percent = fields.Float('Global discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'), readonly=False)
     offer_validity_data = fields.Char('Validity of offer', help='Validity of offer')
 

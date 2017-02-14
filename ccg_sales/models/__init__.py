@@ -23,4 +23,4 @@ import sale_order
 import sale_order_line
 import predefined_text
 import res_partner
-import res_users
+#import res_users

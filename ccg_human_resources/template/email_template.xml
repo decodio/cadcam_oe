@@ -61,7 +61,7 @@ Poštovani/a ${object.employee_id.name}<br>
 % if 'Legal' in object.holiday_status_id.name :
 Zahtjev za godišnjim odmorom od ${object.date_from} do ${object.date_to}<br><br>je odobren.<br>
 % elif 'Sick' in object.holiday_status_id.name :
-Privrena nesposobnost za rad od ${object.date_from or '-'}, sa predviđenim trajanjem do ${object.date_to or '-'} je evidentirana<br>
+Privremena nesposobnost za rad od ${object.date_from or '-'}, sa predviđenim trajanjem do ${object.date_to or '-'} je evidentirana<br>
 % else:
 Neznam što Vi želite!<br>
 % endif 

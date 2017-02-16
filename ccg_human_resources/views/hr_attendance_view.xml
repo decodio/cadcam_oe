@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_attendance_tree" model="ir.ui.view">
+			<field name="name">hr.attendance.tree</field>
+			<field name="model">hr.attendance</field>
+			<field name="sequence" eval="18" />
+			<field name="inherit_id" ref="hr_attendance.view_attendance_who" />
+			<field name="arch" type="xml">
+				<field name="action" position="after">
+					<field name="worked_hours" />
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>

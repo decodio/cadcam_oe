@@ -11,6 +11,11 @@
 					<field name="company_id" string="Company" options="{'no_create': True}"
 						readonly="not context.get('uid', False) in [1]" />
 				</xpath>
+				
+				<xpath expr="//group/field[@name='priority']" position="attributes">
+				<attribute name="invisible" >0</attribute>
+				</xpath>
+			
 			</field>
 		</record>
 
@@ -21,45 +26,54 @@
 			<field name="priority" eval="30" />
 			<field name="arch" type="xml">
 				<xpath expr="/tree" position="attributes">
-					<attribute name="colors">gray:(probability == 100) or not probability ;red:probability and (probability &lt; 100) and date_deadline and (date_deadline &lt; current_date)
+					<attribute name="colors">gray:(probability == 100) or not
+						probability ;red:probability and (probability &lt; 100) and
+						date_deadline and (date_deadline &lt; current_date)
 					</attribute>
 				</xpath>
-<!-- 				<xpath expr="/tree/field[@name='stage_id']" position="after">
-					<field name="priority" widget="priority"/>
+				<xpath expr="/tree/field[@name='user_id']" position="after">
+				<field name="priority" />
 				</xpath>
- -->				
 			</field>
 		</record>
-		
+
 		<record model="ir.ui.view" id="crm_case_tree_view_leads_ccg">
 			<field name="name">crm.case.tree.view.leads.ccg</field>
 			<field name="model">crm.lead</field>
 			<field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
 			<field name="priority" eval="30" />
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='priority']" position="attributes">
-					<attribute name="invisible" >0</attribute>
-					<attribute name="modifiers" >{'tree_invisible': false}</attribute>
+				<xpath expr="/tree/field[@name='stage_id']" position="after">
+				<field name="priority" />
+				</xpath>
+				<xpath expr="/tree/field[@name='partner_id']" position="replace" />
+				<xpath expr="/tree/field[@name='name']" position="after">
+					<field name="partner_id" invisible="0" />
+				</xpath>
+				<xpath expr="/tree/field[@name='email_from']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="/tree/field[@name='phone']" position="attributes">
+					<attribute name="invisible">1</attribute>
 				</xpath>
 			</field>
 		</record>
-<!-- 
-		<record id="view_ds_licenses_filter" model="ir.ui.view">
-			<field name="name">view.ds.licenses.filter</field>
-			<field name="model">crm.lead</field>
-			<field name="arch" type="xml">
-				<search string="Search Licenses">
-					<field name="client_id" string="Client" />
-					<separator />
-					<filter string="My" domain="[('user_id','=',uid)]" />
-					<field name="client_id" />
-					<field name="end_date" />
-					<group string="Group By" expand="0">
-						<filter string="Client" context="{'group_by':'client_id'}" />
-					</group>
-				</search>
-			</field>
-		</record>
- -->
+
+		<!-- <record id="view_ds_licenses_filter" model="ir.ui.view"> -->
+		<!-- <field name="name">view.ds.licenses.filter</field> -->
+		<!-- <field name="model">crm.lead</field> -->
+		<!-- <field name="arch" type="xml"> -->
+		<!-- <search string="Search Licenses"> -->
+		<!-- <field name="client_id" string="Client" /> -->
+		<!-- <separator /> -->
+		<!-- <filter string="My" domain="[('user_id','=',uid)]" /> -->
+		<!-- <field name="client_id" /> -->
+		<!-- <field name="end_date" /> -->
+		<!-- <group string="Group By" expand="0"> -->
+		<!-- <filter string="Client" context="{'group_by':'client_id'}" /> -->
+		<!-- </group> -->
+		<!-- </search> -->
+		<!-- </field> -->
+		<!-- </record> -->
 	</data>
-</openerp>
+</openerp> 

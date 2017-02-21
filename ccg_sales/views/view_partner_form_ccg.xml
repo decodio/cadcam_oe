@@ -5,7 +5,7 @@
 			<field name="name">view.partner.form.ccg</field>
 			<field name="model">res.partner</field>
 			<field name="type">form</field>
-			<field name="priority">1</field>
+			<field name="priority">20</field>
 			<field name="inherit_id" ref="sp_cadcam.view_partner_cadcam" />
 			<field name="arch" type="xml">
 				<xpath expr="//form[@string='Contact']/sheet/group[1]"

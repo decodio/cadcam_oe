@@ -21,10 +21,21 @@
 					<field name="opt_out" />
 					<field name="notify_email" widget="radio" />
 				</xpath>
-
-<!-- 				<xpath expr="//field[@name='user_id']" position="after"> -->
-<!-- 					<field name="priority2" widget="priority" />  -->
+				
+<!-- 				<xpath expr="//group[field[@name='title']]/field[last()-1]" position="after"> -->
+<!-- 					<field name="priority" widget="priority" /> -->
 <!-- 				</xpath> -->
+				<xpath expr="//group[field[@name='website']]" position="inside">
+					<field name="priority" widget="priority" />
+				</xpath>
+				
+				<xpath expr="//td[@class='oe_kanban_title1']/div[last()]" position="after">
+				<div><field name="priority" widget="priority"/></div>
+				</xpath>
+				
+				<xpath expr="//sheet/field[@name='lang']" position="after">
+					<field name="priority" widget="priority"/>
+				</xpath>
 				
 			</field>
 		</record>

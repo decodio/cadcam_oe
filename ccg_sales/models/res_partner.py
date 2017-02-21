@@ -20,12 +20,14 @@
 ##############################################################################
 
 from openerp import models, fields, api, _
+from openerp.addons.crm import crm
+
 
 
 class ResPartnerCCG(models.Model):
-    _name = 'res.partner.ccg'
+    _name = 'res.partner'
     _inherit = 'res.partner'
-    priority2 = fields.Selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority', default = '0')
+    priority = fields.Selection(crm.AVAILABLE_PRIORITIES , 'Priority', default = '0')
     
     pass
 

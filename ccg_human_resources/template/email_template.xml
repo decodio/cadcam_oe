@@ -97,9 +97,10 @@ Opis: ${object.name or ''}<br>
 <!-- 2. email_from =  sender  sender of the email -->
 <!-- 3. subject = subject of the email. -->
 <!-- 4. email_to = comma separated address of the receivers -->
-<!-- 5. model_id = comma separated id of the partners -->
-<!-- 6. auto_delete = permanently delete the mail after sending it. -->
-<!-- 7. lang = Optional translation language(ISO code)  to select when sending an email. -->
-<!-- 8. body_html   = message to be sent to via email. -->
-<!-- 9. report_name = Name of the generated report file. -->
-<!-- 10.report_template =   Report template if sent in attachment etc. -->
+<!-- 5. model_id = model -->
+<!-- 6. partner_to = comma separated id of the partners -->
+<!-- 7. auto_delete = permanently delete the mail after sending it. -->
+<!-- 8. lang = Optional translation language(ISO code)  to select when sending an email. -->
+<!-- 9. body_html   = message to be sent to via email. -->
+<!-- 10. report_name = Name of the generated report file. -->
+<!-- 11.report_template =   Report template if sent in attachment etc. -->

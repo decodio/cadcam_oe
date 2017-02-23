@@ -88,6 +88,8 @@ class crm_logika_export(osv.osv_memory): # orm.TransientModel
         dd = datetime.strptime(invoice.date_due, date_format)
         di = datetime.strptime(invoice.date_invoice, date_format)
         date_delta =  dd - di 
+        if date_delta.days < 0:
+               raise Warning(_("Wrong date in invoice {0}. Due date ({1:%d.%m.%Y}) is prior to the invoice date ({2:%d.%m.%Y})".format(invoice_number, dd, di)))
         invoice_data.append(self._quoted(date_delta.days))
 # F: Valuta - Šifra valute za račun (191 = HRK itd.)
         currency_code = {'EUR':'978','HRK':'191', 'USD':'840'}.get(invoice.currency_id.name)

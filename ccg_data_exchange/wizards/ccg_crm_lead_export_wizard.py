@@ -60,8 +60,8 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         }
     
     _stage_mapping = {
-        'New':('1-Sales Lead', 'Upside'),
-        'Validation' : ('2-Validate Opportunity', 'Upside'),
+        'New':  ('3-Establish Value', 'Commit'), #('1-Sales Lead', 'Upside'), # uvjek šaljemo opportunity u DS bez obzira na naš status
+        'Validation' : ('3-Establish Value', 'Commit'), #('2-Validate Opportunity', 'Upside'),
         'Establish value' : ('3-Establish Value', 'Commit'),
         'Negotiation' : ('4-Reach Agreement', 'Safe'),
         'Won' : ('Closed/Won', 'Won'),
@@ -108,10 +108,11 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
 
     def _quoted(self, text):
         q = self._quotation()
+        not_null_text = text if text else ''
         if q=='none':
-            return str(text)
+            return str(not_null_text)
         else:
-            return '{1}{0}{1}'.format(text, q)
+            return '{1}{0}{1}'.format(not_null_text, q)
 
     def _get_opportunity_fields(self, cr, uid, context=None):
         ids = context.get('active_ids', [])

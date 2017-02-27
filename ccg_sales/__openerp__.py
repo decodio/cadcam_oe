@@ -41,6 +41,7 @@
               "views/predefined_text_view.xml",
               #"views/res_users_view_ccg.xml",
               "views/crm_lead_search_ccg.xml",
+              "views/recurring_invoice_line_tree.xml",
               "reports/sale_order_wizard_reports.xml",
               "reports/sale_order_group_reports.xml",
               "data/sale.order.predefined.text.csv",

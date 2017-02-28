@@ -46,6 +46,11 @@
 			<attribute name="invisible">True
 			</attribute>
 			</xpath>
+
+			<xpath expr="//notebook/page//field[@name='remaining_leaves']" position="attributes">
+			<attribute name="readonly">True
+			</attribute>
+			</xpath>
 			
 			</field>
 		</record>

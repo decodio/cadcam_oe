@@ -26,7 +26,7 @@ class PrintInvoiceWizard(models.TransientModel):
     _name = 'print.invoice.wizard'
 
     show_line_discount = fields.Boolean('Show line discount', default = False, help='Diplays discont on invoice lines')
-    show_total_discount = fields.Boolean('Show total discount', default = False, help='Diplays total discont ')
+    advance_invoice = fields.Boolean('Print advance invoice', default = False, help='Print advance invoice in document currency')
     currency_type = fields.Selection([('document','Document currency'),('dual','Dual currency')], 'Currency', default = 'document')
     
     def print_report(self, cr, uid, ids, context=None):
@@ -37,8 +37,11 @@ class PrintInvoiceWizard(models.TransientModel):
                  }
         dual_currency = data['form']['currency_type'] == 'dual'
         discount = data['form']['show_line_discount']
+        advance_invoice = data['form']['advance_invoice']
         
-        if dual_currency and discount:
+        if advance_invoice:
+            report_name = 'document_currency_advance_invoice_report'
+        elif dual_currency and discount:
             report_name = 'dual_currency_invoice_report'
         elif dual_currency and not discount:
             report_name = 'dual_currency_invoice_report_no_disc'
@@ -53,3 +56,9 @@ class PrintInvoiceWizard(models.TransientModel):
 #        logging.warning('%s' %(x))
         return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
 
+    def on_change_advance_invoice(self, cr, user, ids, advance_invoice, context=None ):
+        if advance_invoice:
+            ret ={'value':{'currency_type':'document', 'show_line_discount':True}}
+        else:
+            ret = {} 
+        return ret

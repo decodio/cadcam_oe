@@ -18,9 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import crm_lead
-import sale_order
-import sale_order_line
-import predefined_text
-import res_partner
-import recurring_invoice_line
+
+from openerp import models, fields, _, api
+import openerp.addons.decimal_precision as dp
+
+
+class RecurringInvoiceLine(models.Model):
+    _name = 'recurring.invoice.line'
+    _inherit = 'recurring.invoice.line'
+
+    price_unit = fields.Float('List Price', required=False, digits=dp.get_precision('Purchase Price'), digits_compute=dp.get_precision('Purchase Price'))
+
+

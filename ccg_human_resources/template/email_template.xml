@@ -58,8 +58,10 @@ Nezna ni sam što hoće!<br>
 			<field name="body_html"><![CDATA[
 Poštovani/a ${object.employee_id.name}<br>
 <br>
-% if 'Legal' in object.holiday_status_id.name :
+% if 'Legal' in object.holiday_status_id.name and object.type =='remove':
 Zahtjev za godišnjim odmorom od ${object.date_from} do ${object.date_to}<br><br>je odobren.<br>
+% elif 'Legal' in object.holiday_status_id.name and object.type == 'add':
+Dodjeljeno Vam je <b>${ '{0:0.0f}'.format(object.number_of_days_temp) } dana</b> godišnjeg odmora.<br>
 % elif 'Sick' in object.holiday_status_id.name :
 Privremena nesposobnost za rad od ${object.date_from or '-'}, sa predviđenim trajanjem do ${object.date_to or '-'} je evidentirana<br>
 % else:

@@ -44,6 +44,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'CustomerCity'      : ('res_partner', 'city', 'city', 'City', True, True ),
         'CustomerCountry'   : ('res_country', 'name', 'country', 'Country', True, True ),
         'CustomerZipPostcode' : ('res_partner', 'zip', 'zip', 'ZIP', True, True ),
+        'CustomerVATNumber' : ('res_partner', 'vat', 'vat', 'VAT', True, True ),
         'OfferName'         : ('ccg_offer_name', 'name', 'offer_name', 'Offer name', True, True ),
         'RevenueAmount'     : ('crm_lead', 'ds_expected_revenue', 'planned_revenue', 'Expected revenue for DS', True, True ),
         'RevenueCurrency'   : ('', "'EUR'", 'currency', 'Currency', True, True ),

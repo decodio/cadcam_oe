@@ -1,0 +1,19 @@
+id,brandname,modelname,license_plate,fuel,type,owner
+travel_order_fleet_001,Alfa Romeo,,ZG-8060-EM,diesel,private,Ante Madunić
+travel_order_fleet_002,Audi,A4,ZG-0007-NO,diesel,private,Ivan Baburić
+travel_order_fleet_003,Citroen ,,ZG-9717-EO,diesel,private,Zlatko Šimunec
+travel_order_fleet_004,Citroen,C2,ZG-9779-EZ,petrol,private,Ivančica Zorić
+travel_order_fleet_005,Opel,Corsa,ZG-4157-D,diesel,private,Krešimir Prlić
+travel_order_fleet_006,Fiat,Punto,RI-968-TG,diesel,private,Boris Kumpar
+travel_order_fleet_007,Fiat,Punto,ZG-9745-DS,petrol,private,Vanja Trošelj
+travel_order_fleet_008,Ford,Focus,ZG-9768-AD,petrol,private,Stjepan Razum
+travel_order_fleet_009,Hyundai,Accent,ZG-9033-EB,petrol,private,Mladen Stošić
+travel_order_fleet_010,Hyundai,Accent,ZG-8142-EH,petrol,private,Matko Ribičić
+travel_order_fleet_011,Opel,Astra,ZG-4702-FD,diesel,company,
+travel_order_fleet_012,Opel,Astra,ZG-4703-FD,diesel,company,
+travel_order_fleet_013,Opel,Astra,ZG-7792-DC,petrol,private,Krešimir Prlić
+travel_order_fleet_014,Opel,Astra,ZG-2177-DK,diesel,private,Miran Petrović
+travel_order_fleet_015,Opel,Insignia,ZG-4747-EU,diesel,private,Zlatko Šimunec
+travel_order_fleet_016,Seat,,ZG-6166-BK,diesel,private,Ivančica Zorić
+travel_order_fleet_017,Škoda,Fabia,ZG-3588-ES,diesel,private,Domagoj Mijić
+travel_order_fleet_018,Škoda,Octavia,ZG-7116-AV,diesel,private,Krešimir Prlić

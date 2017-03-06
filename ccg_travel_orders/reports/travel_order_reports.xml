@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="cadcam_travel_order_report" model="ir.actions.report.xml">
+			<field name="name">CADCAM travel order</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">hr.travel.order</field>
+			<field name="report_name">cadcam_travel_order</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+			<!-- <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name="out_format" eval="ref('report_aeroo.report_mimetypes_doc_odt')" />
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_travel_orders/reports/travel_order_parser.py</field>
+			<field name="report_rml">ccg_travel_orders/reports/travel_order_report.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+
+		<record id="btn_cadcam_travel_order_report" model="ir.values">
+			<field name="key" eval="'action'" />
+			<field name="key2" eval="'client_print_multi'" />
+			<field name="model">hr.travel.order</field>
+			<field name="name">CADCAM travel order</field>
+			<field name="value"
+				eval="'ir.actions.report.xml,'+str(cadcam_travel_order_report)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+		</record>
+
+	</data>
+</openerp>

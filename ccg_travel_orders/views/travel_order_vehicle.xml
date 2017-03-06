@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="ccg_travel_order_vehicle_form" model="ir.ui.view">
+			<field name="name">ccg_travel_order_vehicle_form</field>
+			<field name="model">travel.order.vehicle</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle">
+					<group colspan="4" col="4">
+						<group string="Vehicle data" colspan="2" col="2">
+							<field name="name" colspan="2" />
+							<field name="registration" colspan="2" />
+							<field name="fuel" colspan="2" />
+						</group>
+						<group string="Owner" colspan="2" col="2">
+							<field name="type" colspan="2" />
+							<field name="owner" colspan="2"
+								options="{'no_create': True, 'no_create_edit': True}" />
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ccg_travel_order_vehicle_tree" model="ir.ui.view">
+			<field name="name">ccg_travel_order_vehicle_tree</field>
+			<field name="model">travel.order.vehicle</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Vehicles">
+					<field name="name" />
+					<field name="registration" />
+					<field name="type" />
+					<field name="owner" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="ccg_travel_order_vehicle_filter" model="ir.ui.view">
+			<field name="name">ccg_travel_order_vehicle_filter</field>
+			<field name="model">travel.order.vehicle</field>
+			<field name="arch" type="xml">
+				<search string="Search Text">
+					<filter string="My" domain="[('owner.user_id','=',uid)]" />
+					<filter string="Private" domain="[('type','=','private')]" />
+					<filter string="Company" domain="[('type','=','company')]" />
+					<group string="Group By" expand="1">
+						<filter string="Type" context="{'group_by':'type'}" />
+						<filter string="Fuel" context="{'group_by':'fuel'}" />
+						<filter string="Owner" context="{'group_by':'owner'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="action_ccg_travel_order_vehicle" model="ir.actions.act_window">
+			<field name="name">action_ccg_travel_order_vehicle</field>
+			<field name="res_model">travel.order.vehicle</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="ccg_travel_order_vehicle_filter" />
+		</record>
+
+		<menuitem id="menu_ccg_travel_order_vehicle" parent="hr_expense.next_id_49"
+			name="Vehicles" action="action_ccg_travel_order_vehicle" sequence="40"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+	</data>
+</openerp>

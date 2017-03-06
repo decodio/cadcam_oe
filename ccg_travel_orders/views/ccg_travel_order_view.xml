@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="ccg_view_travel_order_form" model="ir.ui.view">
+			<field name="name">ccg.view.travel.order.form</field>
+			<field name="inherit_id" ref="sp_cadcam.view_travel_order_form_cadcam" />
+			<field name="model">hr.travel.order</field>
+			<field name="arch" type="xml">
+
+				<xpath expr="//sheet/group[@name='header1']" position="after">
+					<group colspan="4" col="6" name="header1a">
+						<group name="itinerary" string="Itinerary">
+							<field name="country_ids" widget="many2many_tags" />
+							<field name="dest_city" />
+						</group>
+						<group name="departure" string="Departure">
+							<field name="depart_transportation" widget="many2many_tags" />
+							<field name="depart_vehicle_ids" widget="many2many_tags" />
+							<field name="car_type" invisible="1" />
+						</group>
+						<group name="arrival" string="Arrival">
+							<field name="arrive_transportation" widget="many2many_tags" />
+							<field name="arrive_vehicle_ids" widget="many2many_tags" />
+							<field name="car_type" invisible="1" />
+						</group>
+					</group>
+				</xpath>
+
+				<xpath expr="//group[@name='header1_center']/field[@name='country_ids']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//group[@name='header1_center']/field[@name='dest_city']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath
+					expr="//group[@name='header1_center']/field[@name='depart_transportation']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath
+					expr="//group[@name='header1_center']/field[@name='arrive_transportation']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//group[@name='header1_center']/field[@name='vehicle_text']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath
+					expr="//group[@name='header1_center']/field[@name='transportation']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//group[@name='header1_center']/field[@name='car_type']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath
+					expr="//group[@name='header1_center']/field[@name='means_of_transport']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='vehicle']" position="after">
+					<field name="vehicle_id" />
+				</xpath>
+				<xpath expr="//tree/field[@name='vehicle']" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</xpath>
+				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='vehicle']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='license_plate']"
+					position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='distance']"
+					position="replace">
+				</xpath>
+				<xpath
+					expr="//field[@name='itinerary_ids']/tree/field[@name='odometer_start']"
+					position="after">
+					<field name="distance" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

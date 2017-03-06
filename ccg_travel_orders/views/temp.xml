@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<form string="Travel Order">
+	<header>
+		<button name="button_submit"
+			attrs="{'invisible':[('state','not in',['draft','open'])]}" type="object"
+			string="Submit" />
+		<button name="button_approve" attrs="{'invisible':[('state','not in',['pending'])]}"
+			type="object" string="Approve" />
+		<button name="button_cancel" attrs="{'invisible':[('state','not in',['pending'])]}"
+			type="object" string="Cancel" />
+		<button name="button_draft" attrs="{'invisible':[('state','not in',['cancelled'])]}"
+			type="object" string="Reset" />
+		<field name="stage_id" widget="statusbar" clickable="True" />
+		<field name="state" invisible="1" />
+	</header>
+	<sheet>
+		<div class="oe_title">
+			<label for="name" class="oe_edit_only" />
+			<h1>
+				<field name="name" />
+			</h1>
+		</div>
+		<div class="oe_right oe_button_box">
+			<div class="oe_clear">
+				<group name="accounting_buttons">
+					<button name="action_recompute_document" string="Recompute documunet"
+						type="object" class="oe_highlight" />
+					<button name="action_statement_lines_create" string="Cash Register"
+						type="object" class="oe_highlight" />
+				</group>
+			</div>
+		</div>
+		<group colspan="4" col="6" name="header1">
+			<group name="header1_left">
+				<field name="employee_id" />
+				<field name="company_id" />
+				<field name="department_id" />
+				<field name="document_date" />
+				<field name="date_liquidation" />
+			</group>
+			<group name="header1_center">
+				<field name="journal_id" />
+				<field name="purpose" />
+			</group>
+			<group name="header1_right">
+				<field name="date_from" />
+				<field name="date_to" />
+				<field name="readable_duration" />
+				<field name="lcy_currency_id" invisible="1" />
+				<label for="advance_payment" />
+				<div>
+					<field name="advance_payment" class="oe_inline" />
+					<field name="currency_id" class="oe_inline" />
+				</div>
+				<label for="force_rate" />
+				<div>
+					<field name="force_rate" class="oe_inline" />
+					<field name="lcy_rate"
+						attrs="{'readonly':[('force_rate','!=',True)],'required':[('force_rate','=',True)]}"
+						class="oe_inline" />
+					<field name="lcy_date"
+						attrs="{'readonly':[('force_rate','!=',True)],'required':[('force_rate','=',True)]}"
+						class="oe_inline" />
+				</div>
+				<field name="statement_id" readonly="1" />
+
+			</group>
+		</group>
+		<group colspan="4" col="6" name="header1a">
+			<group name="itinerary" string="Itinerary">
+				<field name="country_ids" widget="many2many_tags" />
+				<field name="dest_city" />
+			</group>
+			<group name="departure" string="Departure">
+				<field name="depart_transportation" widget="many2many_tags" />
+				<field name="car_type" invisible="1" />
+				<field name="transportation" widget="many2many_tags"
+					invisible="0" />
+			</group>
+			<group name="arrival" string="Arrival">
+				<field name="arrive_transportation" widget="many2many_tags" />
+				<field name="car_type" invisible="1" />
+				<field name="transportation" widget="many2many_tags"
+					invisible="0" />
+				<field name="means_of_transport" invisible="1" />
+			</group>
+		</group>
+		<group name="header2">
+			<group name="header2_left">
+				<field name="travel_type" invisible="1" />
+			</group>
+			<group class="oe_subtotal_footer oe_right" name="header2_right">
+				<field name="lcy_advance_payment" widget="monetary"
+					options="{'currency_field': 'lcy_currency_id'}" />
+				<field name="lcy_eligible_amount" widget="monetary"
+					options="{'currency_field': 'lcy_currency_id'}" />
+				<field name="amount_return" widget="monetary"
+					options="{'currency_field': 'lcy_currency_id'}" />
+				<field name="lcy_amount_total" widget="monetary"
+					options="{'currency_field': 'lcy_currency_id'}" />
+			</group>
+		</group>
+		<notebook>
+			<page string="Expenses">
+				<group colspan="4" col="8">
+					<group>
+						<button name="create_expense" attrs="{'invisible':[('expense_id','!=',False)]}"
+							string="Create Expense" groups="base.group_user" type="object"
+							colspan="2" />
+						<field name="expense_id" readonly="1"
+							attrs="{'invisible':[('expense_id','=',False)]}" colspan="2" />
+					</group>
+					<group>
+					</group>
+					<group>
+					</group>
+					<group>
+					</group>
+				</group>
+				<group>
+					<field name="expense_line_ids" colspan="4" nolabel="1"
+						attrs="{'readonly':[('expense_id','=', False)]}"
+						context="{'tree_view_ref':'hr_travel_order.travel_order_expense_tree', 'form_view_ref':'hr_travel_order.travel_order_expense_form',                                               'travel_order_id':active_id,                                               'hide_currency': 1}" />
+				</group>
+				<group name="page_total1">
+					<div>
+						<button name="action_recompute_expense" string="Compute Expense"
+							type="object" />
+					</div>
+					<group class="oe_subtotal_footer oe_right">
+						<field name="cash_total" readonly="1" widget="monetary" />
+						<field name="company_card_total" readonly="1" widget="monetary" />
+						<field name="transaction_account_total" readonly="1" widget="monetary" />
+						<field name="lcy_expense_amount_total" widget="monetary"
+							options="{'currency_field': 'lcy_currency_id'}" class="oe_subtotal_footer_separator" />
+					</group>
+				</group>
+			</page>
+			<page string="Daily Allowance">
+				<button name="create_daily_allowance" string="Create Daily Allowance"
+					type="object" />
+				<group>
+					<field name="daily_allowance_ids" colspan="4" nolabel="1"
+						context="{'tree_view_ref':'hr_travel_order.daily_allowance_line_tree',                                               'form_view_ref':'hr_travel_order.daily_allowance_line_form'}" />
+				</group>
+				<group name="page_total2">
+					<div>
+						<button name="action_compute_allowance" string="Compute Allowance"
+							type="object" />
+						<button name="action_recompute_allowance" string="Recompute Allowance"
+							type="object" />
+					</div>
+					<group class="oe_subtotal_footer oe_right">
+						<field name="lcy_allowance_amount_total" widget="monetary"
+							options="{'currency_field': 'lcy_currency_id'}" class="oe_subtotal_footer_separator" />
+					</group>
+				</group>
+			</page>
+			<page string="Itinerary">
+				<group>
+					<field name="itinerary_ids" colspan="4" nolabel="1">
+						<tree string="Itinerary" editable="bottom">
+							<field name="date" invisible="1" />
+							<field name="vehicle" />
+							<field name="license_plate" />
+							<field name="vehicle_type" invisible="1" />
+							<field name="product_id" invisible="1" />
+							<field name="description" invisible="1" />
+							<field name="relation" />
+							<field name="odometer_start" />
+							<field name="odometer_end" />
+							<field name="distance" />
+							<field name="lcy_amount_total" />
+							<field name="currency_id" invisible="1" />
+						</tree>
+					</field>
+				</group>
+				<group>
+					<div>
+					</div>
+					<group class="oe_subtotal_footer oe_right" name="page_total3">
+						<field name="lcy_itinerary_amount_total" widget="monetary"
+							options="{'currency_field': 'lcy_currency_id'}" class="oe_subtotal_footer_separator" />
+					</group>
+				</group>
+			</page>
+			<page string="Other data">
+				<group>
+					<field name="other_data" colspan="4" nolabel="1" />
+				</group>
+			</page>
+		</notebook>
+	</sheet>
+</form>
+            

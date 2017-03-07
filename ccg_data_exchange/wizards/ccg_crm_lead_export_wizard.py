@@ -41,6 +41,8 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     
     _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active, 5-required
         'CustomerName'      : ('res_partner', 'name', 'partner_name', 'Customer', True, True  ),
+        'CustomerAddress1'      : ('res_partner', 'street', 'street', 'Address Street', True, True ),
+        'CustomerAddress2'      : ('res_partner', 'street2', 'street2', 'Address Street2', True, False ),
         'CustomerCity'      : ('res_partner', 'city', 'city', 'City', True, True ),
         'CustomerCountry'   : ('res_country', 'name', 'country', 'Country', True, True ),
         'CustomerZipPostcode' : ('res_partner', 'zip', 'zip', 'ZIP', True, True ),

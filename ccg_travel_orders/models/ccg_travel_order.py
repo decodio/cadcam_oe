@@ -26,9 +26,38 @@ class ccg_travel_order(models.Model):
     _inherit = 'hr.travel.order'
     _name = 'hr.travel.order'
 
+    partner_ids = fields.Many2many('res.partner', 'hr_travel_order_partner_rel','travel_order_id', 'partner_id')
     depart_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
     arrive_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
     
+    @api.multi
+    @api.onchange('partner_ids')
+    def _on_change_partner(self):
+        countries = []
+        cities = [self.dest_city] if self.dest_city else []
+        for partner in self.partner_ids:
+            if partner.country_id:
+                 countries.append(partner.country_id.id)
+            if (not self.dest_city and partner.city ) or (partner.city and self.dest_city and not (partner.city in self.dest_city)):
+                 cities.append(partner.city)
+        if countries:
+            self.country_ids = countries
+        if cities:
+            self.dest_city = ", ".join(cities)
+
+    @api.multi
+    @api.onchange('depart_vehicle_ids')
+    def _on_change_depart_vehicle_ids(self):
+        if self.depart_vehicle_ids and not self.arrive_vehicle_ids:
+            self.arrive_vehicle_ids = [vehicle_id.id for vehicle_id in self.depart_vehicle_ids if vehicle_id]
+
+    @api.multi
+    @api.onchange('depart_transportation')
+    def _on_change_depart_transportation(self):
+        if self.depart_transportation and not self.arrive_transportation:
+            self.arrive_transportation = self.depart_transportation
+
+
 class ccg_travel_order_itinerary_lines(models.Model):
     _inherit = "hr.travel.order.itinerary.lines"
     _name = "hr.travel.order.itinerary.lines"

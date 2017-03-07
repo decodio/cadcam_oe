@@ -1,3 +1,3 @@
 id,name,model_id:id,perm_read,perm_write,perm_create,perm_unlink,active,group_id:id
-access_travel_order_vehicle_manager,Travel order vehicle manager,ccg_travel_orders.model_travel_order_vehicle,1,1,1,0,1,base.group_hr_manager
-access_travel_order_vehicle_employee,Travel order vehicle officer,ccg_travel_orders.model_travel_order_vehicle,1,0,0,0,1,base.group_hr_user
+access_travel_order_fleet_manager,Travel order fleet manager,ccg_travel_orders.model_travel_order_fleet,1,1,1,0,1,base.group_hr_manager
+access_travel_order_fleet_employee,Travel order fleet officer,ccg_travel_orders.model_travel_order_fleet,1,0,0,0,1,base.group_hr_user

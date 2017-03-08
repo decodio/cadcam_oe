@@ -14,7 +14,7 @@
 			<field name="parser_loc">ccg_travel_orders/reports/travel_order_parser.py</field>
 			<field name="report_rml">ccg_travel_orders/reports/travel_order_report.odt</field>
 			<field name="tml_source">file</field>
-			<field name="styles_mode">global</field>
+			<field name="styles_mode">default</field>
 		</record>
 
 		<record id="btn_cadcam_travel_order_report" model="ir.values">

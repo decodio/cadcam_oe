@@ -29,7 +29,6 @@ class Parser(report_sxw.rml_parse):
         super(Parser, self).__init__(cr, uid, name, context)
         self.context = context
         self.localcontext.update({ 'get_estimated_days' :  self._get_estimated_days,  })
-        #(self.date_from, self.date_to) = self._get_dates(cr, uid, context)
 
     def _get_dates(self, cr, uid, context=None):
         active_model = context.get('active_model', False)

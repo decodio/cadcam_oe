@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <openerp>
 	<data>
-		<record id="cadcam_travel_order_report" model="ir.actions.report.xml">
-			<field name="name">CADCAM travel order</field>
+		<record id="ccg_travel_order_report" model="ir.actions.report.xml">
+			<field name="name">ccg.travel.order</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">hr.travel.order</field>
-			<field name="report_name">cadcam_travel_order</field>
+			<field name="report_name">ccg_travel_order</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
 			<!-- <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
@@ -17,16 +17,45 @@
 			<field name="styles_mode">default</field>
 		</record>
 
-		<record id="btn_cadcam_travel_order_report" model="ir.values">
+		<record id="btn_ccg_travel_order_report" model="ir.values">
 			<field name="key" eval="'action'" />
 			<field name="key2" eval="'client_print_multi'" />
 			<field name="model">hr.travel.order</field>
-			<field name="name">CADCAM travel order</field>
+			<field name="name">ccg travel order</field>
 			<field name="value"
-				eval="'ir.actions.report.xml,'+str(cadcam_travel_order_report)" />
+				eval="'ir.actions.report.xml,'+str(ccg_travel_order_report)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
+
+		<record id="ccg_travel_order_liquidation" model="ir.actions.report.xml">
+			<field name="name">ccg.travel.order.liquidation</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">hr.travel.order</field>
+			<field name="report_name">ccg_travel_order_liquidation</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+			<!-- <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name="out_format" eval="ref('report_aeroo.report_mimetypes_doc_odt')" />
+			<field name="parser_state">loc</field>
+			<field name="parser_loc">ccg_travel_orders/reports/travel_order_parser.py</field>
+			<field name="report_rml">ccg_travel_orders/reports/travel_order_liquidation.odt</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">default</field>
+		</record>
+
+		<record id="btn_ccg_travel_order_liquidation" model="ir.values">
+			<field name="key" eval="'action'" />
+			<field name="key2" eval="'client_print_multi'" />
+			<field name="model">hr.travel.order</field>
+			<field name="name">ccg travel order liquidation</field>
+			<field name="value"
+				eval="'ir.actions.report.xml,'+str(ccg_travel_order_liquidation)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+		</record>
+
+
 
 	</data>
 </openerp>

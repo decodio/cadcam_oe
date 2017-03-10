@@ -98,8 +98,13 @@ class crm_logika_export(osv.osv_memory):  # orm.TransientModel
         invoice_data.append(self._quoted(locale.str(invoice.lcy_rate)))
 # H: Uvodni tekst - Uvodni tekst računa (1000 znakova)
         invoice_data.append(self._quoted('Invoice description'))
+# I: Šifra_prodavača - Ne koristimo
+        invoice_data.append(self._quoted(''))
+# J: Tip računa - 1 = redovni, 2 = avansni
+        invoice_type = 2 if invoice.advance_payment else 1
+        invoice_data.append(self._quoted(invoice_type))
+
         data = self._delimiter().join(invoice_data)
- 
         partner_id = invoice.partner_id
         lines = invoice.invoice_line
         return (data, invoice_number, invoice.partner_id, lines)

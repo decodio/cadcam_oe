@@ -25,6 +25,7 @@ from openerp.osv import orm, osv, fields
 from datetime import datetime, date
 import base64
 from pyxb import namespace
+from ibus.keysyms import Lstroke
 
 class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     _name = 'crm.lead.export.for.ds'
@@ -38,28 +39,74 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'encoding'  : fields.selection((('utf-8', 'utf-8'), ('utf-8-sig', 'utf-8 with BOM'), ("windows-1250", "windows-1250")), default='utf-8'),
         'decimal'  :  fields.selection((('.', '(dot)'), (',', ', (comma)')), default='.'),
     }
+
+    _ds_fields = ['CustomerName',       #A
+                  'DSSiteID',           #B
+                  'PartnerCustomerID',  #C
+                  'CustomerDUNSNumber', #D
+                  'CustomerVATNumber', #E
+                  'CustomerRegistrationID', #F
+                  'CustomerAddress1', #G
+                  'CustomerAddress2', #H
+                  'CustomerCity', #I
+                  'CustomerCountry',#J
+                  'CustomerStatePrefecture', #K
+                  'CustomerZipPostcode', #L
+                  'CustomerWebsiteHomepageURL', #M
+                  'CustomerContactSalutation', #N
+                  'CustomerContactFirstName', #O
+                  'CustomerContactLastName', #P
+                  'CustomerContactJobTitle', #Q
+                  'CustomerContactTel', #R
+                  'CustomerContactEmail', #S
+                  'PartnerSalesRepFirstName', #T
+                  'PartnerSalesRepLastName', # U
+                  'PartnerSalesRepEmail', #V
+                  'OpportunityLeadName', #W
+                  'OpportunityLeadDescription', #X
+                  'PartnerOpportunityID', #Y
+                  'DSLeadID', #Z
+                  'COMETCampaignCode', #AA
+                  'CampaignName', #AB
+                  'SalesStage', #AC
+                  'ForecastCategory', #AD
+                  'DomainofInterest', #AE
+                  'LeadSource', #AF
+                  'NextMilestone', #AG
+                  'NextMilestoneDate', #AH
+                  'CloseDate', #AI
+                  'ReasonLost', #AJ
+                  'ReasonWon', #AK
+                  'ReasonWonLostComment', #AL
+                  'IfLostWhoWon', #AM
+                  'OfferName', # AN
+                  'RevenueAmount', #AO
+                  'RevenueCurrency', #AP
+                  'RevenueType', #AQ
+                  ]
+
     
-    _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active, 5-required
-        'CustomerName'      : ('res_partner', 'name', 'partner_name', 'Customer', True, True  ),
-        'CustomerAddress1'      : ('res_partner', 'street', 'street', 'Address Street', True, True ),
-        'CustomerAddress2'      : ('res_partner', 'street2', 'street2', 'Address Street2', True, False ),
-        'CustomerCity'      : ('res_partner', 'city', 'city', 'City', True, True ),
-        'CustomerCountry'   : ('res_country', 'name', 'country', 'Country', True, True ),
-        'CustomerZipPostcode' : ('res_partner', 'zip', 'zip', 'ZIP', True, True ),
-        'CustomerVATNumber' : ('res_partner', 'vat', 'vat', 'VAT', True, True ),
-        'OfferName'         : ('ccg_offer_name', 'name', 'offer_name', 'Offer name', True, True ),
-        'RevenueAmount'     : ('crm_lead', 'ds_expected_revenue', 'planned_revenue', 'Expected revenue for DS', True, True ),
-        'RevenueCurrency'   : ('', "'EUR'", 'currency', 'Currency', True, True ),
-        'PartnerOpportunityID' : ('crm_lead', 'lead_ref_no', 'opportunity_id', 'Opportunity ID', True, True ),
-        'SalesStage'        : ('crm_case_stage', 'name', 'sales_stage', 'Sales stage', True, True ),
-        'ForecastCategory'  : ('crm_case_stage', 'name', 'forecast_category', 'Forecast category', True, True ),
-        'CloseDate'         : ('crm_lead', 'date_deadline', 'close_date', 'Expected closing', True, True ),
-        'RevenueType'       : ('crm_lead', 'revenue_type', 'revenue_type', 'Revenue type', True, True ),
-        'CustomerContactName'       : ('partner_contact', 'name', 'contact_name', 'Customer Contact Name', False, False),
-        'CustomerContactFirstName'  : ('', "''", 'contact_first_name', 'Customer Contact First Name', True, True ),
-        'CustomerContactLastName'   : ('', "''", 'contact_last_name', 'Customer Contact LastName', True, True ),
-        'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', 'Customer Contact Email', True, True ),
-        'DSLeadID'              : ('crm_lead', 'ds_lead_id', 'ds_lead_id', 'DS Lead ID', True, False ),
+    _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active, 5-required, 6-column
+        'CustomerName'      : ('res_partner', 'name', 'partner_name', 'Customer', True, True, 'A' ),
+        'CustomerAddress1'      : ('res_partner', 'street', 'street', 'Address Street', True, True, '' ),
+        'CustomerAddress2'      : ('res_partner', 'street2', 'street2', 'Address Street2', True, False, '' ),
+        'CustomerCity'      : ('res_partner', 'city', 'city', 'City', True, True, '' ),
+        'CustomerCountry'   : ('res_country', 'name', 'country', 'Country', True, True, '' ),
+        'CustomerZipPostcode' : ('res_partner', 'zip', 'zip', 'ZIP', True, True, '' ),
+        'CustomerVATNumber' : ('res_partner', 'vat', 'vat', 'VAT', True, True, '' ),
+        'OfferName'         : ('ccg_offer_name', 'name', 'offer_name', 'Offer name', True, True, '' ),
+        'RevenueAmount'     : ('crm_lead', 'ds_expected_revenue', 'planned_revenue', 'Expected revenue for DS', True, True, '' ),
+        'RevenueCurrency'   : ('', "'EUR'", 'currency', 'Currency', True, True, '' ),
+        'PartnerOpportunityID' : ('crm_lead', 'lead_ref_no', 'opportunity_id', 'Opportunity ID', True, True, '' ),
+        'SalesStage'        : ('crm_case_stage', 'name', 'sales_stage', 'Sales stage', True, True, '' ),
+        'ForecastCategory'  : ('crm_case_stage', 'name', 'forecast_category', 'Forecast category', True, True, '' ),
+        'CloseDate'         : ('crm_lead', 'date_deadline', 'close_date', 'Expected closing', True, True, '' ),
+        'RevenueType'       : ('crm_lead', 'revenue_type', 'revenue_type', 'Revenue type', True, True, '' ),
+        'CustomerContactName'       : ('partner_contact', 'name', 'contact_name', 'Customer Contact Name', False, False, ''),
+        'CustomerContactFirstName'  : ('', "''", 'contact_first_name', 'Customer Contact First Name', True, True, '' ),
+        'CustomerContactLastName'   : ('', "''", 'contact_last_name', 'Customer Contact LastName', True, True, '' ),
+        'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', 'Customer Contact Email', True, True, '' ),
+        'DSLeadID'              : ('crm_lead', 'ds_lead_id', 'ds_lead_id', 'DS Lead ID', True, False, '' ),
         }
     
     _stage_mapping = {
@@ -151,21 +198,26 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             opportunity_id = row_original['opportunity_id']
             row = self.map_stage(cr, uid, row_original, context)
             row = self.split_contact_name(cr, uid, row, context)
-            for ds_field_name in self._field_mappings.keys():
-                value = self._field_mappings[ds_field_name]
-                if value[4]: # is active
-                    crm_field_name = value[2] or value[1]
-                    field_value = row[crm_field_name]
-                    required = value[5]
-                    if required and not field_value:
-                       field_label = value[3]
-                       raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
-                    if crm_field_name == 'close_date':
-                        field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
-                    field_value_strnig = self._quoted(field_value)
-                    line.append(field_value_strnig)
+            for ds_field_name in self._ds_fields:
+                print  ds_field_name
+                value = self._field_mappings.get(ds_field_name, False)
+                if value:
+                    if value[4]: # is active
+                        crm_field_name = value[2] or value[1]
+                        field_value = row[crm_field_name]
+                        required = value[5]
+                        if required and not field_value:
+                           field_label = value[3]
+                           raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
+                        if crm_field_name == 'close_date':
+                            field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
+                        field_value_strnig = self._quoted(field_value)
+                else:
+                    field_value_strnig = ''
+                line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   
             lines.append(csv_line)
+            print lines
         if len(lines) > 1:
             csv_file_name ='opportunities.csv'
         else:
@@ -176,7 +228,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         if context is None:
             context = {}
         self.form = self.read(cr, uid, ids)[0]
-        header = self._delimiter().join([k for k in self._field_mappings.keys() if self._field_mappings[k][4]])
+#        header = self._delimiter().join([k for k in self._ds_fields if self._field_mappings[k][4]])
+        header = self._delimiter().join(self._ds_fields)
+        print header
         lines, filename = self._csv_lines(cr, uid, context)
         if header and lines:
             data = header + '\n' + lines

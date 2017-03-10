@@ -31,4 +31,7 @@ class crm_lead(models.Model):
     contact_name_id = fields.Many2one('res.partner', help="Contact Person related to this opportunity.")
     ds_expected_revenue = fields.Float('DS Revenue', digits=dp.get_precision('Account'), help="Revenue related to PLC licence.\This revenue will be send to DS portal.")
     ds_lead_id = fields.Char('DS Lead ID', size=11, help='DS lead ID, format is ADOA-XXXXXX')
-    
+#     sales_stage = fields.Selection([('A', 'A'),('B', 'B')], default = 'A', required=True)
+#     forecast_category = fields.Selection([('C', 'C'),('D', 'D')], default = 'C', required=True)
+
+

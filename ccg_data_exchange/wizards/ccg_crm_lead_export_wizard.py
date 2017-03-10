@@ -24,8 +24,8 @@ from openerp.exceptions import Warning
 from openerp.osv import orm, osv, fields
 from datetime import datetime, date
 import base64
-from pyxb import namespace
-from ibus.keysyms import Lstroke
+# from pyxb import namespace
+# from ibus.keysyms import Lstroke
 
 class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     _name = 'crm.lead.export.for.ds'

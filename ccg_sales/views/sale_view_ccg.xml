@@ -50,16 +50,16 @@
 					<attribute name="invisible">True</attribute>
 				</xpath>
 
-				<!-- Hide original payment mode field from document 
+				<!-- Hide original payment mode field from document -->
 				<xpath expr="//group/field[@name='payment_mode_id']" position="attributes">
 					<attribute name="invisible">True</attribute>
 				</xpath>
-				-->
-				<!-- Hide original Contract analytic field from document -->
+				
+				<!-- UNHide original Contract analytic field from document -->
 				<xpath expr="//group/field[@name='project_id']" position="attributes">
-					<attribute name="invisible">True</attribute>
+					<attribute name="invisible">False</attribute>
 				</xpath>
-
+				
 				<!-- Hide Export data group -->
 				<xpath
 					expr="//page[@string='Other Data']/group/group[@string='Export data']"

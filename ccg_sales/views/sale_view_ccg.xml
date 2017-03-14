@@ -29,7 +29,23 @@
 				<xpath expr="//tree/field[@name='user_id']" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
-				<xpath expr="//tree/field[@name='partner_id']" position="before">
+				<xpath expr="//tree/field[@name='partner_id']" position="after">
+					<field name="lead_id"/>
+				</xpath>
+				
+			</field>
+		</record>
+		
+		<record id="cadcam_sale_order_tree_ccg" model="ir.ui.view">
+			<field name="name">cadcam.sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree" />
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='user_id']" position="attributes">
+					<attribute name="string">Salesman</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='partner_id']" position="after">
 					<field name="lead_id"/>
 				</xpath>
 				

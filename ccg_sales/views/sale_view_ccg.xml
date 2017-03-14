@@ -29,6 +29,10 @@
 				<xpath expr="//tree/field[@name='user_id']" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
+				<xpath expr="//tree/field[@name='partner_id']" position="before">
+					<field name="lead_id"/>
+				</xpath>
+				
 			</field>
 		</record>
 

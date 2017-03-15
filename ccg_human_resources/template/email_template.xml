@@ -20,7 +20,7 @@ Expiration Date:<b>${object.end_date}</b> <br>
 		</record>	
 
 		<record id="email_template_leave_request" model="email.template">
-			<field name="name">Leave request template</field>
+			<field name="name">XXXXLeave request template</field>
 			<field name="email_from">${(object.user_id.email or '')|safe }</field>
 			<field name="subject">${object.holiday_status_id.name} - ${object.employee_id.name}</field>
 			<field name="partner_to">${object.employee_id.receivers_list}</field>
@@ -31,8 +31,10 @@ Expiration Date:<b>${object.end_date}</b> <br>
 			<field name="body_html"><![CDATA[
 Zaposlenik/ca: ${object.employee_id.name}<br>
 <br>
-% if 'Legal' in object.holiday_status_id.name :
+% if 'Legal' in object.holiday_status_id.name and object.type =='remove':
 Traži <b>godišnji odmor</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
+% elif 'Legal' in object.holiday_status_id.name and object.type == 'add':
+Ima pravo na <b>${ '{0:0.0f}'.format(object.number_of_days_temp) } dana</b> godišnjeg odmora u ${object.holiday_status_id.year}. godini.<br>
 % elif 'Sick' in object.holiday_status_id.name :
 Prijavljuje <b>privremenu nesposobnost za rad</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
 % else:
@@ -46,6 +48,8 @@ Nezna ni sam što hoće!<br>
 			</field>
 		</record>
 
+
+<!-- koristi se za svaki Approve a ne samo za Leave request!!! -->
 		<record id="email_template_response_leave_request" model="email.template">
 			<field name="name">Response To Leave Request</field>
 			<field name="email_from">${object.write_uid.partner_id.email}</field>

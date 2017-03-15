@@ -20,7 +20,7 @@ Expiration Date:<b>${object.end_date}</b> <br>
 		</record>	
 
 		<record id="email_template_leave_request" model="email.template">
-			<field name="name">XXXXLeave request template</field>
+			<field name="name">Leave request template</field>
 			<field name="email_from">${(object.user_id.email or '')|safe }</field>
 			<field name="subject">${object.holiday_status_id.name} - ${object.employee_id.name}</field>
 			<field name="partner_to">${object.employee_id.receivers_list}</field>

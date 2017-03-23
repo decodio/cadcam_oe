@@ -12,5 +12,24 @@
 				</field>
 			</field>
 		</record>
+
+		<record id="view_attendance_form_ccg" model="ir.ui.view">
+			<field name="name">hr.attendance.view.ccg</field>
+			<field name="model">hr.attendance</field>
+			<field name="sequence" eval="18" />
+			<field name="inherit_id" ref="hr_attendance.view_attendance_form" />
+			<field name="arch" type="xml">
+			<xpath expr="//field[@name='action_desc']" position="attributes">
+			<attribute name="options">{'no_create': 1}
+			</attribute>
+			</xpath>
+			</field>
+		</record>
+		
 	</data>
 </openerp>
+
+
+<!-- 
+<field name="action_desc" options="{'no_create': 1}"/>
+ --> 

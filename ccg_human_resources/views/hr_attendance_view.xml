@@ -29,7 +29,3 @@
 	</data>
 </openerp>
 
-
-<!-- 
-<field name="action_desc" options="{'no_create': 1}"/>
- --> 

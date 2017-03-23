@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="edit_holiday_new_ccg" model="ir.ui.view">
+			<field name="name">edit.holiday.new.ccg</field>
+			<field name="model">hr.holidays</field>
+			<field name="sequence" eval="18" />
+			<field name="inherit_id" ref="hr_holidays.edit_holiday_new" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='holiday_status_id']" position="attributes">
+					<attribute name="options">{'no_create': 1}
+					</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>
+

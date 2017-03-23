@@ -35,6 +35,7 @@
                 "views/hr_holidays_status_form.xml",
                 "views/hr_employee_form.xml",
                 "views/hr_attendance_view.xml",
+                "views/edit_holiday_new_ccg.xml",
                 "cron/cron_job.xml",
                 "template/email_template.xml",
              ],

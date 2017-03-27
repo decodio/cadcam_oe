@@ -28,6 +28,11 @@ class ResPartnerCCG(models.Model):
     _name = 'res.partner'
     _inherit = 'res.partner'
     priority = fields.Selection(crm.AVAILABLE_PRIORITIES , 'Priority', default = '0')
+    head_office_id = fields.Char('Head Office ID')
+    site_id = fields.Char('Site ID')
     
-    pass
-
+    @api.multi
+    @api.onchange('site_id')
+    def _on_change_partner(self):
+        if not self.head_office_id and self.site_id:
+            self.head_office_id = self.site_id

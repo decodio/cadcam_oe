@@ -86,10 +86,10 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     
     _field_mappings = { # 0-table, 1-field, 2-alias, 3-string, 4-active, 5-required
         'CustomerName'      : ('res_partner', 'name', 'partner_name', 'Customer', True, True ),
-        'DSSiteID    '      : ('res_partner', 'site_id', 'site_id', 'DSSiteID', True, False ),
+        'DSSiteID'          : ('res_partner', 'site_id', 'site_id', 'DSSiteID', True, False ),
         'HeadOfficeID'      : ('res_partner', 'head_office_id', 'head_office_id', 'HeadOfficeID', False, False ),
-        'CustomerAddress1'      : ('res_partner', 'street', 'street', 'Address Street', True, True ),
-        'CustomerAddress2'      : ('res_partner', 'street2', 'street2', 'Address Street2', True, False ),
+        'CustomerAddress1'  : ('res_partner', 'street', 'street', 'Address Street', True, True ),
+        'CustomerAddress2'  : ('res_partner', 'street2', 'street2', 'Address Street2', True, False ),
         'CustomerCity'      : ('res_partner', 'city', 'city', 'City', True, True ),
         'CustomerCountry'   : ('res_country', 'name', 'country', 'Country', True, True ),
         'CustomerZipPostcode' : ('res_partner', 'zip', 'zip', 'ZIP', True, True ),
@@ -187,7 +187,6 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         LEFT JOIN res_partner partner_contact ON (crm_lead.contact_name_id=partner_contact.id)
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
-        print sql
         cr.execute(sql)
         return  cr.dictfetchall()
 

@@ -35,7 +35,9 @@ class Parser(report_sxw.rml_parse):
                 raise Warning(_("Cannot print quotation without customer's VAT number!"))
             
         self.context = context
-        self.localcontext.update({ 'get_data' :  self._get_data,  })
+        self.force_language = self.context.get('force_language', '')
+        self.localcontext.update({ 'get_data' :  self._get_data, 
+                                   'force_language': self.force_language}) # ovako se može vrijednost iz context-a prenositi iz wizarda u report
 
     def _get_data(self, param_name, default_value=None):
         data = self.context.get(param_name, False)

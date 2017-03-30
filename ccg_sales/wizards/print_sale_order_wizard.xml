@@ -7,22 +7,32 @@
 			<field name="model">print.sale.order.wizard</field>
 			<field name="arch" type="xml">
 				<form string="Print options" version="7.0">
-				<group colspan="4" col="2">
-					<group string="Display options" >
-						<field name="show_line_discount" on_change="on_change_line_discount(show_line_discount)" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
-						<field name="show_total_discount" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
-						<field name="show_vat" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
-						<separator colspan="2"/>
-						<field name="group_by_licence" on_change="on_change_group_by_licence(group_by_licence)"/>
-					</group>
-					<group string="Currency options">
-						<field name="currency_type"  widget="radio" attrs="{'readonly':[('group_by_licence', '=', True)]}" />
-					</group>
+					<group colspan="4" col="2">
+						<group string="Display options">
+							<field name="show_line_discount" on_change="on_change_line_discount(show_line_discount)"
+								attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+							<field name="show_total_discount"
+								attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+							<field name="show_vat"
+								attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+							<separator colspan="2" />
+							<field name="group_by_licence" on_change="on_change_group_by_licence(group_by_licence)" />
+						</group>
+						<div>
+						<group string="Currency options">
+							<field name="currency_type" widget="radio"
+								attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+						</group>
+						<group string="Language options">
+							<field name="force_language" options="{'no_create': 1}"/>
+						</group>
+						</div>
 					</group>
 					<footer>
 						<!-- name="print_sale_order_button" > button_name is method name of 
 							model(print.sale.order.wizard) to execute -->
-						<button string="Print" name="print_report" type="object" class="oe_highlight" />
+						<button string="Print" name="print_report" type="object"
+							class="oe_highlight" />
 						or
 						<button string="Cancel" class="oe_link" special="cancel" />
 					</footer>
@@ -41,28 +51,24 @@
 			<field name="target">new</field>
 		</record>
 
-<!-- add action to button 'More'
-		<record id="btn_sale_order_print_advanced" model="ir.values" >
-			<field name="key" eval="'action'" />
-			<field name="key2" eval="'client_action_multi'"/>
-			<field name="model">sale.order</field>
-			<field name="name">Advanced print sale order</field>
-			<field name="value" eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" />
-			<field name="isobject" eval="True" />
-			<field name="replace" eval="False" />
-		</record>
--->
+		<!-- add action to button 'More' <record id="btn_sale_order_print_advanced" 
+			model="ir.values" > <field name="key" eval="'action'" /> <field name="key2" 
+			eval="'client_action_multi'"/> <field name="model">sale.order</field> <field 
+			name="name">Advanced print sale order</field> <field name="value" eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" 
+			/> <field name="isobject" eval="True" /> <field name="replace" eval="False" 
+			/> </record> -->
 		<!-- add action to button 'Print' -->
-		<record id="btn_sale_order_print_advanced2" model="ir.values" >
+		<record id="btn_sale_order_print_advanced2" model="ir.values">
 			<field name="key" eval="'action'" />
 			<field name="key2" eval="'client_print_multi'" />
 			<field name="model">sale.order</field>
 			<field name="name">Print quotation button</field>
-			<field name="value" eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" />
+			<field name="value"
+				eval="'ir.actions.act_window,'+str(action_print_sale_order_wizard)" />
 			<field name="isobject" eval="True" />
 			<field name="replace" eval="False" />
 		</record>
-		
+
 	</data>
 </openerp>
         

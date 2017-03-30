@@ -31,6 +31,7 @@ class PrintSaleOrderWizard(models.TransientModel):
     currency_type = fields.Selection([('document','Document currency'),('company','Company currency'),('dual','Dual currency')], 'Currency', default = 'document',
                                      help='Display all prices in currency as specified on quotation \ in company currency \n or displays totals in document currency and company currency')
     group_by_licence = fields.Boolean('Group products', default = False, help='Group products by categories')
+    force_language = fields.Many2one('res.lang', help='Use specified language instead of partner''s language', string='Force language')
     
     def print_report(self, cr, uid, ids, context=None):
         data = {
@@ -45,6 +46,12 @@ class PrintSaleOrderWizard(models.TransientModel):
         show_total_discount = form['show_total_discount']
         show_vat = form['show_vat']
         group_by_licence  = form['group_by_licence']
+        force_language  = form['force_language']
+        if force_language:
+            lang_obj = self.pool.get('res.lang').browse(cr, uid, force_language[0], context=context)
+            fl = lang_obj.code
+        else:
+            fl = ''
         
         if group_by_licence:
             report_name = 'sale_order_group_document_currency_report'
@@ -71,6 +78,7 @@ class PrintSaleOrderWizard(models.TransientModel):
                         'show_total_discount':show_total_discount,
                         'company_currency' : company_currency,
                         'document_currency':document_currency,
+                        'force_language' : fl,
                         })
         return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
 

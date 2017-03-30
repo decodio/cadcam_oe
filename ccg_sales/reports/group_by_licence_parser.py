@@ -47,6 +47,7 @@ class Parser(report_sxw.rml_parse):
               ]
         self.document = self._group_lines(document_obj, self.groups)
         self.context = context
+        self.force_language = self.context.get('force_language', '')
         self.localcontext.update({
             'time': time,
             'get_lines'     : self._get_lines,
@@ -62,6 +63,7 @@ class Parser(report_sxw.rml_parse):
             'get_line_total2': self._get_line_total2,
             'get_all_discounts_percent' : self._get_all_discounts_percent,
             'get_discount2_percent' : self._get_discount2_percent,
+            'force_language': self.force_language,
         })
 
     def _get_groups(self):

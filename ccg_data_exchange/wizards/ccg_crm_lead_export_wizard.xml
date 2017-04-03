@@ -37,6 +37,11 @@
 								file on your computer, then upload on DS portal!
 							</b>
 						</div>
+						<div colspan="4" cols="1" style="color:red">
+						<b>Check SiteID of the customer!  <br/>
+						<u>SiteID is mandatory</u> except for new customers and first upload. Opportunities for customer without SiteID <u>will be rejected</u> by DS!!!
+						</b>
+						</div>
 					</group>
 				</form>
 			</field>

@@ -19,6 +19,9 @@
 				<xpath expr="/tree/field[@name='discount_total']" position="attributes"> 
 					<attribute name="sum">Total discount</attribute> 
 				</xpath> 
+				<xpath expr="/tree/field[@name='quantity']" position="attributes"> 
+					<attribute name="sum">Total Quantity</attribute> 
+				</xpath> 
 				<xpath expr="/tree/field[@name='amount']" position="attributes"> 
 					<attribute name="sum">Total amount</attribute> 
 				</xpath> 

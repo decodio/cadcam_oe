@@ -111,10 +111,10 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         }
     
     _stage_mapping = {
-        'New':  ('3-Establish Value', 'Commit'), #('1-Sales Lead', 'Upside'), # uvjek šaljemo opportunity u DS bez obzira na naš status
-        'Validation' : ('3-Establish Value', 'Commit'), #('2-Validate Opportunity', 'Upside'),
-        'Establish value' : ('3-Establish Value', 'Commit'),
-        'Negotiation' : ('4-Reach Agreement', 'Safe'),
+        'New': ('1-Sales Lead', 'Upside'),
+        'Validation' : ('2-Validate Opportunity', 'Upside'), 
+        'Establish value' : ('3-Establish Value', 'Upside'),
+        'Negotiation' : ('4-Reach Agreement', 'Upside'),
         'Won' : ('Closed/Won', 'Won'),
         'Lost' : ('Closed/Lost', 'Lost'),
         }

@@ -64,6 +64,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                   'OpportunityLeadDescription', #X
                   'PartnerOpportunityID', #Y
                   'DSLeadID', #Z
+                  #'CoMarketingYN', #??? not in specification
                   'COMETCampaignCode', #AA
                   'CampaignName', #AB
                   'SalesStage', #AC

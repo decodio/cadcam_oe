@@ -55,6 +55,9 @@
 						invoicing_datetime, date_delivery)
 					</attribute>
 				</xpath>
+				<xpath expr="//field[@name='document_date']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
 			</field>
 		</record>
 

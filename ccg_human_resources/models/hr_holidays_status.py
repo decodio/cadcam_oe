@@ -29,6 +29,4 @@ class hr_holidays_status(osv.osv):
     _columns = {
                 'year': fields.integer('Year'),
                 }
-    
-    
 hr_holidays_status()

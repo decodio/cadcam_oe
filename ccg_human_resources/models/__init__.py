@@ -20,3 +20,4 @@
 ##############################################################################
 import hr_holidays_status
 import hr_employee
+import hr_holidays

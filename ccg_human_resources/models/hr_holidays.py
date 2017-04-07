@@ -26,7 +26,6 @@ from openerp import models, fields, api, _
 from openerp.exceptions import Warning
 from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,DEFAULT_SERVER_DATETIME_FORMAT)
 
-
 class HrHolidays(models.Model):
     _inherit = "hr.holidays"
     
@@ -39,8 +38,6 @@ class HrHolidays(models.Model):
             context = context.copy()
             context.update({'current_holiday': record.id})
             leave_days = self.pool.get('hr.holidays.status').get_days(cr, uid, [record.holiday_status_id.id], record.employee_id.id, context=context)[record.holiday_status_id.id]
-            print 'CCG:leave_days', leave_days
-            print 'CCG:record.number_of_days_temp',record.number_of_days_temp
             if leave_days['remaining_leaves'] < 0 or leave_days['virtual_remaining_leaves'] < 0 : 
                # Raising a warning gives a more user-friendly feedback than the default constraint error
                raise Warning(_('CCG:The number of remaining leaves ({0:d} day(s)) is not sufficient for this leave type!'.format(int(leave_days['remaining_leaves']))))

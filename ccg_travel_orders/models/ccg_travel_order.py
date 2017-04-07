@@ -62,6 +62,23 @@ class ccg_travel_order_itinerary_lines(models.Model):
     _inherit = "hr.travel.order.itinerary.lines"
     _name = "hr.travel.order.itinerary.lines"
 
+#     def _get_default_vehicle_id(self):
+#         print "1. _get_default_vehicle_id"
+#         vehicle_id = None
+#         print "2. _get_default_vehicle_id"
+#         print "2.1.",self.travel_order_id
+#         print "2.2.",self.travel_order_id.depart_vehicle_ids
+#         if self.travel_order_id.depart_vehicle_ids[0]: 
+#             print "3. _get_default_vehicle_id"
+#             vehicle =  self.travel_order_id.depart_vehicle_ids[0]
+#             print "4. _get_default_vehicle_id"
+#             vehicle_id = vehicle.id
+#             print "5. _get_default_vehicle_id"
+#         return vehicle_id
+
+#    vehicle_id = fields.Many2one('travel.order.fleet', 'Vehicle', default=_get_default_vehicle_id)
+
+
     vehicle_id = fields.Many2one('travel.order.fleet', 'Vehicle')
     vehicle = fields.Char('Vehicle', compute='_compute_vehicle', store=True,help="")
     license_plate = fields.Char('License Plate',compute='_compute_license_plate', store=True,)
@@ -70,7 +87,6 @@ class ccg_travel_order_itinerary_lines(models.Model):
     @api.one
     @api.depends('vehicle_id')
     def _compute_vehicle(self):
-        print 
         vehicle = []
         if self.vehicle_id.modelname:
             vehicle.append(self.vehicle_id.modelname)

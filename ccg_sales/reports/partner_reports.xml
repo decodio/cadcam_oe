@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+		<record id="cadcam_partner_report_all" model="ir.actions.report.xml">
+			<field name="name">Partner data</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">res.partner</field>
+			<field name="report_name">cadcam_partner_report_all</field>
+			<field name="report_type">aeroo</field>
+			<field name="in_format">oo-odt</field>
+<!--			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+<!--			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>  -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_pdf_odt')"/>
+			<field name="parser_loc"></field>
+			<field name="report_rml">ccg_sales/reports/partner_report_all.odt</field>
+			<field name="parser_state">default</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+
+		<record model="ir.values" id="btn_print_partner_report_all">
+			<field eval="'action'" name="key" />
+			<field eval="'client_print_multi'" name="key2" />
+			<field name="model">res.partner</field>
+			<field name="name">Partner data</field>
+			<field name="value"
+				eval="'ir.actions.report.xml,'+str(cadcam_partner_report_all)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+		</record>
+	</data>
+</openerp>

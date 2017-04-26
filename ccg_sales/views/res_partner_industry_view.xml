@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="res_partner_industry_form" model="ir.ui.view" >
+			<field name="name">res.partner.industry.form</field>
+			<field name="model">res.partner.industry</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Industry">
+					<group name="Text" colspan="4" col="2">
+						<field name="name" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="res_partner_industry_tree" model="ir.ui.view" >
+			<field name="name">res_partner_industry_tree</field>
+			<field name="model">res.partner.industry</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Industries">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+       <record id="res_partner_industry_filter" model="ir.ui.view">
+            <field name="name">res.partner.industry.filter</field>
+            <field name="model">res.partner.industry</field>
+            <field name="arch" type="xml">
+                <search string="Search Industry">
+					<field name="name" />
+                </search>
+            </field>
+        </record>
+				
+		<record id="action_res_partner_industry" model="ir.actions.act_window">
+			<field name="name">action.res.partner.industry</field>
+			<field name="res_model">res.partner.industry</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="res_partner_industry_filter" />
+		</record>
+
+		<menuitem id="menu_res_partner_industry" parent="base.menu_sales"
+			name="Partner Industry" action="action_res_partner_industry" groups="base.group_no_one"/>
+	</data>
+
+</openerp>

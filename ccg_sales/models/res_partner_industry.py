@@ -18,22 +18,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
+import openerp.addons.decimal_precision as dp
 from openerp import models, fields, api, _
-from openerp.addons.crm import crm
+from openerp.exceptions import Warning 
+from datetime import datetime
 
 
-
-class ResPartnerCCG(models.Model):
-    _name = 'res.partner'
-    _inherit = 'res.partner'
-    priority = fields.Selection(crm.AVAILABLE_PRIORITIES , 'Priority', default = '0')
-    head_office_id = fields.Char('Head Office ID')
-    site_id = fields.Char('Site ID')
-    industry_id = fields.Many2one('res.partner.industry', 'Industry')
+class ResPartnerIndustry(models.Model):
+    _name = 'res.partner.industry'
     
-    @api.multi
-    @api.onchange('site_id')
-    def _on_change_partner(self):
-        if not self.head_office_id and self.site_id:
-            self.head_office_id = self.site_id
+    name =  fields.Char('Name', required=True, translate=True)
+
+
+

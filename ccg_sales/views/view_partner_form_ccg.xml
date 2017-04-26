@@ -23,8 +23,8 @@
 				</xpath>
 
 				<xpath expr="//group[field[@name='website']]" position="inside">
-					<field name="site_id"  />
-					<field name="head_office_id"  />
+					<field name="site_id" />
+					<field name="head_office_id" />
 					<field name="priority" widget="priority" />
 				</xpath>
 
@@ -39,6 +39,28 @@
 					<field name="priority" widget="priority" />
 				</xpath>
 
+				<!-- add 'industry' field on form -->
+				<xpath
+					expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']"
+					position="after">
+					<field name="industry_id" options="{'no_create': True, 'no_create_edit': True, 'limit':10}"/>
+				</xpath>
+			</field>
+		</record>
+
+
+		<!-- Customer Search View -->
+		<record id="view_res_partner_filter_ccg" model="ir.ui.view">
+			<field name="name">CRM - Partner Search</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter" />
+			<field name="arch" type="xml">
+				<xpath expr="/search/field[@name='name']" position="after">
+					<field name="industry_id" string="Industry" />
+				</xpath>
+				<xpath expr="/search/group" position="inside">
+					<filter string="Industry" context="{'group_by':'industry_id'}" />
+				</xpath>
 			</field>
 		</record>
 	</data>

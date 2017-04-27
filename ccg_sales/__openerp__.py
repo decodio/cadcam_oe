@@ -43,6 +43,7 @@
               "views/crm_lead_search_ccg.xml",
               "views/recurring_invoice_line_tree.xml",
               "views/res_partner_industry_view.xml",
+              "views/crm_close_reason_ccg.xml",
               "reports/sale_order_wizard_reports.xml",
               "reports/sale_order_group_reports.xml",
 #              "reports/partner_reports.xml",

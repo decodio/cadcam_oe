@@ -1,0 +1,15 @@
+<openerp>
+	<data>
+		<record id="view_crm_close_reason_ccg" model="ir.ui.view">
+			<field name="name">view.crm.close.reason.ccg</field>
+			<field name="model">crm.close.reason</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="crm_lost_reason.view_crm_close_reason" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='lost_reason_id']" position="attributes">
+				<attribute name="options">{'no_create': True, 'no_create_edit': True, 'limit':10}</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

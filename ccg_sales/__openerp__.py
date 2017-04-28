@@ -50,6 +50,7 @@
               "data/sale.order.predefined.text.csv",
               "data/res.partner.industry.csv",
               #"security/invoices_acces_rules.xml",
+              "security/ccg_product_creator.xml",
               ],
     'demo' : [],
     'installable': True,

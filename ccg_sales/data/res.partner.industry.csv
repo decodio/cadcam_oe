@@ -1,10 +1,4 @@
 id,name
-res_partner_industry_001,aaaaa
-res_partner_industry_002,bbbbbb
-res_partner_industry_003,cccccc
-res_partner_industry_004,dddd
-res_partner_industry_005,eeeeeee
-res_partner_industry_006,fffff
-res_partner_industry_007,ggggg
-res_partner_industry_008,hhhhh
-res_partner_industry_009,mmmmm
+__export__.res_partner_industry_001,Automotive
+__export__.res_partner_industry_002,Hi Tech
+__export__.res_partner_industry_003,Health

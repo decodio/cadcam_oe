@@ -30,8 +30,8 @@ class ResPartnerCCG(models.Model):
     priority = fields.Selection(crm.AVAILABLE_PRIORITIES , 'Priority', default = '0')
     head_office_id = fields.Char('Head Office ID')
     site_id = fields.Char('Site ID')
-    industry_id = fields.Many2one('res.partner.industry', 'Industry')
-    
+    industry_ids = fields.Many2many('res.partner.industry', 'res_partner_partner_industry_rel','res_partner_id', 'industry_id',string="Industry" )
+
     @api.multi
     @api.onchange('site_id')
     def _on_change_partner(self):

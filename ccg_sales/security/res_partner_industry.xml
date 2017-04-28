@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<openerp>
+
+	<data noupdate="0">
+
+<!-- global access rule for res_partner_industry -->
+		<record id="res_partner_industry_access" model="ir.model.access">
+			<field name="name">res_partner_industry_access</field>
+			<field name="model_id" ref="ccg_sales.model_res_partner_industry" />
+			<field name="perm_read" eval="True" />
+			<field name="perm_create" eval="True" />
+			<field name="perm_write" eval="True" />
+			<field name="perm_unlink" eval="True" />
+		</record>
+	</data>
+</openerp>
+

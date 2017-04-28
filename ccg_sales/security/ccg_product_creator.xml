@@ -42,6 +42,6 @@
 </openerp>
 
 <!-- 
-There is another approach to create group/rules - import .csv files from security folder 
+There is another approach to create group/rules - import ir.model.access.csv file from security folder 
 XML approach allows modification only specified attributes 
 -->

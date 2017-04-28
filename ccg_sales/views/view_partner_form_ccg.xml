@@ -43,7 +43,7 @@
 				<xpath
 					expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']"
 					position="after">
-					<field name="industry_id" options="{'no_create': True, 'no_create_edit': True, 'limit':10}"/>
+					<field name="industry_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'limit':10}" />
 				</xpath>
 			</field>
 		</record>
@@ -56,10 +56,7 @@
 			<field name="inherit_id" ref="base.view_res_partner_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="/search/field[@name='name']" position="after">
-					<field name="industry_id" string="Industry" />
-				</xpath>
-				<xpath expr="/search/group" position="inside">
-					<filter string="Industry" context="{'group_by':'industry_id'}" />
+					<field name="industry_ids" string="Industry" />
 				</xpath>
 			</field>
 		</record>

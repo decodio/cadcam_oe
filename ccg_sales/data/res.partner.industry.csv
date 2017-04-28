@@ -1,4 +1,15 @@
 id,name
-__export__.res_partner_industry_001,Automotive
-__export__.res_partner_industry_002,Hi Tech
-__export__.res_partner_industry_003,Health
+__export__.res_partner_industry_001,Academia
+__export__.res_partner_industry_002,Aerospace & Defense
+__export__.res_partner_industry_003,"Architecture, Engineering & Construction"
+__export__.res_partner_industry_004,Consumer Goods – Retail
+__export__.res_partner_industry_005,Consumer Packaged Goods – Retail
+__export__.res_partner_industry_006,"Energy, Process & Utilities"
+__export__.res_partner_industry_007,Financial & Business Services
+__export__.res_partner_industry_008,High Tech
+__export__.res_partner_industry_009,Industrial Equipment
+__export__.res_partner_industry_010,Life Sciences
+__export__.res_partner_industry_011,Marine & Offshore
+__export__.res_partner_industry_012,Natural Resources
+__export__.res_partner_industry_013,Other
+__export__.res_partner_industry_014,Transportation & Mobility

@@ -21,70 +21,75 @@
 
 from openerp.osv import fields, osv
 from datetime import date, timedelta,datetime
-# import email, mimetypes 
-# from email.Header  import decode_header 
-# from email.MIMEText  import MIMEText 
-
 
 
 class ccg_license(osv.osv):
 
     "Class holds information about Dassault Systemes license"
 
+    def _get_cc_list(self, cr, uid, ids, field_name, arg, context=None):
+        emails = []
+        lics = self.browse(cr, uid, ids)
+        ret = {}
+        if lics:
+            for l in lics.cc_recipient_ids:
+                emails.append(l.partner_id.email)
+            
+            cc_list = ','.join([ e for e in emails])
+            ret ={ids[0]:cc_list}
+        return ret             
+
+
+            
     _name="ccg.licence"
-    _order = "client_id asc, end_date desc"
+    _order = "client_id asc, expiration_date desc"
     _columns={
-            'client_id' :fields.many2one('res.partner','Client', help='License user', domain=[('customer', '=', True)]),
-            'company_id':fields.many2one('res.company','Company',help='License user'),
+            'client_id' :fields.many2one('res.partner','Client', help='License user', domain=[('customer', '=', True), ('is_company', '=', True)]),
+            'company_id':fields.many2one('res.company','Company',help='Company'),
             'user_id'   :fields.many2one('res.users','Salesman',help='Salesman'),
             'ib_number' :fields.char('IB Number',size=64, help='IB Number'),
             'portfolio' :fields.char('Portfolio', size=64,help='Portfolio'),
             'trigram'   :fields.char('Trigram', size=16,help='Trigram'),
-            'start_date':fields.date('Start Date',help='Start Date'),
-            'end_date'  :fields.date('End Date', help='Start Date'),
+            'activation_date':fields.date('Activation Date',help='Activation Date'),
+            'expiration_date'  :fields.date('Expiration Date', help='Expiration Date'),
             'quantity'  :fields.integer('Quantity', help='Number of issued licenses'),
+            'note'      :fields.text('Note', help='Notes about licence'),
+            'supplier_id'  :fields.many2one('res.partner', 'Supplier', help='Licence supplier', domain=[('supplier', '=', True), ('is_company', '=', True)]),
+            'active'    :fields.boolean('Active', help='Is licence active or expired'),
             'notify'    :fields.boolean('Send notifications', help='System send notifications about expiration'),
-            'note'      :fields.text('Note', help='Notes about licence')
+            'cc_recipient_ids' :fields.many2many('res.users', 'ccg_licence_user_rel', 'licence_id', 'user_id', string='CC', help='Users which receives notifications about licence expiration'),
+            'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False)
+
     }
     _defaults = {
          'notify': True,
+         'active': True,
     }
+    _offset = 1
     
-    def get_licenses(self, cr, uid, days, context={}):
+    def _get_licences(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
-        args = [('end_date','=', check_date), ('notify','=', True)]
+        args = [('expiration_date','=', check_date), ('notify','=', True), ('active','=', True)]
         ids=self.search(cr, uid, args, context=context)
         return ids
-    
-    def send_notification_mail(self, cr, uid, msg="", recipients=[]):
-        if recipients: 
-            ir_mail_server = self.pool.get('ir.mail_server') 
-            msg = ir_mail_server.build_email("Administrator <crm@cadcam-group.eu>", recipients, "License expire soon", msg) 
-            ir_mail_server.send_email(cr, uid, msg)
 
-    def check_and_notify(self, cr, uid, days=7, context={}):
-        """
-            search for licenses which expire in next 'days' days
-            send notification e-mail
-        """
-        lic_ids = self.get_licenses(cr, uid, days)
-        if lic_ids :
-            msg = "Some licenses will expire in next {0} days:\n".format(days)
-            line =  " - client: {0};  number: {1};  exp. date: {2}\n"
-            for l in self.read(cr, uid, lic_ids, ['client_id', 'ib_number', 'end_date'], context):
-                msg = msg +line.format(l['client_id'][1], l['ib_number'], datetime.strptime(l['end_date'], "%Y-%m-%d").strftime("%d.%m.%Y"))  
+    def _send_email(self, cr, uid, ids, context=None):
+        email_template_obj = self.pool.get('email.template')
+        template_ids = email_template_obj.search(cr, uid, [('name', '=','Licence Expiration Template')], context=context) 
+        if template_ids:
+            for sender_id in ids:
+                msg_id = email_template_obj.send_mail(cr, uid, template_ids[0], sender_id, force_send=True,context=context)
+            return True
+        return False
 
-            self.send_notification_mail(cr, uid, msg=msg,recipients=[ "boris.kumpar@cadcam-group.eu", "nikola.marekovic@cadcam-group.eu" ])
-        return lic_ids
-        
-    def check_licenses(self, cr, uid, context={}):
+    def check_licence_expiration(self, cr, uid, context={}):
         """
             Called by cron job
         """
-        self.check_and_notify( cr, uid, days=7, context=context)
-        self.check_and_notify( cr, uid, days=15, context=context)
-        self.check_and_notify( cr, uid, days=30, context=context)
-        
+        send_list = self._get_licences(cr, uid, self._offset, context)
+        if send_list:
+            self._send_email(cr, uid, send_list, context=context)
+
 # 
 # ir_mail_server.build_email(
 #                         email_from=mail.email_from,

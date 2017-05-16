@@ -25,10 +25,13 @@
     "version" : "1.0",
     "author" : "CADCAM Design Centar d.o.o.",
     "category" : "CCG internals",
-    "depends" : ["base"],
+    "depends" : ["base",
+                 "sp_cadcam",
+                ],
     'data' : [
                 "views/licence.xml",
                 "cron/cron_job.xml",
+                "templates/licence_expiration_email.xml"
     ],
     'demo' : [],
     'installable': True,

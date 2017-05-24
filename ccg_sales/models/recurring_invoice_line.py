@@ -28,5 +28,6 @@ class RecurringInvoiceLine(models.Model):
     _inherit = 'recurring.invoice.line'
 
     price_unit = fields.Float('List Price', required=False, digits=dp.get_precision('Purchase Price'), digits_compute=dp.get_precision('Purchase Price'))
+    tos_date = fields.Date('TOS Date', required=False )
 
 

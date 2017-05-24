@@ -31,7 +31,8 @@
     'data' : [
                 "views/licence.xml",
                 "cron/cron_job.xml",
-                "templates/licence_expiration_email.xml"
+                "templates/licence_expiration_email.xml",
+                "security/ir.model.access.csv",
     ],
     'demo' : [],
     'installable': True,

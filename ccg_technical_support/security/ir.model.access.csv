@@ -1,0 +1,2 @@
+id,name,model_id:id,perm_read,perm_write,perm_create,perm_unlink,active,group_id:id
+access_technical_support_user,Technical support user,ccg_technical_support.model_ccg_licence,1,1,1,0,1,base.group_sale_salesman

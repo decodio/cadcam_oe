@@ -23,7 +23,7 @@ from datetime import date, timedelta, datetime
 from openerp.report import report_sxw
 from openerp.exceptions import Warning, ValidationError
 from openerp import _
-import math
+from math import ceil
 
 class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
@@ -40,12 +40,13 @@ class Parser(report_sxw.rml_parse):
 
     def _get_estimated_days(self, date_from, date_to):
         if date_from and date_to:
-            df = datetime.strptime(date_from, "%Y-%m-%d %H:%M:%S")
-            dt = datetime.strptime(date_to, "%Y-%m-%d %H:%M:%S")
-            print dt
-            print df
-            print (dt - df).days,  (dt - df).seconds / 3600 / 24 + 1
-            return int(math.ceil((dt - df).seconds / 3600.0 / 24.0 + 1))
+            dtf = datetime.strptime(date_from, "%Y-%m-%d %H:%M:%S")
+            dtt = datetime.strptime(date_to, "%Y-%m-%d %H:%M:%S")
+            print dtt
+            print dtf
+            ddays =  int(ceil((dtt - dtf).seconds / 86400.0 + (dtt-dtf).days ))
+            print ddays
+            return ddays
         else:
             return 0
     

@@ -92,6 +92,7 @@
 				</xpath>
 				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='distance']"
 					position="replace">
+					<field name="relation" />
 				</xpath>
 				<xpath
 					expr="//field[@name='itinerary_ids']/tree/field[@name='odometer_start']"

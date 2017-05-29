@@ -2,10 +2,10 @@
 <openerp>
 	<data>
 		<record id="ccg_travel_order_report" model="ir.actions.report.xml">
-			<field name="name">ccg.travel.order</field>
+			<field name="name">Travel order</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">hr.travel.order</field>
-			<field name="report_name">ccg_travel_order</field>
+			<field name="report_name">Travel order</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
 			<!-- <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
@@ -21,7 +21,7 @@
 			<field name="key" eval="'action'" />
 			<field name="key2" eval="'client_print_multi'" />
 			<field name="model">hr.travel.order</field>
-			<field name="name">ccg travel order</field>
+			<field name="name">Travel order</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(ccg_travel_order_report)" />
 			<field name="isobject" eval="True" />
@@ -29,10 +29,10 @@
 		</record>
 
 		<record id="ccg_travel_order_liquidation" model="ir.actions.report.xml">
-			<field name="name">ccg.travel.order.liquidation</field>
+			<field name="name">Travel order liquidation</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">hr.travel.order</field>
-			<field name="report_name">ccg_travel_order_liquidation</field>
+			<field name="report_name">Travel order liquidation</field>
 			<field name="report_type">aeroo</field>
 			<field name="in_format">oo-odt</field>
 			<!-- <field name="out_format" eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
@@ -48,7 +48,7 @@
 			<field name="key" eval="'action'" />
 			<field name="key2" eval="'client_print_multi'" />
 			<field name="model">hr.travel.order</field>
-			<field name="name">ccg travel order liquidation</field>
+			<field name="name">Travel order liquidation</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(ccg_travel_order_liquidation)" />
 			<field name="isobject" eval="True" />

@@ -6,6 +6,8 @@
 			<field name="inherit_id" ref="sp_cadcam.view_travel_order_form_cadcam" />
 			<field name="model">hr.travel.order</field>
 			<field name="arch" type="xml">
+			
+			<!-- dodati domain na izbor employee-a -->
 				<xpath expr="//sheet/group[@name='header1']" position="after">
 					<group colspan="4" col="6" name="header1a">
 						<group name="itinerary" string="Itinerary">

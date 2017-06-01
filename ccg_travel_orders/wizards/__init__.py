@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2017 CADCAM Design Centar d.o.o. (<http://www.cadcam-group.eu/>).
+#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (http://www.cadcam-group.eu/).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,25 +19,4 @@
 #
 ##############################################################################
 
-
-{
-    'name' : 'CCG travel ordes module',
-    'version' : '1.0',
-    'author' : 'CADCAM Design Centar d.o.o.',
-    'category' : 'CCG internals',
-    'description' : 'Customization of travel orders module, specific to CADCAM group',
-    'depends' : [
-                 'sp_cadcam',
-                ],
-    'data' : [
-              'reports/travel_order_reports.xml',
-#              'views/travel_order_vehicle.xml',
-              'views/ccg_travel_order_fleet.xml',
-              'views/ccg_travel_order_view.xml',
-              'data/travel.order.fleet.csv',
-              'security/ir.model.access.csv',
-              'wizards/ccg_travel_order_total_wizard.xml',
-              ],
-    'demo' : [],
-    'installable': True,
-}
+import ccg_travel_order_total_wizard

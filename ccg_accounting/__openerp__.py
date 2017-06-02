@@ -29,7 +29,8 @@
     "depends" : [
                  "base",
                  "sp_cadcam",
-                 'account',
+                 "account",
+                 "l10n_hr_advance_payment"
                 ],
     'data' : [
                 "views/account_invoice_view_ccg.xml",

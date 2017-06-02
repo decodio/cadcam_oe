@@ -31,6 +31,7 @@ class ResPartnerCCG(models.Model):
     head_office_id = fields.Char('Head Office ID')
     site_id = fields.Char('Site ID')
     industry_ids = fields.Many2many('res.partner.industry', 'res_partner_partner_industry_rel','res_partner_id', 'industry_id',string="Industry" )
+    job_position_type = fields.Selection([ ('rdmanager', 'R&D manager'), ('ceo', 'CEO'), ('cfo', 'CFO'), ('coo', 'COO'), ('cio', 'CIO'), ('cto', 'CTO')], 'Job Position Type')
 
     @api.multi
     @api.onchange('site_id')

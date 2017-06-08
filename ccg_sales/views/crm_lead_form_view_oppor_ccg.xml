@@ -11,11 +11,23 @@
 					<field name="company_id" string="Company" options="{'no_create': True}"
 						readonly="not context.get('uid', False) in [1]" />
 				</xpath>
-				
+
 				<xpath expr="//group/field[@name='priority']" position="attributes">
-				<attribute name="invisible" >0</attribute>
+					<attribute name="invisible">0</attribute>
 				</xpath>
-			
+				<xpath expr="//notebook" position="inside">
+					<page string="Marketing">
+					<group name="marketing_layout" colspan="4" col="2">
+						<group name="campaign" string="Campaign" colspan="1" col="2">
+							<field name="campaign_id" />
+							<field name="medium_id" />
+							<field name="source_id" />
+						</group>
+						<group name="other" string="Other" colspan="1" col="2">
+						</group>
+						</group>
+					</page>
+				</xpath>
 			</field>
 		</record>
 
@@ -32,7 +44,7 @@
 					</attribute>
 				</xpath>
 				<xpath expr="/tree/field[@name='user_id']" position="after">
-				<field name="priority" />
+					<field name="priority" />
 				</xpath>
 			</field>
 		</record>
@@ -44,7 +56,7 @@
 			<field name="priority" eval="30" />
 			<field name="arch" type="xml">
 				<xpath expr="/tree/field[@name='stage_id']" position="after">
-				<field name="priority" />
+					<field name="priority" />
 				</xpath>
 				<xpath expr="/tree/field[@name='partner_id']" position="replace" />
 				<xpath expr="/tree/field[@name='name']" position="after">

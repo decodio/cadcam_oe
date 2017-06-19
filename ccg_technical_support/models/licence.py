@@ -39,8 +39,6 @@ class ccg_license(osv.osv):
             ret ={ids[0]:cc_list}
         return ret             
 
-
-            
     _name="ccg.licence"
     _order = "client_id asc, expiration_date desc"
     _columns={
@@ -65,7 +63,7 @@ class ccg_license(osv.osv):
          'notify': True,
          'active': True,
     }
-    _offset = 1
+    _offset = [28, 14, 7]
     
     def _get_licences(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
@@ -86,9 +84,10 @@ class ccg_license(osv.osv):
         """
             Called by cron job
         """
-        send_list = self._get_licences(cr, uid, self._offset, context)
-        if send_list:
-            self._send_email(cr, uid, send_list, context=context)
+        for offset in self._offset:
+            send_list = self._get_licences(cr, uid, offset , context)
+            if send_list:
+                self._send_email(cr, uid, send_list, context=context)
 
 # 
 # ir_mail_server.build_email(

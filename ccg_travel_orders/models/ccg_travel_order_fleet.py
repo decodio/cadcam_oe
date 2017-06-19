@@ -32,8 +32,7 @@ class TravelOrderFleet(models.Model):
 
     name = fields.Char('Name', compute='_compute_name', store=True)
     modelname = fields.Char('Model name', required=False)
-#     brandname = fields.Char('Model Brand', required=True, help='Brand of the vehicle')
-#     license_plate = fields.Char('License Plate', required=True, help='License plate number of the vehicle (ie: plate number for a car)')
+
     @api.one
     @api.depends(
             'modelname',

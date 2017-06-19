@@ -62,23 +62,6 @@ class ccg_travel_order_itinerary_lines(models.Model):
     _inherit = "hr.travel.order.itinerary.lines"
     _name = "hr.travel.order.itinerary.lines"
 
-#     def _get_default_vehicle_id(self):
-#         print "1. _get_default_vehicle_id"
-#         vehicle_id = None
-#         print "2. _get_default_vehicle_id"
-#         print "2.1.",self.travel_order_id
-#         print "2.2.",self.travel_order_id.depart_vehicle_ids
-#         if self.travel_order_id.depart_vehicle_ids[0]: 
-#             print "3. _get_default_vehicle_id"
-#             vehicle =  self.travel_order_id.depart_vehicle_ids[0]
-#             print "4. _get_default_vehicle_id"
-#             vehicle_id = vehicle.id
-#             print "5. _get_default_vehicle_id"
-#         return vehicle_id
-
-#    vehicle_id = fields.Many2one('travel.order.fleet', 'Vehicle', default=_get_default_vehicle_id)
-
-
     vehicle_id = fields.Many2one('travel.order.fleet', 'Vehicle')
     vehicle = fields.Char('Vehicle', compute='_compute_vehicle', store=True,help="")
     license_plate = fields.Char('License Plate',compute='_compute_license_plate', store=True,)
@@ -94,6 +77,26 @@ class ccg_travel_order_itinerary_lines(models.Model):
             vehicle.append(self.vehicle_id.brandname)
         self.vehicle = ' '.join(vehicle)
 
+    @api.multi
+    @api.onchange('vehicle_id')
+    def _on_change_vehicle_id(self):
+        if self.vehicle_id.type:
+            self.vehicle_type = self.vehicle_id.type
+            
+    @api.multi
+    def action_recompute_itinerary(self):
+        print 'CCG action_recompute_itinerary'
+        total_itinerary = 0.00
+        for l in self.itinerary_ids:
+            print l.vehicle_type
+            if l.vehicle_type == 'private':
+                total_itinerary = total_itinerary + l.lcy_amount_total
+            else: 
+                l.lcy_amount_total = 0.0
+        return self.write({'lcy_itinerary_amount_total': total_itinerary,
+                         })
+            
+
     @api.one
     @api.depends('vehicle_id')
     def _compute_license_plate(self):
@@ -107,4 +110,39 @@ class ccg_travel_order_itinerary_lines(models.Model):
             
         if self.odometer_start + self.distance != self.odometer_end:
             self.odometer_end = self.odometer_start + self.distance
+
+
+
+    @api.onchange('odometer_start')
+    def onchange_odometer_start(self):
+        end = self.odometer_end
+        start = self.odometer_start
+        distance = self.distance
+        if (start and end) and (start > end):
+            raise Warning(
+                _('Warning!'),
+                _('The odometer start value must be lower than end value.'))
+        if start and not end:
+            self.odometer_end = (distance and start + distance or start)
+        if (end and start) and (start <= end):
+            self.distance = end - start
+        if self.vehicle_type == 'private':
+            self.lcy_amount_total = self.distance * 2.0
+        else:
+            self.lcy_amount_total = 0.0
+            
+    @api.onchange('odometer_end')
+    def onchange_odometer_end(self):
+        end = self.odometer_end
+        start = self.odometer_start
+        if (start and end) and (start > end):
+            raise Warning(
+                _('Warning!'),
+                _('The odometer start value must be lower than end value.'))
+        if (end and start) and (start <= end):
+            self.distance = end - start
+        if self.vehicle_type == 'private':
+            self.lcy_amount_total = self.distance * 2.0
+        else:
+            self.lcy_amount_total = 0.0
 

@@ -28,6 +28,35 @@ class account_invoice(models.Model):
     _name = 'account.invoice'
     _inherit = 'account.invoice'
     
+    advance_amount_total = fields.Float('Advance Total', compute='_compute_amount_total', store=False)
+    advance_amount_untaxed = fields.Float('Advance Untaxed', compute='_compute_amount_untaxed', store=False)
+    advance_amount_tax = fields.Float('Advance Tax', compute='_compute_amount_tax', store=False)
+
+    @api.one
+    def _compute_amount_total(self):
+        amount = 0.0
+        if self.advance_invoice_ids:
+            for advance_invoice in self.advance_invoice_ids:
+                amount += advance_invoice.amount_total
+        self.advance_amount_total = amount
+
+    @api.one
+    def _compute_amount_untaxed(self):
+        amount = 0.0
+        if self.advance_invoice_ids:
+            for advance_invoice in self.advance_invoice_ids:
+                amount += advance_invoice.amount_untaxed
+        self.amount_untaxed
+        self.advance_amount_untaxed = amount
+    
+    @api.one
+    def _compute_amount_tax(self):
+        amount = 0.0
+        if self.advance_invoice_ids:
+            for advance_invoice in self.advance_invoice_ids:
+                amount += advance_invoice.amount_tax
+        self.advance_amount_tax = amount
+    
     def on_change_date_invoice(self,cr,user,ids, date_invoice, invoicing_datetime, date_delivery,context=None ):
         """
             when changed, write date_invoice into 

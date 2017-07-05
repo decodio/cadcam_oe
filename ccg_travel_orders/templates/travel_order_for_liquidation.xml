@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="email_template_travel_order_for_liquidation" model="email.template">
+			<field name="name">Travel order for liquidation</field>
+			<field name="email_from">${object.employee_id.user_id.email or ''}</field>
+			<field name="subject">Putni nalog je spreman za obračun</field>
+			<field name="email_to">vanja.troselj@cadcam-group.eu, tamara.lackovic@cadcam-group.eu</field>
+			<field name="partner_to"></field>
+			<field name="email_cc">nikola.marekovic@cadcam-group.eu, boris.kumpar@cadcam-group.eu</field>
+			<field name="model_id" ref="ccg_travel_orders.model_hr_travel_order" />
+<!-- 			<field name="lang">${object.partner_id.lang}</field> -->
+			<field name="auto_delete" eval="False" />
+<!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
+			<field name="body_html"><![CDATA[
+Putni nalog <b>${object.name}</b> u grad(ove)
+<b>${object.dest_city}</b> 
+od <b>${format_tz(object.date_from, user.tz)[:19]}</b> 
+do <b>${format_tz(object.date_to, user.tz)[:19]}</b> je spreman za obračun!
+<br>
+<br>
+<a href="https://crm.cadcam-group.eu:40004/web?db=ccg#id=${object.id}&amp;view_type=form&amp;model=hr.travel.order&amp;menu_id=141980&amp;action=141978">
+Link na zahtjev</a><br>
+]]>
+			</field>
+		</record>	
+</data>
+</openerp>

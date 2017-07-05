@@ -27,9 +27,11 @@
     "category" : "CCG internals",
     'description' : "Various export and import functionality, for example CRM and CMS collaboration, CRM to DS portal export, etc.",
      "depends" : [
-                 "sp_cadcam",
-                 "ccg_accounting",
-                 "ccg_sales",
+                  'base',
+                  'ccg_base',
+                  'sp_cadcam',
+                  'ccg_accounting',
+                  'ccg_sales',
                 ],
     'data' : [
               'wizards/ccg_crm_lead_export_wizard.xml',
@@ -37,7 +39,6 @@
               'views/ccg_offer_name_view.xml',
               'data/ccg.offer.name.csv',
               'data/ir.model.access.csv',
-              
               'wizards/ccg_logika_export_wizard.xml'
               ],
     'demo' : [],

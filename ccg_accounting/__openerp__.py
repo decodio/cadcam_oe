@@ -28,6 +28,7 @@
     'description' : "Customization of accounting module, specific to CADCAM group",
     "depends" : [
                  "base",
+                 "ccg_base",
                  "sp_cadcam",
                  "account",
                  "l10n_hr_advance_payment"

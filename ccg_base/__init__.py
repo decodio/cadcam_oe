@@ -19,21 +19,3 @@
 #
 ##############################################################################
 
-{
-"name" : "CCG ENOVIA - odoo integration",
-"version" : "1.0",
-"author" : "CADCAM Design Centar d.o.o.",
-"category" : "CCG internals",
-"depends" : [
-             "base",
-             ],
-"init_xml" : [],
-"demo_xml" : [],
-"update_xml" : [
-                "views/enovia_test.xml",
-                "security/enovia_integration_security.xml",
-#                "reports/enovia_reports.xml",
-               ],
-"installable": True,
-"active": True
-}

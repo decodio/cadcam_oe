@@ -27,6 +27,7 @@
     'description' : "Customization of human resources module, specific to CADCAM group",
      "depends" : [
                  "base",
+                 "ccg_base",
                  "sp_cadcam",
                  "sp_hr_holidays",
                 ],

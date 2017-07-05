@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2016 CADCAM Design Centar d.o.o. (http://www.cadcam-group.eu/).
+#    Copyright (C) 2017 CADCAM Design Centar d.o.o. (<http://www.cadcam-group.eu/>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,5 +19,17 @@
 #
 ##############################################################################
 
-import models
-import reports
+
+{
+    'name' : 'CCG base',
+    'version' : '1.0',
+    'author' : 'CADCAM Design Centar d.o.o.',
+    'category' : 'CCG internals',
+    'description' : 'Base module for all CADCAM modules',
+    'depends' : [
+                 'base'
+                ],
+    'data' : [],
+    'demo' : [],
+    'installable': True,
+}

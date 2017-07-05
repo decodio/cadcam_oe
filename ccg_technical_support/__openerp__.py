@@ -26,6 +26,7 @@
     "author" : "CADCAM Design Centar d.o.o.",
     "category" : "CCG internals",
     "depends" : ["base",
+                 "ccg_base",
                  "sp_cadcam",
                 ],
     'data' : [

@@ -26,7 +26,9 @@
     "author" : "CADCAM Design Centar d.o.o.",
     "category" : "CCG internals",
     'description' : "Customization of sales module, specific to CADCAM group",
-     "depends" : [
+    "depends" : [
+                 'base',
+                 "ccg_base",
                  "base_vat",
                  "base_base",
                  "sp_cadcam",

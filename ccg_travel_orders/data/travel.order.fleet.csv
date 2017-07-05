@@ -1,6 +1,5 @@
 id,brandname,modelname,license_plate,fuel,type,owner
 travel_order_fleet_001,Alfa Romeo,,ZG-8060-EM,diesel,private,Ante Madunić
-travel_order_fleet_002,Audi,A4,ZG-0007-NO,diesel,private,Ivan Baburić
 travel_order_fleet_003,Citroen ,,ZG-9717-EO,diesel,private,Zlatko Šimunec
 travel_order_fleet_004,Citroen,C2,ZG-9779-EZ,petrol,private,Ivančica Zorić
 travel_order_fleet_005,Opel,Corsa,ZG-4157-D,diesel,private,Krešimir Prlić

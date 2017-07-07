@@ -62,6 +62,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="/search/field[@name='name']" position="after">
 					<field name="industry_ids" string="Industry" />
+					<field name="vat" string="VAT number" />
 				</xpath>
 			</field>
 		</record>

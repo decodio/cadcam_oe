@@ -42,11 +42,7 @@ class Parser(report_sxw.rml_parse):
         if date_from and date_to:
             dtf = datetime.strptime(date_from, "%Y-%m-%d %H:%M:%S")
             dtt = datetime.strptime(date_to, "%Y-%m-%d %H:%M:%S")
-            print dtt
-            print dtf
             ddays =  int(ceil((dtt - dtf).seconds / 86400.0 + (dtt-dtf).days ))
-            print ddays
-            return ddays
         else:
             return 0
     

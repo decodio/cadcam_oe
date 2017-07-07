@@ -17,12 +17,10 @@
 						<group name="departure" string="Departure">
 							<field name="depart_transportation" widget="many2many_tags" />
 							<field name="depart_vehicle_ids" widget="many2many_tags" />
-							<field name="car_type" invisible="1" />
 						</group>
 						<group name="arrival" string="Arrival">
 							<field name="arrive_transportation" widget="many2many_tags" />
 							<field name="arrive_vehicle_ids" widget="many2many_tags" />
-							<field name="car_type" invisible="1" />
 						</group>
 					</group>
 				</xpath>
@@ -101,6 +99,17 @@
 					position="after">
 					<field name="distance" />
 				</xpath>
+				
+				<xpath expr="//page[@string='Itinerary']" position="attributes">
+					<attribute name="attrs">{'invisible':1}</attribute>
+				</xpath>
+
+				<xpath
+					expr="//page[@string='Itinerary ']" position="attributes">
+					<attribute name="attrs">{'invisible':0}</attribute>
+				</xpath>
+				
+				
 				<!-- ccg workaround - field is disabled in sp_cadcam module -->
 				<xpath expr="//button[@name='action_statement_lines_create']"
 					position="attributes">

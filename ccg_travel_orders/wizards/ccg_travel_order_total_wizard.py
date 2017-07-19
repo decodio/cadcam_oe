@@ -53,6 +53,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         return self.form['encoding']
 
     def _decimal(self):
+        print '_decimal ({})'.format(self.form['decimal'])
         return self.form['decimal']
 
     def _quoted(self, text):
@@ -143,11 +144,11 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         if travel_order.itinerary_ids:
             odometer_start = travel_order.itinerary_ids[0].odometer_start
         else:
-            odometer_start = ''
+            odometer_start = '0'
         line.append(self._quoted(odometer_start))
 # odobreni_predujam
         advance_payment = travel_order.advance_payment
-        line.append(self._quoted(advance_payment))
+        line.append(self._quoted(locale.str(advance_payment)))
 # valuta_za_predujam
         if travel_order.currency_id:
             advance_currency_code = get_currency_code(travel_order.currency_id.name)
@@ -206,10 +207,10 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             line.append(self._quoted(expense.name))
 # kolicina
             qty = expense.unit_quantity
-            line.append(self._quoted(qty))
+            line.append(self._quoted(locale.str(qty)))
 # cijena
             price = expense.unit_amount
-            line.append(self._quoted(price))
+            line.append(self._quoted(locale.str(price)))
 # valuta
             currency_name = expense.currency_id.name
             currency_code = get_currency_code(expense.currency_id.name)
@@ -219,7 +220,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
                 raise Warning(_("Missing or invalid currency for expense '{}'".format(description)))
 # tecaj    
             currency_rate = expense.lcy_rate
-            line.append(self._quoted(currency_rate))
+            line.append(self._quoted(locale.str(currency_rate)))
 # oznaka_pdv
             line.append(self._quoted(''))
 
@@ -246,22 +247,21 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             line.append(self._quoted(description))
 # kolicina
             qty = itinerary.distance
-            line.append(self._quoted(qty))
+            line.append(self._quoted(locale.str(qty)))
 # cijena
-            print itinerary.vehicle_type.lower(), itinerary.vehicle_id.name, itinerary.vehicle_id.type
+#            print itinerary.vehicle_type.lower(), itinerary.vehicle_id.name, itinerary.vehicle_id.type
             if itinerary.vehicle_id.type == 'private':  
                 price = 2.0 #HRK/km
-                print 2.0
             else:
                 price = 0.0
-            line.append(self._quoted(price))
+            line.append(self._quoted(locale.str(price)))
 # valuta
             currency_name = 'HRK'
             currency_code = get_currency_code(currency_name)
             line.append(self._quoted(currency_code))
 # tecaj    
             currency_rate = 1.0
-            line.append(self._quoted(currency_rate))
+            line.append(self._quoted(locale.str(currency_rate)))
 # oznaka_pdv
             line.append(self._quoted(''))
 
@@ -294,17 +294,17 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
                 line.append(self._quoted(description))
     # kolicina
                 qty = allowance.num_of_allowances
-                line.append(self._quoted(qty))
+                line.append(self._quoted(locale.str(qty)))
     # cijena
                 price = allowance.allowance_amount_total
-                line.append(self._quoted(price))
+                line.append(self._quoted(locale.str(price)))
     # valuta
                 currency_name = allowance.currency_id.name
                 currency_code = get_currency_code(currency_name)
                 line.append(self._quoted(currency_code))
      # tecaj    
                 currency_rate = allowance.lcy_rate
-                line.append(self._quoted(currency_rate))
+                line.append(self._quoted(locale.str(currency_rate)))
     # oznaka_pdv
                 line.append(self._quoted(''))
     
@@ -342,10 +342,14 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         return csv
 
     def _set_decimal_point(self, frm=''):
+#        print '_set_decimal_point ({})'.format( frm)
         if frm == '.':
+#            print 'en_US.utf8'
             locale.setlocale(locale.LC_NUMERIC, 'en_US.utf8')
         elif frm == ',':
-            locale.setlocale(locale.LC_NUMERIC, 'hr_HR.utf8')
+#           print 'hr_HR.utf8' 
+           locale.setlocale(locale.LC_NUMERIC, 'hr_HR.utf8')
+#           print '{}'.format(1.234)
         else:
             locale.setlocale(locale.LC_ALL, '')  # reset to system default
 

@@ -22,9 +22,8 @@
 from openerp import models, fields, api, _
 from openerp.exceptions import Warning 
 from openerp.osv import orm, osv, fields
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from time import strptime
-#from Crypto import SelfTestimport base64
 import csv
 import locale 
 import base64
@@ -53,7 +52,6 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         return self.form['encoding']
 
     def _decimal(self):
-        print '_decimal ({})'.format(self.form['decimal'])
         return self.form['decimal']
 
     def _quoted(self, text):
@@ -69,26 +67,25 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         yyyy = date[0:4]
         return '{}.{}.{}'.format(dd, mm, yyyy)
 
-    def _reformat_datetime(self, datetime, sec=False):
-        dd = datetime[8:10]
-        mm = datetime[5:7]
-        yyyy = datetime[0:4]
-        HH = datetime[11:13]
-        MM = datetime[14:16]
-        SS = datetime[17:18]
-        if sec:
-            return '{}.{}.{} {}:{}:{}'.format(dd, mm, yyyy,HH,MM,SS)
-        else:
-            return '{}.{}.{} {}:{}'.format(dd, mm, yyyy,HH,MM)
+    def _reformat_datetime(self, datetime_str, sec=False):
+        from_fmt = '%Y-%m-%d %H:%M:%S'
+        to_fmt = '%Y.%m.%d %H:%M:%S' if sec else  '%Y.%m.%d %H:%M'
+        from_utc = timedelta(hours=1)
+        t = datetime.strptime(datetime_str, from_fmt) + from_utc
+        res = datetime.strftime(t, to_fmt)
+        
+        return res
 
     def _document(self, cr, uid, travel_order, context=None):
         line=[]
 # header - Vrijednost 1 obavezna u svakom retku
         line.append(self._quoted('1'))
 # datum_naloga (+)
+# TODO convert datetime fron UTC to local time!!!
         document_date = self._reformat_date(travel_order.document_date)
         line.append(document_date)
 # datum_isplate (+)
+# TODO convert datetime fron UTC to local time!!!
         date_liquidation = self._reformat_date(travel_order.date_liquidation)
         line.append(date_liquidation)
 # sifra_zaposlenika_putnika
@@ -104,9 +101,11 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         else:
             raise Warning(_("Missing or invalid responsible person"))
 # datum_i_vrijeme_odlaska
+# TODO convert datetime fron UTC to local time!!!
         date_from = self._reformat_datetime(travel_order.date_from)
         line.append(self._quoted(date_from))
 # datum_i_vrijeme_povratka
+# TODO convert datetime fron UTC to local time!!!
         date_to = self._reformat_datetime(travel_order.date_to)
         line.append(self._quoted(date_to))
 # pbr_mjesto_polaska
@@ -180,6 +179,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
              raise Warning(_("Missing or invalid currency for advance payment"))
                 
 # datum_i_vrijeme_izlaska
+# TODO convert datetime fron UTC to local time!!!
             date_to = allowance.date_to
             line.append(self._reformat_datetime(date_to))
             data = self._delimiter().join(line)
@@ -342,14 +342,10 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         return csv
 
     def _set_decimal_point(self, frm=''):
-#        print '_set_decimal_point ({})'.format( frm)
         if frm == '.':
-#            print 'en_US.utf8'
             locale.setlocale(locale.LC_NUMERIC, 'en_US.utf8')
         elif frm == ',':
-#           print 'hr_HR.utf8' 
            locale.setlocale(locale.LC_NUMERIC, 'hr_HR.utf8')
-#           print '{}'.format(1.234)
         else:
             locale.setlocale(locale.LC_ALL, '')  # reset to system default
 

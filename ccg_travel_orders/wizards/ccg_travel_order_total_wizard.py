@@ -23,11 +23,13 @@ from openerp import models, fields, api, _
 from openerp.exceptions import Warning 
 from openerp.osv import orm, osv, fields
 from datetime import datetime, date, timedelta
-from time import strptime
 import csv
 import locale 
 import base64
+from pytz import timezone
+from time import strptime, strftime
 from codes_translation import get_country_code, get_currency_code, get_expense_id, get_employee_id, get_transportation_type 
+
 
 class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
     _name = 'ccg.travel.order.total.export'
@@ -68,13 +70,11 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         return '{}.{}.{}'.format(dd, mm, yyyy)
 
     def _reformat_datetime(self, datetime_str, sec=False):
-        from_fmt = '%Y-%m-%d %H:%M:%S'
-        to_fmt = '%Y.%m.%d %H:%M:%S' if sec else  '%Y.%m.%d %H:%M'
-        from_utc = timedelta(hours=1)
-        t = datetime.strptime(datetime_str, from_fmt) + from_utc
-        res = datetime.strftime(t, to_fmt)
-        
-        return res
+        fmt_in = '%Y-%m-%d %H:%M:%S'
+        fmt_out = '%Y.%m.%d %H:%M:%S'
+        t = datetime.strptime(datetime_str, fmt_in) 
+        localtime =  timezone('UTC').localize(t).astimezone(timezone("Europe/Zagreb"))
+        return localtime.strftime( fmt_out)
 
     def _document(self, cr, uid, travel_order, context=None):
         line=[]

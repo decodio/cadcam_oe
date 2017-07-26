@@ -71,7 +71,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 
     def _reformat_datetime(self, datetime_str, sec=False):
         fmt_in = '%Y-%m-%d %H:%M:%S'
-        fmt_out = '%Y.%m.%d %H:%M:%S'
+        fmt_out = '%d.%m.%Y %H:%M:%S'
         t = datetime.strptime(datetime_str, fmt_in) 
         localtime =  timezone('UTC').localize(t).astimezone(timezone("Europe/Zagreb"))
         return localtime.strftime( fmt_out)

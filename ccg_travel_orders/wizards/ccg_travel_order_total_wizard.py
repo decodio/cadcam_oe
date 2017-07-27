@@ -81,11 +81,9 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 # header - Vrijednost 1 obavezna u svakom retku
         line.append(self._quoted('1'))
 # datum_naloga (+)
-# TODO convert datetime fron UTC to local time!!!
         document_date = self._reformat_date(travel_order.document_date)
         line.append(document_date)
 # datum_isplate (+)
-# TODO convert datetime fron UTC to local time!!!
         date_liquidation = self._reformat_date(travel_order.date_liquidation)
         line.append(date_liquidation)
 # sifra_zaposlenika_putnika
@@ -101,11 +99,9 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         else:
             raise Warning(_("Missing or invalid responsible person"))
 # datum_i_vrijeme_odlaska
-# TODO convert datetime fron UTC to local time!!!
         date_from = self._reformat_datetime(travel_order.date_from)
         line.append(self._quoted(date_from))
 # datum_i_vrijeme_povratka
-# TODO convert datetime fron UTC to local time!!!
         date_to = self._reformat_datetime(travel_order.date_to)
         line.append(self._quoted(date_to))
 # pbr_mjesto_polaska
@@ -200,9 +196,10 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             else:
                 raise Warning(_("Missing or invalid expense type!"))
 # oznaka_placeno
-            line.append(self._quoted('0')) # nije plaćeno
+            paid = 1 if expense.journal_id.type == 'bank' else 0
+            line.append(self._quoted(paid)) # nije plaćeno
 # tip_isplate_joppd
-            line.append(self._quoted('4')) #gotovina
+            line.append(self._quoted('0')) #ostalo
 # opis_troska
             line.append(self._quoted(expense.name))
 # kolicina
@@ -239,9 +236,9 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 # vrsta_putnog_troska = 1 (kilomterina)
             line.append( self._quoted('1') )
 # oznaka_placeno
-            line.append(self._quoted('0')) # nije plaćeno
+            line.append(self._quoted(0)) # nije plaćeno
 # tip_isplate_joppd
-            line.append(self._quoted('4')) #gotovina
+            line.append(self._quoted('4')) # kilometrina
 # opis_troska
             description = 'Kilometrina'
             line.append(self._quoted(description))
@@ -287,16 +284,17 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
                     description = 'Inozemna dnevnica'
                 line.append( expense_type )
     # oznaka_placeno
-                line.append(self._quoted('0')) # nije plaćeno
+                line.append(self._quoted(0)) # nije plaćeno
     # tip_isplate_joppd
-                line.append(self._quoted('4')) #gotovina
+                line.append(self._quoted('4')) # dnevnice
     # opis_troska
                 line.append(self._quoted(description))
     # kolicina
                 qty = allowance.num_of_allowances
                 line.append(self._quoted(locale.str(qty)))
     # cijena
-                price = allowance.allowance_amount_total
+#                 price = allowance.allowance_amount_total
+                price = allowance.allowance_unit_amount
                 line.append(self._quoted(locale.str(price)))
     # valuta
                 currency_name = allowance.currency_id.name

@@ -193,7 +193,7 @@ product_to_expense = {
 31:(31, "Plaćeni privatni trošak 1"),
 32:(32, "Plaćeni privatni trošak 2"),
 33:(33, "Plaćeni privatni trošak 3"),
-99:(99, "Ostalo"),
+1022365:(99, "Ostalo"),
 }
 
 def get_expense_id(ccg_product_id):

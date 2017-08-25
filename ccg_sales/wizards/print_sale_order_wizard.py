@@ -57,12 +57,12 @@ class PrintSaleOrderWizard(models.TransientModel):
             if dual_currency:
                 report_name = 'sale_order_group_dual_currency_report'
             elif company_currency:
-                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
+                raise Warning(_('Print Error!'), _('Unsupported report option(s)'))
                 report_name = 'sale_order_group_document_currency_report'
             elif document_currency:
                 report_name = 'sale_order_group_document_currency_report'
             else:
-                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
+                raise Warning(_('Print Error!'), _('Unsupported report option(s)'))
         else:
             if dual_currency: 
                 if show_line_discount:
@@ -80,7 +80,7 @@ class PrintSaleOrderWizard(models.TransientModel):
                 else:
                     report_name = 'sale_order_wizard_document_currency_report_no_disc'
             else:
-                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
+                raise Warning(_('Print Error!'), _('Unsupported report option(s)'))
 
         context.update({'show_vat':show_vat, 
                         'show_total_discount':show_total_discount,

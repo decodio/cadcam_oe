@@ -54,7 +54,15 @@ class PrintSaleOrderWizard(models.TransientModel):
             fl = ''
         
         if group_by_licence:
-            report_name = 'sale_order_group_document_currency_report'
+            if dual_currency:
+                report_name = 'sale_order_group_dual_currency_report'
+            elif company_currency:
+                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
+                report_name = 'sale_order_group_document_currency_report'
+            elif document_currency:
+                report_name = 'sale_order_group_document_currency_report'
+            else:
+                raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
         else:
             if dual_currency: 
                 if show_line_discount:

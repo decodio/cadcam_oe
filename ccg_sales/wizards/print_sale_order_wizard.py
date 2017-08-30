@@ -95,7 +95,7 @@ class PrintSaleOrderWizard(models.TransientModel):
     
     def on_change_group_by_licence(self, cr, user, ids, group_by_licence, context=None ):
         if group_by_licence:
-            ret ={'value':{'show_total_discount':True, 'show_line_discount':True, 'show_vat':False, 'currency_type' : 'company'}}
+            ret ={'value':{'show_total_discount':True, 'show_line_discount':True, 'show_vat':False, 'currency_type' : 'document'}}
         else:
             ret = {} 
         return ret

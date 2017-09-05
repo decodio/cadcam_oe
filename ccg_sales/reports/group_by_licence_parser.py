@@ -37,13 +37,13 @@ class Parser(report_sxw.rml_parse):
         document_obj.group = {}
         partner_lang = document_obj.partner_id.lang
         context.update({'lang':partner_lang or 'en_US'})
-        self.groups = [('PLC', _('PLC software')), 
-              ('QLC', _('QLC software')), 
-              ('YLC', _('YLC software')), 
-              ('ALC', _('ALC software')), 
-              ('TBL2', _('TBL2 software')), 
-              ('TBL3', _('TBL3 software')), 
-              ('OTHER', _('SERVICES')),
+        self.groups = [('PLC', 'PLC software', _('PLC software')),  #3rd parameter is for translation only!!!#
+              ('QLC', 'QLC software', _('QLC software')), 
+              ('YLC', 'YLC software', _('YLC software')), 
+              ('ALC', 'ALC software', _('ALC software')), 
+              ('TBL2', 'TBL2 software', _('TBL2 software')), 
+              ('TBL3', 'TBL3 software', _('TBL3 software')), 
+              ('OTHER', 'SERVICES', _('SERVICES')),
               ]
         self.document = self._group_lines(document_obj, self.groups)
         self.context = context
@@ -69,8 +69,11 @@ class Parser(report_sxw.rml_parse):
     def _get_groups(self):
         groups2 = []
         for g in self.groups:
+            print "*********** ", g, "*********"
             if g[0] in self.document.group.keys():
-                groups2.append(g) 
+                h = (g[0],_(g[1]))
+                print "*********** ", h, "*********"
+                groups2.append(h) 
         return groups2
 
     def _get_discount2_percent(self, group):

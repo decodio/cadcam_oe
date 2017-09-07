@@ -75,6 +75,10 @@
 						</tree>
 					</field>
 				</xpath>
+				<xpath expr="//field[@name='itinerary_ids']"
+					position="attributes">
+					<attribute name='context'>{'dateto':dateto}</attribute>
+				</xpath>
 				<xpath expr="//tree/field[@name='vehicle']" position="after">
 					<field name="vehicle_id" />
 				</xpath>
@@ -96,19 +100,18 @@
 				</xpath>
 				<xpath
 					expr="//field[@name='itinerary_ids']/tree/field[@name='odometer_start']"
-					position="after">
+					position="replace">
+					<field name="calc_odometer" on_change="get_odometer_previous()"  context="{'vehicle_id':vehicle_id, 'distance':distance}" />
+					<field name="odometer_start" />
 					<field name="distance" />
 				</xpath>
-				
 				<xpath expr="//page[@string='Itinerary']" position="attributes">
 					<attribute name="attrs">{'invisible':1}</attribute>
 				</xpath>
-
 				<xpath
 					expr="//page[@string='Itinerary ']" position="attributes">
 					<attribute name="attrs">{'invisible':0}</attribute>
 				</xpath>
-				
 				
 				<!-- ccg workaround - field is disabled in sp_cadcam module -->
 				<xpath expr="//button[@name='action_statement_lines_create']"

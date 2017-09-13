@@ -30,6 +30,7 @@ class Parser(report_sxw.rml_parse):
         super(Parser, self).__init__(cr, uid, name, context)
         self.context = context
         self.localcontext.update({ 'get_estimated_days' :  self._get_estimated_days,  })
+        self.localcontext.update({ 'next_separator' :  self._next_separator,  })
 
     def _get_dates(self, cr, uid, context=None):
         active_model = context.get('active_model', False)
@@ -47,4 +48,10 @@ class Parser(report_sxw.rml_parse):
         else:
             return 0
     
+    _separator = " ,"
     
+    def _next_separator(self, separator=""):
+            tmp = self._separator
+            self._separator = separator
+            return tmp if separator else separator
+

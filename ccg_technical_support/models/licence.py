@@ -47,7 +47,7 @@ class ccg_license(osv.osv):
             'user_id'   :fields.many2one('res.users','Salesman',help='Salesman'),
             'ib_number' :fields.char('IB Number',size=64, help='IB Number'),
             'portfolio' :fields.char('Portfolio', size=64,help='Portfolio'),
-            'trigram'   :fields.char('Trigram', size=16,help='Trigram'),
+            'trigram'   :fields.char('Trigram', size=64,help='Trigram'),
             'activation_date':fields.date('Activation Date',help='Activation Date'),
             'expiration_date'  :fields.date('Expiration Date', help='Expiration Date'),
             'quantity'  :fields.integer('Quantity', help='Number of issued licenses'),

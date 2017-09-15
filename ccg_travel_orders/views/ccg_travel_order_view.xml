@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
+
+		<record id="ccg_tree_travel_order_form" model="ir.ui.view">
+			<field name="name">ccg.tree.travel.order.form</field>
+			<field name="inherit_id" ref="hr_travel_order.view_travel_order_tree" />
+			<field name="model">hr.travel.order</field>
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='document_date']" position="after" >
+					<field name="date_from"/>
+				</xpath>
+			</field>
+		</record>
+
 		<record id="ccg_view_travel_order_form" model="ir.ui.view">
 			<field name="name">ccg.view.travel.order.form</field>
 			<field name="inherit_id" ref="sp_cadcam.view_travel_order_form_cadcam" />
@@ -118,6 +130,7 @@
 					position="attributes">
 					<attribute name="invisible">0</attribute>
 				</xpath>
+                   
 			</field>
 		</record>
 

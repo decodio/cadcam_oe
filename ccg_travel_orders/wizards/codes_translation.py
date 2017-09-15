@@ -264,9 +264,7 @@ employee_by_company_id = {
 
 }
 def get_employee_id(company_id, ccg_employee_id):
-    print 'employee ', ccg_employee_id
     company = employee_by_company_id.get(company_id,False)
-    print 'company ', company
     if company :
         total_employee_id = company.get(ccg_employee_id, False)
         return total_employee_id[0]
@@ -274,3 +272,17 @@ def get_employee_id(company_id, ccg_employee_id):
         return False
         
     
+
+responsible_person_id = {
+34151:58,#cad cam design centar - Vanja
+34156:5,#cad cam grupa - Keti
+34166:2,#edmd - Bojan
+}
+
+def get_responsible_person_id(company_id):
+    print "****** ",company_id
+    rp = responsible_person_id.get(company_id,False)
+    print rp
+    
+    return rp
+   

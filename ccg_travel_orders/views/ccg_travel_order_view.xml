@@ -151,5 +151,19 @@
 				</xpath>
 			</field>
 		</record>
+		
+		<!-- search -->
+        <record id="ccg_view_travel_order_filter" model="ir.ui.view">
+            <field name="name">ccg.travel.order.filter</field>
+            <field name="model">hr.travel.order</field>
+            <field name="inherit_id" ref="hr_travel_order.view_travel_order_filter"/>
+            <field name="arch" type="xml">
+					<xpath expr="//group/filter[last()-1]" position="after">
+						<filter string="Creation Month" icon="terp-go-month" domain="[]" context="{'group_by':'document_date:month'}" />
+						<filter string="Liquidation Month" icon="terp-go-month" domain="[]" context="{'group_by':'date_liquidation:month'}" />
+					</xpath>
+            </field>
+        </record>
+		
 	</data>
 </openerp>

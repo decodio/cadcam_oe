@@ -4,7 +4,7 @@
 		<record id="email_template_licence_expiration" model="email.template">
 			<field name="name">Licence Expiration Template</field>
 			<field name="email_from">${'boris.kumpar@cadcam-group.eu'}</field>
-			<field name="email_to">${ object.client_id.user_id.email or '' }</field>
+			<field name="email_to">${object.to_emails}</field>
 			<field name="email_cc">${object.cc_emails}</field>
 			<field name="subject">Expiration of licence</field>
 			<field name="model_id" ref="model_ccg_licence" />

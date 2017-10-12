@@ -39,6 +39,21 @@ class ccg_license(osv.osv):
             ret ={ids[0]:cc_list}
         return ret             
 
+    def _get_to_emails(self, cr, uid, ids, field_name, arg, context=None):
+        emails = []
+        lics = self.browse(cr, uid, ids)
+        ret = {}
+        if lics:
+            l = lics[0]
+            if  l.client_id.user_id : # salesman on customer form
+                emails.append(l.client_id.user_id.email) 
+            if  lics.user_id and (l.user_id !=l.client_id.user_id): # salesman on license form (if different)
+                emails.append(l.user_id.email)
+            
+            to_list = ','.join([ e for e in emails])
+            ret ={ids[0]:to_list}
+        return ret
+
     _name="ccg.licence"
     _order = "client_id asc, expiration_date desc"
     _columns={
@@ -47,7 +62,7 @@ class ccg_license(osv.osv):
             'user_id'   :fields.many2one('res.users','Salesman',help='Salesman'),
             'ib_number' :fields.char('IB Number',size=64, help='IB Number'),
             'portfolio' :fields.char('Portfolio', size=64,help='Portfolio'),
-            'trigram'   :fields.char('Trigram', size=16,help='Trigram'),
+            'trigram'   :fields.char('Trigram', size=64,help='Trigram'),
             'activation_date':fields.date('Activation Date',help='Activation Date'),
             'expiration_date'  :fields.date('Expiration Date', help='Expiration Date'),
             'quantity'  :fields.integer('Quantity', help='Number of issued licenses'),
@@ -56,7 +71,8 @@ class ccg_license(osv.osv):
             'active'    :fields.boolean('Active', help='Is licence active or expired'),
             'notify'    :fields.boolean('Send notifications', help='System send notifications about expiration'),
             'cc_recipient_ids' :fields.many2many('res.users', 'ccg_licence_user_rel', 'licence_id', 'user_id', string='CC', help='Users which receives notifications about licence expiration'),
-            'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False)
+            'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False),
+            'to_emails' : fields.function(_get_to_emails, type='char', readonly=True, store=False)
 
     }
     _defaults = {

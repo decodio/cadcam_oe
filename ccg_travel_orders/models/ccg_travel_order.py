@@ -29,7 +29,6 @@ class ccg_travel_order(models.Model):
     partner_ids = fields.Many2many('res.partner', 'hr_travel_order_partner_rel','travel_order_id', 'partner_id')
     depart_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
     arrive_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
-    
     @api.multi
     @api.onchange('partner_ids')
     def _on_change_partner(self):
@@ -66,7 +65,37 @@ class ccg_travel_order_itinerary_lines(models.Model):
     vehicle = fields.Char('Vehicle', compute='_compute_vehicle', store=True,help="")
     license_plate = fields.Char('License Plate',compute='_compute_license_plate', store=True,)
     odometer_end = fields.Integer('Odometer end',store=True,)
-
+    calc_odometer = fields.Boolean("km?")
+    
+    def get_odometer_previous(self, cr, uid, ids, context=None):
+        self.cr = cr
+        dateto = context.get('dateto', 'False')
+        vehicle_id    = context.get('vehicle_id',False)
+        distance = context.get('distance', 0)
+        if vehicle_id and dateto: 
+            sql = """
+            select
+                l.odometer_end
+            from 
+                hr_travel_order_itinerary_lines l left join 
+                hr_travel_order t on l.travel_order_id = t.id
+            where 
+                t.date_to < '{}' and l.vehicle_id = {}
+            order by 
+                l.odometer_end desc
+            limit 1
+            """.format(dateto , vehicle_id)
+            print sql
+            self.cr.execute( sql)
+            data = self.cr.fetchall()
+            if data :
+                odometer_last_value = data[0][0]
+            else:
+                odometer_last_value = 0
+            return {'value': {'odometer_start': odometer_last_value,
+                                             'odometer_end':odometer_last_value + distance,
+                                             'calc_odometer':0}}    
+    
     @api.one
     @api.depends('vehicle_id')
     def _compute_vehicle(self):

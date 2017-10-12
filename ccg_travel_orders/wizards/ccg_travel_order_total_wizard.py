@@ -28,7 +28,7 @@ import locale
 import base64
 from pytz import timezone
 from time import strptime, strftime
-from codes_translation import get_country_code, get_currency_code, get_expense_id, get_employee_id, get_transportation_type 
+from codes_translation import get_country_code, get_currency_code, get_expense_id, get_employee_id, get_transportation_type, get_responsible_person_id 
 
 
 class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
@@ -82,7 +82,8 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         line.append(self._quoted('1'))
 # datum_naloga (+)
         document_date = self._reformat_date(travel_order.document_date)
-        line.append(document_date)
+        document_datetime = '{} {}'.format(document_date,travel_order.create_date[-8:])
+        line.append(document_datetime)
 # datum_isplate (+)
         date_liquidation = self._reformat_date(travel_order.date_liquidation)
         line.append(date_liquidation)
@@ -93,7 +94,8 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         else:
             raise Warning(_("Missing or invalid employee"))
 # sifra_zaposlenika_odobritelja
-        responsible_person_id = get_employee_id(travel_order.company_id.id,34394) #Vanja
+        #responsible_person_id = get_employee_id(travel_order.company_id.id,34394) #Vanja
+        responsible_person_id = get_responsible_person_id(travel_order.company_id.id)
         if responsible_person_id:
             line.append(self._quoted(responsible_person_id))
         else:

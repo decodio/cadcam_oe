@@ -20,10 +20,11 @@
 						</group>
 						<div>
 						<group string="Currency options">
-							<field name="currency_type" widget="radio"
-								attrs="{'readonly':[('group_by_licence', '=', True)]}" />
+							<field name="currency_type" widget="radio" />
+<!--								attrs="{'readonly':[('group_by_licence', '=', True)]}"   --> 
+								
 						</group>
-						<group string="Language options">
+ 						<group string="Language options">
 							<field name="force_language" options="{'no_create': 1}"/>
 						</group>
 						</div>

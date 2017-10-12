@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
+
+		<record id="view_partner_tree_ccg" model="ir.ui.view">
+            <field name="name">Partner Tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="sp_cadcam.view_partner_tree_cadcam"/>
+            <field name="arch" type="xml">
+                <field name="credit_grade" position="after">
+                    <field name="priority" widget="priority" />
+                </field>
+            </field>
+        </record>
 		<record id="view_partner_form_ccg" model="ir.ui.view">
 			<field name="name">view.partner.form.ccg</field>
 			<field name="model">res.partner</field>
@@ -28,6 +39,9 @@
 					<field name="priority" widget="priority" />
 				</xpath>
 
+				<xpath expr="//kanban" position="attributes">
+					<attribute name="default_order">priority desc</attribute>
+				</xpath>
 				<xpath expr="//td[@class='oe_kanban_title1']/div[last()]"
 					position="after">
 					<div>
@@ -71,9 +85,13 @@
 			<field name="inherit_id" ref="base.view_res_partner_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="/search/field[@name='name']" position="after">
+					<field name="priority" string="Priority"/>
 					<field name="industry_ids" string="Industry" />
 					<field name="vat" string="VAT number" />
 				</xpath>
+				 <filter string="Country" position="after">
+                    <filter string="Priority" context="{'group_by': 'priority'}"/>
+                </filter>
 			</field>
 		</record>
 	</data>

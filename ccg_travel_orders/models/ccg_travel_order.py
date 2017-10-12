@@ -85,10 +85,10 @@ class ccg_travel_order_itinerary_lines(models.Model):
             
     @api.multi
     def action_recompute_itinerary(self):
-        print 'CCG action_recompute_itinerary'
+#        print 'CCG action_recompute_itinerary'
         total_itinerary = 0.00
         for l in self.itinerary_ids:
-            print l.vehicle_type
+#            print l.vehicle_type
             if l.vehicle_type == 'private':
                 total_itinerary = total_itinerary + l.lcy_amount_total
             else: 

@@ -50,6 +50,16 @@
 				<xpath expr="//field[@name='function']" position="after">
 					<field name="job_position_type" attrs="{'invisible': [('is_company','=', True)]}" />
 				</xpath>
+
+				<!-- set field country_id mandatory -->
+				<xpath expr="//group/group/div/field[@name='country_id']" position="attributes">
+				<attribute name="required">1</attribute>
+				</xpath>
+
+				<xpath expr="//form[@string='Contact']/sheet/group/div/field[@name='country_id']" position="attributes">
+					<attribute name="required">1</attribute>
+				</xpath>
+				
 			</field>
 		</record>
 

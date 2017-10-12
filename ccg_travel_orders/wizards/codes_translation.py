@@ -240,6 +240,8 @@ employee_by_company_id = {
 4427425:(77, 'Sandra Vukelić'),
 34418:(78, 'Lucija Babić'),
 1191000:(79, 'Matko Ribičić'),
+26199791:(84, 'Aleksandar Buršić'),
+26218574:(85, 'Boris Jagarčec'),
 },
 
 #cad cam grupa
@@ -264,7 +266,9 @@ employee_by_company_id = {
 
 }
 def get_employee_id(company_id, ccg_employee_id):
+    print 'employee ', ccg_employee_id
     company = employee_by_company_id.get(company_id,False)
+    print 'company ', company
     if company :
         total_employee_id = company.get(ccg_employee_id, False)
         return total_employee_id[0]

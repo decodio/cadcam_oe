@@ -236,9 +236,12 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 # vrsta_putnog_troska = 1 (kilomterina)
             line.append( self._quoted('1') )
 # oznaka_placeno
-            line.append(self._quoted(0)) # nije plaćeno
-# tip_isplate_joppd
-            line.append(self._quoted('4')) # kilometrina
+            line.append(self._quoted(0)) # nije unaprijed plaćeno
+# tip_isplate_joppd - za privatni auto = 4 Isplata u gotovini, za službeni = 0 - nije plaćeno
+            if itinerary.vehicle_id.type == 'private':
+                line.append(self._quoted('4')) # kilometrina se isplaćuje u gotovini
+            else: # službeni
+                line.append(self._quoted('0')) # kilometrina se ne isplaćuje
 # opis_troska
             description = 'Kilometrina'
             line.append(self._quoted(description))

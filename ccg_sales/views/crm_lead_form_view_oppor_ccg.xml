@@ -11,22 +11,8 @@
 					<field name="company_id" string="Company" options="{'no_create': True}"
 						readonly="not context.get('uid', False) in [1]" />
 				</xpath>
-
 				<xpath expr="//group/field[@name='priority']" position="attributes">
 					<attribute name="invisible">0</attribute>
-				</xpath>
-				<xpath expr="//notebook" position="inside">
-					<page string="Marketing">
-					<group name="marketing_layout" colspan="4" col="2">
-						<group name="campaign" string="Campaign" colspan="1" col="2">
-							<field name="campaign_id" />
-							<field name="medium_id" />
-							<field name="source_id" />
-						</group>
-						<group name="other" string="Other" colspan="1" col="2">
-						</group>
-						</group>
-					</page>
 				</xpath>
 			</field>
 		</record>

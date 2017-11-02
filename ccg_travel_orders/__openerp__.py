@@ -21,7 +21,7 @@
 
 
 {
-    'name' : 'CCG travel ordes module',
+    'name' : 'CCG travel orders module',
     'version' : '1.0',
     'author' : 'CADCAM Design Centar d.o.o.',
     'category' : 'CCG internals',
@@ -35,8 +35,9 @@
               'reports/travel_order_reports.xml',
               'views/ccg_travel_order_fleet.xml',
               'views/ccg_travel_order_view.xml',
+              'views/data_mapping_view.xml',
 #              'data/travel.order.fleet.csv',
-              'security/ir.model.access.csv',
+#              'security/ir.model.access.csv',
               'wizards/ccg_travel_order_total_wizard.xml',
 #              'templates/travel_order_approved.xml',
 #              'templates/travel_order_done.xml',

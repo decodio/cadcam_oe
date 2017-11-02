@@ -21,10 +21,12 @@
 							<field name="ib_number" select="1" />
 							<field name="portfolio" />
 							<field name="trigram" />
+							<field name="licence_category_id" />
 							<field name="quantity" />
 						</group>
 						<group name="Licence" col="2" colspan="2">
-							<separator string="Dates"  col="1" colspan="2" />
+							<separator string="Dates" col="1" colspan="2" />
+							<field name="start_date" />
 							<field name="activation_date" />
 							<field name="expiration_date" />
 							<field name="active" />
@@ -33,7 +35,7 @@
 					<group name="Notifications" colspan="4" col="4">
 						<separator string="Notifications" colspan="4" col="1" />
 						<group>
-							<field name="notify" />
+
 							<field name="user_id" />
 							<field name="cc_recipient_ids" widget="many2many">
 								<tree>
@@ -41,12 +43,18 @@
 								</tree>
 							</field>
 						</group>
-						<group></group>
-					</group>
-					<group name="Other" colspan="4" col="2">
-						<separator string="Other" colspan="4" col="1" />
-						<field name="note" />
-					</group>
+						<group>
+							<group colspan="2" col="4">
+								<field name="notify" />
+								<field name="days_before_expiration" widget="many2many_tags"
+									options="{'no_create': True, 'no_create_edit': True}" />
+								</group>
+								</group>
+							</group>
+							<group name="Other" colspan="4" col="2">
+								<separator string="Other" colspan="4" col="1" />
+								<field name="note" />
+							</group>
 				</form>
 			</field>
 		</record>

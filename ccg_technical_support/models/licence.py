@@ -63,6 +63,7 @@ class ccg_license(osv.osv):
             'ib_number' :fields.char('IB Number',size=64, help='IB Number'),
             'portfolio' :fields.char('Portfolio', size=64,help='Portfolio'),
             'trigram'   :fields.char('Trigram', size=64,help='Trigram'),
+            'start_date' :fields.date('Start Date',help='Start Date'),
             'activation_date':fields.date('Activation Date',help='Activation Date'),
             'expiration_date'  :fields.date('Expiration Date', help='Expiration Date'),
             'quantity'  :fields.integer('Quantity', help='Number of issued licenses'),
@@ -72,8 +73,10 @@ class ccg_license(osv.osv):
             'notify'    :fields.boolean('Send notifications', help='System send notifications about expiration'),
             'cc_recipient_ids' :fields.many2many('res.users', 'ccg_licence_user_rel', 'licence_id', 'user_id', string='CC', help='Users which receives notifications about licence expiration'),
             'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False),
-            'to_emails' : fields.function(_get_to_emails, type='char', readonly=True, store=False)
-
+            'to_emails' : fields.function(_get_to_emails, type='char', readonly=True, store=False),
+            'days_before_expiration'  :fields.many2many ('days.before.expiration', 'ccg_licence_days_rel','licence_id','days_id', string='Days before expiration', help='Number of days before expiration to send notification'),
+            'licence_category_id' : fields.many2one('invoice.licence.category', 'Licence Category'),
+            
     }
     _defaults = {
          'notify': True,
@@ -81,11 +84,27 @@ class ccg_license(osv.osv):
     }
     _offset = [28, 14, 7]
     
-    def _get_licences(self, cr, uid, days, context={}):
-        check_date = date.today() + timedelta(days=days)
-        args = [('expiration_date','=', check_date), ('notify','=', True), ('active','=', True)]
+#     def _get_licences(self, cr, uid, days, context={}):
+#         check_date = date.today() + timedelta(days=days)
+#         args = [('expiration_date','=', check_date), ('notify','=', True), ('active','=', True)]
+#         ids=self.search(cr, uid, args, context=context)
+#         return ids
+
+    def _get_licences(self, cr, uid, context={}):
+        args = [('notify','=', True), ('active','=', True)]
         ids=self.search(cr, uid, args, context=context)
-        return ids
+        licences = self.browse(cr, uid, ids, context=context)
+        lic_ids = []
+        for lic in licences:
+            for d in lic.days_before_expiration:
+                print lic.id, lic.expiration_date
+                expiration_date = datetime.strptime(lic.expiration_date, "%Y-%m-%d").date()
+                days_to_expiration = (expiration_date - date.today()).days
+                print d.number_of_days
+                if days_to_expiration == d.number_of_days:
+                    lic_ids.append(lic.id)
+            
+        return lic_ids
 
     def _send_email(self, cr, uid, ids, context=None):
         email_template_obj = self.pool.get('email.template')
@@ -100,10 +119,9 @@ class ccg_license(osv.osv):
         """
             Called by cron job
         """
-        for offset in self._offset:
-            send_list = self._get_licences(cr, uid, offset , context)
-            if send_list:
-                self._send_email(cr, uid, send_list, context=context)
+        send_list = self._get_licences(cr, uid, context)
+        if send_list:
+            self._send_email(cr, uid, send_list, context=context)
 
 # 
 # ir_mail_server.build_email(

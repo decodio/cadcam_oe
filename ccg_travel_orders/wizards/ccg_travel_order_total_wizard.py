@@ -28,7 +28,7 @@ import locale
 import base64
 from pytz import timezone
 from time import strptime, strftime
-from codes_translation import get_country_code, get_currency_code, get_expense_id, get_employee_id, get_transportation_type, get_responsible_person_id 
+from codes_translation import get_country_code
 
 
 class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
@@ -44,6 +44,53 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         'decimal'  :  fields.selection((('.', '. (dot)'), (',', ', (comma)')), default=','),
     }
     
+    _travel_order_name = ''
+    
+    def get_currency_code(self, cr, uid, currency_name, context=None):
+        obj = self.pool.get('currency.mapping')
+        ids = obj.search(cr, uid, [('currency_name', '=', currency_name)], context=context)
+        currency_codes = obj.browse(cr, uid, ids, context=context)
+        if currency_codes:
+            return currency_codes[0].total_id
+        else:
+            return False
+
+    def get_expense_id(self, cr, uid, ccg_product_id, context=None):
+        obj = self.pool.get('expense.mapping')
+        ids = obj.search(cr, uid, [('product_id', '=', ccg_product_id)], context=context)
+        expenses = obj.browse(cr, uid, ids, context=context)
+        if expenses:
+            return expenses[0].total_id
+        else:
+            return False
+        
+    def get_transportation_type(self, cr, uid, crm_transportation_id, context=None):
+        obj = self.pool.get('transportation.mapping')
+        ids = obj.search(cr, uid, [('transportation_id', '=', crm_transportation_id)], context=context)
+        transportations = obj.browse(cr, uid, ids, context=context)
+        if transportations:
+            return transportations[0].total_id
+        else:
+            return False
+
+    def get_employee_id(self, cr, uid, company_id, ccg_employee_id, context=None):
+        obj = self.pool.get('employee.mapping')
+        ids = obj.search(cr, uid, [('company_id', '=', company_id),('employee_id','=',ccg_employee_id)], context=context)
+        employees = obj.browse(cr, uid, ids, context=context)
+        if employees :
+            return employees[0].total_id
+        else:
+            return False
+        
+    def get_responsible_person_id(self, cr, uid, company_id, context=None):
+        obj = self.pool.get('responsible.person.mapping')
+        ids = obj.search(cr, uid, [('company_id', '=', company_id)], context=context)
+        responsible_persons = obj.browse(cr, uid, ids, context=context)
+        if responsible_persons :
+            return responsible_persons[0].total_id
+        else:
+            return False
+
     def _quotation(self):
         return self.form['quotation']
 
@@ -81,25 +128,30 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 # header - Vrijednost 1 obavezna u svakom retku
         line.append(self._quoted('1'))
 # datum_naloga (+)
-        document_date = self._reformat_date(travel_order.document_date)
-        document_datetime = '{} {}'.format(document_date,travel_order.create_date[-8:])
-        line.append(document_datetime)
+        if travel_order.document_date:
+            document_date = self._reformat_date(travel_order.document_date)
+            document_datetime = '{} {}'.format(document_date,travel_order.create_date[-8:])
+            line.append(document_datetime)
+        else:
+            raise Warning(_("Missing or invalid document date in travel order {}!".format(self._travel_order_name)))
 # datum_isplate (+)
-        date_liquidation = self._reformat_date(travel_order.date_liquidation)
-        line.append(date_liquidation)
+        if travel_order.date_liquidation:
+            date_liquidation = self._reformat_date(travel_order.date_liquidation)
+            line.append(date_liquidation)
+        else:
+            raise Warning(_("Missing or invalid date liquidation in travel order {}!".format(self._travel_order_name)))
 # sifra_zaposlenika_putnika
-        employee_id = get_employee_id(travel_order.company_id.id,travel_order.employee_id.id)
+        employee_id = self.get_employee_id(cr, uid, travel_order.company_id.id,travel_order.employee_id.id)
         if employee_id:
             line.append(self._quoted(employee_id))
         else:
-            raise Warning(_("Missing or invalid employee"))
+            raise Warning(_("Missing or invalid employee in travel order {}!".format(self._travel_order_name)))
 # sifra_zaposlenika_odobritelja
-        #responsible_person_id = get_employee_id(travel_order.company_id.id,34394) #Vanja
-        responsible_person_id = get_responsible_person_id(travel_order.company_id.id)
+        responsible_person_id = self.get_responsible_person_id(cr, uid,travel_order.company_id.id)
         if responsible_person_id:
             line.append(self._quoted(responsible_person_id))
         else:
-            raise Warning(_("Missing or invalid responsible person"))
+            raise Warning(_("Missing or invalid responsible person in travel order {}!".format(self._travel_order_name)))
 # datum_i_vrijeme_odlaska
         date_from = self._reformat_datetime(travel_order.date_from)
         line.append(self._quoted(date_from))
@@ -126,11 +178,11 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         purpose = travel_order.purpose[:200]
         line.append(purpose)
 # tip_prijevozno_sredstvo
-        depart_transportation_type = get_transportation_type(travel_order.depart_transportation[0].id)
+        depart_transportation_type = self.get_transportation_type(cr, uid, travel_order.depart_transportation[0].id)
         if depart_transportation_type:
             line.append(self._quoted(depart_transportation_type))
         else:
-            raise Warning(_("Missing or invalid transportation type"))
+            raise Warning(_("Missing or invalid transportation type in travel order {}!".format(self._travel_order_name)))
 # marka_i_regbr_vozila
         if travel_order.depart_vehicle_ids:
             vehicle_registration = travel_order.depart_vehicle_ids[0].name
@@ -148,14 +200,14 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         line.append(self._quoted(locale.str(advance_payment)))
 # valuta_za_predujam
         if travel_order.currency_id:
-            advance_currency_code = get_currency_code(travel_order.currency_id.name)
+            advance_currency_code = self.get_currency_code(cr, uid, travel_order.currency_id.name)
         else:
             advance_currency_code = ''
         
         if advance_currency_code:
             line.append(self._quoted(advance_currency_code))
         else:
-             raise Warning(_("Missing or invalid currency for advance payment"))
+             raise Warning(_("Missing or invalid currency for advance payment in travel order {}!".format(self._travel_order_name)))
 # putno_izvjesce
         report = travel_order.other_data
         line.append(report)
@@ -174,7 +226,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             if country_code:
                 line.append( self._quoted(country_code))
             else:
-             raise Warning(_("Missing or invalid currency for advance payment"))
+             raise Warning(_("Missing or invalid currency for advance payment in travel order {}!".format(self._travel_order_name)))
                 
 # datum_i_vrijeme_izlaska
 # TODO convert datetime fron UTC to local time!!!
@@ -192,7 +244,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
 # header - Vrijednost 3 obavezna u svakom retku
             line.append(self._quoted('3'))
 # vrsta_putnog_troska
-            expense_type = get_expense_id(expense.product_id.id)
+            expense_type = self.get_expense_id(cr, uid, expense.product_id.id)
             if expense_type:
                 line.append(self._quoted(expense_type))
             else:
@@ -212,11 +264,11 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             line.append(self._quoted(locale.str(price)))
 # valuta
             currency_name = expense.currency_id.name
-            currency_code = get_currency_code(expense.currency_id.name)
+            currency_code = self.get_currency_code(cr, uid, expense.currency_id.name)
             if currency_code:
                 line.append(self._quoted(currency_code))
             else:
-                raise Warning(_("Missing or invalid currency for expense '{}'".format(description)))
+                raise Warning(_("Missing or invalid currency for expense '{}' in travel order {}!".format(expense.name,self._travel_order_name)))
 # tecaj    
             currency_rate = expense.lcy_rate
             line.append(self._quoted(locale.str(currency_rate)))
@@ -259,7 +311,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
             line.append(self._quoted(locale.str(price)))
 # valuta
             currency_name = 'HRK'
-            currency_code = get_currency_code(currency_name)
+            currency_code = self.get_currency_code(cr, uid, currency_name)
             line.append(self._quoted(currency_code))
 # tecaj    
             currency_rate = 1.0
@@ -303,7 +355,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
                 line.append(self._quoted(locale.str(price)))
     # valuta
                 currency_name = allowance.currency_id.name
-                currency_code = get_currency_code(currency_name)
+                currency_code = self.get_currency_code(cr, uid, currency_name)
                 line.append(self._quoted(currency_code))
      # tecaj    
                 currency_rate = allowance.lcy_rate
@@ -321,6 +373,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         csv = []
         self._set_decimal_point(self._decimal())
         for to in travel_orders:
+            self._travel_order_name = to.name
             # hr.travel.order
             document_csv = self._document(cr, uid, to, context)
             csv.append(document_csv)

@@ -159,6 +159,13 @@ currency_translation = {
 "BRL":("986", "brazilski real"),
 } 
 
+def get_currency_code_2(currency_name):
+    code = currency_translation.get(currency_name, False)
+    if code:
+        return code[0]
+    else:
+        return False
+
 def get_currency_code(currency_name):
     code = currency_translation.get(currency_name, False)
     if code:
@@ -196,6 +203,13 @@ product_to_expense = {
 1022365:(99, "Ostalo"),
 }
 
+def get_expense_id_2(ccg_product_id):
+    expense = product_to_expense.get(ccg_product_id, False)
+    if expense:
+        return expense[0]
+    else:
+        return False
+
 def get_expense_id(ccg_product_id):
     expense = product_to_expense.get(ccg_product_id, False)
     if expense:
@@ -212,6 +226,11 @@ transportation_type_code = {
 1022208:(6, 'Službeni automobil'),
 98:(7, 'Teretno vozilo'),
  }
+
+def get_transportation_type_2(crm_id):
+    total_id = transportation_type_code.get(crm_id, False)
+    if total_id:
+        return total_id[0]
 
 def get_transportation_type(crm_id):
     total_id = transportation_type_code.get(crm_id, False)
@@ -265,16 +284,24 @@ employee_by_company_id = {
 },
 
 }
-def get_employee_id(company_id, ccg_employee_id):
-    print 'employee ', ccg_employee_id
+def get_employee_id_2(company_id, ccg_employee_id):
     company = employee_by_company_id.get(company_id,False)
-    print 'company ', company
     if company :
         total_employee_id = company.get(ccg_employee_id, False)
         return total_employee_id[0]
     else:
         return False
         
+
+def get_employee_id(company_id, ccg_employee_id):
+    company = employee_by_company_id.get(company_id,False)
+    if company :
+        total_employee_id = company.get(ccg_employee_id, False)
+        return total_employee_id[0]
+    else:
+        return False
+        
+    
     
 
 responsible_person_id = {
@@ -283,8 +310,13 @@ responsible_person_id = {
 34166:2,#edmd - Bojan
 }
 
+def get_responsible_person_id_(company_id):
+    rp = responsible_person_id.get(company_id,False)
+    print rp
+    
+    return rp
+   
 def get_responsible_person_id(company_id):
-    print "****** ",company_id
     rp = responsible_person_id.get(company_id,False)
     print rp
     

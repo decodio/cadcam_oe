@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="employee_mapping_tree" model="ir.ui.view">
+			<field name="name">employee.mapping.tree</field>
+			<field name="model">employee.mapping</field>
+			<field name="arch" type="xml">
+				<tree string="Employee Mapping" editable="top">
+					<field name="total_id" />
+					<field name="company_id" />
+					<field name="employee_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="expense_mapping_tree" model="ir.ui.view">
+			<field name="name">expense.mapping.tree</field>
+			<field name="model">expense.mapping</field>
+			<field name="arch" type="xml">
+				<tree string="Expense Mapping" editable="top">
+					<field name="total_id" />
+					<field name="product_id" domain="[('hr_expense_ok','=',1)]" options="{'no_create': True, 'no_create_edit': True}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="responsible_person_mapping_tree" model="ir.ui.view">
+			<field name="name">responsible.person.mapping.tree</field>
+			<field name="model">responsible.person.mapping</field>
+			<field name="arch" type="xml">
+				<tree string="Responsible Person Mapping" editable="top">
+					<field name="total_id" />
+					<field name="company_id" options="{'no_create': True, 'no_create_edit': True}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="transportation_mapping_tree" model="ir.ui.view">
+			<field name="name">transportation.mapping.tree</field>
+			<field name="model">transportation.mapping</field>
+			<field name="arch" type="xml">
+				<tree string="Transportation Mapping" editable="top">
+					<field name="total_id" />
+					<field name="transportation_id" options="{'no_create': True, 'no_create_edit': True}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="currency_mapping_tree" model="ir.ui.view">
+			<field name="name">currency.mapping.tree</field>
+			<field name="model">currency.mapping</field>
+			<field name="arch" type="xml">
+				<tree string="Currency Mapping" editable="top">
+					<field name="total_id" />
+					<field name="currency_name" />
+					<field name="description"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_employee_mapping" model="ir.actions.act_window">
+			<field name="name">Employee ID Mapping</field>
+			<field name="res_model">employee.mapping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="action_expense_mapping" model="ir.actions.act_window">
+			<field name="name">Expenses ID Mapping</field>
+			<field name="res_model">expense.mapping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="action_responsible_person_mapping" model="ir.actions.act_window">
+			<field name="name">Responsible Person Mapping</field>
+			<field name="res_model">responsible.person.mapping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="action_transportation_mapping" model="ir.actions.act_window">
+			<field name="name">Transportation Mapping</field>
+			<field name="res_model">transportation.mapping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="action_currency_mapping" model="ir.actions.act_window">
+			<field name="name">Currency Mapping</field>
+			<field name="res_model">currency.mapping</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_ccg_travel_order_total" 
+			parent="hr_travel_order.menu_hr_travel_order_config"
+			name="TOTAL" 
+			sequence="40"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+
+		<menuitem id="menu_ccg_travel_order_employee_mappings" 
+			parent="menu_ccg_travel_order_total"
+			name="Employee Mapping" 
+			action="action_employee_mapping" 
+			sequence="41"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+		<menuitem id="menu_ccg_travel_order_expense_mappings" 
+			parent="menu_ccg_travel_order_total"
+			name="Expense Mapping" 
+			action="action_expense_mapping" 
+			sequence="42"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+		<menuitem id="menu_ccg_travel_order_responsible_person_mapping" 
+			parent="menu_ccg_travel_order_total"
+			name="Responsible Person Mapping" 
+			action="action_responsible_person_mapping" 
+			sequence="43"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+		<menuitem id="menu_ccg_travel_order_transportation_mapping" 
+			parent="menu_ccg_travel_order_total"
+			name="Transportation Mapping" 
+			action="action_transportation_mapping" 
+			sequence="44"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+		<menuitem id="menu_ccg_travel_order_currency_mapping" 
+			parent="menu_ccg_travel_order_total"
+			name="Currency Mapping" 
+			action="action_currency_mapping" 
+			sequence="45"
+			groups="base.group_hr_manager,base.group_hr_user" />
+
+</data>
+</openerp> 		
+

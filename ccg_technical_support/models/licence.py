@@ -54,6 +54,14 @@ class ccg_license(osv.osv):
             ret ={ids[0]:to_list}
         return ret
 
+    def _get_default_days(self):
+        obj = self.pool.get('days.before.expiration')
+        cr = self.pool.cursor()
+        uid = 1
+        ids = obj.search(cr, uid, [('number_of_days', 'in', [30,15,7])], order='number_of_days desc')
+        return ids
+
+
     _name="ccg.licence"
     _order = "client_id asc, expiration_date desc"
     _columns={
@@ -74,7 +82,7 @@ class ccg_license(osv.osv):
             'cc_recipient_ids' :fields.many2many('res.users', 'ccg_licence_user_rel', 'licence_id', 'user_id', string='CC', help='Users which receives notifications about licence expiration'),
             'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False),
             'to_emails' : fields.function(_get_to_emails, type='char', readonly=True, store=False),
-            'days_before_expiration'  :fields.many2many ('days.before.expiration', 'ccg_licence_days_rel','licence_id','days_id', string='Days before expiration', help='Number of days before expiration to send notification'),
+            'days_before_expiration'  :fields.many2many ('days.before.expiration', 'ccg_licence_days_rel','licence_id','days_id', string='Days before expiration', help='Number of days before expiration to send notification', default=_get_default_days),
             'licence_category_id' : fields.many2one('invoice.licence.category', 'Licence Category'),
             
     }

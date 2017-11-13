@@ -21,6 +21,8 @@
 			
 			<xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="invisible">0</attribute>
+                    <attribute name="attrs">{}</attribute>
+                    <attribute name="modifiers">{}</attribute>
             </xpath>
 			<xpath expr="//field[@name='name_draft']" position="attributes">
                     <attribute name="invisible">1</attribute>

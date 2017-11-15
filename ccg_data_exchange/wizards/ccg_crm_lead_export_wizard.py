@@ -64,7 +64,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                   'OpportunityLeadDescription', #X
                   'PartnerOpportunityID', #Y
                   'DSLeadID', #Z
-                  #'CoMarketingYN', #??? not in specification
+#                  'CoMarketingYN', #  not in specification
                   'COMETCampaignCode', #AA
                   'CampaignName', #AB
                   'SalesStage', #AC
@@ -108,6 +108,11 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'CustomerContactLastName'   : ('', "''", 'contact_last_name', 'Customer Contact LastName', True, True ),
         'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', 'Customer Contact Email', True, True ),
         'DSLeadID'              : ('crm_lead', 'ds_lead_id', 'ds_lead_id', 'DS Lead ID', True, False ),
+#        'CoMarketingYN'         : ('crm_lead', 'comarketing_yn', 'comarketing_yn', 'Comarketing Y/N', True, False ),
+        'COMETCampaignCode'     : ('crm_lead', 'comet_campaign_code', 'comet_campaign_code', 'COMET Campaign Code', True, False ),
+        'CampaignName'          : ('crm_lead', 'campaign_name', 'campaign_name', 'Campaign Name', True, False ),
+                  
+        
         }
     
     _stage_mapping = {

@@ -27,6 +27,11 @@
 							</group>
 							<group string="DS portal generated data" colspan="2" col="2" >
 								<field name="ds_lead_id" string="DS Lead ID" colspan="2" col="2" />
+<!--
+							<field name="comarketing_yn" string="Comarketing" colspan="2" col="2" />  
+-->	
+								<field name="comet_campaign_code" string="COMET campaign code" colspan="2" col="2" />
+								<field name="campaign_name" string="Campaign name" colspan="2" col="2" />
 							</group>
 						</group>
 					</page>

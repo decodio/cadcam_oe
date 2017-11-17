@@ -191,6 +191,7 @@
 				<xpath expr="//search/filter[1]" position="attributes">
 					<attribute name="string">Salesman</attribute>
 				</xpath>
+				
 			</field>
 		</record>
 

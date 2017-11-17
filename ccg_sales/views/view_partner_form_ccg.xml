@@ -89,6 +89,17 @@
 					<field name="industry_ids" string="Industry" />
 					<field name="vat" string="VAT number" />
 				</xpath>
+				<xpath expr="//group/filter[last()]" position="after">
+						<separator />
+						<filter string="Creation Month" icon="terp-go-month" domain="[]" context="{'group_by':'create_date:month'}" />
+						<filter string="Creation Week" icon="terp-go-month" domain="[]" context="{'group_by':'create_date:week'}" />
+						<filter string="Created By" icon="terp-go-month" domain="[]" context="{'group_by':'create_uid'}" />
+						<separator />
+						<filter string="Modification Month" icon="terp-go-month" domain="[]" context="{'group_by':'write_date:month'}" />
+						<filter string="Modification Week" icon="terp-go-month" domain="[]" context="{'group_by':'write_date:week'}" />
+						<filter string="Modified By" icon="terp-go-month" domain="[]" context="{'group_by':'write_uid'}" />
+				</xpath>
+				
 				 <filter string="Country" position="after">
                     <filter string="Priority" context="{'group_by': 'priority'}"/>
                 </filter>

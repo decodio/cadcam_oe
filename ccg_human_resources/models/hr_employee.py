@@ -54,15 +54,20 @@ class hr_employee_ccg(osv.Model):
     def _get_contracts_soon_expire(self, cr, uid, days, context={}):
         check_date = date.today() + timedelta(days=days)
         args = [('end_date','=', check_date)]
+        print args
         employee_ids=self.search(cr, uid, args, context=context)
+        print employee_ids
         return employee_ids 
 
     def _send_email(self, cr, uid, ids, context=None):
         email_template_obj = self.pool.get('email.template')
-        template_ids = email_template_obj.search(cr, uid, [('name', '=','email_template_contract_expiration')], context=context) 
+        template_ids = email_template_obj.search(cr, uid, [('name', '=','Contract Expiration Template')], context=context) 
+        print template_ids
         if template_ids:
             for sender_id in ids:
+                print sender_id
                 msg_id = email_template_obj.send_mail(cr, uid, template_ids[0], sender_id, force_send=True,context=context)
+                print msg_id
             return True
         return False
 

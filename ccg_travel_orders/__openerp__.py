@@ -37,7 +37,7 @@
               'views/ccg_travel_order_view.xml',
               'views/data_mapping_view.xml',
 #              'data/travel.order.fleet.csv',
-#              'security/ir.model.access.csv',
+              'security/ir.model.access.csv',
               'wizards/ccg_travel_order_total_wizard.xml',
 #              'templates/travel_order_approved.xml',
 #              'templates/travel_order_done.xml',

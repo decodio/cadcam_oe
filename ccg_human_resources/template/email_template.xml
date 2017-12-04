@@ -12,9 +12,9 @@
 <!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
 			<field name="body_html"><![CDATA[
 Job Contract will expire for employee:<br>
-Name:<b>${object.user_id.name}</b><br>
-Company:<b>${object.user_id.company_id.name}</b><br>
-Expiration Date:<b>${object.end_date}</b> <br>
+Name: <b>${object.user_id.name}</b><br>
+Company: <b>${object.user_id.company_id.name}</b><br>
+Expiration Date: <b>${format_tz(object.end_date + ' 09:00:00', user.tz, '%d.%m.%Y.')}</b> <br>
 ]]>
 			</field>
 		</record>	
@@ -29,18 +29,19 @@ Expiration Date:<b>${object.end_date}</b> <br>
 			<field name="auto_delete" eval="False" />
 <!--  		<field name="mail_server_id" ref="__export__.ir_mail_server_34241" /> -->
 			<field name="body_html"><![CDATA[
-Zaposlenik/ca: ${object.employee_id.name}<br>
+Zaposlenik/ca <b>${object.employee_id.name}</b><br>
 <br>
 % if 'Legal' in object.holiday_status_id.name and object.type =='remove':
-Traži <b>godišnji odmor</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
+Traži <b>godišnji odmor</b> od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')} do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')}<br>
 % elif 'Legal' in object.holiday_status_id.name and object.type == 'add':
 Ima pravo na <b>${ '{0:0.0f}'.format(object.number_of_days_temp) } dana</b> godišnjeg odmora u ${object.holiday_status_id.year}. godini.<br>
 % elif 'Sick' in object.holiday_status_id.name :
-Prijavljuje <b>privremenu nesposobnost za rad</b> od ${object.date_from or '-'} do ${object.date_to or '-'}<br>
+Prijavljuje <b>privremenu nesposobnost za rad</b> od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')} do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')}<br>
 % else:
 Nezna ni sam što hoće!<br>
 % endif
 <br>Opis zahtjeva: ${object.name or ''}]]>
+
 			</field>
 			
 			<field name="report_template" ref="leave_request_ccg" />
@@ -63,11 +64,11 @@ Nezna ni sam što hoće!<br>
 Poštovani/a ${object.employee_id.name}<br>
 <br>
 % if 'Legal' in object.holiday_status_id.name and object.type =='remove':
-Zahtjev za godišnjim odmorom od ${object.date_from} do ${object.date_to}<br><br>je odobren.<br>
+Zahtjev za godišnjim odmorom od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')} do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')}<br><br>je odobren.<br>
 % elif 'Legal' in object.holiday_status_id.name and object.type == 'add':
 Dodjeljeno Vam je <b>${ '{0:0.0f}'.format(object.number_of_days_temp) } dana</b> godišnjeg odmora.<br>
 % elif 'Sick' in object.holiday_status_id.name :
-Privremena nesposobnost za rad od ${object.date_from or '-'}, sa predviđenim trajanjem do ${object.date_to or '-'} je evidentirana<br>
+Privremena nesposobnost za rad od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')}, sa predviđenim trajanjem do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')} je evidentirana<br>
 % else:
 Neznam što Vi želite!<br>
 % endif 

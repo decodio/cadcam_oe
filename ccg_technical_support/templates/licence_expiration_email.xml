@@ -15,8 +15,9 @@ Licence will expire:<br>
 Customer:<b>${object.client_id.name}</b><br>
 Licence:<b>${''}</b><br>
 Trigram:<b> ${object.trigram or ''}</b> <br>
-Expiration Date:<b>${object.expiration_date}</b> <br>
-]]>
+Expiration Date:<b>${format_tz(object.expiration_date + ' 10:00:00', user.tz, '%d.%m.%Y.')}</b> <br>
+<a href="https://crm.cadcam-group.eu:40004/web#id=${object.id}&view_type=form&model=ccg.licence&menu_id=6376134&action=6376128">
+Link na zahtjev</a><br>]]>
 			</field>
 		</record>
 

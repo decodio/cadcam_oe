@@ -111,7 +111,10 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
 #        'CoMarketingYN'         : ('crm_lead', 'comarketing_yn', 'comarketing_yn', 'Comarketing Y/N', True, False ),
         'COMETCampaignCode'     : ('crm_lead', 'comet_campaign_code', 'comet_campaign_code', 'COMET Campaign Code', True, False ),
         'CampaignName'          : ('crm_lead', 'campaign_name', 'campaign_name', 'Campaign Name', True, False ),
-                  
+        'PartnerSalesRepName'       : ('sales', 'name', 'partner_sales_name', 'Partner Sales Name', False, False),
+        'PartnerSalesRepFirstName'  : ('', "''", 'partner_sales_first_name', 'Partner Sales First Name', True, True ),
+        'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', 'Partner Sales LastName', True, True ),
+        'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', 'Partner Sales Email', True, True ),
         
         }
     
@@ -148,6 +151,19 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             field_label = self._field_mappings['CustomerContactName'][3]
             raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
         row.update({'contact_first_name':first_name, 'contact_last_name':last_name})
+        return row
+
+    def split_salesman_name(self, cr, uid, row, context=None):
+        partner_sales_name = row['partner_sales_name']
+        if partner_sales_name:
+            names = partner_sales_name.split()
+            first_name = names[0]
+            last_name = " ".join([ln for ln in names[1:] if ln])
+        else:
+            opportunity_id = row['opportunity_id']
+            field_label = self._field_mappings['PartnerSalesRepName'][3]
+            raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
+        row.update({'partner_sales_first_name':first_name, 'partner_sales_last_name':last_name})
         return row
     
     def _quotation(self):
@@ -191,6 +207,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         LEFT JOIN res_country ON (res_partner.country_id = res_country.id)
         LEFT JOIN ccg_offer_name ON (crm_lead.offer_name_id = ccg_offer_name.id)
         LEFT JOIN res_partner partner_contact ON (crm_lead.contact_name_id=partner_contact.id)
+        LEFT JOIN res_users users ON (res_partner.user_id=users.id)
+        LEFT JOIN res_partner sales ON (users.partner_id=sales.id)
+  
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
         cr.execute(sql)
@@ -204,6 +223,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             opportunity_id = row_original['opportunity_id']
             row = self.map_stage(cr, uid, row_original, context)
             row = self.split_contact_name(cr, uid, row, context)
+            row = self.split_salesman_name(cr, uid, row, context)
             for ds_field_name in self._ds_fields:
                 value = self._field_mappings.get(ds_field_name, False)
                 if value:

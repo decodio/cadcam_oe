@@ -3,15 +3,16 @@
 	<data>
 
 		<record id="view_partner_tree_ccg" model="ir.ui.view">
-            <field name="name">Partner Tree</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="sp_cadcam.view_partner_tree_cadcam"/>
-            <field name="arch" type="xml">
-                <field name="credit_grade" position="after">
-                    <field name="priority" widget="priority" />
-                </field>
-            </field>
-        </record>
+			<field name="name">Partner Tree</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="sp_cadcam.view_partner_tree_cadcam" />
+			<field name="arch" type="xml">
+				<field name="credit_grade" position="after">
+					<field name="priority" widget="priority" />
+				</field>
+			</field>
+		</record>
+
 		<record id="view_partner_form_ccg" model="ir.ui.view">
 			<field name="name">view.partner.form.ccg</field>
 			<field name="model">res.partner</field>
@@ -66,17 +67,37 @@
 				</xpath>
 
 				<!-- set field country_id mandatory -->
-				<xpath expr="//group/group/div/field[@name='country_id']" position="attributes">
-				<attribute name="required">1</attribute>
-				</xpath>
-
-				<xpath expr="//form[@string='Contact']/sheet/group/div/field[@name='country_id']" position="attributes">
+				<xpath expr="//group/group/div/field[@name='country_id']"
+					position="attributes">
 					<attribute name="required">1</attribute>
 				</xpath>
-				
+
+				<xpath
+					expr="//form[@string='Contact']/sheet/group/div/field[@name='country_id']"
+					position="attributes">
+					<attribute name="required">1</attribute>
+				</xpath>
+
 			</field>
 		</record>
 
+		<record model="ir.ui.view" id="res_partner_kanban_view_ccg">
+			<field name="name">res.partner.kanban.ccg</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="sale.crm_lead_partner_kanban_view" />
+			<field name="arch" type="xml">
+
+				<xpath expr="field[@name='color']" position="after">
+					<field name="priority" modifiers="{}" />
+				</xpath>
+
+				<xpath expr="//div[@class='oe_kanban_details']/div[last()]"
+					position="after">
+					<field name="priority" widget="priority" modifiers="{}" />
+				</xpath>
+
+			</field>
+		</record>
 
 		<!-- Customer Search View -->
 		<record id="view_res_partner_filter_ccg" model="ir.ui.view">
@@ -84,25 +105,33 @@
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_res_partner_filter" />
 			<field name="arch" type="xml">
+
 				<xpath expr="/search/field[@name='name']" position="after">
-					<field name="priority" string="Priority"/>
+					<field name="priority" string="Priority" />
 					<field name="industry_ids" string="Industry" />
 					<field name="vat" string="VAT number" />
 				</xpath>
+
 				<xpath expr="//group/filter[last()]" position="after">
-						<separator />
-						<filter string="Creation Month" icon="terp-go-month" domain="[]" context="{'group_by':'create_date:month'}" />
-						<filter string="Creation Week" icon="terp-go-month" domain="[]" context="{'group_by':'create_date:week'}" />
-						<filter string="Created By" icon="terp-go-month" domain="[]" context="{'group_by':'create_uid'}" />
-						<separator />
-						<filter string="Modification Month" icon="terp-go-month" domain="[]" context="{'group_by':'write_date:month'}" />
-						<filter string="Modification Week" icon="terp-go-month" domain="[]" context="{'group_by':'write_date:week'}" />
-						<filter string="Modified By" icon="terp-go-month" domain="[]" context="{'group_by':'write_uid'}" />
+					<separator />
+					<filter string="Creation Month" icon="terp-go-month" domain="[]"
+						context="{'group_by':'create_date:month'}" />
+					<filter string="Creation Week" icon="terp-go-month" domain="[]"
+						context="{'group_by':'create_date:week'}" />
+					<filter string="Created By" icon="terp-go-month" domain="[]"
+						context="{'group_by':'create_uid'}" />
+					<separator />
+					<filter string="Modification Month" icon="terp-go-month"
+						domain="[]" context="{'group_by':'write_date:month'}" />
+					<filter string="Modification Week" icon="terp-go-month"
+						domain="[]" context="{'group_by':'write_date:week'}" />
+					<filter string="Modified By" icon="terp-go-month" domain="[]"
+						context="{'group_by':'write_uid'}" />
 				</xpath>
-				
-				 <filter string="Country" position="after">
-                    <filter string="Priority" context="{'group_by': 'priority'}"/>
-                </filter>
+
+				<filter string="Country" position="after">
+					<filter string="Priority" context="{'group_by': 'priority'}" />
+				</filter>
 			</field>
 		</record>
 	</data>

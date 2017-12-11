@@ -28,6 +28,7 @@ class PrintInvoiceWizard(models.TransientModel):
     show_line_discount = fields.Boolean('Show line discount', default = False, help='Diplays discont on invoice lines')
     advance_invoice = fields.Boolean('Print advance invoice', default = False, help='Print advance invoice in document currency')
     currency_type = fields.Selection([('document','Document currency'),('dual','Dual currency')], 'Currency', default = 'document')
+    shipping = fields.Boolean('Print shipping document', default = False, help='Shipping document') 
     
     def print_report(self, cr, uid, ids, context=None):
         data = {
@@ -38,8 +39,11 @@ class PrintInvoiceWizard(models.TransientModel):
         dual_currency = data['form']['currency_type'] == 'dual'
         discount = data['form']['show_line_discount']
         advance_invoice = data['form']['advance_invoice']
+        shipping = data['form']['shipping']
         
-        if advance_invoice:
+        if shipping:
+            report_name = 'shipping_document_report'
+        elif advance_invoice:
             report_name = 'document_currency_advance_invoice_report'
         elif dual_currency and discount:
             report_name = 'dual_currency_invoice_report'

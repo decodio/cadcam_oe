@@ -150,6 +150,37 @@
 			<field name="replace" eval="False" />
 			<field name="sequence" eval="5"/>
 		</record>
+		
+		<!-- shipping document report -->
+		<record id="cadcam_shipping_document_report"
+			model="ir.actions.report.xml">
+			<field name="name">Shipping</field>
+			<field name="type">ir.actions.report.xml</field>
+			<field name="model">account.invoice</field>
+			<field name="report_name">shipping_document_report</field>
+			<field name="report_type">aeroo</field>
+<!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
+			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+			<field name="report_rml">ccg_accounting/reports/shipping_document_report.odt</field>
+			<field name="parser_state">loc</field>
+			<field name="tml_source">file</field>
+			<field name="styles_mode">global</field>
+		</record>
+
+		<!--add button to print shipping document report -->
+		<record model="ir.values" id="btn_print_shipping_document_report">
+			<field eval="'action'" name="key" />
+			<field eval="'client_print_multi'" name="key2" />
+			<field name="model">account.invoice</field>
+			<field name="name">Shipping</field>
+			<field name="value"
+				eval="'ir.actions.report.xml,'+str(cadcam_shipping_document_report)" />
+			<field name="isobject" eval="True" />
+			<field name="replace" eval="False" />
+			<field name="sequence" eval="2"/>
+		</record>
+
 
 	</data>
 </openerp>

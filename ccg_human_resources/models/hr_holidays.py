@@ -19,12 +19,14 @@
 #
 ##############################################################################
 
-import datetime
 import math
 import time
 from openerp import models, fields, api, _
 from openerp.exceptions import Warning
 from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,DEFAULT_SERVER_DATETIME_FORMAT)
+from datetime import datetime, date
+from time import strptime
+
 
 class HrHolidays(models.Model):
     _inherit = "hr.holidays"
@@ -42,3 +44,17 @@ class HrHolidays(models.Model):
                # Raising a warning gives a more user-friendly feedback than the default constraint error
                raise Warning(_('CCG:The number of remaining leaves ({0:d} day(s)) is not sufficient for this leave type!'.format(int(leave_days['remaining_leaves']))))
         return True
+
+
+
+    def create(self, cr, uid, vals, context=None):
+        date_from_str = vals.get('date_from', None)
+        datetime_format = '%Y-%m-%d %H:%M:%S'
+        if date_from_str:
+            date_from = datetime.strptime(date_from_str, datetime_format).replace(hour=7, minute=00)
+            vals.update({'date_from':date_from})
+        date_to_str = vals.get('date_to', date_from)
+        if date_to_str:
+            date_to = datetime.strptime(date_to_str, datetime_format).replace(hour=19, minute=0)
+            vals.update({'date_to':date_to})
+        return super(HrHolidays, self).create(cr, uid, vals, context)

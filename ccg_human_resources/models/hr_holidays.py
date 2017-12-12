@@ -45,8 +45,6 @@ class HrHolidays(models.Model):
                raise Warning(_('CCG:The number of remaining leaves ({0:d} day(s)) is not sufficient for this leave type!'.format(int(leave_days['remaining_leaves']))))
         return True
 
-
-
     def create(self, cr, uid, vals, context=None):
         date_from_str = vals.get('date_from', None)
         datetime_format = '%Y-%m-%d %H:%M:%S'

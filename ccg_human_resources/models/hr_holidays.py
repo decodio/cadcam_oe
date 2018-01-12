@@ -47,6 +47,7 @@ class HrHolidays(models.Model):
 
     def create(self, cr, uid, vals, context=None):
         date_from_str = vals.get('date_from', None)
+        date_from = None
         datetime_format = '%Y-%m-%d %H:%M:%S'
         if date_from_str:
             date_from = datetime.strptime(date_from_str, datetime_format).replace(hour=7, minute=00)

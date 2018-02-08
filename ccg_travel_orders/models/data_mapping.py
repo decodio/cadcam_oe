@@ -28,24 +28,38 @@ class employee_mapping(models.Model):
     total_id = fields.Integer('Total ID', required=True, help="Employee ID in TOTAL")
     company_id = fields.Many2one('res.company', required=True)
     employee_id = fields.Many2one('hr.employee', required=True)
+    _sql_constraints = [
+        ('employee_mapping_unique', 'unique(total_id, company_id, employee_id)', 'Employee already exists in mapping!'),
+        ]   
 
 class expense_mapping (models.Model):
     _name = 'expense.mapping'
     
     total_id = fields.Integer('Total ID', required=True, help="Expense ID in TOTAL")
     product_id = fields.Many2one('product.product', required=True, help="CRM Product Related To Expense ID in TOTAL")
+    _sql_constraints = [
+        ('expense_mapping_unique', 'unique(total_id, product_id)', 'Expense already exists in mapping!'),
+        ]   
+
 
 class responsible_person_mapping (models.Model):
     _name = 'responsible.person.mapping'
     
     total_id = fields.Integer('TOTAL ID', required=True, help="Responsible person  ID  in TOTAL")
     company_id = fields.Many2one('res.company', required=True)
+    _sql_constraints = [
+        ('responsible_person_mapping_unique', 'unique(total_id, company_id)', 'Responsible person already exists in mapping!'),
+        ]   
+
 
 class transportation_mapping (models.Model):
     _name = 'transportation.mapping'
     
     total_id = fields.Integer('TOTAL ID', required=True, help="Transportation ID in TOTAL")
     transportation_id = fields.Many2one('travel.transportation', required=True, help='Transportation')
+    _sql_constraints = [
+        ('transportation_mapping_unique', 'unique(total_id, transportation_id)', 'Transportation already exists in mapping!'),
+        ]   
 
 class currency_mapping (models.Model):
     _name = 'currency.mapping'
@@ -53,4 +67,7 @@ class currency_mapping (models.Model):
     total_id = fields.Char('TOTAL ID', required=True, help="Currency ID in TOTAL")
     currency_name = fields.Char('Currency name', required=True, help='Currency name')
     description = fields.Char('Currency description', required=True, help='Currency Description')
+    _sql_constraints = [
+        ('currency_mapping_unique', 'unique(total_id, currency_name)', 'Currency already exists in mapping!'),
+        ]   
 

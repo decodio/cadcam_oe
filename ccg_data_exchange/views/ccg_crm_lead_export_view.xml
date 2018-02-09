@@ -22,16 +22,20 @@
 								<field name="revenue_type" colspan="2" />
 								<field name="ds_expected_revenue" string="DS Revenue (EUR)"
 									colspan="2" />
+								<field name="next_milestone" string="Next Milestone"
+									colspan="2" />
 							</group>
-							<group  colspan="1" col="1">
+							<group colspan="1" col="1">
 							</group>
-							<group string="DS portal generated data" colspan="2" col="2" >
-								<field name="ds_lead_id" string="DS Lead ID" colspan="2" col="2" />
-<!--
-							<field name="comarketing_yn" string="Comarketing" colspan="2" col="2" />  
--->	
-								<field name="comet_campaign_code" string="COMET campaign code" colspan="2" col="2" />
-								<field name="campaign_name" string="Campaign name" colspan="2" col="2" />
+							<group string="DS portal generated data" colspan="2" col="2">
+								<field name="ds_lead_id" string="DS Lead ID" colspan="2"
+									col="2" />
+								<!-- <field name="comarketing_yn" string="Comarketing" colspan="2" 
+									col="2" /> -->
+								<field name="comet_campaign_code" string="COMET campaign code"
+									colspan="2" col="2" />
+								<field name="campaign_name" string="Campaign name"
+									colspan="2" col="2" />
 							</group>
 						</group>
 					</page>

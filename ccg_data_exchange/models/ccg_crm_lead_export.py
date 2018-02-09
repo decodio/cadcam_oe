@@ -32,5 +32,6 @@ class crm_lead(models.Model):
     ds_expected_revenue = fields.Float('DS Revenue', digits=dp.get_precision('Account'), help="Revenue related to PLC licence.\This revenue will be send to DS portal.")
     ds_lead_id = fields.Char('DS Lead ID', size=11, help='DS lead ID, format is ADOA-XXXXXX')
 #    comarketing_yn = fields.Selection([('Y', 'Yes'),('N', 'No')], help='CoMarketing, yes or no?')
-    comet_campaign_code = fields.Char('DS Lead ID', size=40, help='COMET campaign code')
-    campaign_name = fields.Char('DS Lead ID', size=40, help='Campaign name') 
+    comet_campaign_code = fields.Char('COMET campaign code', size=40, help='COMET campaign code')
+    campaign_name = fields.Char('Campaign name', size=40, help='Campaign name') 
+    next_milestone = fields.Char('Next Milestone', size=250, help='Next Milestone') 

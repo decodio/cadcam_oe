@@ -111,19 +111,36 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
 #        'CoMarketingYN'         : ('crm_lead', 'comarketing_yn', 'comarketing_yn', 'Comarketing Y/N', True, False ),
         'COMETCampaignCode'     : ('crm_lead', 'comet_campaign_code', 'comet_campaign_code', 'COMET Campaign Code', True, False ),
         'CampaignName'          : ('crm_lead', 'campaign_name', 'campaign_name', 'Campaign Name', True, False ),
+        'NextMilestone'      : ('crm_lead', 'next_milestone', 'next_milestone', 'Next Milestone', True, True ),
         'PartnerSalesRepName'       : ('sales', 'name', 'partner_sales_name', 'Partner Sales Name', False, False),
         'PartnerSalesRepFirstName'  : ('', "''", 'partner_sales_first_name', 'Partner Sales First Name', True, True ),
         'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', 'Partner Sales LastName', True, True ),
         'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', 'Partner Sales Email', True, True ),
+     }
+
+    """ DS Sales stages
+    Closed/Lost
+    Closed/Won
+    1-Sales Lead
+    2-Validate Opportunity
+    3-Establish Value
+    4-Reach Agreement
+    """
         
-        }
+    """ DS Forecast categories:
+    Upside
+    Commit
+    Safe
+    Won
+    Lost
+    """
     
     _stage_mapping = {
-        'New': ('3-Establish Value', 'Upside'),
-        'Validation' : ('3-Establish Value', 'Upside'), 
+        'New': ('1-Sales Lead', 'Upside'),
+        'Validation' : ('2-Validate Opportunity', 'Upside'), 
         'Establish value' : ('3-Establish Value', 'Upside'),
-        'Negotiation' : ('4-Reach Agreement', 'Upside'),
-        'Won' : ('Closed/Won', 'Won'),
+        'Negotiation' : ('4-Reach Agreement', 'Commit'),
+        'Won' : ('Closed/Won', 'Commit'),
         'Lost' : ('Closed/Lost', 'Lost'),
         }
 

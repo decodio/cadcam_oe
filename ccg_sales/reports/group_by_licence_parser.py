@@ -69,10 +69,8 @@ class Parser(report_sxw.rml_parse):
     def _get_groups(self):
         groups2 = []
         for g in self.groups:
-            print "*********** ", g, "*********"
             if g[0] in self.document.group.keys():
                 h = (g[0],_(g[1]))
-                print "*********** ", h, "*********"
                 groups2.append(h) 
         return groups2
 

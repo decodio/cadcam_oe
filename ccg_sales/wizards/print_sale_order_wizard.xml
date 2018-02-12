@@ -34,6 +34,9 @@
 							model(print.sale.order.wizard) to execute -->
 						<button string="Print" name="print_report" type="object"
 							class="oe_highlight" />
+							<!-- 
+						<button string="Send by email" name="email_report" type="object" />
+						 -->
 						or
 						<button string="Cancel" class="oe_link" special="cancel" />
 					</footer>

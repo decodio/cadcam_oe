@@ -20,6 +20,8 @@
 ##############################################################################
 
 from openerp import models, fields, api, _, SUPERUSER_ID
+from datetime import datetime, date
+from dateutil.relativedelta import *
 
  # TO DO:
  # inherit crm_lead
@@ -28,3 +30,27 @@ from openerp import models, fields, api, _, SUPERUSER_ID
  # ....
  # overwrite write method
  # task_ids.company_id = company_is
+class crm_lead(models.Model):
+    _name = 'crm.lead'
+    _inherit = ['crm.lead']
+
+    def prolonged_date(self):
+        six_months_later = relativedelta(months=+6)
+        return datetime.now() + six_months_later
+
+    def onchange_stage_id(self, cr, uid, ids, stage_id, context=None):
+        lead = self.pool.get('crm.lead').browse(cr, uid, ids[0], context=context)
+        res = {}
+        if lead.stage_id.name=='Lost':
+             vals = {'stage_id':lead.stage_id.id} #cannot exit from lost state
+        else:
+            res = super(crm_lead, self).onchange_stage_id(cr, uid, ids, stage_id, context=context)
+            stage = self.pool.get('crm.case.stage').browse(cr, uid, stage_id, context=context)
+            vals = res.get('value', {})
+            if stage.name == 'Sleeping':
+                vals.update({'date_deadline': self.prolonged_date()})
+        
+        res.update({'value':vals})
+        return res
+
+

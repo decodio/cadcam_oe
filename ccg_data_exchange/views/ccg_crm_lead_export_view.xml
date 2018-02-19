@@ -20,10 +20,15 @@
 									options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
 									domain="[('parent_id','=', partner_id)]" />
 								<field name="revenue_type" colspan="2" />
+								<group colspan="2" col="4">
 								<field name="ds_expected_revenue" string="DS Revenue (EUR)"
 									colspan="2" />
+								<field name="management_assessment" string="Management Assessment" attrs="{'invisible':[('stage_name', '!=', 'Negotiation')]}"
+									colspan="2" />
+								</group>
 								<field name="next_milestone" string="Next Milestone"
 									colspan="2" />
+								<field name="stage_name" colspan="2" invisible="1"/>
 							</group>
 							<group colspan="1" col="1">
 							</group>

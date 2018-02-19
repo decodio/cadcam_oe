@@ -101,21 +101,24 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'PartnerOpportunityID' : ('crm_lead', 'lead_ref_no', 'opportunity_id', 'Opportunity ID', True, True ),
         'SalesStage'        : ('crm_case_stage', 'name', 'sales_stage', 'Sales stage', True, True ),
         'ForecastCategory'  : ('crm_case_stage', 'name', 'forecast_category', 'Forecast category', True, True ),
-        'CloseDate'         : ('crm_lead', 'date_deadline', 'close_date', 'Expected closing', True, True ),
+        'CloseDate'         : ('crm_lead', 'date_deadline', 'close_date', 'Expected closing date', True, True ),
         'RevenueType'       : ('crm_lead', 'revenue_type', 'revenue_type', 'Revenue type', True, True ),
-        'CustomerContactName'       : ('partner_contact', 'name', 'contact_name', 'Customer Contact Name', False, False),
-        'CustomerContactFirstName'  : ('', "''", 'contact_first_name', 'Customer Contact First Name', True, True ),
-        'CustomerContactLastName'   : ('', "''", 'contact_last_name', 'Customer Contact LastName', True, True ),
-        'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', 'Customer Contact Email', True, True ),
+        'CustomerContactName'       : ('partner_contact', 'name', 'contact_name', "Customer's Contact Person Name", False, False),
+        'CustomerContactFirstName'  : ('', "''", 'contact_first_name', "Customer's Contact Person First Name", True, True ),
+        'CustomerContactLastName'   : ('', "''", 'contact_last_name', "Customer's Contact Person Last Name", True, True ),
+        'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', "Customer's Contact Email", True, True ),
         'DSLeadID'              : ('crm_lead', 'ds_lead_id', 'ds_lead_id', 'DS Lead ID', True, False ),
 #        'CoMarketingYN'         : ('crm_lead', 'comarketing_yn', 'comarketing_yn', 'Comarketing Y/N', True, False ),
         'COMETCampaignCode'     : ('crm_lead', 'comet_campaign_code', 'comet_campaign_code', 'COMET Campaign Code', True, False ),
         'CampaignName'          : ('crm_lead', 'campaign_name', 'campaign_name', 'Campaign Name', True, False ),
-        'NextMilestone'      : ('crm_lead', 'next_milestone', 'next_milestone', 'Next Milestone', True, True ),
-        'PartnerSalesRepName'       : ('sales', 'name', 'partner_sales_name', 'Partner Sales Name', False, False),
-        'PartnerSalesRepFirstName'  : ('', "''", 'partner_sales_first_name', 'Partner Sales First Name', True, True ),
-        'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', 'Partner Sales LastName', True, True ),
-        'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', 'Partner Sales Email', True, True ),
+        'NextMilestone'      : ('crm_lead', 'next_milestone', 'next_milestone', 'Next Milestone', True, False ),
+        'PartnerSalesRepName'       : ('sales', 'name', 'partner_sales_name', "Partner's Salesman", False, False),
+        'PartnerSalesRepFirstName'  : ('', "''", 'partner_sales_first_name', "Partner's Salesman First Name", True, True ),
+        'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', "Partner's Salesman Last Name", True, True ),
+        'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', "Partner's Salesman Email", True, True ),
+        'OpportunityLeadName'       : ('',"crm_lead.name || ' [' || crm_lead.lead_ref_no || ']'",'opportunity_name', "Opportunity name", True, True ),
+        'OpportunityLeadDescription': ('',"'Management Assessment = ' || case crm_case_stage.name when 'Negotiation' then crm_lead.management_assessment else cast( crm_lead.probability as integer) || '%' end",'opportunity_description', "Description", True, True ),
+
      }
 
     """ DS Sales stages
@@ -136,12 +139,14 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     """
     
     _stage_mapping = {
-        'New': ('1-Sales Lead', 'Upside'),
-        'Validation' : ('2-Validate Opportunity', 'Upside'), 
-        'Establish value' : ('3-Establish Value', 'Upside'),
-        'Negotiation' : ('4-Reach Agreement', 'Commit'),
-        'Won' : ('Closed/Won', 'Commit'),
-        'Lost' : ('Closed/Lost', 'Lost'),
+        'New':              ('1-Sales Lead',            'Upside'),
+        'Validation' :      ('2-Validate Opportunity',  'Upside'), 
+        'Establish value' : ('3-Establish Value',       'Upside'),
+        'Negotiation' :     ('3-Establish Value',       'Commit'),
+        'Reach Agreement':  ('4-Reach Agreement',       'Safe'),
+        'Won' :             ('Closed/Won',              'Won'),
+        'Lost' :            ('Closed/Lost',             'Lost'),
+        'Sleeping' :        ('2-Validate Opportunity',  'Upside'),
         }
 
     def default_get(self, cr, uid, fields, context=None):
@@ -152,6 +157,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     def map_stage(self, cr, uid, row, context=None):
         sales_stage = row['sales_stage']
         new_stage = self._stage_mapping[sales_stage][0]
+        if not new_stage:
+            raise Warning(_("Cannot export opportunity which is in state '{}'!".format(sales_stage)))
+         
         forecast_category = row['forecast_category']
         new_forecast_category = self._stage_mapping[forecast_category][1]
         row.update({'sales_stage':new_stage, 'forecast_category':new_forecast_category})
@@ -226,7 +234,6 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         LEFT JOIN res_partner partner_contact ON (crm_lead.contact_name_id=partner_contact.id)
         LEFT JOIN res_users users ON (res_partner.user_id=users.id)
         LEFT JOIN res_partner sales ON (users.partner_id=sales.id)
-  
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
         cr.execute(sql)

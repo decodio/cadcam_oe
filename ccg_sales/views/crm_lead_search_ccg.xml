@@ -14,9 +14,7 @@
 					<attribute name="string">Presales</attribute>
 				</xpath>
 				<xpath expr="/search/filter[@name='new']" position="attributes">
-					<attribute name="domain">['&amp;',
-						('stage_id.probability', '=', 20), ('stage_id.sequence', '&lt;=',
-						1)]
+					<attribute name="domain">[('stage_id.name', '=','New')]
 					</attribute>
 				</xpath>
 				<xpath expr="/search/group" position="replace">

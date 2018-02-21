@@ -24,6 +24,7 @@ from openerp.exceptions import Warning
 from openerp.osv import orm, osv, fields
 from datetime import datetime, date
 import base64
+from docutils.nodes import row
 
 class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
     _name = 'crm.lead.export.for.ds'
@@ -99,8 +100,9 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'RevenueAmount'     : ('crm_lead', 'ds_expected_revenue', 'planned_revenue', 'Expected revenue for DS', True, True ),
         'RevenueCurrency'   : ('', "'EUR'", 'currency', 'Currency', True, True ),
         'PartnerOpportunityID' : ('crm_lead', 'lead_ref_no', 'opportunity_id', 'Opportunity ID', True, True ),
-        'SalesStage'        : ('crm_case_stage', 'name', 'sales_stage', 'Sales stage', True, True ),
-        'ForecastCategory'  : ('crm_case_stage', 'name', 'forecast_category', 'Forecast category', True, True ),
+        'CCGSalesStage'        : ('crm_case_stage', 'name', 'ccg_sales_stage', 'CCG Sales stage', True, True ),
+        'SalesStage'        : ('', "''", 'sales_stage', 'Sales stage', True, True ),
+        'ForecastCategory'  : ('', "''", 'forecast_category', 'Forecast category', True, True ),
         'CloseDate'         : ('crm_lead', 'date_deadline', 'close_date', 'Expected closing date', True, True ),
         'RevenueType'       : ('crm_lead', 'revenue_type', 'revenue_type', 'Revenue type', True, True ),
         'CustomerContactName'       : ('partner_contact', 'name', 'contact_name', "Customer's Contact Person Name", False, False),
@@ -117,7 +119,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', "Partner's Salesman Last Name", True, True ),
         'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', "Partner's Salesman Email", True, True ),
         'OpportunityLeadName'       : ('',"crm_lead.name || ' [' || crm_lead.lead_ref_no || ']'",'opportunity_name', "Opportunity name", True, True ),
-        'OpportunityLeadDescription': ('',"'Management Assessment = ' || case crm_case_stage.name when 'Negotiation' then crm_lead.management_assessment else cast( crm_lead.probability as integer) || '%' end",'opportunity_description', "Description", True, True ),
+        'Management Assessment'     : ('crm_lead','management_assessment','management_assessment', False, False ),
 
      }
 
@@ -155,12 +157,12 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         return res
 
     def map_stage(self, cr, uid, row, context=None):
-        sales_stage = row['sales_stage']
+        sales_stage = row['ccg_sales_stage']
         new_stage = self._stage_mapping[sales_stage][0]
         if not new_stage:
             raise Warning(_("Cannot export opportunity which is in state '{}'!".format(sales_stage)))
          
-        forecast_category = row['forecast_category']
+        forecast_category = row['ccg_sales_stage']
         new_forecast_category = self._stage_mapping[forecast_category][1]
         row.update({'sales_stage':new_stage, 'forecast_category':new_forecast_category})
         return row
@@ -189,6 +191,15 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             field_label = self._field_mappings['PartnerSalesRepName'][3]
             raise osv.except_osv(_('Export Error!'), _('Missing field "{}" in opportunity "{}"!'.format(field_label, opportunity_id)))
         row.update({'partner_sales_first_name':first_name, 'partner_sales_last_name':last_name})
+        return row
+
+    def management_assessment_into_next_milestone(self, cr, uid, row, context=None):
+        print row
+        next_milestone = row['next_milestone'] or ''
+        management_assessment = row['management_assessment'] if row['ccg_sales_stage']=='Negotiation' else ''
+        value = ', '.join([l for l in [ management_assessment, next_milestone] if l])
+        row.update({'next_milestone': value})
+        print row
         return row
     
     def _quotation(self):
@@ -236,6 +247,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         LEFT JOIN res_partner sales ON (users.partner_id=sales.id)
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
+        print sql
         cr.execute(sql)
         return  cr.dictfetchall()
 
@@ -248,6 +260,8 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             row = self.map_stage(cr, uid, row_original, context)
             row = self.split_contact_name(cr, uid, row, context)
             row = self.split_salesman_name(cr, uid, row, context)
+            row = self.management_assessment_into_next_milestone(cr, uid, row, context)
+            print row
             for ds_field_name in self._ds_fields:
                 value = self._field_mappings.get(ds_field_name, False)
                 if value:

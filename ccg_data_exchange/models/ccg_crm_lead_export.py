@@ -35,5 +35,5 @@ class crm_lead(models.Model):
     comet_campaign_code = fields.Char('COMET campaign code', size=40, help='COMET campaign code')
     campaign_name = fields.Char('Campaign name', size=40, help='Campaign name') 
     next_milestone = fields.Char('Next Milestone', size=250, help='Next Milestone')
-    management_assessment = fields.Selection([('0%', '0%'),('25%', '25%'),('50%', '50%'),('75%', '75%'),('100%', '100%')],'Management Assessment', default = '0%')
-    stage_name = fields.Char(related='stage_id.name', string='Stage name', store=True )
+    management_assessment = fields.Selection([('25%', '25%'),('50%', '50%'),('75%', '75%'),('100%', '100%')],'Management Assessment')
+    stage_name = fields.Char(related='stage_id.name', string='Stage name', store=False )

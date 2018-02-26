@@ -41,7 +41,7 @@
               "views/sale_view_ccg.xml",
               "views/view_partner_form_ccg.xml",
               "views/predefined_text_view.xml",
-              "views/crm_lead_search_ccg.xml",
+#              "views/crm_lead_search_ccg.xml",
               "views/recurring_invoice_line_ccg.xml",
               "views/res_partner_industry_view.xml",
               "views/crm_close_reason_ccg.xml",

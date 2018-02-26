@@ -47,5 +47,22 @@
 				</xpath>
 			</field>
 		</record>
+		
+		
+		<!-- Opportunities Search View 	-->
+		<record id="view_crm_case_opportunities_filter_ccg_export" model="ir.ui.view">
+			<field name="name">CRM - Opportunities Search for export on DS portal</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="sp_cadcam.view_crm_case_opportunities_filter_profit" />
+			<field name="arch" type="xml">
+				<xpath expr="//search/field[1]" position="after">
+					<field name="ds_expected_revenue" string="DS revenue" />
+				</xpath>
+				<xpath expr="//search/filter[last()]" position="after">
+						<filter string="DS revenue" name="ds_revenue" domain="[('ds_expected_revenue', '>', 0.0)]" help="Opportunities with DS revenue"/>
+				</xpath>
+			</field>
+		</record>
+		
 	</data>
 </openerp>

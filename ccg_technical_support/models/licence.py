@@ -32,8 +32,9 @@ class ccg_license(osv.osv):
         lics = self.browse(cr, uid, ids)
         ret = {}
         if lics:
-            for l in lics.cc_recipient_ids:
-                emails.append(l.partner_id.email)
+            for l in lics:
+                for r in l.cc_recipient_ids:
+                    emails.append(r.partner_id.email)
             
             cc_list = ','.join([ e for e in emails])
             ret ={ids[0]:cc_list}
@@ -47,7 +48,7 @@ class ccg_license(osv.osv):
             l = lics[0]
             if  l.client_id.user_id : # salesman on customer form
                 emails.append(l.client_id.user_id.email) 
-            if  lics.user_id and (l.user_id !=l.client_id.user_id): # salesman on license form (if different)
+            if  l.user_id and (l.user_id !=l.client_id.user_id): # salesman on license form (if different)
                 emails.append(l.user_id.email)
             
             to_list = ','.join([ e for e in emails])
@@ -80,8 +81,8 @@ class ccg_license(osv.osv):
             'active'    :fields.boolean('Active', help='Is licence active or expired'),
             'notify'    :fields.boolean('Send notifications', help='System send notifications about expiration'),
             'cc_recipient_ids' :fields.many2many('res.users', 'ccg_licence_user_rel', 'licence_id', 'user_id', string='CC', help='Users which receives notifications about licence expiration'),
-            'cc_emails' : fields.function(_get_cc_list, type='char', readonly=True, store=False),
-            'to_emails' : fields.function(_get_to_emails, type='char', readonly=True, store=False),
+            'cc_emails' : fields.function(_get_cc_list, type='char', readonly=False, store=True),
+            'to_emails' : fields.function(_get_to_emails, type='char', readonly=False, store=True),
             'days_before_expiration'  :fields.many2many ('days.before.expiration', 'ccg_licence_days_rel','licence_id','days_id', string='Days before expiration', help='Number of days before expiration to send notification', default=_get_default_days),
             'licence_category_id' : fields.many2one('invoice.licence.category', 'Licence Category'),
             
@@ -92,11 +93,13 @@ class ccg_license(osv.osv):
     }
     _offset = [28, 14, 7]
     
-#     def _get_licences(self, cr, uid, days, context={}):
-#         check_date = date.today() + timedelta(days=days)
-#         args = [('expiration_date','=', check_date), ('notify','=', True), ('active','=', True)]
-#         ids=self.search(cr, uid, args, context=context)
-#         return ids
+    def name_get(self, cr, user, ids, context=None):
+        ret = []
+        for id in ids:
+            licence_obj = self.browse(cr, user, id, context=context)
+            if licence_obj.client_id :
+                ret.append((id, '{} [{}]'.format(licence_obj.client_id.name, licence_obj.trigram or '')))
+        return ret
 
     def _get_licences(self, cr, uid, context={}):
         args = [('notify','=', True), ('active','=', True)]
@@ -105,13 +108,11 @@ class ccg_license(osv.osv):
         lic_ids = []
         for lic in licences:
             for d in lic.days_before_expiration:
-                print lic.id, lic.expiration_date
-                expiration_date = datetime.strptime(lic.expiration_date, "%Y-%m-%d").date()
-                days_to_expiration = (expiration_date - date.today()).days
-                print d.number_of_days
-                if days_to_expiration == d.number_of_days:
-                    lic_ids.append(lic.id)
-            
+                if lic.expiration_date:
+                    expiration_date = datetime.strptime(lic.expiration_date, "%Y-%m-%d").date()
+                    days_to_expiration = (expiration_date - date.today()).days
+                    if days_to_expiration == d.number_of_days:
+                        lic_ids.append(lic.id)
         return lic_ids
 
     def _send_email(self, cr, uid, ids, context=None):

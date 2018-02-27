@@ -111,7 +111,7 @@
 			<field name="model">ccg.licence</field>
 			<field name="arch" type="xml">
 				<gantt date_stop="expiration_date" date_start="activation_date"
-					string="licences" mode="year">
+					string="Licences"  duration_unit="year">
 				</gantt>
 			</field>
 		</record>

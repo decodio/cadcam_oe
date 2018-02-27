@@ -110,17 +110,16 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'CustomerContactLastName'   : ('', "''", 'contact_last_name', "Customer's Contact Person Last Name", True, True ),
         'CustomerContactEmail'  : ('partner_contact', 'email', 'contact_email', "Customer's Contact Email", True, True ),
         'DSLeadID'              : ('crm_lead', 'ds_lead_id', 'ds_lead_id', 'DS Lead ID', True, False ),
-#        'CoMarketingYN'         : ('crm_lead', 'comarketing_yn', 'comarketing_yn', 'Comarketing Y/N', True, False ),
         'COMETCampaignCode'     : ('crm_lead', 'comet_campaign_code', 'comet_campaign_code', 'COMET Campaign Code', True, False ),
         'CampaignName'          : ('crm_lead', 'campaign_name', 'campaign_name', 'Campaign Name', True, False ),
-        'NextMilestone'      : ('crm_lead', 'next_milestone', 'next_milestone', 'Next Milestone', True, False ),
+        'NextMilestone'         : ('crm_lead', 'next_milestone', 'next_milestone', 'Next Milestone', True, False ),
         'PartnerSalesRepName'       : ('sales', 'name', 'partner_sales_name', "Partner's Salesman", False, False),
         'PartnerSalesRepFirstName'  : ('', "''", 'partner_sales_first_name', "Partner's Salesman First Name", True, True ),
         'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', "Partner's Salesman Last Name", True, True ),
         'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', "Partner's Salesman Email", True, True ),
         'OpportunityLeadName'       : ('',"crm_lead.name || ' [' || crm_lead.lead_ref_no || ']'",'opportunity_name', "Opportunity name", True, True ),
         'Management Assessment'     : ('crm_lead','management_assessment','management_assessment', False, False ),
-
+        'ReasonLost'                : ('crm_lost_reason','name','lost_reason', True, False ),
      }
 
     """ DS Sales stages
@@ -245,6 +244,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         LEFT JOIN res_partner partner_contact ON (crm_lead.contact_name_id=partner_contact.id)
         LEFT JOIN res_users users ON (res_partner.user_id=users.id)
         LEFT JOIN res_partner sales ON (users.partner_id=sales.id)
+        LEFT JOIN crm_lost_reason ON (crm_lead.lost_reason_id = crm_lost_reason.id)
         WHERE crm_lead.id in ({})
         '''.format(','.join([f for f in fields ]), ','.join([str(i) for i in ids]))
         print sql

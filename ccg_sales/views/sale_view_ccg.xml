@@ -62,7 +62,7 @@
 					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
 					position="replace">
 				</xpath>
- -->				<xpath expr="//page[@string='Other Data']/group/field[@name='price_ids']"
+ -->				<xpath expr="//page[@string='Other Data Old']/group/field[@name='price_ids']"
 					position="replace">
 				</xpath>
 				<!-- Hide original payment term field from document -->

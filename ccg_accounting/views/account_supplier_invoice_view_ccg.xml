@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
+        <!--
 		<record model="ir.ui.view" id="account_supplier_invoice_tree_ccg">
 			<field name="name">account.supplier.invoice.tree.ccg</field>
 			<field name="model">account.invoice</field>
@@ -28,6 +29,7 @@
 				</xpath>
 			</field>
 		</record>
+        -->
 
 		<!-- on_change event on customer invoice rewrite invoicing_date and date_delivery 
 			with date_invoice -->

@@ -196,7 +196,7 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         print row
         next_milestone = row['next_milestone'] or ''
         management_assessment = row['management_assessment'] if row['ccg_sales_stage']=='Negotiation' else ''
-        value = ', '.join([l for l in [ management_assessment, next_milestone] if l])
+        value = ' - '.join([l for l in [ management_assessment, next_milestone] if l])
         row.update({'next_milestone': value})
         print row
         return row

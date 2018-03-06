@@ -118,8 +118,8 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
         'PartnerSalesRepLastName'   : ('', "''", 'partner_sales_last_name', "Partner's Salesman Last Name", True, True ),
         'PartnerSalesRepEmail'      : ('sales', 'email', 'partner_sales_email', "Partner's Salesman Email", True, True ),
         'OpportunityLeadName'       : ('',"crm_lead.name || ' [' || crm_lead.lead_ref_no || ']'",'opportunity_name', "Opportunity name", True, True ),
-        'Management Assessment'     : ('crm_lead','management_assessment','management_assessment', False, False ),
-        'ReasonLost'                : ('crm_lost_reason','name','lost_reason', True, False ),
+        'Management Assessment'     : ('crm_lead','management_assessment','management_assessment','management assessment',  False, False ),
+        'ReasonLost'                : ('crm_lost_reason','name','lost_reason','Lost Reason', True, False ),
      }
 
     """ DS Sales stages
@@ -264,10 +264,12 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
             print row
             for ds_field_name in self._ds_fields:
                 value = self._field_mappings.get(ds_field_name, False)
+                field_value_strnig = ''
                 if value:
                     if value[4]: # is active
                         crm_field_name = value[2] or value[1]
                         field_value = row[crm_field_name]
+                        print crm_field_name, ':', field_value
                         required = value[5]
                         field_label = value[3]
                         if not field_value:
@@ -278,8 +280,6 @@ class crm_lead_export_for_ds(osv.osv_memory): # orm.TransientModel
                         if crm_field_name == 'close_date':
                             field_value = '{}.{}.{}'.format(field_value[8:10],field_value[5:7],field_value[0:4])
                         field_value_strnig = self._quoted(field_value)
-                else:
-                    field_value_strnig = ''
                 line.append(field_value_strnig)
             csv_line = self._delimiter().join(line)   
             lines.append(csv_line)

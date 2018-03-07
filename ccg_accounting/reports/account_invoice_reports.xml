@@ -4,15 +4,15 @@
 	
 		<!--document currency invoice report  -->
 		<record id="cadcam_document_currency_invoice_report" model="ir.actions.report.xml">
-			<field name="name">cadcam document currency invoice report</field>
+			<field name="name">Document currency invoice</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">document_currency_invoice_report</field>
+			<field name="report_name">cadcam_document_currency_invoice_report</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/document_currency_invoice_report.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_document_currency_invoice_report.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -34,15 +34,15 @@
 		<!--document currency invoice report without discount -->
 		<record id="cadcam_document_currency_invoice_report_no_disc"
 			model="ir.actions.report.xml">
-			<field name="name">cadcam document currency invoice report without discount</field>
+			<field name="name">Document currency invoice w/o discount</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">document_currency_invoice_report_no_disc</field>
+			<field name="report_name">cadcam_document_currency_invoice_report_no_disc</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/document_currency_invoice_report_no_disc.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_document_currency_invoice_report_no_disc.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -53,7 +53,7 @@
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">account.invoice</field>
-			<field name="name">Document currency invoice w/o disc.</field>
+			<field name="name">Document currency invoice w/o discount</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(cadcam_document_currency_invoice_report_no_disc)" />
 			<field name="isobject" eval="True" />
@@ -65,15 +65,15 @@
 		<!--dual currency invoice report -->
 		<record id="cadcam_dual_currency_invoice_report"
 			model="ir.actions.report.xml">
-			<field name="name">cadcam dual currency invoice</field>
+			<field name="name">Dual currency invoice</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">dual_currency_invoice_report</field>
+			<field name="report_name">cadcam_dual_currency_invoice_report</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/dual_currency_invoice_report.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_dual_currency_invoice_report.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -95,15 +95,15 @@
 		<!--dual currency invoice report without discount -->
 		<record id="cadcam_dual_currency_invoice_report_no_disc"
 			model="ir.actions.report.xml">
-			<field name="name">cadcam dual currency invoice report without discount</field>
+			<field name="name">Dual currency invoice w/o discount</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">dual_currency_invoice_report_no_disc</field>
+			<field name="report_name">cadcam_dual_currency_invoice_report_no_disc</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/dual_currency_invoice_report_no_disc.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_dual_currency_invoice_report_no_disc.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -124,15 +124,15 @@
 		
 		<!--advance invoice report  -->
 		<record id="cadcam_document_currency_advance_invoice_report" model="ir.actions.report.xml">
-			<field name="name">advance invoice report</field>
+			<field name="name">Advance invoice</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">document_currency_advance_invoice_report</field>
+			<field name="report_name">cadcam_document_currency_advance_invoice_report</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/document_currency_advance_invoice_report.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_document_currency_advance_invoice_report.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -143,7 +143,7 @@
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">account.invoice</field>
-			<field name="name">Document currency advance invoice</field>
+			<field name="name">Advance invoice</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(cadcam_document_currency_advance_invoice_report)" />
 			<field name="isobject" eval="True" />
@@ -154,15 +154,15 @@
 		<!-- shipping document report -->
 		<record id="cadcam_shipping_document_report"
 			model="ir.actions.report.xml">
-			<field name="name">Shipping</field>
+			<field name="name">Shipping document</field>
 			<field name="type">ir.actions.report.xml</field>
 			<field name="model">account.invoice</field>
-			<field name="report_name">shipping_document_report</field>
+			<field name="report_name">cadcam_shipping_document_report</field>
 			<field name="report_type">aeroo</field>
 <!-- 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_odt_odt')"/> -->
 			<field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
 			<field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
-			<field name="report_rml">ccg_accounting/reports/shipping_document_report.odt</field>
+			<field name="report_rml">ccg_accounting/reports/cadcam_shipping_document_report.odt</field>
 			<field name="parser_state">loc</field>
 			<field name="tml_source">file</field>
 			<field name="styles_mode">global</field>
@@ -173,7 +173,7 @@
 			<field eval="'action'" name="key" />
 			<field eval="'client_print_multi'" name="key2" />
 			<field name="model">account.invoice</field>
-			<field name="name">Shipping</field>
+			<field name="name">Shipping document</field>
 			<field name="value"
 				eval="'ir.actions.report.xml,'+str(cadcam_shipping_document_report)" />
 			<field name="isobject" eval="True" />

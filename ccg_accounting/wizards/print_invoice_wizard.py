@@ -42,17 +42,17 @@ class PrintInvoiceWizard(models.TransientModel):
         shipping = data['form']['shipping']
         
         if shipping:
-            report_name = 'shipping_document_report'
+            report_name = 'cadcam_shipping_document_report'
         elif advance_invoice:
-            report_name = 'document_currency_advance_invoice_report'
+            report_name = 'cadcam_document_currency_advance_invoice_report'
         elif dual_currency and discount:
-            report_name = 'dual_currency_invoice_report'
+            report_name = 'cadcam_dual_currency_invoice_report'
         elif dual_currency and not discount:
-            report_name = 'dual_currency_invoice_report_no_disc'
+            report_name = 'cadcam_dual_currency_invoice_report_no_disc'
         elif not dual_currency and discount:
-            report_name = 'document_currency_invoice_report'
+            report_name = 'cadcam_document_currency_invoice_report'
         elif not dual_currency and not discount:
-            report_name = 'document_currency_invoice_report_no_disc'
+            report_name = 'cadcam_document_currency_invoice_report_no_disc'
         else:
             raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
 

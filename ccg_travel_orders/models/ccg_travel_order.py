@@ -26,7 +26,7 @@ class ccg_travel_order(models.Model):
     _inherit = 'hr.travel.order'
     _name = 'hr.travel.order'
 
-    partner_ids = fields.Many2many('res.partner', 'hr_travel_order_partner_rel','travel_order_id', 'partner_id')
+    partner_ids = fields.Many2many('res.partner', 'hr_travel_order_partner_rel','travel_order_id', 'partner_id' )
     depart_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
     arrive_vehicle_ids = fields.Many2many('travel.order.fleet', 'hr_travel_order_fleet_rel','travel_order_id', 'vehicle_id')
     @api.multi

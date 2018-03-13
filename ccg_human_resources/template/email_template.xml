@@ -5,7 +5,7 @@
 			<field name="name">Contract Expiration Template</field>
 			<field name="email_from">${(object.user_id.email or '')|safe }</field>
 			<field name="subject">Expiration of job contract</field>
-			<field name="partner_to">${object.employee_id.receivers_list}</field>
+			<field name="partner_to">${object.receivers_list}</field>
 			<field name="model_id" ref="ccg_human_resources.model_hr_employee" />
 <!-- 			<field name="lang">${object.partner_id.lang}</field> -->
 			<field name="auto_delete" eval="False" />

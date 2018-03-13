@@ -110,6 +110,10 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
         else:
             return '{1}{0}{1}'.format(text, q)
 
+    def _trim(self, text):
+        s = text.replace('\n', ' ').replace(';', '.')
+        return s
+    
     def _reformat_date(self, date):
         dd = date[8:10]
         mm = date[5:7]
@@ -176,7 +180,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
                 
 # opis_putovanja
         purpose = travel_order.purpose[:200]
-        line.append(purpose)
+        line.append(self._trim(purpose))
 # tip_prijevozno_sredstvo
         depart_transportation_type = self.get_transportation_type(cr, uid, travel_order.depart_transportation[0].id)
         if depart_transportation_type:
@@ -210,7 +214,7 @@ class ccg_travel_order_total_export(osv.osv_memory):  # orm.TransientModel
              raise Warning(_("Missing or invalid currency for advance payment in travel order {}!".format(self._travel_order_name)))
 # putno_izvjesce
         report = travel_order.other_data
-        line.append(report)
+        line.append(self._trim(report))
         
         csv_row = self._delimiter().join(line)
         return csv_row

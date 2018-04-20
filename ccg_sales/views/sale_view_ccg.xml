@@ -112,7 +112,9 @@
 						<field name="offer_validity_data" modifiers="{}" colspan="5" />
 						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
 							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'offer_validity_data', 'dest_model':'sale.order'}" />
-						<field name="technical_conditions_data" modifiers="{}"
+						<field name="date_offer_validity" colspan="5"/>
+                        <label string="" colspan="1"/>
+                        <field name="technical_conditions_data" modifiers="{}"
 							colspan="5" />
 						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
 							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'technical_conditions_data', 'dest_model':'sale.order'}"/>

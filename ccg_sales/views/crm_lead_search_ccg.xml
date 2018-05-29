@@ -8,7 +8,7 @@
 			<field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="/search/field[@name='user_id']" position="before">
-					<field name="alt_user_id" string="Salesman" />
+					<field name="alt_user_id" string="Salesperson" />
 				</xpath>
 				<xpath expr="/search/field[@name='user_id']" position="attributes">
 					<attribute name="string">Presales</attribute>

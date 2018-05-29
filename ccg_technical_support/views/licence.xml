@@ -84,7 +84,7 @@
 					<field name="client_id" string="Client" />
 					<field name="company_id" string="Company" />
 					<field name="supplier_id" string="Supplier" />
-					<field name="user_id" string="Salesman" />
+					<field name="user_id" string="Salesperson" />
 					<field name="expiration_date" />
 					<separator />
 					<filter string="My" domain="[('user_id','=',uid)]" />
@@ -92,7 +92,7 @@
 						<filter string="Client" context="{'group_by':'client_id'}" />
 						<filter string="Company" context="{'group_by':'company_id'}" />
 						<filter string="Supplier" context="{'group_by':'supplier_id'}" />
-						<filter string="Salesman" context="{'group_by':'user_id'}" />
+						<filter string="Salesperson" context="{'group_by':'user_id'}" />
 					</group>
 				</search>
 			</field>

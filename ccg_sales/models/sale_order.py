@@ -24,15 +24,40 @@ from openerp.exceptions import Warning
 import calendar
 from datetime import datetime
 
+
 class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
-    
-    payment_data = fields.Char('Payment', help='Payment',translate=False)
-    delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',translate=False)
-    place_of_delivery_data = fields.Char('Place of delivery', help='Place of delivery',translate=False)
-    global_discount_percent = fields.Float('Global discount', digits=dp.get_precision('Discount Percent'), digits_compute=dp.get_precision('Discount Percent'), readonly=False)
-    offer_validity_data = fields.Char('Validity of offer', help='Validity of offer')
+
+    delivery_time_data = fields.Char('Delivery Time', help='Delivery Time',
+                                         translate=False,)
+    payment_data = fields.Char('Payment', help='Payment', translate=False,)
+    place_of_delivery_data = fields.Char('Place of delivery',
+                                             help='Place of delivery',
+                                             translate=False,)
+    offer_validity_data = fields.Char('Validity of offer',
+                                          help='Validity of offer',)
+    technical_conditions_data = fields.Char('Technical Conditions',
+                                                help='Technical conditions',
+                                                translate=False,)
+
+    global_discount_percent = fields.Float('Global discount',
+                                           digits=dp.get_precision(
+                                               'Discount Percent'),
+                                           digits_compute=dp.get_precision(
+                                               'Discount Percent'),
+                                           readonly=False)
+
+    delivery_time_data_new = fields.Many2one(string='Delivery Time',
+                                         comodel_name='sale.order.predefined.text')
+    payment_data_new = fields.Many2one(string='Payment',
+                                   comodel_name='sale.order.predefined.text')
+    place_of_delivery_data_new = fields.Many2one(string='Place of delivery',
+                                             comodel_name='sale.order.predefined.text')
+    offer_validity_data_new = fields.Many2one(string='Validity of offer',
+                                          comodel_name='sale.order.predefined.text')
+    technical_conditions_data_new = fields.Many2one(string='Technical Conditions',
+                                                comodel_name='sale.order.predefined.text')
 
     def on_change_additional_discount_amount(self,cr,user,ids, additional_discount_amount, list_amount,discount_total, global_discount_percent,  context=None  ):
         if (list_amount-discount_total):

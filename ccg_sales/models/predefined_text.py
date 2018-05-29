@@ -30,4 +30,4 @@ class SaleOrderPredefinedText(models.Model):
     dest_model = fields.Char('Model', required=True)
     dest_field = fields.Char('Field', required=True)
     lang = fields.Many2one('res.lang', required=True) # relation to res.lang???
-    name =  fields.Char('Text', required=True)
+    name = fields.Char('Text', required=True, translate=True)

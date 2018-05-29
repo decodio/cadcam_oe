@@ -34,6 +34,7 @@
                   'ccg_sales',
                 ],
     'data' : [
+              'security/ir.model.access.csv',
               'wizards/ccg_crm_lead_export_wizard.xml',
               'views/ccg_crm_lead_export_view.xml',
               'views/ccg_offer_name_view.xml',

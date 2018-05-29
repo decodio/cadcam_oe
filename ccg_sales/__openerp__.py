@@ -35,6 +35,7 @@
                  "crm",
                 ],
     'data' : [
+              "security/ir.model.access.csv",
               "wizards/print_sale_order_wizard.xml",
               "wizards/predefined_text_wizard.xml",
               "views/crm_lead_form_view_oppor_ccg.xml",

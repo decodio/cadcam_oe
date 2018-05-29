@@ -1,201 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <openerp>
-	<data>
-		<record id="view_order_form_lines_on_line_ccg" model="ir.ui.view">
-			<field name="name">view_order_form_lines_on_line_ccg</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sp_cadcam.view_order_form_lines_on_line" />
-			<field name="arch" type="xml">
-				<xpath
-					expr="//page[@string='Advanced']/group/group/field[@name='partner_bank_id']"
-					position="attributes">
-					<attribute name="domain">
-						[ ('partner_id.ref_companies', 'in',
-						[company_id]),
-						('footer', '=', True)]
-					</attribute>
-					<attribute name="required">True</attribute>
-				</xpath>
-			</field>
-		</record>
+    <data>
+        <record id="view_order_form_lines_on_line_ccg" model="ir.ui.view">
+            <field name="name">view_order_form_lines_on_line_ccg</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sp_cadcam.view_order_form_lines_on_line" />
+            <field name="arch" type="xml">
+                <xpath
+                    expr="//page[@string='Advanced']/group/group/field[@name='partner_bank_id']"
+                    position="attributes">
+                    <attribute name="domain">
+                        [ ('partner_id.ref_companies', 'in',
+                        [company_id]),
+                        ('footer', '=', True)]
+                    </attribute>
+                    <attribute name="required">True</attribute>
+                </xpath>
+            </field>
+        </record>
 
-		<record id="cadcam_view_quotation_tree_ccg" model="ir.ui.view">
-			<field name="name">cadcam.view.quotation.tree.ccg</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sp_cadcam.cadcam_view_quotation_tree" />
-			<field name="type">tree</field>
-			<field name="arch" type="xml">
-				<xpath expr="//tree/field[@name='user_id']" position="attributes">
-					<attribute name="string">Salesman</attribute>
-				</xpath>
-				<xpath expr="//tree/field[@name='partner_id']" position="after">
-					<field name="lead_id"/>
-				</xpath>
-				
-			</field>
-		</record>
-		
-		<record id="cadcam_sale_order_tree_ccg" model="ir.ui.view">
-			<field name="name">cadcam.sale.order.tree</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sale.view_order_tree" />
-			<field name="type">tree</field>
-			<field name="arch" type="xml">
-				<xpath expr="//tree/field[@name='user_id']" position="attributes">
-					<attribute name="string">Salesman</attribute>
-				</xpath>
-				<xpath expr="//tree/field[@name='partner_id']" position="after">
-					<field name="lead_id"/>
-				</xpath>
-				
-			</field>
-		</record>
+        <record id="cadcam_view_quotation_tree_ccg" model="ir.ui.view">
+            <field name="name">cadcam.view.quotation.tree.ccg</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sp_cadcam.cadcam_view_quotation_tree" />
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='user_id']" position="attributes">
+                    <attribute name="string">Salesperson</attribute>
+                </xpath>
+                <xpath expr="//tree/field[@name='partner_id']" position="after">
+                    <field name="lead_id"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <record id="cadcam_sale_order_tree_ccg" model="ir.ui.view">
+            <field name="name">cadcam.sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='user_id']" position="attributes">
+                    <attribute name="string">Salesperson</attribute>
+                </xpath>
+                <xpath expr="//tree/field[@name='partner_id']" position="after">
+                    <field name="lead_id"/>
+                </xpath>
+                
+            </field>
+        </record>
 
-		<record id="sale_order_inherit_other_data_cadcam_ccg" model="ir.ui.view">
-			<field name="name">sale.order.form.inherit.other.data.ccg</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
-			<field name="type">form</field>
-			<field name="arch" type="xml">
-<!-- 				<xpath
-					expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
-					position="replace">
-				</xpath>
- -->				<xpath expr="//page[@string='Other Data Old']/group/field[@name='price_ids']"
-					position="replace">
-				</xpath>
-				<!-- Hide original payment term field from document -->
-				<xpath expr="//group/field[@name='payment_term']" position="attributes">
-					<attribute name="invisible">True</attribute>
-				</xpath>
+        <record id="sale_order_inherit_other_data_cadcam_ccg" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.other.data.ccg</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sp_cadcam.sale_order_inherit_other_data_cadcam" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+<!--                 <xpath
+                    expr="//page[@string='Other Data']/group/button[@string='Add Price Data']"
+                    position="replace">
+                </xpath>
+ -->                <xpath expr="//page[@string='Other Data Old']/group/field[@name='price_ids']"
+                    position="replace">
+                </xpath>
+                <!-- Hide original payment term field from document -->
+                <xpath expr="//group/field[@name='payment_term']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
 
-				<!-- Hide original payment mode field from document -->
-				<xpath expr="//group/field[@name='payment_mode_id']" position="attributes">
-					<attribute name="invisible">True</attribute>
-				</xpath>
-				
-				<!-- UNHide original Contract analytic field from document -->
-				<xpath expr="//group/field[@name='project_id']" position="attributes">
-					<attribute name="invisible">False</attribute>
-				</xpath>
-				
-				<!-- Hide Export data group -->
-				<xpath
-					expr="//page[@string='Other Data']/group/group[@string='Export data']"
-					position="attributes">
-					<attribute name="invisible">True</attribute>
-				</xpath>
+                <!-- Hide original payment mode field from document -->
+                <xpath expr="//group/field[@name='payment_mode_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                
+                <!-- UNHide original Contract analytic field from document -->
+                <xpath expr="//group/field[@name='project_id']" position="attributes">
+                    <attribute name="invisible">False</attribute>
+                </xpath>
+                
+                <!-- Hide Export data group -->
+                <xpath
+                    expr="//page[@string='Other Data']/group/group[@string='Export data']"
+                    position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
 
-				<!-- Add payment data field -->
-				<xpath
-					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
-					position="inside">
-					<field name="delivery_time_data" />
-					<field name="payment_data" />
-				</xpath>
+                <!-- Add payment data field -->
+                <xpath
+                    expr="//page[@string='Other Data']/group/group[@string='Sales data']"
+                    position="inside">
+                    <field name="delivery_time_data" />
+                    <field name="payment_data" />
+                </xpath>
 
-				<!-- Add 'choose' button for delivery time field -->
-				<xpath
-					expr="//page[@string='Other Data']/group/group[@string='Sales data']"
-					position="replace">
-					<group string="Sales data" colspan="4" col="6">
-						<field name="delivery_time_data" colspan="5" />
-						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
-							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'delivery_time_data', 'dest_model':'sale.order'}" />
-						<field name="payment_data" colspan="5" />
-						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
-							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'payment_data', 'dest_model':'sale.order'}" />
-						<field name="place_of_delivery_data" modifiers="{}" colspan="5" />
-						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
-							type="action" colspan="1" class="oe_inline oe_link oe_edit_only" context="{'field':'place_of_delivery_data', 'dest_model':'sale.order'}"/>
-						<field name="offer_validity_data" modifiers="{}" colspan="5" />
-						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
-							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'offer_validity_data', 'dest_model':'sale.order'}" />
-						<field name="date_offer_validity" colspan="5"/>
+                <xpath expr="//page[@string='Other Data Old']/group"
+                    position="after">
+                    <group string="Sales data" colspan="4" col="6">
+                        <field name="delivery_time_data" colspan="5" />
+                        <button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+                            type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'delivery_time_data', 'dest_model':'sale.order'}" />
+                        <field name="payment_data" colspan="5" />
+                        <button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+                            type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'payment_data', 'dest_model':'sale.order'}" />
+                        <field name="place_of_delivery_data" modifiers="{}" colspan="5" />
+                        <button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+                            type="action" colspan="1" class="oe_inline oe_link oe_edit_only" context="{'field':'place_of_delivery_data', 'dest_model':'sale.order'}"/>
+                        <field name="offer_validity_data" modifiers="{}" colspan="5" />
+                        <button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+                            type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'offer_validity_data', 'dest_model':'sale.order'}" />
+                        <field name="date_offer_validity" colspan="5"/>
                         <label string="" colspan="1"/>
                         <field name="technical_conditions_data" modifiers="{}"
-							colspan="5" />
-						<button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
-							type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'technical_conditions_data', 'dest_model':'sale.order'}"/>
-					</group>
-				</xpath>
+                            colspan="5" />
+                        <button string="(choose text)" name="%(action_choose_predefined_text_wizard)d"
+                            type="action" colspan="1" class="oe_inline oe_link oe_edit_only"  context="{'field':'technical_conditions_data', 'dest_model':'sale.order'}"/>
+                    </group>
+                </xpath>
+                <!-- Add 'choose' button for delivery time field -->
+                <xpath
+                    expr="//page[@string='Other Data']/group/group[@string='Sales data']"
+                    position="replace">
+                    <group string="Sales data">
+                        <field name="delivery_time_data_new" domain="[('dest_field', '=', 'delivery_time_data'), ('dest_model', '=', 'sale.order')]"/>
+                        <field name="payment_data_new" domain="[('dest_field', '=', 'payment_data'), ('dest_model', '=', 'sale.order')]"/>
+                        <field name="place_of_delivery_data_new" domain="[('dest_field', '=', 'place_of_delivery_data'), ('dest_model', '=', 'sale.order')]"/>
+                        <field name="offer_validity_data_new" invisible="1" domain="[('dest_field', '=', 'offer_validity_data'), ('dest_model', '=', 'sale.order')]"/>
+                        <field name="date_offer_validity" />
+                        <field name="technical_conditions_data_new" domain="[('dest_field', '=', 'technical_conditions_data'), ('dest_model', '=', 'sale.order')]"/>
+                    </group>
+                </xpath>
 
-<!-- 				<xpath
-					expr="//page[@string='Other Data']/group/button[@string='Add licence period']"
-					position="replace">
-				</xpath>
+<!--                 <xpath
+                    expr="//page[@string='Other Data']/group/button[@string='Add licence period']"
+                    position="replace">
+                </xpath>
 
- -->				<!-- change behavior of line discount fields -->
-				<xpath
-					expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount1_percent' and @groups='sale.group_discount_per_so_line']"
-					position="attributes">
-					<attribute name="readonly">0</attribute>
-					<attribute name="on_change">on_change_discount1_percent(discount1_percent,price_unit,quantity)
-					</attribute>
-				</xpath>
+ -->                <!-- change behavior of line discount fields -->
+                <xpath
+                    expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']//field[@name='discount1_percent' and @groups='sale.group_discount_per_so_line']"
+                    position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="on_change">on_change_discount1_percent(discount1_percent,price_unit,quantity)
+                    </attribute>
+                </xpath>
 
-				<xpath expr="//field[@name='price_unit']" position="after">
-					, total=
-					<field name="list_amount" readonly="True" class="oe_inline" />
-				</xpath>
+                <xpath expr="//field[@name='price_unit']" position="after">
+                    , total=
+                    <field name="list_amount" readonly="True" class="oe_inline" />
+                </xpath>
 
-				<xpath expr="//div[@groups='sale.group_discount_per_so_line']"
-					position="replace">
-					<div groups="sale.group_discount_per_so_line">
-						<div>
-							-
-							<field name="discount1_percent" readonly="False" widget="monetary"
-								class="oe_inline"
-								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
-							% =
-							<field name="amount1" readonly="False" class="oe_inline"
-								widget="monetary" options="{'currency_field': 'currency_id'}"
-								on_change="on_change_amount(amount1, amount2, discount2_percent, price_unit, quantity)" />
-						</div>
-						<separator />
-						<div>
-							-
-							<field name="discount2_percent" readonly="False" widget="monetary"
-								class="oe_inline"
-								on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
-							% =
-							<field name="amount2" readonly="True" class="oe_inline"
-								widget="monetary" options="{'currency_field': 'currency_id'}" />
-						</div>
-					</div>
+                <xpath expr="//div[@groups='sale.group_discount_per_so_line']"
+                    position="replace">
+                    <div groups="sale.group_discount_per_so_line">
+                        <div>
+                            -
+                            <field name="discount1_percent" readonly="False" widget="monetary"
+                                class="oe_inline"
+                                on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
+                            % =
+                            <field name="amount1" readonly="False" class="oe_inline"
+                                widget="monetary" options="{'currency_field': 'currency_id'}"
+                                on_change="on_change_amount(amount1, amount2, discount2_percent, price_unit, quantity)" />
+                        </div>
+                        <separator />
+                        <div>
+                            -
+                            <field name="discount2_percent" readonly="False" widget="monetary"
+                                class="oe_inline"
+                                on_change="on_change_discount_percent(discount1_percent, discount2_percent, price_unit, quantity)" />
+                            % =
+                            <field name="amount2" readonly="True" class="oe_inline"
+                                widget="monetary" options="{'currency_field': 'currency_id'}" />
+                        </div>
+                    </div>
 
-				</xpath>
-				<xpath
-					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
-					position="before">
-					<field name="discount_total" readonly="True" widget="monetary"
-						options="{'currency_field': 'currency_id'}" />
-				</xpath>
-				<xpath
-					expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
-					position="attributes">
-					<attribute name="string">Global discount (%): </attribute>
-				</xpath>
-			</field>
-		</record>
+                </xpath>
+                <xpath
+                    expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
+                    position="before">
+                    <field name="discount_total" readonly="True" widget="monetary"
+                        options="{'currency_field': 'currency_id'}" />
+                </xpath>
+                <xpath
+                    expr="//group[@name='sale_total']/field[@name='global_discount_percent']"
+                    position="attributes">
+                    <attribute name="string">Global discount (%): </attribute>
+                </xpath>
+            </field>
+        </record>
 
-		<record id="view_sales_order_filter_ccg" model="ir.ui.view">
-			<field name="name">view.sales.order.filter.ccg</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sale.view_sales_order_filter" />
-			<field name="type">form</field>
-			<field name="arch" type="xml">
-				<!-- English 2 English translation will be better... -->
-				<xpath expr="//search/filter[@name='sales']" position="attributes">
-					<attribute name="string">Sales Orders</attribute>
-				</xpath>
-				<xpath expr="//search/filter[1]" position="attributes">
-					<attribute name="string">Salesman</attribute>
-				</xpath>
-				
-			</field>
-		</record>
+        <record id="view_sales_order_filter_ccg" model="ir.ui.view">
+            <field name="name">view.sales.order.filter.ccg</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <!-- English 2 English translation will be better... -->
+                <xpath expr="//search/filter[@name='sales']" position="attributes">
+                    <attribute name="string">Sales Orders</attribute>
+                </xpath>
+                <xpath expr="//search/filter[1]" position="attributes">
+                    <attribute name="string">Salesperson</attribute>
+                </xpath>
+                
+            </field>
+        </record>
 
-	</data>
+    </data>
 </openerp>

@@ -361,15 +361,15 @@ msgstr "Prodajni nalozi"
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_wizard_document_currency_report_no_disc
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_wizard_dual_currency_report
 #: report:ir.actions.report.xml:ccg_sales.cadcam_sale_order_wizard_dual_currency_report_no_disc
-msgid "Salesman"
+msgid "Salesperson"
 msgstr "Ponudu sastavio"
 
 
 #: view:sale.order:ccg_sales.cadcam_view_quotation_tree_ccg
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 #: view:sale.order:ccg_sales.view_sales_order_filter_ccg
-msgid "Salesman"
-msgstr "Salesman"
+msgid "Salesperson"
+msgstr "Salesperson"
 
 #. module: ccg_sales
 #: field:print.sale.order.wizard,show_vat:0

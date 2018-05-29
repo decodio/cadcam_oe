@@ -364,7 +364,7 @@ msgstr "Prodajni nalozi"
 #: view:sale.order:ccg_sales.cadcam_view_quotation_tree_ccg
 #: view:sale.order:ccg_sales.sale_order_inherit_other_data_cadcam_ccg
 #: view:sale.order:ccg_sales.view_sales_order_filter_ccg
-msgid "Salesman"
+msgid "Salesperson"
 msgstr "Predstavnik prodaje"
 
 #. module: ccg_sales

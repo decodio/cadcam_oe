@@ -27,7 +27,7 @@ from datetime import datetime
 class SaleOrderPredefinedText(models.Model):
     _name = 'sale.order.predefined.text'
     
-    dest_model = fields.Char('Model', required=True)
+    dest_model = fields.Char('Model',)
     dest_field = fields.Char('Field', required=True)
-    lang = fields.Many2one('res.lang', required=True) # relation to res.lang???
+    lang = fields.Many2one('res.lang', ) # relation to res.lang???
     name = fields.Char('Text', required=True, translate=True)

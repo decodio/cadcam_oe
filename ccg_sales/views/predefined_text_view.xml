@@ -11,9 +11,9 @@
 						<field name="name" />
 					</group>
 					<group name="Other properties" colspan="4" col="6">
-						<field name="dest_model" />
+						<field name="dest_model" invisible="1"/>
 						<field name="dest_field" />
-						<field name="lang" />
+						<field name="lang" invisible="1"/>
 					</group>
 				</form>
 			</field>
@@ -27,7 +27,7 @@
 				<tree string="Texts">
 					<field name="name" />
 					<field name="dest_field" />
-					<field name="lang" />
+					<field name="lang" invisible="1"/>
 				</tree>
 			</field>
 		</record>
@@ -42,9 +42,7 @@
                     <filter string="Validity of offer" domain="[('dest_field','=','offer_validity_data')]"/>
                     <filter string="Technical Conditions" domain="[('dest_field','=','technical_conditions_data')]"/>
                     <group string="Group By" expand="1">
-                        <filter string="Language" context="{'group_by':'lang'}"/>
                         <filter string="Field" context="{'group_by':'dest_field'}"/>
-                        <filter string="Model" context="{'group_by':'dest_model'}"/>
                     </group>
                 </search>
             </field>

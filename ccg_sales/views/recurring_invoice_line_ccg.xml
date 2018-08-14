@@ -26,6 +26,7 @@
 					<attribute name="sum">Total amount</attribute>
 				</xpath>
 				<xpath expr="/tree/field[@name='interval_type']" position="after">
+                    <field name="start_date" invisible="0" />
 					<field name="tos_date" invisible="0" />
 				</xpath>
 

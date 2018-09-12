@@ -38,6 +38,7 @@ class crm_lead(models.Model):
         six_months_later = relativedelta(months=+6)
         return datetime.now() + six_months_later
 
+    """ CANT FIGURE OUT IDEA BUT THIS DOES NOTHING
     def onchange_stage_id(self, cr, uid, ids, stage_id, context=None):
         lead = self.pool.get('crm.lead').browse(cr, uid, ids[0], context=context)
         res = {}
@@ -51,5 +52,4 @@ class crm_lead(models.Model):
                 vals.update({'date_deadline': self.prolonged_date()})
 
         return res
-
-
+    """

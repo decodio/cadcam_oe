@@ -58,7 +58,7 @@
 				<xpath
 					expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']"
 					position="after">
-					<field name="industry_ids" widget="many2many_tags"
+					<field name="industry_ids" widget="many2many_tags" required="1"
 						options="{'no_create': True, 'no_create_edit': True, 'limit':10}" />
 				</xpath>
 

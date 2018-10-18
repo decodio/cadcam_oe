@@ -44,7 +44,7 @@ class HrHolidays(models.Model):
                # Raising a warning gives a more user-friendly feedback than the default constraint error
                raise Warning(_('CCG:The number of remaining leaves ({0:d} day(s)) is not sufficient for this leave type!'.format(int(leave_days['remaining_leaves']))))
         return True
-
+    """
     def create(self, cr, uid, vals, context=None):
         date_from_str = vals.get('date_from', None)
         date_from = None
@@ -57,3 +57,4 @@ class HrHolidays(models.Model):
             date_to = datetime.strptime(date_to_str, datetime_format).replace(hour=19, minute=0)
             vals.update({'date_to':date_to})
         return super(HrHolidays, self).create(cr, uid, vals, context)
+    """

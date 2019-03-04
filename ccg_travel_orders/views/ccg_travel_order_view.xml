@@ -41,11 +41,11 @@
 						</group>
 						<group name="departure" string="Departure">
 							<field name="depart_transportation" widget="many2many_tags" />
-							<field name="depart_vehicle_ids" widget="many2many_tags" />
+							<field name="depart_vehicle_ids" widget="many2many_tags" domain="[('type', '=', car_type)]"/>
 						</group>
 						<group name="arrival" string="Arrival">
 							<field name="arrive_transportation" widget="many2many_tags" />
-							<field name="arrive_vehicle_ids" widget="many2many_tags" />
+							<field name="arrive_vehicle_ids" widget="many2many_tags" domain="[('type', '=', car_type)]"/>
 						</group>
 					</group>
 				</xpath>

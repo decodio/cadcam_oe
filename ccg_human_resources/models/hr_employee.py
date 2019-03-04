@@ -42,7 +42,7 @@ class hr_employee_ccg(osv.Model):
         return ret
 
     _columns = {
-                'contract_duration': fields.selection([('limited','Limited'),('unlimited','Unlimited')], 'Contract duration', default = 'unlimited'),
+                'contract_duration': fields.selection([('limited','Limited'),('unlimited','Unlimited'),('student_contract','Student contract')], 'Contract duration', default = 'unlimited'),
                 'start_date' : fields.date('Start date', required=True),
                 'end_date' : fields.date('End date'),
                 'hr_manager_ids' :fields.many2many('res.users', 'hr_employee_user_rel', 'employee_id', 'user_id', 'HR Managers',help='Users which receives HR notifications from employee'), 

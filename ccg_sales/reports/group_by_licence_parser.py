@@ -37,13 +37,44 @@ class Parser(report_sxw.rml_parse):
         document_obj.group = {}
         partner_lang = document_obj.partner_id.lang
         context.update({'lang':partner_lang or 'en_US'})
-        self.groups = [('PLC', 'PLC software', _('PLC software')),  #3rd parameter is for translation only!!!#
+        self.groups = [
+              ('PLC', 'PLC software', _('PLC software')),  #3rd parameter is for translation only!!!#
               ('QLC', 'QLC software', _('QLC software')), 
               ('YLC', 'YLC software', _('YLC software')), 
               ('ALC', 'ALC software', _('ALC software')), 
               ('TBL2', 'TBL2 software', _('TBL2 software')), 
               ('TBL3', 'TBL3 software', _('TBL3 software')), 
               ('OTHER', 'SERVICES', _('SERVICES')),
+"""
+('ADM', 'ADM software', _('ADM software')),
+('ASC', 'ASC software', _('ASC software')),
+('CAA', 'CAA software', _('CAA software')),
+('Consulting', 'Consulting software', _('Consulting software')),
+('Education', 'Education software', _('Education software')),
+('EPP', 'EPP software', _('EPP software')),
+('Hella', 'Hella software', _('Hella software')),
+('Implementation', 'Implementation software', _('Implementation software')),
+('IT support', 'IT support software', _('IT support software')),
+('OTC', 'OTC software', _('OTC software')),
+('Other', 'Other software', _('Other software')),
+('Programming', 'Programming software', _('Programming software')),
+('Project management', 'Project management software', _('Project management software')),
+('PSC', 'PSC software', _('PSC software')),
+('QSC', 'QSC software', _('QSC software')),
+('SLC', 'SLC software', _('SLC software')),
+('SSC', 'SSC software', _('SSC software')),
+('TALC2', 'TALC2 software', _('TALC2 software')),
+('TALC3', 'TALC3 software', _('TALC3 software')),
+('Tech support', 'Tech support software', _('Tech support software')),
+('TSC2', 'TSC2 software', _('TSC2 software')),
+('TSC3', 'TSC3 software', _('TSC3 software')),
+('TSC5', 'TSC5 software', _('TSC5 software')),
+('ULC', 'ULC software', _('ULC software')),
+('USC', 'USC software', _('USC software')),
+('XLC', 'XLC software', _('XLC software')),
+('XSC', 'XSC software', _('XSC software')),
+('YSC', 'YSC software', _('YSC software')),
+"""
               ]
         self.document = self._group_lines(document_obj, self.groups)
         self.context = context

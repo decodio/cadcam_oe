@@ -37,8 +37,10 @@ Traži <b>godišnji odmor</b> od ${format_tz(object.date_from, user.tz, '%d.%m.%
 Ima pravo na <b>${ '{0:0.0f}'.format(object.number_of_days_temp) } dana</b> godišnjeg odmora u ${object.holiday_status_id.year}. godini.<br>
 % elif 'Sick' in object.holiday_status_id.name :
 Prijavljuje <b>privremenu nesposobnost za rad</b> od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')} do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')}<br>
+% elif 'Paid' in object.holiday_status_id.name :
+Traži <b>plaćeni dopust</b> od ${format_tz(object.date_from, user.tz, '%d.%m.%Y.')} do ${format_tz(object.date_to, user.tz, '%d.%m.%Y.')}<br>
 % else:
-Nezna ni sam što hoće!<br>
+<br>
 % endif
 <br>Opis zahtjeva: ${object.name or ''}]]>
 

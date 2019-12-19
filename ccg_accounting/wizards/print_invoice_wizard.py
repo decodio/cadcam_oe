@@ -28,8 +28,9 @@ class PrintInvoiceWizard(models.TransientModel):
     show_line_discount = fields.Boolean('Show line discount', default = False, help='Diplays discont on invoice lines')
     advance_invoice = fields.Boolean('Print advance invoice', default = False, help='Print advance invoice in document currency')
     currency_type = fields.Selection([('document','Document currency'),('dual','Dual currency')], 'Currency', default = 'document')
-    shipping = fields.Boolean('Print shipping document', default = False, help='Shipping document') 
-    
+    shipping = fields.Boolean('Print shipping document', default = False, help='Shipping document')
+    new_style = fields.Boolean('Print new style', default=False, help='New Style')
+
     def print_report(self, cr, uid, ids, context=None):
         data = {
                  'ids': ids,
@@ -40,7 +41,8 @@ class PrintInvoiceWizard(models.TransientModel):
         discount = data['form']['show_line_discount']
         advance_invoice = data['form']['advance_invoice']
         shipping = data['form']['shipping']
-        
+        new_style = data['form']['new_style']
+
         if shipping:
             report_name = 'cadcam_shipping_document_report'
         elif advance_invoice:
@@ -53,10 +55,12 @@ class PrintInvoiceWizard(models.TransientModel):
             report_name = 'cadcam_document_currency_invoice_report'
         elif not dual_currency and not discount:
             report_name = 'cadcam_document_currency_invoice_report_no_disc'
+
         else:
             raise osv.except_osv(_('Print Error!'), _('Unsupported report option(s)'))
 
-
+        if report_name and new_style and not shipping:
+            report_name = 'new_' + report_name
 #        logging.warning('%s' %(x))
         return self.pool['report'].get_action(cr, uid, [], report_name, data=data, context=context)
 
@@ -64,5 +68,5 @@ class PrintInvoiceWizard(models.TransientModel):
         if advance_invoice:
             ret ={'value':{'currency_type':'document', 'show_line_discount':True}}
         else:
-            ret = {} 
+            ret = {}
         return ret

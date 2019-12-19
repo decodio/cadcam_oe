@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <!--document currency invoice report  -->
+        <record id="new_cadcam_document_currency_invoice_report" model="ir.actions.report.xml">
+            <field name="name">New - Document currency invoice</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">new_cadcam_document_currency_invoice_report</field>
+            <field name="report_type">aeroo</field>
+            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+            <field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+            <field name="report_rml">ccg_accounting/reports/new/cadcam_document_currency_invoice_report.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="styles_mode">global</field>
+        </record>
+
+        <!--add button to print document currency invoice report  -->
+        <record model="ir.values" id="btn_print_new_document_currency_invoice">
+            <field eval="'action'" name="key" />
+            <field eval="'client_print_multi'" name="key2" />
+            <field name="model">account.invoice</field>
+            <field name="name">New - Document currency invoice</field>
+            <field name="value"
+                eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_invoice_report)" />
+            <field name="isobject" eval="True" />
+            <field name="replace" eval="False" />
+            <field name="sequence" eval="1"/>
+        </record>
+
+        <!--document currency invoice report without discount -->
+        <record id="new_cadcam_document_currency_invoice_report_no_disc"
+            model="ir.actions.report.xml">
+            <field name="name">New - Document currency invoice w/o discount</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">new_cadcam_document_currency_invoice_report_no_disc</field>
+            <field name="report_type">aeroo</field>
+            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+            <field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+            <field name="report_rml">ccg_accounting/reports/new/cadcam_document_currency_invoice_report_no_disc.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="styles_mode">global</field>
+        </record>
+
+        <!--add button to print document currency invoice report without discount report -->
+        <record model="ir.values" id="btn_print_new_document_currency invoice without discount">
+            <field eval="'action'" name="key" />
+            <field eval="'client_print_multi'" name="key2" />
+            <field name="model">account.invoice</field>
+            <field name="name">New - Document currency invoice w/o discount</field>
+            <field name="value"
+                eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_invoice_report_no_disc)" />
+            <field name="isobject" eval="True" />
+            <field name="replace" eval="False" />
+            <field name="sequence" eval="2"/>
+        </record>
+
+
+        <!--dual currency invoice report -->
+        <record id="new_cadcam_dual_currency_invoice_report"
+            model="ir.actions.report.xml">
+            <field name="name">New - Dual currency invoice</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">new_cadcam_dual_currency_invoice_report</field>
+            <field name="report_type">aeroo</field>
+            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+            <field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+            <field name="report_rml">ccg_accounting/reports/new/cadcam_dual_currency_invoice_report.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="styles_mode">global</field>
+        </record>
+
+        <!--add button to print dual currency invoice report -->
+        <record model="ir.values" id="btn_print_new_dual_currency_invoice">
+            <field eval="'action'" name="key" />
+            <field eval="'client_print_multi'" name="key2" />
+            <field name="model">account.invoice</field>
+            <field name="name">New - Dual currency invoice</field>
+            <field name="value"
+                eval="'ir.actions.report.xml,'+str(new_cadcam_dual_currency_invoice_report)" />
+            <field name="isobject" eval="True" />
+            <field name="replace" eval="False" />
+            <field name="sequence" eval="3"/>
+        </record>
+
+        <!--dual currency invoice report without discount -->
+        <record id="new_cadcam_dual_currency_invoice_report_no_disc"
+            model="ir.actions.report.xml">
+            <field name="name">New - Dual currency invoice w/o discount</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">new_cadcam_dual_currency_invoice_report_no_disc</field>
+            <field name="report_type">aeroo</field>
+            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+            <field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+            <field name="report_rml">ccg_accounting/reports/new/cadcam_dual_currency_invoice_report_no_disc.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="styles_mode">global</field>
+        </record>
+
+        <!--add button to print dual currency invoice without discount report -->
+        <record model="ir.values" id="btn_print_new_dual_currency_invoice without discount">
+            <field eval="'action'" name="key" />
+            <field eval="'client_print_multi'" name="key2" />
+            <field name="model">account.invoice</field>
+            <field name="name">New - Dual currency invoice w/o disc.</field>
+            <field name="value"
+                eval="'ir.actions.report.xml,'+str(new_cadcam_dual_currency_invoice_report_no_disc)" />
+            <field name="isobject" eval="True" />
+            <field name="replace" eval="False" />
+            <field name="sequence" eval="4"/>
+        </record>
+
+        <!--advance invoice report  -->
+        <record id="new_cadcam_document_currency_advance_invoice_report" model="ir.actions.report.xml">
+            <field name="name">New - Advance invoice</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">new_cadcam_document_currency_advance_invoice_report</field>
+            <field name="report_type">aeroo</field>
+            <field name='out_format' eval="ref('report_aeroo.report_mimetypes_doc_odt')"/>
+            <field name="parser_loc">ccg_accounting/reports/account_invoice_parser.py</field>
+            <field name="report_rml">ccg_accounting/reports/new/cadcam_document_currency_advance_invoice_report.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+            <field name="styles_mode">global</field>
+        </record>
+
+        <!--add button to print advance invoice report  -->
+        <record model="ir.values" id="btn_print_new_document_currency_advance_invoice">
+            <field eval="'action'" name="key" />
+            <field eval="'client_print_multi'" name="key2" />
+            <field name="model">account.invoice</field>
+            <field name="name">New - Advance invoice</field>
+            <field name="value"
+                eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_advance_invoice_report)" />
+            <field name="isobject" eval="True" />
+            <field name="replace" eval="False" />
+            <field name="sequence" eval="5"/>
+        </record>
+
+    </data>
+</openerp>

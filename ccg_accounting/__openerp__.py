@@ -38,6 +38,7 @@
                 "views/account_supplier_invoice_view_ccg.xml",
                 "views/res_partner_form.xml",
                 "reports/account_invoice_reports.xml",
+                "reports/new/new_account_invoice_reports.xml",
                 "wizards/print_invoice_wizard.xml",
             ],
     'demo' : [],

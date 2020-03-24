@@ -318,28 +318,28 @@ msgstr "Last Updated on"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.new_cadcam_document_currency_advance_invoice_report
-msgid "New - Advance invoice"
-msgstr "New - Advance invoice"
+msgid "Advance invoice"
+msgstr "Advance invoice"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.new_cadcam_document_currency_invoice_report
-msgid "New - Document currency invoice"
-msgstr "New - Document currency invoice"
+msgid "Document currency invoice"
+msgstr "Document currency invoice"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.new_cadcam_document_currency_invoice_report_no_disc
-msgid "New - Document currency invoice w/o discount"
-msgstr "New - Document currency invoice w/o discount"
+msgid "Document currency invoice w/o discount"
+msgstr "Document currency invoice w/o discount"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.new_cadcam_dual_currency_invoice_report
-msgid "New - Dual currency invoice"
-msgstr "New - Dual currency invoice"
+msgid "Dual currency invoice"
+msgstr "Dual currency invoice"
 
 #. module: ccg_accounting
 #: model:ir.actions.report.xml,name:ccg_accounting.new_cadcam_dual_currency_invoice_report_no_disc
-msgid "New - Dual currency invoice w/o discount"
-msgstr "New - Dual currency invoice w/o discount"
+msgid "Dual currency invoice w/o discount"
+msgstr "Dual currency invoice w/o discount"
 
 #. module: ccg_accounting
 #: help:print.invoice.wizard,new_style:0

@@ -4,7 +4,7 @@
 
         <!--document currency invoice report  -->
         <record id="new_cadcam_document_currency_invoice_report" model="ir.actions.report.xml">
-            <field name="name">New - Document currency invoice</field>
+            <field name="name">Document currency invoice</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">account.invoice</field>
             <field name="report_name">new_cadcam_document_currency_invoice_report</field>
@@ -22,7 +22,7 @@
             <field eval="'action'" name="key" />
             <field eval="'client_print_multi'" name="key2" />
             <field name="model">account.invoice</field>
-            <field name="name">New - Document currency invoice</field>
+            <field name="name">Document currency invoice</field>
             <field name="value"
                 eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_invoice_report)" />
             <field name="isobject" eval="True" />
@@ -33,7 +33,7 @@
         <!--document currency invoice report without discount -->
         <record id="new_cadcam_document_currency_invoice_report_no_disc"
             model="ir.actions.report.xml">
-            <field name="name">New - Document currency invoice w/o discount</field>
+            <field name="name">Document currency invoice w/o discount</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">account.invoice</field>
             <field name="report_name">new_cadcam_document_currency_invoice_report_no_disc</field>
@@ -51,7 +51,7 @@
             <field eval="'action'" name="key" />
             <field eval="'client_print_multi'" name="key2" />
             <field name="model">account.invoice</field>
-            <field name="name">New - Document currency invoice w/o discount</field>
+            <field name="name">Document currency invoice w/o discount</field>
             <field name="value"
                 eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_invoice_report_no_disc)" />
             <field name="isobject" eval="True" />
@@ -63,7 +63,7 @@
         <!--dual currency invoice report -->
         <record id="new_cadcam_dual_currency_invoice_report"
             model="ir.actions.report.xml">
-            <field name="name">New - Dual currency invoice</field>
+            <field name="name">Dual currency invoice</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">account.invoice</field>
             <field name="report_name">new_cadcam_dual_currency_invoice_report</field>
@@ -81,7 +81,7 @@
             <field eval="'action'" name="key" />
             <field eval="'client_print_multi'" name="key2" />
             <field name="model">account.invoice</field>
-            <field name="name">New - Dual currency invoice</field>
+            <field name="name">Dual currency invoice</field>
             <field name="value"
                 eval="'ir.actions.report.xml,'+str(new_cadcam_dual_currency_invoice_report)" />
             <field name="isobject" eval="True" />
@@ -92,7 +92,7 @@
         <!--dual currency invoice report without discount -->
         <record id="new_cadcam_dual_currency_invoice_report_no_disc"
             model="ir.actions.report.xml">
-            <field name="name">New - Dual currency invoice w/o discount</field>
+            <field name="name">Dual currency invoice w/o discount</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">account.invoice</field>
             <field name="report_name">new_cadcam_dual_currency_invoice_report_no_disc</field>
@@ -110,7 +110,7 @@
             <field eval="'action'" name="key" />
             <field eval="'client_print_multi'" name="key2" />
             <field name="model">account.invoice</field>
-            <field name="name">New - Dual currency invoice w/o disc.</field>
+            <field name="name">Dual currency invoice w/o disc.</field>
             <field name="value"
                 eval="'ir.actions.report.xml,'+str(new_cadcam_dual_currency_invoice_report_no_disc)" />
             <field name="isobject" eval="True" />
@@ -120,7 +120,7 @@
 
         <!--advance invoice report  -->
         <record id="new_cadcam_document_currency_advance_invoice_report" model="ir.actions.report.xml">
-            <field name="name">New - Advance invoice</field>
+            <field name="name">Advance invoice</field>
             <field name="type">ir.actions.report.xml</field>
             <field name="model">account.invoice</field>
             <field name="report_name">new_cadcam_document_currency_advance_invoice_report</field>
@@ -138,7 +138,7 @@
             <field eval="'action'" name="key" />
             <field eval="'client_print_multi'" name="key2" />
             <field name="model">account.invoice</field>
-            <field name="name">New - Advance invoice</field>
+            <field name="name">Advance invoice</field>
             <field name="value"
                 eval="'ir.actions.report.xml,'+str(new_cadcam_document_currency_advance_invoice_report)" />
             <field name="isobject" eval="True" />

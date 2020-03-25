@@ -253,7 +253,7 @@ msgstr "Invoice Line"
 #: report:ir.actions.report.xml:ccg_accounting.new_cadcam_dual_currency_invoice_report
 #: report:ir.actions.report.xml:ccg_accounting.new_cadcam_dual_currency_invoice_report_no_disc
 msgid "Invoice created"
-msgstr "Račun napravio"
+msgstr "Račun kreiral"
 
 #. module: ccg_accounting
 #: report:ir.actions.report.xml:ccg_accounting.cadcam_document_currency_advance_invoice_report

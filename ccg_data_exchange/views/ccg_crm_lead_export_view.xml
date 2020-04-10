@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
-		<record model="ir.ui.view" id="ccg_crm_lead_export_view">
-			<field name="name">ccg_crm_lead_export_view</field>
-			<field name="model">crm.lead</field>
-			<field name="inherit_id" ref="ccg_sales.crm_case_form_view_oppor_profit_ccg" />
-			<field name="priority" eval="30" />
-			<field name="arch" type="xml">
-				<xpath expr="//notebook" position="inside">
-					<page string="DS pipeline data">
-						<group colspan="4" col="5">
-							<group string="Additional export data" colspan="2" col="2">
+    <data>
+        <record model="ir.ui.view" id="ccg_crm_lead_export_view">
+            <field name="name">ccg_crm_lead_export_view</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="sp_cadcam.crm_case_form_view_oppor_profit" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="DS pipeline data">
+                        <group colspan="4" col="5">
+                            <group string="Additional export data" colspan="2" col="2">
+                                <field name="offer_name_id" string="Offer name" colspan="2"
+                                    options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
+                                    context="{'search_default_favorite':True}" />
+                                <field name="contact_name_id" string="Customer contact"
+                                    colspan="2"
+                                    options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
+                                    domain="[('parent_id','=', partner_id)]" />
+                                <field name="revenue_type" colspan="2" />
+                                <group colspan="2" col="4">
 
-								<field name="offer_name_id" string="Offer name" colspan="2"
-									options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
-									context="{'search_default_favorite':True}" />
-								<field name="contact_name_id" string="Customer contact"
-									colspan="2"
-									options="{'no_create': True, 'no_create_edit': True, 'limit':10}"
-									domain="[('parent_id','=', partner_id)]" />
-								<field name="revenue_type" colspan="2" />
-								<group colspan="2" col="4">
-								<field name="ds_expected_revenue" string="DS Revenue (EUR)"
-									colspan="2" />
                                 <field name="ds_expected_revenue_positive" invisible="1"
-									colspan="2" />
-								<field name="management_assessment" string="Management Assessment" attrs="{'invisible':[('stage_name', '!=', 'Negotiation')]}"
-									colspan="2" />
-								</group>
-								<field name="next_milestone" string="Next Milestone"
-									colspan="2" />
-								<field name="stage_name" colspan="2" invisible="1"/>
-							</group>
-							<group colspan="1" col="1">
-							</group>
-							<group string="DS portal generated data" colspan="2" col="2">
-								<field name="ds_lead_id" string="DS Lead ID" colspan="2"
-									col="2" />
-								<!-- <field name="comarketing_yn" string="Comarketing" colspan="2" 
-									col="2" /> -->
-								<field name="comet_campaign_code" string="COMET campaign code"
-									colspan="2" col="2" />
-								<field name="campaign_name" string="Campaign name"
-									colspan="2" col="2" />
-							</group>
-						</group>
-					</page>
-				</xpath>
-			</field>
-		</record>
+                                    colspan="2" />
+                                <field name="management_assessment" string="Management Assessment" attrs="{'invisible':[('stage_name', '!=', 'Negotiation')]}"
+                                    colspan="2" />
+                                </group>
+                                <field name="next_milestone" string="Next Milestone"
+                                    colspan="2" />
+                                <field name="stage_name" colspan="2" invisible="1"/>
+                            </group>
+                            <group colspan="1" col="1">
+                            </group>
+                            <group string="DS portal generated data" colspan="2" col="2">
+                                <field name="ds_lead_id" string="DS Lead ID" colspan="2"
+                                    col="2" />
+                                <field name="comet_campaign_code" string="COMET campaign code"
+                                    colspan="2" col="2" />
+                                <field name="campaign_name" string="Campaign name"
+                                    colspan="2" col="2" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="before">
+                    <field name="ds_expected_revenue" />
+                </xpath>
+            </field>
+        </record>
 
         <record model="ir.ui.view" id="crm_case_tree_view_oppor_profit_ccg">
             <field name="name">crm.case.form.view.oppor.profit.ccg</field>
@@ -69,21 +67,21 @@
 
             </field>
         </record>
-		
-		<!-- Opportunities Search View 	-->
-		<record id="view_crm_case_opportunities_filter_ccg_export" model="ir.ui.view">
-			<field name="name">CRM - Opportunities Search for export on DS portal</field>
-			<field name="model">crm.lead</field>
-			<field name="inherit_id" ref="sp_cadcam.view_crm_case_opportunities_filter_profit" />
-			<field name="arch" type="xml">
-				<xpath expr="//search/field[1]" position="after">
-					<field name="ds_expected_revenue" string="DS revenue" />
-				</xpath>
-				<xpath expr="//search/filter[last()]" position="after">
-						<filter string="DS revenue" name="ds_revenue" domain="[('ds_expected_revenue', '>', 0.0)]" help="Opportunities with DS revenue"/>
-				</xpath>
-			</field>
-		</record>
-		
-	</data>
+
+        <!-- Opportunities Search View     -->
+        <record id="view_crm_case_opportunities_filter_ccg_export" model="ir.ui.view">
+            <field name="name">CRM - Opportunities Search for export on DS portal</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="sp_cadcam.view_crm_case_opportunities_filter_profit" />
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[1]" position="after">
+                    <field name="ds_expected_revenue" string="DS revenue" />
+                </xpath>
+                <xpath expr="//search/filter[last()]" position="after">
+                        <filter string="DS revenue" name="ds_revenue" domain="[('ds_expected_revenue', '>', 0.0)]" help="Opportunities with DS revenue"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
 </openerp>

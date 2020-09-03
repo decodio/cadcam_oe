@@ -58,9 +58,6 @@
                     <field name="section_id" invisible="1"/>
                     <!--field name="ds_expected_revenue"/-->
                 </field>
-                <field name="planned_revenue" position="attributes">
-                    <attribute name="invisible">0</attribute>
-                </field>
                 <field name="attachments_code" position="after">
                     <field name="ds_expected_revenue_positive"/>
                 </field>

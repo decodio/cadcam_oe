@@ -10,12 +10,8 @@
 				<xpath expr="/tree//field[@name='number']" position="replace">
 					<field name="internal_invoice_number" string="Invoice number" />
 				</xpath>
-
 				<xpath expr="/tree//field[@name='lcy_amount_untaxed']"
 					position="attributes">
-					<attribute name="invisible">1</attribute>
-				</xpath>
-				<xpath expr="/tree//field[@name='lcy_amount_total']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="/tree//field[@name='amount_untaxed']" position="attributes">
@@ -30,7 +26,7 @@
 
 			</field>
 		</record>
-		
+
 		<record id="account_invoice_filter_ccg" model="ir.ui.view">
 			<field name="name">account.invoice.filter.ccg</field>
 			<field name="model">account.invoice</field>
@@ -42,7 +38,7 @@
 			</field>
 		</record>
 
-		<!-- on_change event on customer invoice rewrite invoicing_date and date_delivery 
+		<!-- on_change event on customer invoice rewrite invoicing_date and date_delivery
 			with date_invoice -->
 		<record model="ir.ui.view" id="account_invoice_form_ccg">
 			<field name="name">account.invoice.form.ccg</field>
@@ -61,7 +57,7 @@
 			</field>
 		</record>
 
-		<!-- on_change event on supplier invoice rewrite date_invoice and date_delivery 
+		<!-- on_change event on supplier invoice rewrite date_invoice and date_delivery
 			with document_date -->
 <!-- 		<record model="ir.ui.view" id="account_invoice_supplier_form_ccg">
 			<field name="name">account.invoice.supplier.form.ccg</field>

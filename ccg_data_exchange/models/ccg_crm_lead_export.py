@@ -42,7 +42,7 @@ class crm_lead(models.Model):
         self.ds_expected_revenue = self.planned_revenue - self.planned_profit
 
     offer_name_id = fields.Many2one('ccg.offer.name')
-    revenue_type = fields.Selection([('PLC', 'PLC'),('YLC', 'YLC')], default = 'PLC', required=True)
+    revenue_type = fields.Selection([('PLC', 'PLC'),('YLC', 'YLC'),('QLC', 'QLC')], default = 'PLC', required=True)
     contact_name_id = fields.Many2one('res.partner', help="Contact Person related to this opportunity.")
     ds_expected_revenue = fields.Float(
         string='DS Revenue (cost)',

@@ -10,10 +10,6 @@
 				<xpath expr="/tree//field[@name='number']" position="replace">
 					<field name="internal_invoice_number" string="Invoice number" />
 				</xpath>
-				<xpath expr="/tree//field[@name='lcy_amount_untaxed']"
-					position="attributes">
-					<attribute name="invisible">1</attribute>
-				</xpath>
 				<xpath expr="/tree//field[@name='amount_untaxed']" position="attributes">
 					<attribute name="invisible">0</attribute>
 				</xpath>

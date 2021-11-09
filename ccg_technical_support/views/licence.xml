@@ -42,6 +42,7 @@
 									<field name="name" />
 								</tree>
 							</field>
+							<field name="cc_emails" string="CC Emails"/>
 						</group>
 						<group>
 							<group colspan="2" col="4">

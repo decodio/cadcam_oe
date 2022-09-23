@@ -159,6 +159,11 @@
 				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='vehicle']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				<xpath expr="//button[@name='button_submit']" position="after">
+					<button name="button_create_invoice" groups="account.group_account_user"
+							attrs="{'invisible':[('state','not in',['open'])]}"
+							string="Invoice" type="object" icon="gtk-go-forward"/>
+				</xpath>
 				<xpath expr="//field[@name='itinerary_ids']/tree/field[@name='license_plate']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>

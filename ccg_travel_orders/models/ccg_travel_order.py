@@ -140,9 +140,7 @@ class ccg_travel_order_itinerary_lines(models.Model):
         if self.odometer_start + self.distance != self.odometer_end:
             self.odometer_end = self.odometer_start + self.distance
 
-
-
-    @api.onchange('odometer_start')
+    @api.onchange('odometer_start', 'date')
     def onchange_odometer_start(self):
         end = self.odometer_end
         start = self.odometer_start
@@ -156,11 +154,11 @@ class ccg_travel_order_itinerary_lines(models.Model):
         if (end and start) and (start <= end):
             self.distance = end - start
         if self.vehicle_type == 'private':
-            self.lcy_amount_total = self.distance * 2.0
+            self.calculate_amount()
         else:
             self.lcy_amount_total = 0.0
             
-    @api.onchange('odometer_end')
+    @api.onchange('odometer_end', 'date')
     def onchange_odometer_end(self):
         end = self.odometer_end
         start = self.odometer_start
@@ -171,7 +169,7 @@ class ccg_travel_order_itinerary_lines(models.Model):
         if (end and start) and (start <= end):
             self.distance = end - start
         if self.vehicle_type == 'private':
-            self.lcy_amount_total = self.distance * 2.0
+            self.calculate_amount()
         else:
             self.lcy_amount_total = 0.0
 
